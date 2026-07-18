@@ -1,0 +1,114 @@
+import { selectParser } from '../parsers/index.js';
+
+// Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
+// communautaires) et chargement du fichier CSV. Détient les données parsées
+// jusqu'au lancement de la simulation.
+export function initImportView({ onStart, onSimulate }) {
+    let data = [];
+
+    const csvFile = document.getElementById("csvFile");
+    const kvaSelector = document.getElementById("puissanceSouscrite");
+    const jourZenPlusSelector = document.getElementById("jourZenPlus");
+    const simulateButton = document.getElementById("simulateButton");
+    const importError = document.getElementById("importError");
+
+    const communityRadios = document.querySelectorAll('input[name="communityPricesRadio"]');
+    const communityAlert = document.getElementById("community-alert");
+    communityRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            communityAlert.classList.add("d-none");
+        });
+    });
+
+    ["bleuHC-start-endDay1", "bleuHC-end-endDay1",
+        "bleuHC-start-beginDay2", "bleuHC-end-beginDay2",
+        "bleuHC-start-middleDay2", "bleuHC-end-middleDay2"]
+        .forEach(id => document.getElementById(id).addEventListener("change", bleuHCRangeChanged));
+
+    csvFile.addEventListener("change", onFileImported);
+    importError.style.display = "none";
+
+    document.getElementById("startButton").onclick = function () { onStart(); };
+    simulateButton.onclick = function () {
+        const includeCommunity = getSelectedTypeOfPrice();
+        if (includeCommunity === null) {
+            communityAlert.classList.remove("d-none");
+            return;
+        }
+        onSimulate(buildSettings(includeCommunity), data);
+    };
+
+    function buildSettings(includeCommunity) {
+        return {
+            kva: kvaSelector.value,
+            jourZenPlus: parseInt(jourZenPlusSelector.value),
+            hcRawRanges: [
+                ["bleuHC-start-endDay1", "bleuHC-end-endDay1"],
+                ["bleuHC-start-beginDay2", "bleuHC-end-beginDay2"],
+                ["bleuHC-start-middleDay2", "bleuHC-end-middleDay2"]
+            ].map(([startId, endId]) => [
+                document.getElementById(startId).value,
+                document.getElementById(endId).value
+            ]),
+            includeCommunity: includeCommunity
+        };
+    }
+
+    function getSelectedTypeOfPrice() {
+        const selectedRadio = document.querySelector('input[name="communityPricesRadio"]:checked');
+        if (selectedRadio) {
+            return selectedRadio.value == 'isCommunity';
+        }
+        return null;
+    }
+
+    function bleuHCRangeChanged(e) {
+        //If it's a start, we need to check if the end is after the start
+        if (e.target.id.includes("start")) {
+            const end = document.getElementById(e.target.id.replace("start", "end"));
+            const selectedTime = e.target.value.split(":");
+            const selectedHours = parseInt(selectedTime[0]);
+            const selectedMinutes = parseInt(selectedTime[1]);
+            const endTime = end.value.split(":");
+            const endHours = parseInt(endTime[0]);
+            const endMinutes = parseInt(endTime[1]);
+            if (selectedHours > endHours || (selectedHours == endHours && selectedMinutes > endMinutes)) {
+                end.value = e.target.value;
+            }
+        }
+        else if (e.target.id.includes("end")) {
+            const start = document.getElementById(e.target.id.replace("end", "start"));
+            const selectedTime = e.target.value.split(":");
+            const selectedHours = parseInt(selectedTime[0]);
+            const selectedMinutes = parseInt(selectedTime[1]);
+            const startTime = start.value.split(":");
+            const startHours = parseInt(startTime[0]);
+            const startMinutes = parseInt(startTime[1]);
+            if (selectedHours < startHours || (selectedHours == startHours && selectedMinutes < startMinutes)) {
+                start.value = e.target.value;
+            }
+        }
+    }
+
+    function onFileImported(e) {
+        e.preventDefault();
+        const input = csvFile.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            importError.style.display = "none";
+
+            const parser = selectParser(csvFile.files[0].name);
+            const text = e.target.result;
+            try {
+                let rawCSV = parser.parseCSV(text);
+                data = parser.loadData(rawCSV);
+                simulateButton.disabled = false;
+            }
+            catch (e) {
+                importError.style.display = "block";
+            }
+        };
+        reader.readAsText(input);
+    }
+}
