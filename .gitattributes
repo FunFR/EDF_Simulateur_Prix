@@ -1,0 +1,5 @@
+# Le CSV d'échantillon sert de référence aux tests golden : aucune conversion
+# de fins de ligne ni d'encodage ne doit l'altérer.
+Sample/*.csv -text
+# Les snapshots golden doivent être identiques byte à byte sur toutes les machines.
+tests/golden/*.json text eol=lf
