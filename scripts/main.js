@@ -599,17 +599,21 @@ function yearBeginSelectorChanged(e) {
     beginYear = e.target.value;
     setBeginMonthSelector();
     setEndYearSelector(e.target.value);
+    refreshButton.disabled = false;
 }
 
 function monthBeginSelectorChanged(e) {
     beginMonth = e.target.value;
+    refreshButton.disabled = false;
 }
 
 function yearEndSelectorChanged(e) {
     endYear = e.target.value;
     setEndMonthSelector();
+    refreshButton.disabled = false;
 }
 
 function monthEndSelectorChanged(e) {
     endMonth = e.target.value;
+    refreshButton.disabled = false;
 }

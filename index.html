@@ -301,26 +301,31 @@
                                                         role="tablist">
                                                         <li class="nav-item" role="presentation">
                                                             <a class="nav-link active" aria-current="page" href="#edf"
-                                                                aria-selected="true" role="tab">Depuis
+                                                                data-bs-toggle="pill" aria-selected="true"
+                                                                role="tab">Depuis
                                                                 EDF</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#enedis" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Enedis</a>
+                                                            <a class="nav-link" href="#enedis" data-bs-toggle="pill"
+                                                                aria-selected="false" role="tab" tabindex="-1">Depuis
+                                                                Enedis</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#total" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis TotalEnergies</a>
+                                                            <a class="nav-link" href="#total" data-bs-toggle="pill"
+                                                                aria-selected="false" role="tab" tabindex="-1">Depuis
+                                                                TotalEnergies</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#ser" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Strasbourg
+                                                            <a class="nav-link" href="#ser" data-bs-toggle="pill"
+                                                                aria-selected="false" role="tab" tabindex="-1">Depuis
+                                                                Strasbourg
                                                                 Electricité
                                                                 Réseaux</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#homeassistant" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Home Assistant</a>
+                                                            <a class="nav-link" href="#homeassistant"
+                                                                data-bs-toggle="pill" aria-selected="false" role="tab"
+                                                                tabindex="-1">Depuis Home Assistant</a>
                                                         </li>
                                                     </ul>
 
@@ -636,40 +641,9 @@
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function () {
-            // Initialize the Bootstrap tab component
-            $('#exportTabs a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show');
-            });
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-        });
-        // au changement de mois/année de debut ou de fin activation du bouton refresh
-        document.getElementById("monthBeginSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("yearBeginSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("monthEndSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("yearEndSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-    </script>
 </body>
 
 </html>
