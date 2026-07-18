@@ -175,6 +175,69 @@ h6 {
   border-color: #f5c6cb;
 }
 
+.wizard-step {
+  display: none;
+}
+
+.wizard-step.active {
+  display: block;
+}
+
+.wizard-stepper {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.wizard-stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.55;
+  font-size: 0.9rem;
+}
+
+.wizard-stepper-index {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active .wizard-stepper-index {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+.wizard-stepper-item.done {
+  opacity: 0.8;
+}
+
+.wizard-stepper-item.done .wizard-stepper-index {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media (min-width: 992px) {
   .col-lg-8 {
     width: 100%;
@@ -188,6 +251,10 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .wizard-stepper-label {
+    display: none;
+  }
+
   .container {
     padding: 1rem;
   }
