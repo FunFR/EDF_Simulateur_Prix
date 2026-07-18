@@ -1,67 +1,24 @@
-abonnements.push({
+defineTarif({
     name: "EDF - Vert Electrique Régional",
     offer_type: "Marché",
     lastUpdate: "2026-02-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
-    prices: [
-        { puissance: 6, abonnement: 14.78 },
-        { puissance: 9, abonnement: 18.49 },
-        { puissance: 12, abonnement: 22.21 },
-        { puissance: 15, abonnement: 25.74 },
-        { puissance: 18, abonnement: 29.23 },
-        { puissance: 24, abonnement: 36.84 },
-        { puissance: 30, abonnement: 44.07 },
-        { puissance: 36, abonnement: 51.50 }
-    ].map(item => ({
-        ...item,
-        bleu: {
-            prixKwhHC: 19.15
-        }
-    })),
-    hc: [{
-        start: { hour: 0, minute: 0 },
-        end: { hour: 24, minute: 0 }
-    }],
-    hasHCCustom: false,
-    hasSpecialDaysCustom: false,
-    specialDays: [],
-    getDayType: function (day) {
-        let dayType = "bleu";
-        return dayType;
-    }
+    subscriptions: { 6: 14.78, 9: 18.49, 12: 22.21, 15: 25.74, 18: 29.23, 24: 36.84, 30: 44.07, 36: 51.50 },
+    dayTypes: { bleu: { price: 19.15 } },
+    dayRule: { type: "constant", dayType: "bleu" }
 });
 
-abonnements.push({
+defineTarif({
     name: "EDF - Vert Electrique Régional Heures Creuses",
     offer_type: "Marché",
     lastUpdate: "2026-02-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
-    prices: [
-        { puissance: 6, abonnement: 15.05 },
-        { puissance: 9, abonnement: 18.91 },
-        { puissance: 12, abonnement: 22.65 },
-        { puissance: 15, abonnement: 26.17 },
-        { puissance: 18, abonnement: 29.81 },
-        { puissance: 24, abonnement: 37.52 },
-        { puissance: 30, abonnement: 44.65 },
-        { puissance: 36, abonnement: 51.82 }
-    ].map(item => ({
-        ...item,
-        bleu: {
-            prixKwhHP: 21.05,
-            prixKwhHC: 15.15
-        }
-    })),
-    hc: [],
-    hasHCCustom: true,
-    hasSpecialDaysCustom: false,
-    specialDays: [],
-    getDayType: function (day) {
-        let dayType = "bleu";
-        return dayType;
-    }
+    subscriptions: { 6: 15.05, 9: 18.91, 12: 22.65, 15: 26.17, 18: 29.81, 24: 37.52, 30: 44.65, 36: 51.82 },
+    dayTypes: { bleu: { HP: 21.05, HC: 15.15 } },
+    dayRule: { type: "constant", dayType: "bleu" },
+    hcRanges: "custom"
 });
