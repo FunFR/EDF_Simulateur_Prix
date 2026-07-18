@@ -104,7 +104,10 @@ test('golden contrats EDF : champs statiques de chaque abonnement (grilles, plag
             subscription_url: abo.subscription_url,
             price_url: abo.price_url,
             prices: abo.prices,
-            hc: abo.hc,
+            // Avec hasHCCustom, la simulation écrase toujours hc avant tout calcul :
+            // un hc pré-rempli est une donnée morte (cas Zen Week-End HC legacy),
+            // normalisée en [] pour ne pas figer de l'inatteignable.
+            hc: abo.hasHCCustom ? [] : abo.hc,
             // Flags normalisés en booléens : clé absente et false sont équivalents
             // pour le calculateur (ex. EJP legacy n'a pas la clé hasHCCustom).
             hasHCCustom: !!abo.hasHCCustom,
