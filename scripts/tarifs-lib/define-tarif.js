@@ -1,0 +1,565 @@
+// Bibliothèque de définition déclarative des tarifs.
+// Un fichier de tarif appelle defineTarif({...}) avec un objet littéral pur
+// (aucune fonction) ; la factory valide la définition, génère l'objet au
+// format attendu par le calculateur (voir scripts/core/calculator.js) et le
+// pousse dans le registre global `abonnements`.
+// Guide contributeur : scripts/tarifs/README.md
+(function () {
+    "use strict";
+
+    // Calendriers de jours spéciaux partagés entre tarifs (ex. jours Tempo,
+    // réutilisables par plusieurs fournisseurs). Voir scripts/tarifs-lib/calendars/.
+    window.TarifCalendars = window.TarifCalendars || {};
+    // Erreurs de définition accumulées (consultables en console et par les tests).
+    window.tarifDefinitionErrors = window.tarifDefinitionErrors || [];
+
+    const DATE_FORMAT = /^\d{4}\/\d{2}\/\d{2}$/;
+    const TIME_FORMAT = /^(?:(?:[01]?\d|2[0-3]):(?:00|30)|24:00)$/;
+
+    window.defineCalendar = function (name, daysByType) {
+        const errors = [];
+        if (typeof name !== "string" || name === "") {
+            fail(['defineCalendar : nom de calendrier manquant']);
+        }
+        if (window.TarifCalendars[name]) {
+            errors.push(`calendrier "${name}" déjà défini`);
+        }
+        if (!isPlainObject(daysByType) || Object.keys(daysByType).length === 0) {
+            errors.push(`calendrier "${name}" : au moins un type de jour attendu (ex. { rouge: { days: [...] } })`);
+        } else {
+            for (const [dayType, entry] of Object.entries(daysByType)) {
+                if (!isPlainObject(entry) || !Array.isArray(entry.days)) {
+                    errors.push(`calendrier "${name}", type "${dayType}" : propriété days manquante (liste de dates "AAAA/MM/JJ")`);
+                    continue;
+                }
+                for (const day of entry.days) {
+                    if (typeof day !== "string" || !DATE_FORMAT.test(day)) {
+                        errors.push(`calendrier "${name}", type "${dayType}" : date invalide "${day}" (format attendu "AAAA/MM/JJ")`);
+                    }
+                }
+                Object.freeze(entry.days);
+            }
+        }
+        if (errors.length > 0) {
+            fail(errors.map(e => `defineCalendar("${name}") : ${e}`));
+        }
+        window.TarifCalendars[name] = daysByType;
+    };
+
+    window.defineTarif = function (def) {
+        if (!isPlainObject(def)) {
+            fail(["defineTarif : un objet de définition est attendu"]);
+        }
+        const label = typeof def.name === "string" && def.name !== "" ? def.name : "<sans nom>";
+        const errors = [];
+
+        validateMetadata(def, errors);
+        validateSubscriptions(def, errors);
+        const pricedTypes = validateDayTypes(def, errors);
+        validatePriceOverrides(def, errors);
+        validateDayRule(def, pricedTypes, errors);
+        validateHcRanges(def, pricedTypes, errors);
+
+        if (errors.length > 0) {
+            fail(errors.map(e => `defineTarif("${label}") : ${e}`));
+        }
+
+        const abonnement = buildAbonnement(def);
+        abonnements.push(abonnement);
+        return abonnement;
+    };
+
+    function fail(messages) {
+        for (const message of messages) {
+            window.tarifDefinitionErrors.push(message);
+            console.error(message);
+        }
+        throw new Error(messages.join("\n"));
+    }
+
+    function isPlainObject(value) {
+        return value !== null && typeof value === "object" && !Array.isArray(value);
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Validation                                                        //
+    // ------------------------------------------------------------------ //
+
+    function validateMetadata(def, errors) {
+        if (typeof def.name !== "string" || def.name === "") {
+            errors.push('name manquant (ex. "EDF - Tempo")');
+        }
+        if (typeof def.offer_type !== "string" || def.offer_type === "") {
+            errors.push('offer_type manquant ("TRV" ou "Marché")');
+        }
+        if (typeof def.lastUpdate !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(def.lastUpdate)) {
+            errors.push('lastUpdate manquant ou invalide (format "AAAA-MM-JJ" : date de la grille de prix)');
+        }
+        if (typeof def.isCommunity !== "boolean") {
+            errors.push("isCommunity manquant (true pour un tarif maintenu par la communauté)");
+        }
+        if (typeof def.subscription_url !== "string") {
+            errors.push("subscription_url manquant (chaîne vide acceptée)");
+        }
+        if (typeof def.price_url !== "string" || def.price_url === "") {
+            errors.push("price_url manquant (lien vers la grille tarifaire officielle)");
+        }
+    }
+
+    function validateSubscriptions(def, errors) {
+        if (!isPlainObject(def.subscriptions) || Object.keys(def.subscriptions).length === 0) {
+            errors.push("subscriptions manquant (ex. { 6: 15.65, 9: 19.56 } en €/mois par puissance en kVA)");
+            return;
+        }
+        for (const [kva, price] of Object.entries(def.subscriptions)) {
+            if (!/^\d+$/.test(kva)) {
+                errors.push(`subscriptions : puissance invalide "${kva}" (entier en kVA attendu)`);
+            }
+            if (typeof price !== "number" || !isFinite(price) || price <= 0) {
+                errors.push(`subscriptions[${kva}] : prix d'abonnement invalide (nombre en €/mois attendu)`);
+            }
+        }
+    }
+
+    // Retourne la liste des types de jour pricés, ou null si invalide.
+    function validateDayTypes(def, errors) {
+        if (!isPlainObject(def.dayTypes) || Object.keys(def.dayTypes).length === 0) {
+            errors.push("dayTypes manquant (ex. { bleu: { HP: 16.12, HC: 13.25 } } en centimes/kWh)");
+            return null;
+        }
+        let singleCount = 0;
+        for (const [name, spec] of Object.entries(def.dayTypes)) {
+            if (!validateDayTypeSpec(`dayTypes.${name}`, spec, errors)) {
+                continue;
+            }
+            if ("price" in spec) {
+                singleCount++;
+            }
+        }
+        const total = Object.keys(def.dayTypes).length;
+        if (singleCount > 0 && singleCount < total) {
+            errors.push("dayTypes : mélange interdit de { price } et { HP, HC } — tous les types doivent avoir la même forme");
+        }
+        return Object.keys(def.dayTypes);
+    }
+
+    function validateDayTypeSpec(path, spec, errors) {
+        if (!isPlainObject(spec)) {
+            errors.push(`${path} : objet { price } ou { HP, HC } attendu (centimes/kWh)`);
+            return false;
+        }
+        const keys = Object.keys(spec).sort().join(",");
+        if (keys !== "price" && keys !== "HC,HP") {
+            errors.push(`${path} : clés attendues { price } ou { HP, HC }, reçu { ${Object.keys(spec).join(", ")} }`);
+            return false;
+        }
+        for (const [key, value] of Object.entries(spec)) {
+            if (typeof value !== "number" || !isFinite(value) || value <= 0) {
+                errors.push(`${path}.${key} : prix invalide (nombre en centimes/kWh attendu)`);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function validatePriceOverrides(def, errors) {
+        if (def.priceOverrides === undefined) {
+            return;
+        }
+        if (!isPlainObject(def.priceOverrides)) {
+            errors.push("priceOverrides : objet { <kVA>: { <type>: { price } } } attendu");
+            return;
+        }
+        for (const [kva, overrides] of Object.entries(def.priceOverrides)) {
+            if (!isPlainObject(def.subscriptions) || !(kva in def.subscriptions)) {
+                errors.push(`priceOverrides[${kva}] : puissance absente de subscriptions`);
+            }
+            if (!isPlainObject(overrides)) {
+                errors.push(`priceOverrides[${kva}] : objet { <type>: { price } } attendu`);
+                continue;
+            }
+            for (const [type, spec] of Object.entries(overrides)) {
+                if (!isPlainObject(def.dayTypes) || !(type in def.dayTypes)) {
+                    errors.push(`priceOverrides[${kva}].${type} : type de jour absent de dayTypes`);
+                }
+                validateDayTypeSpec(`priceOverrides[${kva}].${type}`, spec, errors);
+            }
+        }
+    }
+
+    function validateDayRule(def, pricedTypes, errors) {
+        const rule = def.dayRule;
+        if (!isPlainObject(rule) || typeof rule.type !== "string") {
+            errors.push('dayRule manquant (ex. { type: "constant", dayType: "bleu" })');
+            return;
+        }
+        if (rule.type === "spot") {
+            errors.push('dayRule.type "spot" : pas encore supporté');
+            return;
+        }
+        if (!(rule.type in RULE_BUILDERS)) {
+            errors.push(`dayRule.type inconnu "${rule.type}" (types supportés : ${Object.keys(RULE_BUILDERS).join(", ")})`);
+            return;
+        }
+        if (pricedTypes === null) {
+            return; // dayTypes invalide : inutile de vérifier les références
+        }
+
+        const priced = new Set(pricedTypes);
+        const referenced = new Set();
+        const requireType = (path, type) => {
+            if (typeof type !== "string" || !priced.has(type)) {
+                errors.push(`${path} : type de jour "${type}" absent de dayTypes`);
+            } else {
+                referenced.add(type);
+            }
+        };
+
+        if (rule.previousDayBefore !== undefined &&
+            (!Number.isInteger(rule.previousDayBefore) || rule.previousDayBefore < 0 || rule.previousDayBefore > 24)) {
+            errors.push("dayRule.previousDayBefore : heure entière entre 0 et 24 attendue");
+        }
+
+        switch (rule.type) {
+            case "constant":
+                requireType("dayRule.dayType", rule.dayType);
+                if (rule.previousDayBefore !== undefined) {
+                    errors.push('dayRule.previousDayBefore : sans effet avec type "constant"');
+                }
+                break;
+
+            case "weekly": {
+                requireType("dayRule.default", rule.default);
+                if (!isPlainObject(rule.days) || Object.keys(rule.days).length !== 1) {
+                    errors.push('dayRule.days : exactement un type attendu (ex. { weekend: [0, 6] } — 0 = dimanche, 6 = samedi)');
+                    break;
+                }
+                const [type, days] = Object.entries(rule.days)[0];
+                requireType("dayRule.days", type);
+                if (!Array.isArray(days) || days.length === 0 ||
+                    days.some(d => !Number.isInteger(d) || d < 0 || d > 6)) {
+                    errors.push(`dayRule.days.${type} : liste de jours de semaine attendue (0 = dimanche ... 6 = samedi)`);
+                }
+                if (rule.userDaySetting !== undefined && rule.userDaySetting !== "jourZenPlus") {
+                    errors.push('dayRule.userDaySetting : seul "jourZenPlus" est supporté');
+                }
+                if (rule.previousDayBefore !== undefined) {
+                    errors.push('dayRule.previousDayBefore : sans effet avec type "weekly"');
+                }
+                break;
+            }
+
+            case "calendar": {
+                requireType("dayRule.default", rule.default);
+                const calendar = window.TarifCalendars[rule.calendar];
+                if (!calendar) {
+                    errors.push(`dayRule.calendar : calendrier inconnu "${rule.calendar}" (le script du calendrier doit être chargé avant le tarif dans index.html)`);
+                    break;
+                }
+                for (const type of Object.keys(calendar)) {
+                    requireType(`dayRule.calendar "${rule.calendar}"`, type);
+                }
+                break;
+            }
+
+            case "season": {
+                if (!isPlainObject(rule.seasons) || Object.keys(rule.seasons).length === 0) {
+                    errors.push('dayRule.seasons manquant (ex. { hiver: { months: [11, 12, 1, 2, 3] }, ete: { months: [4, 5, 6, 7, 8, 9, 10] } })');
+                    break;
+                }
+                const coveredMonths = new Set();
+                for (const [season, spec] of Object.entries(rule.seasons)) {
+                    requireType(`dayRule.seasons.${season}`, season);
+                    if (!isPlainObject(spec) || !Array.isArray(spec.months) || spec.months.length === 0) {
+                        errors.push(`dayRule.seasons.${season}.months : liste de mois attendue (1 à 12)`);
+                        continue;
+                    }
+                    for (const month of spec.months) {
+                        if (!Number.isInteger(month) || month < 1 || month > 12) {
+                            errors.push(`dayRule.seasons.${season}.months : mois invalide "${month}"`);
+                        } else if (coveredMonths.has(month)) {
+                            errors.push(`dayRule.seasons : mois ${month} présent dans plusieurs saisons`);
+                        } else {
+                            coveredMonths.add(month);
+                        }
+                    }
+                }
+                for (let month = 1; month <= 12; month++) {
+                    if (!coveredMonths.has(month)) {
+                        errors.push(`dayRule.seasons : mois ${month} couvert par aucune saison`);
+                    }
+                }
+                if (rule.hourSubTypes !== undefined) {
+                    if (!isPlainObject(rule.hourSubTypes)) {
+                        errors.push("dayRule.hourSubTypes : objet { <saison>: [{ fromHour, toHour, dayType }] } attendu");
+                    } else {
+                        for (const [season, subRules] of Object.entries(rule.hourSubTypes)) {
+                            if (!isPlainObject(rule.seasons) || !(season in rule.seasons)) {
+                                errors.push(`dayRule.hourSubTypes.${season} : saison absente de dayRule.seasons`);
+                            }
+                            if (!Array.isArray(subRules)) {
+                                errors.push(`dayRule.hourSubTypes.${season} : liste de règles attendue`);
+                                continue;
+                            }
+                            for (const subRule of subRules) {
+                                if (!isPlainObject(subRule) ||
+                                    !Number.isInteger(subRule.fromHour) || !Number.isInteger(subRule.toHour) ||
+                                    subRule.fromHour < 0 || subRule.toHour > 24 || subRule.fromHour >= subRule.toHour) {
+                                    errors.push(`dayRule.hourSubTypes.${season} : règle invalide ({ fromHour, toHour, dayType } avec fromHour < toHour attendu)`);
+                                    continue;
+                                }
+                                requireType(`dayRule.hourSubTypes.${season}`, subRule.dayType);
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
+
+        // Un type pricé mais jamais atteignable est presque toujours une faute de frappe.
+        if (errors.length === 0) {
+            for (const type of priced) {
+                if (!referenced.has(type)) {
+                    errors.push(`dayTypes.${type} : type pricé mais jamais utilisé par dayRule`);
+                }
+            }
+        }
+    }
+
+    function validateHcRanges(def, pricedTypes, errors) {
+        const allSinglePrice = isPlainObject(def.dayTypes) &&
+            Object.values(def.dayTypes).every(spec => isPlainObject(spec) && "price" in spec);
+
+        if (allSinglePrice) {
+            if (def.hcRanges !== undefined) {
+                errors.push("hcRanges : à omettre quand tous les dayTypes utilisent { price } (prix unique)");
+            }
+            return;
+        }
+        if (def.hcRanges === undefined) {
+            errors.push('hcRanges manquant ("custom", liste de plages [{ from, to }] ou { byDayType })');
+            return;
+        }
+        if (def.hcRanges === "custom") {
+            return;
+        }
+        if (Array.isArray(def.hcRanges)) {
+            validateRangeList("hcRanges", def.hcRanges, errors);
+            return;
+        }
+        if (isPlainObject(def.hcRanges) && isPlainObject(def.hcRanges.byDayType)) {
+            const covered = Object.keys(def.hcRanges.byDayType);
+            for (const [type, ranges] of Object.entries(def.hcRanges.byDayType)) {
+                if (pricedTypes !== null && !pricedTypes.includes(type)) {
+                    errors.push(`hcRanges.byDayType.${type} : type de jour absent de dayTypes`);
+                }
+                validateRangeList(`hcRanges.byDayType.${type}`, ranges, errors);
+            }
+            if (pricedTypes !== null) {
+                for (const type of pricedTypes) {
+                    if (!covered.includes(type)) {
+                        errors.push(`hcRanges.byDayType : plages manquantes pour le type "${type}" (liste vide [] pour "aucune heure creuse")`);
+                    }
+                }
+            }
+            return;
+        }
+        errors.push('hcRanges invalide : "custom", liste de plages [{ from: "22:00", to: "24:00" }] ou { byDayType: {...} } attendu');
+    }
+
+    function validateRangeList(path, ranges, errors) {
+        if (!Array.isArray(ranges)) {
+            errors.push(`${path} : liste de plages attendue`);
+            return;
+        }
+        for (const range of ranges) {
+            if (!isPlainObject(range) ||
+                typeof range.from !== "string" || !TIME_FORMAT.test(range.from) ||
+                typeof range.to !== "string" || !TIME_FORMAT.test(range.to)) {
+                errors.push(`${path} : plage invalide (format { from: "HH:MM", to: "HH:MM" }, minutes 00 ou 30, minuit en fin de plage = "24:00")`);
+                continue;
+            }
+            if (range.from === range.to) {
+                errors.push(`${path} : plage vide ${range.from} -> ${range.to}`);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Construction de l'objet au format legacy du calculateur           //
+    // ------------------------------------------------------------------ //
+
+    function buildAbonnement(def) {
+        const rule = RULE_BUILDERS[def.dayRule.type](def.dayRule);
+        const hcParts = buildHc(def);
+
+        const abonnement = {
+            name: def.name,
+            offer_type: def.offer_type,
+            lastUpdate: def.lastUpdate,
+            isCommunity: def.isCommunity,
+            subscription_url: def.subscription_url,
+            price_url: def.price_url,
+            prices: buildPrices(def),
+            hc: hcParts.hc,
+            hasHCCustom: hcParts.hasHCCustom,
+            hasSpecialDaysCustom: rule.hasSpecialDaysCustom,
+            specialDays: rule.specialDays,
+            getDayType: rule.getDayType
+        };
+        if (hcParts.hcByDayType) {
+            abonnement.hcByDayType = hcParts.hcByDayType;
+        }
+        return abonnement;
+    }
+
+    function buildPrices(def) {
+        return Object.entries(def.subscriptions).map(([kva, abonnement]) => {
+            const entry = { puissance: Number(kva), abonnement: abonnement };
+            for (const [type, spec] of Object.entries(def.dayTypes)) {
+                const override = def.priceOverrides && def.priceOverrides[kva] && def.priceOverrides[kva][type];
+                entry[type] = toPrixKwh(override || spec);
+            }
+            return entry;
+        });
+    }
+
+    function toPrixKwh(spec) {
+        if ("price" in spec) {
+            return { prixKwhHC: spec.price };
+        }
+        return { prixKwhHP: spec.HP, prixKwhHC: spec.HC };
+    }
+
+    function buildHc(def) {
+        // Prix unique : tout est compté en HC via une plage couvrant la journée.
+        if (def.hcRanges === undefined) {
+            return { hc: [fullDayRange()], hasHCCustom: false };
+        }
+        if (def.hcRanges === "custom") {
+            return { hc: [], hasHCCustom: true };
+        }
+        if (Array.isArray(def.hcRanges)) {
+            return { hc: def.hcRanges.map(toLegacyRange), hasHCCustom: false };
+        }
+        const hcByDayType = {};
+        for (const [type, ranges] of Object.entries(def.hcRanges.byDayType)) {
+            hcByDayType[type] = ranges.map(toLegacyRange);
+        }
+        return { hc: [], hasHCCustom: false, hcByDayType: hcByDayType };
+    }
+
+    function fullDayRange() {
+        return { start: { hour: 0, minute: 0 }, end: { hour: 24, minute: 0 } };
+    }
+
+    function toLegacyRange(range) {
+        const [fromHour, fromMinute] = range.from.split(":").map(Number);
+        const [toHour, toMinute] = range.to.split(":").map(Number);
+        return {
+            start: { hour: fromHour, minute: fromMinute },
+            end: { hour: toHour, minute: toMinute }
+        };
+    }
+
+    // Chaque builder retourne { specialDays, hasSpecialDaysCustom, getDayType }.
+    // Les getDayType générés reproduisent exactement la sémantique des anciens
+    // fichiers de tarifs (y compris la règle "avant Nh = couleur de la veille").
+    const RULE_BUILDERS = {
+        constant: function (rule) {
+            const dayType = rule.dayType;
+            return {
+                specialDays: [],
+                hasSpecialDaysCustom: false,
+                getDayType: function () {
+                    return dayType;
+                }
+            };
+        },
+
+        weekly: function (rule) {
+            const defaultType = rule.default;
+            const specialType = Object.keys(rule.days)[0];
+            return {
+                // Tableau de numéros de jours : la personnalisation utilisateur
+                // (jourZenPlus) est poussée dedans par simulation.js.
+                specialDays: rule.days[specialType].slice(),
+                hasSpecialDaysCustom: rule.userDaySetting !== undefined,
+                getDayType: function (day) {
+                    const dayOfWeek = new Date(day.date).getDay();
+                    return this.specialDays.includes(dayOfWeek) ? specialType : defaultType;
+                }
+            };
+        },
+
+        calendar: function (rule) {
+            const defaultType = rule.default;
+            const previousDayBefore = rule.previousDayBefore;
+            const calendar = window.TarifCalendars[rule.calendar];
+            const specialDays = Object.entries(calendar).map(([name, entry]) => ({
+                name: name,
+                numberOfDays: entry.numberOfDays,
+                monthBegin: entry.monthBegin,
+                monthEnd: entry.monthEnd,
+                lastDays: entry.days
+            }));
+            return {
+                specialDays: specialDays,
+                hasSpecialDaysCustom: false,
+                getDayType: function (day, time) {
+                    let dayType = defaultType;
+                    let date = day.date;
+                    if (previousDayBefore !== undefined && time.hour < previousDayBefore) {
+                        // La couleur est celle de la veille (nuit à cheval sur deux jours).
+                        let dateObj = new Date(day.date + " 12:00:00");
+                        dateObj.setDate(dateObj.getDate() - 1);
+                        date = dateObj.toISOString().split("T")[0].replace(/-/g, "/");
+                    }
+                    this.specialDays.forEach(function (specialDay) {
+                        if (specialDay.lastDays.includes(date)) {
+                            dayType = specialDay.name;
+                        }
+                    });
+                    return dayType;
+                }
+            };
+        },
+
+        season: function (rule) {
+            const previousDayBefore = rule.previousDayBefore;
+            const monthToSeason = {};
+            for (const [season, spec] of Object.entries(rule.seasons)) {
+                for (const month of spec.months) {
+                    monthToSeason[month] = season;
+                }
+            }
+            const hourSubTypes = rule.hourSubTypes || {};
+            return {
+                specialDays: [],
+                hasSpecialDaysCustom: false,
+                getDayType: function (day, time) {
+                    let checkDate = day.date;
+                    if (previousDayBefore !== undefined && time.hour < previousDayBefore) {
+                        let dateObj = new Date(day.date + " 12:00:00");
+                        dateObj.setDate(dateObj.getDate() - 1);
+                        checkDate = dateObj.toISOString().split("T")[0].replace(/-/g, "/");
+                    }
+                    const month = Number(checkDate.split("/")[1]);
+                    const season = monthToSeason[month];
+                    // Les sous-types horaires (super creuses) utilisent l'heure brute,
+                    // sans report de veille — comportement historique.
+                    const subRules = hourSubTypes[season];
+                    if (subRules) {
+                        for (const subRule of subRules) {
+                            if (time.hour >= subRule.fromHour && time.hour < subRule.toHour) {
+                                return subRule.dayType;
+                            }
+                        }
+                    }
+                    return season;
+                }
+            };
+        }
+    };
+})();

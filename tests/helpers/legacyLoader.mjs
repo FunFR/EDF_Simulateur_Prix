@@ -15,7 +15,9 @@ export function listTarifScripts() {
     return [...matches].map(m => m[1]);
 }
 
-export function loadAbonnements({ files = listTarifScripts() } = {}) {
+// Sandbox complet (window, abonnements, defineTarif si tarifs-lib est chargé) :
+// utile pour tester la factory defineTarif elle-même.
+export function createTarifSandbox({ files = listTarifScripts() } = {}) {
     const sandbox = { abonnements: [], console };
     sandbox.window = sandbox;
     const context = vm.createContext(sandbox);
@@ -23,7 +25,11 @@ export function loadAbonnements({ files = listTarifScripts() } = {}) {
         const code = fs.readFileSync(new URL(rel, ROOT), 'utf8');
         new vm.Script(code, { filename: rel }).runInContext(context);
     }
-    return sandbox.abonnements;
+    return sandbox;
+}
+
+export function loadAbonnements(options) {
+    return createTarifSandbox(options).abonnements;
 }
 
 // Installe un registre frais consommé par scripts/core/tarifsRegistry.js
