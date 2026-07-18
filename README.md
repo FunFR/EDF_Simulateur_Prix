@@ -88,13 +88,32 @@ Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_S
 1. Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
 ![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
 2. Dézippez-le
-3. Double-cliquez sur le fichier index.html. Il devrait s'ouvrir dans votre navigateur.
+3. Lancez un petit serveur web local dans le répertoire dézippé (l'application utilise des modules JavaScript, que les navigateurs refusent de charger en ouvrant directement le fichier). Par exemple, si Python est installé : `python -m http.server 8000`
+4. Ouvrez [http://localhost:8000](http://localhost:8000) dans votre navigateur. Vos données restent sur votre machine.
 
 ### Utiliser ce comparateur
 1. Cliquez sur parcourir et sélectionnez votre fichier
   * Pour EDF : "mes-puissances-atteintes-30min-XXXXX-YYYYY.csv" **(Ne modifiez pas le nom du fichier!)**
   * Pour Ennedis : "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" **(Ne modifiez pas le nom du fichier!)**
 2. A partir de là, vous pouvez choisir les différentes tarifications que vous voulez expérimenter !
+
+## Développement
+L'application est 100% statique (aucun build, aucune dépendance à installer), en JavaScript vanilla avec des modules ES :
+
+* `index.html` — page unique : les 3 écrans (présentation, import, résultats), les `<template>` de l'écran de résultats et le chargement des scripts.
+* `scripts/app.js` — point d'entrée (module ES) : orchestration entre les vues et la simulation.
+* `scripts/ui/` — vues et rendu : `importView.js` (réglages + import CSV), `resultsView.js` (période + rafraîchissement), `resultsRenderer.js` (clonage/hydratation des templates), `viewManager.js` (navigation), `dom.js` (helpers).
+* `scripts/core/` — logique métier : `calculator.js` (calculs), `simulation.js` (personnalisation + calcul global), `tarifsRegistry.js` (accès au registre des tarifs).
+* `scripts/parsers/` — un parser par format d'export (EDF, Enedis, TotalEnergies, SER, Home Assistant) et `index.js` qui choisit le bon d'après le nom du fichier.
+* `scripts/tarifs-registry.js` et `scripts/tarifs/` — registre global `window.abonnements` et fichiers de tarifs (scripts classiques, chargés avant l'application).
+
+Pour développer en local, servez le répertoire via un serveur HTTP (les modules ES ne fonctionnent pas en `file://`) :
+
+```
+python -m http.server 8000
+```
+
+puis ouvrez [http://localhost:8000](http://localhost:8000).
 
 ## A propos de l'auteur
 [Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/)

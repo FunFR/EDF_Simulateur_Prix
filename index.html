@@ -25,6 +25,9 @@
         </header>
 
         <main>
+            <!-- ================================================================
+                 Vue 1 : Présentation — intro, notes et bouton Démarrer
+                 ================================================================ -->
             <div id="presentationView">
                 <h5 class="text-center mt-4 mb-5">
                     Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
@@ -84,6 +87,10 @@
                     </ul>
                 </div>
             </div>
+            <!-- ================================================================
+                 Vue 2 : Import & réglages — puissance, jour Zen+, heures creuses,
+                 tarifs communautaires, import CSV et tutoriels fournisseurs
+                 ================================================================ -->
             <div id="importView">
                 <div class="card maxcard">
                     <div class="card-body d-flex flex-column p-0">
@@ -91,6 +98,7 @@
                             <h2 class="text-center">Vos réglages</h2>
                             <hr />
                         </div>
+                        <!-- Réglage : puissance souscrite -->
                         <div class="container-sm">
                             <h4 class="mt-3">Puissance souscrite</h4>
                             <p>Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le
@@ -113,6 +121,7 @@
                             </div>
                         </div>
                         <hr />
+                        <!-- Réglage : jour avantageux des forfaits Zen Plus -->
                         <div class="container-sm">
                             <h4 class="mt-3">Choix du jour Zen Plus</h4>
                             <p>Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br />
@@ -127,6 +136,7 @@
 
                         </div>
                         <hr />
+                        <!-- Réglage : plages d'heures creuses du tarif Bleu HC -->
                         <div class="container-sm">
                             <h4 class="mt-3">Choix des Heures Creuses pour le tarif
                                 Bleu HC </h4>
@@ -228,6 +238,7 @@
                             </div>
                         </div>
                         <hr />
+                        <!-- Réglage : inclusion des tarifs maintenus par la communauté -->
                         <div class="container-sm">
                             <h4 class="d-block mt-3">
                                 Tarifs communautaires
@@ -258,6 +269,7 @@
                             </div>
                         </div>
                         <hr />
+                        <!-- Import du fichier CSV + tutoriels d'export par fournisseur -->
                         <div class="container-sm">
                             <h4 class="d-block mt-3">
                                 Vos données Linky
@@ -466,6 +478,10 @@
 
 
 
+            <!-- ================================================================
+                 Vue 3 : Résultats — sélecteurs de période et conteneur rempli
+                 par scripts/ui/resultsRenderer.js à partir des templates
+                 ================================================================ -->
             <div id="pricesResultView" class="card maxcard">
                 <div class="card-body">
                     <div class="alert alert-warning fade show" role="alert">
@@ -520,7 +536,6 @@
                         </div>
                     </div>
 
-                    <div id="pricesTitleRow" class="row"></div>
                     <div id="pricesResultRow" class="m-0 row"></div>
                 </div>
             </div>
