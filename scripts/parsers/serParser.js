@@ -1,5 +1,5 @@
 // Strasbourg Electricité Réseaux
-var serParser = {
+export const serParser = {
     parseCSV: function (csv) {
         const result = [];
 

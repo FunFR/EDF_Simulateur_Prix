@@ -1,4 +1,4 @@
-var viewManager = {
+export const viewManager = {
     views: [],
     currentView: 0,
     init: function () {

@@ -1,4 +1,4 @@
-var totalParser = {
+export const totalParser = {
     parseCSV: function (csv) {
         const result = [];
 

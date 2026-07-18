@@ -1,4 +1,4 @@
-var homeAssistantParser = {
+export const homeAssistantParser = {
     parseCSV: function (csv) {
         const result = [];
 

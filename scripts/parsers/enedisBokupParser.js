@@ -1,4 +1,4 @@
-var enedisBokupParser = {
+export const enedisBokupParser = {
     parseCSV: function (csv) {
         const result = [];
 

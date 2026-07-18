@@ -1,4 +1,4 @@
-var calculator = {
+export const calculator = {
     getTarif: function (puissance, data, grille) {
         const monthsData = [];
 
@@ -139,9 +139,9 @@ function sumMonthData(monthData) {
 }
 
 function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
-  begin = hcTimeBegin.hour + (hcTimeBegin.minute === 30 ? 0.5 : 0);
-  end = hcTimeEnd.hour + (hcTimeEnd.minute === 30 ? 0.5 : 0);
-  time = timeInformation.hour + (timeInformation.minute === 30 ? 0.5 : 0);
+  const begin = hcTimeBegin.hour + (hcTimeBegin.minute === 30 ? 0.5 : 0);
+  const end = hcTimeEnd.hour + (hcTimeEnd.minute === 30 ? 0.5 : 0);
+  let time = timeInformation.hour + (timeInformation.minute === 30 ? 0.5 : 0);
 
   if (timeInformation.hour === 0 && timeInformation.minute === 0) {
     time = 24;

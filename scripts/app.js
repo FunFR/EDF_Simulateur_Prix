@@ -1,3 +1,12 @@
+import { calculator } from './calculator.js';
+import { viewManager } from './viewManager.js';
+import { edfParser } from './parsers/edfParser.js';
+import { enedisParser } from './parsers/enedisParser.js';
+import { enedisBokupParser } from './parsers/enedisBokupParser.js';
+import { totalParser } from './parsers/totalParser.js';
+import { serParser } from './parsers/serParser.js';
+import { homeAssistantParser } from './parsers/homeAssistantParser.js';
+
 viewManager.init();
 
 var data = [];
@@ -9,7 +18,6 @@ let endYear = 0;
 let endMonth = 0;
 let yearsAvailable = [];
 
-const formImport = document.getElementById("formImport");
 const csvFile = document.getElementById("csvFile");
 const kvaSelector = document.getElementById("puissanceSouscrite");
 const jourZenPlusSelector = document.getElementById("jourZenPlus");
@@ -129,7 +137,7 @@ function onFileImported(e) {
 }
 
 function calculateAllMonths(kva, includesCommunityPrices) {
-    let filteredAbonnements = abonnements.filter(a => a.prices.some(p => p.puissance == kva));
+    let filteredAbonnements = window.abonnements.filter(a => a.prices.some(p => p.puissance == kva));
     if (!includesCommunityPrices) {
         filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
     }
@@ -176,7 +184,7 @@ function displayResults() {
 }
 
 function addCustomisationToAbonnements() {
-    abonnements.forEach((abo) => {
+    window.abonnements.forEach((abo) => {
         if (abo.hasSpecialDaysCustom) {
             abo.specialDays.push(parseInt(jourZenPlusSelector.value));
         }
@@ -244,6 +252,7 @@ function formatHCRange(rawStart, rawEnd) {
 }
 
 function refreshResultView(dateBegin, dateEnd) {
+    const pricesResultRow = document.getElementById("pricesResultRow");
     pricesResultRow.innerHTML = "";
 
     const resultsForPeriod = calculatedMonths.map((t) => {
@@ -478,7 +487,7 @@ function refreshResultView(dateBegin, dateEnd) {
 
         const titleMonthlyTarifPrice = document.createElement("div");
         titleMonthlyTarifPrice.className = "h4 row";
-        spanMonthlyTarifPrice = document.createElement("span");
+        const spanMonthlyTarifPrice = document.createElement("span");
         spanMonthlyTarifPrice.className = "badge fw-bold text-bg-info";
         spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
         titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
@@ -486,7 +495,7 @@ function refreshResultView(dateBegin, dateEnd) {
 
         const titleTotalTarifPrice = document.createElement("div");
         titleTotalTarifPrice.className = "h5 row";
-        spanTotalTarifPrice = document.createElement("span");
+        const spanTotalTarifPrice = document.createElement("span");
         spanTotalTarifPrice.className = "badge fw-bold text-muted";
         spanTotalTarifPrice.innerHTML = "soit " + result.tarif.price.toFixed(2) + " €<br/> pour la période.";
         titleTotalTarifPrice.appendChild(spanTotalTarifPrice);

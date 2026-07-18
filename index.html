@@ -574,9 +574,6 @@
         </div>
     </footer>
 
-    <script src="./scripts/calculator.js"></script>
-
-
     <!-- Tarifs (scripts classiques : chaque fichier pousse dans le registre global) -->
     <script src="./scripts/tarifs-registry.js"></script>
     <script src="./scripts/tarifs/alpiq/base.js"></script>
@@ -630,21 +627,13 @@
     <script src="./scripts/tarifs/gazdebordeaux/novafixe.js"></script>
     <script src="./scripts/tarifs/gazdebordeaux/novaflex.js"></script>
 
-    <!-- Parsers -->
-    <script src="./scripts/parsers/edfParser.js"></script>
-    <script src="./scripts/parsers/enedisParser.js"></script>
-    <script src="./scripts/parsers/enedisBokupParser.js"></script>
-    <script src="./scripts/parsers/totalParser.js"></script>
-    <script src="./scripts/parsers/serParser.js"></script>
-    <script src="./scripts/parsers/homeAssistantParser.js"></script>
-
-    <!-- Website -->
-    <script src="./scripts/viewManager.js"></script>
-    <script src="./scripts/main.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+
+    <!-- Application (module ES, différé : s'exécute après les scripts classiques
+         ci-dessus et le parsing du DOM ; window.abonnements est alors peuplé) -->
+    <script type="module" src="./scripts/app.js"></script>
 </body>
 
 </html>
