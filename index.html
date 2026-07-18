@@ -574,6 +574,126 @@
         </div>
     </footer>
 
+    <!-- ================================================================
+         Templates de l'écran de résultats (inertes, clonés et hydratés par
+         scripts/ui/resultsRenderer.js ; les ancres data-ref sont retirées
+         du DOM à l'hydratation).
+         ================================================================ -->
+
+    <!-- Bandeau de consommation totale + squelette de la table de comparaison -->
+    <template id="tpl-result-summary">
+        <div class="mb-4 p-0">
+            <div class="position-relative py-2 px-4 text-center border border-info rounded-pill">
+                <h5 class="mt-1 mb-1" data-ref="conso-title"></h5>
+            </div>
+            <div class="mt-2 table-responsive">
+                <table
+                    class="resultable table mt-3 align-middle table-striped-columns table-hover table-borderless table-sm">
+                    <thead>
+                        <tr>
+                            <th class="align-middle" style="padding-left: 20px;">Abonnement électrique</th>
+                            <th class="text-center">Estimation de coût</th>
+                            <th class="text-center">Diff. avec le plus avantageux</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider" data-ref="results-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Paire de lignes par tarif : ligne cliquable + ligne accordéon de détail -->
+    <template id="tpl-tarif-row">
+        <tr data-bs-toggle="collapse" aria-expanded="false" data-ref="main-row">
+            <th class="align-middle" data-bs-toggle="collapse" data-ref="name-cell">
+                <i class="fa-solid fa-square-caret-right ms-3"></i>
+                <span class="ms-2" data-ref="title"></span>
+                <div class="fw-normal">
+                    <span class="ms-2" data-ref="last-update"></span>
+                    <br data-ref="link-br" />
+                    <a class="ms-2 providerLink" data-ref="provider-link">Site du fournisseur</a>
+                </div>
+            </th>
+            <td class="text-center align-middle">
+                <div class="container justify-content-center">
+                    <div class="h4 row">
+                        <span class="badge fw-bold text-bg-info" data-ref="monthly-price"><sup> €/mois</sup></span>
+                    </div>
+                    <div class="h5 row">
+                        <span class="badge fw-bold text-muted" data-ref="total-price"><br /></span>
+                    </div>
+                </div>
+            </td>
+            <td class="text-center align-middle">
+                <div class="container justify-content-center" data-ref="diff-container">
+                    <div class="h4 row fw-bold" data-ref="diff-main"></div>
+                </div>
+            </td>
+        </tr>
+        <tr class="collapse table-secondary" data-ref="accordion-row">
+            <td colspan="3" data-ref="accordion-cell"></td>
+        </tr>
+    </template>
+
+    <!-- Badge du tarif le plus avantageux (1er du classement) -->
+    <template id="tpl-diff-best">
+        <span class="badge p-1 text-dark"><i class="fa-solid fa-medal fa-lg"></i> Tarif le plus
+            avantageux<br /><small>(selon vos données)</small></span>
+    </template>
+
+    <!-- Badges de surcoût par rapport au plus avantageux -->
+    <template id="tpl-diff-worse">
+        <span class="badge fw-bold text-bg-warning text-white" data-ref="diff-badge"><i
+                class="fa-solid fa-circle-plus"></i><sup> €/mois</sup></span>
+        <div class="h5 row">
+            <span class="badge fw-bold text-muted" data-ref="diff-total"><br /></span>
+        </div>
+    </template>
+
+    <!-- Bloc mensuel de l'accordéon : titres + table journalière.
+         Les lignes jour sont ajoutées directement à <table> (sans tbody) et les
+         en-têtes directement dans <thead> (sans tr) : comportement historique
+         conservé, le rendu CSS actuel dépend de cette structure plate. -->
+    <template id="tpl-month-detail">
+        <h3 class="main-title d-inline ms-2" data-ref="month-name"></h3>
+        <h4 class="sub-title float-end" data-ref="month-summary"></h4>
+        <table class="mt-2 ms-2 table table-striped table-sm align-middle" data-ref="daily-table">
+            <thead class="align-middle" data-ref="daily-header"></thead>
+        </table>
+    </template>
+
+    <!-- En-têtes de la table journalière (th nus, clonés dans le thead ci-dessus) -->
+    <template id="tpl-day-header">
+        <th class="text-start">Jour</th>
+        <th class="text-center">Conso totale</th>
+        <th class="text-center">Conso HC</th>
+        <th class="text-center">Esti. HC (€)</th>
+        <th class="text-center">Conso HP</th>
+        <th class="text-center">Esti. HP (€)</th>
+        <th class="text-end">Total (€)</th>
+    </template>
+
+    <!-- Ligne journalière -->
+    <template id="tpl-day-row">
+        <tr>
+            <td class="text-start" data-ref="date"></td>
+            <td class="text-center align-middle" data-ref="conso"></td>
+            <td class="text-center align-middle" data-ref="conso-hc"></td>
+            <td class="text-center align-middle" data-ref="price-hc"></td>
+            <td class="text-center align-middle" data-ref="conso-hp"></td>
+            <td class="text-center align-middle" data-ref="price-hp"></td>
+            <td class="text-end align-middle" data-ref="price"></td>
+        </tr>
+    </template>
+
+    <!-- Ligne journalière en erreur (journée incomplète) -->
+    <template id="tpl-day-row-error">
+        <tr>
+            <td class="text-start" data-ref="date"></td>
+            <td class="text-center align-middle fw-bold" colspan="7">Erreur lors du calcul de la journée</td>
+        </tr>
+    </template>
+
     <!-- Tarifs (scripts classiques : chaque fichier pousse dans le registre global) -->
     <script src="./scripts/tarifs-registry.js"></script>
     <script src="./scripts/tarifs/alpiq/base.js"></script>
