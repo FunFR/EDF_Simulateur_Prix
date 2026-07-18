@@ -1,4 +1,3 @@
-const abonnements = [];
 var calculator = {
     getTarif: function (puissance, data, grille) {
         const monthsData = [];
