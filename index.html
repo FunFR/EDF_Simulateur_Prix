@@ -96,10 +96,24 @@
                     <div class="card-body d-flex flex-column p-0">
                         <div>
                             <h2 class="text-center">Vos réglages</h2>
+                            <ol id="wizardStepper" class="wizard-stepper">
+                                <li class="wizard-stepper-item" data-step="1"><span
+                                        class="wizard-stepper-index">1</span><span
+                                        class="wizard-stepper-label">Puissance</span></li>
+                                <li class="wizard-stepper-item" data-step="2"><span
+                                        class="wizard-stepper-index">2</span><span
+                                        class="wizard-stepper-label">Heures creuses</span></li>
+                                <li class="wizard-stepper-item" data-step="3"><span
+                                        class="wizard-stepper-index">3</span><span
+                                        class="wizard-stepper-label">Données Linky</span></li>
+                                <li class="wizard-stepper-item" data-step="4"><span
+                                        class="wizard-stepper-index">4</span><span
+                                        class="wizard-stepper-label">Tarifs</span></li>
+                            </ol>
                             <hr />
                         </div>
-                        <!-- Réglage : puissance souscrite -->
-                        <div class="container-sm">
+                        <!-- Étape 1 : puissance souscrite -->
+                        <div class="wizard-step container-sm" id="wizardStep1">
                             <h4 class="mt-3">Puissance souscrite</h4>
                             <p>Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le
                                 site
@@ -120,9 +134,8 @@
                                 </select>
                             </div>
                         </div>
-                        <hr />
-                        <!-- Réglage : jour avantageux des forfaits Zen Plus -->
-                        <div class="container-sm">
+                        <!-- Étape 2 : jour avantageux des forfaits Zen Plus + heures creuses -->
+                        <div class="wizard-step container-sm" id="wizardStep2">
                             <h4 class="mt-3">Choix du jour Zen Plus</h4>
                             <p>Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br />
                                 Choisissez celui qui vous convient pour la simulation.</p>
@@ -134,13 +147,11 @@
                                 </select>
                             </div>
 
-                        </div>
-                        <hr />
-                        <!-- Réglage : plages d'heures creuses du tarif Bleu HC -->
-                        <div class="container-sm">
+                            <hr />
+                            <!-- Plages d'heures creuses du tarif Bleu HC -->
                             <h4 class="mt-3">Choix des Heures Creuses pour le tarif
                                 Bleu HC </h4>
-                            <p>Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
+                            <p>Sur certains forfaits, notamment EDF Bleu, les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
                                 vôtres ou différents cas.
                                 <br /><br />
                                 <strong>ATTENTION :</strong> Pour le moment, les minutes ne sont pas prises en compte et
@@ -237,40 +248,8 @@
                                 </div>
                             </div>
                         </div>
-                        <hr />
-                        <!-- Réglage : inclusion des tarifs maintenus par la communauté -->
-                        <div class="container-sm">
-                            <h4 class="d-block mt-3">
-                                Tarifs communautaires
-                            </h4>
-                            <p>Les tarifs communautaires correspondent aux tarifs qui ne nous parviennent pas
-                                directement et qui sont maintenus par la communauté.
-                                <br /><br />
-                                Cela veut dire <strong>qu'ils peuvent ne pas être à jour et qu'il est fortement
-                                    conseillé de les vérifier sur le site du fournisseur.</strong>
-                            </p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="communityPricesRadio"
-                                    value="isNotCommunity" id="communityRadioIsNotCommunity">
-                                <label class="form-check-label" for="communityRadioIsNotCommunity">
-                                    Je souhaite uniquement les tarifs suivis par le développeur.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="communityPricesRadio"
-                                    value="isCommunity" id="communityRadioIsCommunity">
-                                <label class="form-check-label" for="communityRadioIsCommunity">
-                                    Je veux comparer avec les tarifs communautaires, je comprends que je devrais
-                                    vérifier sur leur site s'ils sont à jour.
-                                </label>
-                            </div>
-                            <div class="d-none alert alert-danger" role="alert" id="community-alert">
-                                Vous devez choisir le type de tarif que vous souhaitez visualiser.
-                            </div>
-                        </div>
-                        <hr />
-                        <!-- Import du fichier CSV + tutoriels d'export par fournisseur -->
-                        <div class="container-sm">
+                        <!-- Étape 3 : import du fichier CSV + tutoriels d'export par fournisseur -->
+                        <div class="wizard-step container-sm" id="wizardStep3">
                             <h4 class="d-block mt-3">
                                 Vos données Linky
                             </h4>
@@ -462,15 +441,49 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="importError" class="alert alert-danger" role="alert">
+                                Les données importées ne sont pas valides.
+                            </div>
                         </div>
-                    </div>
-                    <div id="importError" class="alert alert-danger" role="alert">
-                        Les données importées ne sont pas valides.
+                        <!-- Étape 4 : inclusion des tarifs maintenus par la communauté -->
+                        <div class="wizard-step container-sm" id="wizardStep4">
+                            <h4 class="d-block mt-3">
+                                Tarifs communautaires
+                            </h4>
+                            <p>Les tarifs communautaires correspondent aux tarifs qui ne nous parviennent pas
+                                directement et qui sont maintenus par la communauté.
+                                <br /><br />
+                                Cela veut dire <strong>qu'ils peuvent ne pas être à jour et qu'il est fortement
+                                    conseillé de les vérifier sur le site du fournisseur.</strong>
+                            </p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isNotCommunity" id="communityRadioIsNotCommunity">
+                                <label class="form-check-label" for="communityRadioIsNotCommunity">
+                                    Je souhaite uniquement les tarifs suivis par le développeur.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isCommunity" id="communityRadioIsCommunity">
+                                <label class="form-check-label" for="communityRadioIsCommunity">
+                                    Je veux comparer avec les tarifs communautaires, je comprends que je devrais
+                                    vérifier sur leur site s'ils sont à jour.
+                                </label>
+                            </div>
+                            <div class="d-none alert alert-danger" role="alert" id="community-alert">
+                                Vous devez choisir le type de tarif que vous souhaitez visualiser.
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="d-block text-center m-4">
-                    <button type="button" class="btn btn-success mt-4 mb-4" id="simulateButton">Simuler les
+                <div id="wizardNav" class="wizard-nav m-4">
+                    <button type="button" class="btn btn-outline-secondary" id="wizardPrevButton" disabled><i
+                            class="fa-solid fa-arrow-left me-2"></i>Précédent</button>
+                    <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<i
+                            class="fa-solid fa-arrow-right ms-2"></i></button>
+                    <button type="button" class="btn btn-success d-none" id="simulateButton">Simuler les
                         différents
                         tarifs <i class="fa-solid fa-play ms-2"></i></button>
                 </div>

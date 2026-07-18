@@ -1,4 +1,5 @@
 import { selectParser } from '../parsers/index.js';
+import { createWizard } from './wizard.js';
 
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
@@ -11,6 +12,18 @@ export function initImportView({ onStart, onSimulate }) {
     const jourZenPlusSelector = document.getElementById("jourZenPlus");
     const simulateButton = document.getElementById("simulateButton");
     const importError = document.getElementById("importError");
+
+    // Wizard 4 étapes : 1 puissance, 2 jour Zen+ / heures creuses, 3 données
+    // Linky, 4 tarifs communautaires + simulation.
+    const wizard = createWizard({
+        steps: [1, 2, 3, 4].map(n => document.getElementById("wizardStep" + n)),
+        stepper: document.getElementById("wizardStepper"),
+        prevButton: document.getElementById("wizardPrevButton"),
+        nextButton: document.getElementById("wizardNextButton"),
+        finalActionButton: simulateButton
+    });
+    // L'étape Linky exige un import CSV valide avant de continuer.
+    wizard.setStepValid(3, false);
 
     const communityRadios = document.querySelectorAll('input[name="communityPricesRadio"]');
     const communityAlert = document.getElementById("community-alert");
@@ -28,7 +41,10 @@ export function initImportView({ onStart, onSimulate }) {
     csvFile.addEventListener("change", onFileImported);
     importError.style.display = "none";
 
-    document.getElementById("startButton").onclick = function () { onStart(); };
+    document.getElementById("startButton").onclick = function () {
+        wizard.goTo(1);
+        onStart();
+    };
     simulateButton.onclick = function () {
         const includeCommunity = getSelectedTypeOfPrice();
         if (includeCommunity === null) {
@@ -103,10 +119,11 @@ export function initImportView({ onStart, onSimulate }) {
             try {
                 let rawCSV = parser.parseCSV(text);
                 data = parser.loadData(rawCSV);
-                simulateButton.disabled = false;
+                wizard.setStepValid(3, true);
             }
             catch (e) {
                 importError.style.display = "block";
+                wizard.setStepValid(3, false);
             }
         };
         reader.readAsText(input);
