@@ -791,6 +791,8 @@
         }
       }
     ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
     "specialDays": [
       {
         "name": "rouge",
@@ -1701,6 +1703,9 @@
       }
     ],
     "hc": [],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [],
     "hcByDayType": {
       "hiver": [
         {
@@ -1770,10 +1775,7 @@
           }
         }
       ]
-    },
-    "hasHCCustom": false,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
+    }
   },
   {
     "name": "EDF - Zen Fixe",

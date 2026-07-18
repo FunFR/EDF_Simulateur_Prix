@@ -104,13 +104,15 @@ test('golden contrats EDF : champs statiques de chaque abonnement (grilles, plag
             subscription_url: abo.subscription_url,
             price_url: abo.price_url,
             prices: abo.prices,
-            hc: abo.hc
+            hc: abo.hc,
+            // Flags normalisés en booléens : clé absente et false sont équivalents
+            // pour le calculateur (ex. EJP legacy n'a pas la clé hasHCCustom).
+            hasHCCustom: !!abo.hasHCCustom,
+            hasSpecialDaysCustom: !!abo.hasSpecialDaysCustom,
+            specialDays: abo.specialDays
         };
-        // Clés optionnelles : l'absence (ex. EJP sans hasHCCustom) fait partie du contrat.
-        for (const key of ['hcByDayType', 'hasHCCustom', 'hasSpecialDaysCustom', 'specialDays']) {
-            if (Object.prototype.hasOwnProperty.call(abo, key)) {
-                contract[key] = abo[key];
-            }
+        if (Object.prototype.hasOwnProperty.call(abo, 'hcByDayType')) {
+            contract.hcByDayType = abo.hcByDayType;
         }
         return contract;
     });
