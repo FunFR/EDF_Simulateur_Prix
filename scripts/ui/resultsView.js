@@ -4,7 +4,9 @@ import { render } from './resultsRenderer.js';
 
 // Écran de résultats : sélecteurs de période (début/fin) et bouton de
 // rafraîchissement. Détient l'état de la période et la simulation courante.
-export function initResultsView() {
+// sumPeriod (agrégation d'une période, voir core/calculator.js) est injectée
+// par app.js pour ne pas coupler les modules ui/ au moteur.
+export function initResultsView({ sumPeriod }) {
     let simulation = null;
 
     let beginYear = 0;
@@ -33,7 +35,7 @@ export function initResultsView() {
     function refresh() {
         const dateBegin = new Date(beginYear, beginMonth - 1, 1);
         const dateEnd = new Date(endYear, endMonth - 1, 1);
-        render(document.getElementById("pricesResultRow"), simulation.calculatedMonths, dateBegin, dateEnd);
+        render(document.getElementById("pricesResultRow"), simulation.calculatedMonths, dateBegin, dateEnd, sumPeriod);
     }
 
     function setBeginYearSelector() {

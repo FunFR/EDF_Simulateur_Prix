@@ -1,11 +1,11 @@
-import { sumPeriod } from '../core/calculator.js';
 import { getMonthName } from '../utils/date.js';
 import { cloneTemplate } from './dom.js';
 
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
 // ce module se contente de les cloner et d'y injecter les valeurs.
-export function render(container, calculatedMonths, dateBegin, dateEnd) {
+// sumPeriod est injectée par la vue (voir app.js) : aucun import de core/ ici.
+export function render(container, calculatedMonths, dateBegin, dateEnd, sumPeriod) {
     container.innerHTML = "";
 
     const resultsForPeriod = calculatedMonths.map((t) => {
