@@ -94,6 +94,16 @@ test('filtre communautaire : sans opt-in, seuls les abonnements dont le nom cont
         ['EDF - Bleu Stub', 'Autre - Fournisseur']);
 });
 
+test('kva en string (flux réel UI) : mêmes résultats qu\'en number', () => {
+    installStubRegistry([makeGrille({ name: 'EDF - Stub' })]);
+
+    const asNumber = runSimulation(defaultSettings(6), DATA);
+    const asString = runSimulation(defaultSettings('6'), DATA);
+
+    assert.strictEqual(asString.calculatedMonths.length, 1, 'le filtre par puissance doit accepter une string');
+    assert.deepStrictEqual(asString.calculatedMonths, asNumber.calculatedMonths);
+});
+
 test('filtre par puissance souscrite : abonnement sans la puissance exclu', () => {
     installStubRegistry([
         makeGrille({ name: 'EDF - 6kVA seulement' }),

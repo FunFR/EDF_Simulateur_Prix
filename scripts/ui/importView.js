@@ -56,7 +56,7 @@ export function initImportView({ onStart, onSimulate }) {
 
     function buildSettings(includeCommunity) {
         return {
-            kva: kvaSelector.value,
+            kva: Number(kvaSelector.value),
             jourZenPlus: parseInt(jourZenPlusSelector.value),
             hcRawRanges: [
                 ["bleuHC-start-endDay1", "bleuHC-end-endDay1"],

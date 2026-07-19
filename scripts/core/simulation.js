@@ -27,15 +27,18 @@ function resolveAbonnement(abo, settings) {
 }
 
 function calculateAllMonths(settings, data) {
+    // Défense en profondeur : les puissances des grilles sont des numbers
+    // (garanti par defineTarif), on normalise le réglage au même type.
+    const kva = Number(settings.kva);
     //On filtre sur les abonnements qui correspondent à la puissance souscrite
-    let filteredAbonnements = getAbonnements().filter(a => a.prices.some(p => p.puissance == settings.kva));
+    let filteredAbonnements = getAbonnements().filter(a => a.prices.some(p => p.puissance === kva));
     if (!settings.includeCommunity) {
         filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
     }
     return filteredAbonnements.map(abo => {
         const resolved = resolveAbonnement(abo, settings);
         return {
-            allMonths: calculator.getTarif(settings.kva, data, resolved),
+            allMonths: calculator.getTarif(kva, data, resolved),
             title: abo.name,
             lastUpdate: abo.lastUpdate,
             subscription_url: abo.subscription_url

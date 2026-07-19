@@ -2,10 +2,10 @@ export const calculator = {
     getTarif: function (puissance, data, grille) {
         const monthsData = [];
 
-        let abonnement = grille.prices.find((t) => t.puissance == puissance);
+        let abonnement = grille.prices.find((t) => t.puissance === puissance);
 
         if (abonnement) {
-            let currentMonth = 0;
+            let currentMonth = null;
             let currentYear = 0;
 
             let monthData = {};
@@ -13,7 +13,7 @@ export const calculator = {
                 let date = data[day].date.split("/");
                 currentYear = parseInt(date[0]);
 
-                if (date[1] != currentMonth) {
+                if (date[1] !== currentMonth) {
                     if (monthData.days) {
                         sumMonthData(monthData);
                     }
