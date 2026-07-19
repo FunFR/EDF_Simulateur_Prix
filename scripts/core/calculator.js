@@ -1,131 +1,117 @@
-export const calculator = {
-    getTarif: function (puissance, data, grille) {
-        const monthsData = [];
+// Moteur de calcul des coûts mensuels.
+//
+// Conventions d'unités (héritées des parsers et des grilles) :
+// - consommations (conso, consoHC, consoHP) : Wh ;
+// - prix du kWh dans les grilles : centimes d'euro ;
+// - prix calculés (price, priceHC, priceHP, aboPriceByDay) : euros.
+// Convention minuit : les parsers rattachent le relevé de 00:00 à la journée
+// précédente sous l'heure 24 ; pour le classement HP/HC, minuit vaut 24
+// (fin de plage incluse). Voir hcHourOf.
+//
+// Le calculateur consomme une vue résolue étroite construite par simulation.js :
+// - plan : ligne tarifaire de la puissance souscrite
+//   ({ abonnement, <type>: { prixKwhHP?, prixKwhHC } }) ;
+// - getDayType(day, time) : type de jour, réglages utilisateur déjà appliqués ;
+// - hcRangesFor(dayType) : plages d'heures creuses applicables à ce type.
 
-        let abonnement = grille.prices.find((t) => t.puissance === puissance);
+export function computeMonths({ plan, getDayType, hcRangesFor }, days) {
+    const monthsData = [];
+    if (!plan) {
+        return monthsData;
+    }
 
-        if (abonnement) {
-            let currentMonth = null;
-            let currentYear = 0;
-
-            let monthData = {};
-            for (let day = 0; day < data.length; day++) {
-                let date = data[day].date.split("/");
-                currentYear = parseInt(date[0]);
-
-                if (date[1] !== currentMonth) {
-                    if (monthData.days) {
-                        sumMonthData(monthData);
-                    }
-                    currentMonth = date[1];
-                    monthData = {};
-                    monthData.month = currentMonth;
-                    monthData.year = currentYear;
-                    monthData.firstDayDate = new Date(currentYear, +currentMonth - 1, 1);
-                    monthData.days = [];
-                    monthData.hasErrors = false;
-                    monthData.numberOfDaysInMonth = new Date(currentYear, +currentMonth, 0).getDate();
-                    monthData.aboPriceByDay = abonnement.abonnement / monthData.numberOfDaysInMonth;
-
-                    monthsData.push(monthData);
-                }
-
-
-                let dayData = {
-                    date: data[day].date,
-                    hours: []
-                };
-                dayData.consoHC = 0;
-                dayData.priceHC = 0;
-                dayData.consoHP = 0;
-                dayData.priceHP = 0;
-
-                //On définit le pas de consommation pour chaque jour.
-                //Si on a 48 valeurs, on est à la demi-heure, 96 pour le quart d'heure, etc...
-                const step = Math.floor(data[day].hours.length / 24);
-
-                //Si on a un pas de 0 on a sûrement moins de 24 tranches de remontées
-                //La journée sera faussée, on la marque en erreur
-                if (step == 0) {
-                    dayData.conso = NaN;
-                    dayData.price = NaN;
-                }
-                else {
-                    // pour une journée donnée, parcours la listes heures et consommations 
-                    data[day].hours.forEach((hourLine) => {
-
-                        const splittedHour = hourLine[0].split(":");
-
-                        let hourData = {
-                            time: { hour: parseInt(splittedHour[0]), minute: parseInt(splittedHour[1]) },
-                            conso: parseInt(hourLine[1]) / step
-                        };
-                        if (isNaN(hourData.conso)) {
-                            hourData.hasErrors = true;
-                        }
-
-                        const dayType = grille.getDayType(dayData, hourData.time);
-                        // 00:00:00 est converti en 24:00:00 pour le calcul du type de jour
-                        // On reconverti à une heure réelle pour le calcul des HC/HP
-                        const realHour = hourData.time.hour == 24 ? 0 : hourData.time.hour;
-                        const realTime = { hour: realHour, minute: hourData.time.minute };
-                        const hcRanges = (grille.hcByDayType && grille.hcByDayType[dayType])
-                            ? grille.hcByDayType[dayType]
-                            : grille.hc;
-                        if (hcRanges.some(range => isHC(realTime, range.start, range.end))) {
-                            hourData.type = dayType + " HC";
-                            const prixKwh = abonnement[dayType].prixKwhHC;
-                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            if (!isNaN(hourData.price)) {
-                                dayData.priceHC += hourData.price;
-                            }
-                            if (!isNaN(hourData.conso)) {
-                                dayData.consoHC += hourData.conso;
-                            }
-                        }
-                        else {
-                            hourData.type = dayType + " HP";
-                            const prixKwh = abonnement[dayType].prixKwhHP;
-                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            if (!isNaN(hourData.price)) {
-                                dayData.priceHP += hourData.price;
-                            }
-                            if (!isNaN(hourData.conso)) {
-                                dayData.consoHP += hourData.conso;
-                            }
-                        }
-
-                        dayData.hours.push(hourData);
-                    });
-
-                    dayData.conso = dayData.hours.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
-                    dayData.price = dayData.hours.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
-                }
-                monthData.days.push(dayData);
+    let currentMonth = null;
+    let monthData = null;
+    for (const day of days) {
+        const [year, month] = day.date.split("/");
+        if (month !== currentMonth) {
+            if (monthData) {
+                sumMonthData(monthData);
             }
+            currentMonth = month;
+            monthData = startMonth(parseInt(year), month, plan);
+            monthsData.push(monthData);
+        }
+        monthData.days.push(computeDay(day, monthData.aboPriceByDay, plan, getDayType, hcRangesFor));
+    }
+    if (monthData) {
+        sumMonthData(monthData);
+    }
+    return monthsData;
+}
 
-            sumMonthData(monthData);
+// Agrège une liste de mois calculés sur une période (bornes incluses),
+// en excluant les mois en erreur (NaN).
+export function sumPeriod(monthsData, dateBegin, dateEnd) {
+    const months = monthsData.filter(m => m.firstDayDate >= dateBegin && m.firstDayDate <= dateEnd);
+    return {
+        conso: months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0),
+        price: months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0),
+        months: months
+    };
+}
+
+function startMonth(year, month, plan) {
+    const numberOfDaysInMonth = new Date(year, +month, 0).getDate();
+    return {
+        month: month,
+        year: year,
+        firstDayDate: new Date(year, +month - 1, 1),
+        days: [],
+        hasErrors: false,
+        numberOfDaysInMonth: numberOfDaysInMonth,
+        // L'abonnement mensuel est réparti sur chaque jour du mois.
+        aboPriceByDay: plan.abonnement / numberOfDaysInMonth
+    };
+}
+
+function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor) {
+    const dayData = {
+        date: day.date,
+        hours: [],
+        consoHC: 0,
+        priceHC: 0,
+        consoHP: 0,
+        priceHP: 0
+    };
+
+    // Pas de consommation : 48 relevés = demi-heure, 96 = quart d'heure, etc.
+    // Moins de 24 relevés (step 0) : journée faussée, marquée en erreur.
+    const step = Math.floor(day.hours.length / 24);
+    if (step === 0) {
+        dayData.conso = NaN;
+        dayData.price = NaN;
+        return dayData;
+    }
+
+    for (const [timeLabel, rawValue] of day.hours) {
+        const [hour, minute] = timeLabel.split(":");
+        const hourData = {
+            time: { hour: parseInt(hour), minute: parseInt(minute) },
+            conso: parseInt(rawValue) / step
+        };
+        if (isNaN(hourData.conso)) {
+            hourData.hasErrors = true;
         }
 
-        return monthsData;
-    },
+        const dayType = getDayType(dayData, hourData.time);
+        const hc = hcRangesFor(dayType).some(range => isHC(hcHourOf(hourData.time), range));
+        const prixKwh = hc ? plan[dayType].prixKwhHC : plan[dayType].prixKwhHP;
 
-    calculateTarifForPeriod: function (monthsData, dateBegin, dateEnd) {
-        let tarifForPeriod = {
-            conso: 0,
-            price: 0,
-            months: []
-        };
-
-        //On prend tous les mois entre la date de début et de fin
-        let months = monthsData.filter(m => m.firstDayDate >= dateBegin && m.firstDayDate <= dateEnd);
-
-        tarifForPeriod.conso = months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
-        tarifForPeriod.price = months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0);
-        tarifForPeriod.months = months;
-
-        return tarifForPeriod;
+        hourData.type = dayType + (hc ? " HC" : " HP");
+        hourData.price = centimesToEuros(whToKwh(hourData.conso) * prixKwh);
+        if (!isNaN(hourData.price)) {
+            dayData[hc ? "priceHC" : "priceHP"] += hourData.price;
+        }
+        if (!isNaN(hourData.conso)) {
+            dayData[hc ? "consoHC" : "consoHP"] += hourData.conso;
+        }
+        dayData.hours.push(hourData);
     }
+
+    dayData.conso = dayData.hours.filter(h => !isNaN(h.conso)).reduce((a, b) => a + b.conso, 0);
+    dayData.price = dayData.hours.filter(h => !isNaN(h.price)).reduce((a, b) => a + b.price, 0) + aboPriceByDay;
+    return dayData;
 }
 
 function sumMonthData(monthData) {
@@ -133,21 +119,34 @@ function sumMonthData(monthData) {
     monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
     const diffNumberOfDays = monthData.numberOfDaysInMonth - monthData.days.length;
     if (diffNumberOfDays > 0) {
+        // Mois incomplet : marqué en erreur, mais l'abonnement des jours
+        // manquants reste dû.
         monthData.hasErrors = true;
         monthData.price += diffNumberOfDays * monthData.aboPriceByDay;
     }
 }
 
-function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
-  const begin = hcTimeBegin.hour + (hcTimeBegin.minute === 30 ? 0.5 : 0);
-  const end = hcTimeEnd.hour + (hcTimeEnd.minute === 30 ? 0.5 : 0);
-  let time = timeInformation.hour + (timeInformation.minute === 30 ? 0.5 : 0);
+// Heure scalaire pour le classement HP/HC : minuit (00:00 ou 24:00) vaut 24,
+// les demi-heures comptent 0,5.
+function hcHourOf(time) {
+    const hour = time.hour === 24 ? 0 : time.hour;
+    if (hour === 0 && time.minute === 0) {
+        return 24;
+    }
+    return hour + (time.minute === 30 ? 0.5 : 0);
+}
 
-  if (timeInformation.hour === 0 && timeInformation.minute === 0) {
-    time = 24;
-  }
+// Une plage HC exclut sa borne de début et inclut sa borne de fin.
+function isHC(hcHour, range) {
+    const begin = range.start.hour + (range.start.minute === 30 ? 0.5 : 0);
+    const end = range.end.hour + (range.end.minute === 30 ? 0.5 : 0);
+    return hcHour > begin && hcHour <= end;
+}
 
-  const isHC = time > begin && time <= end;
+function whToKwh(wh) {
+    return wh / 1000;
+}
 
-  return isHC;
+function centimesToEuros(centimes) {
+    return centimes / 100;
 }

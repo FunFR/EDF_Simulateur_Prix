@@ -1,4 +1,4 @@
-import { calculator } from './calculator.js';
+import { computeMonths } from './calculator.js';
 import { getAbonnements } from './tarifsRegistry.js';
 
 // Lance la simulation complète : pour chaque abonnement compatible, applique
@@ -26,6 +26,17 @@ function resolveAbonnement(abo, settings) {
     return resolved;
 }
 
+// Vue résolue étroite consommée par le calculateur (voir calculator.js) :
+// la dépendance des getDayType à this est contenue ici (bind sur la grille).
+function resolveView(resolved, kva) {
+    return {
+        plan: resolved.prices.find(p => p.puissance === kva),
+        getDayType: resolved.getDayType.bind(resolved),
+        // Priorité aux plages du type de jour, sinon plages communes de la grille.
+        hcRangesFor: dayType => resolved.hcByDayType?.[dayType] ?? resolved.hc
+    };
+}
+
 function calculateAllMonths(settings, data) {
     // Défense en profondeur : les puissances des grilles sont des numbers
     // (garanti par defineTarif), on normalise le réglage au même type.
@@ -38,7 +49,7 @@ function calculateAllMonths(settings, data) {
     return filteredAbonnements.map(abo => {
         const resolved = resolveAbonnement(abo, settings);
         return {
-            allMonths: calculator.getTarif(kva, data, resolved),
+            allMonths: computeMonths(resolveView(resolved, kva), data),
             title: abo.name,
             lastUpdate: abo.lastUpdate,
             subscription_url: abo.subscription_url

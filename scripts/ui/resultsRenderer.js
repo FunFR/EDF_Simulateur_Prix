@@ -1,4 +1,4 @@
-import { calculator } from '../core/calculator.js';
+import { sumPeriod } from '../core/calculator.js';
 import { getMonthName } from '../utils/date.js';
 import { cloneTemplate } from './dom.js';
 
@@ -10,7 +10,7 @@ export function render(container, calculatedMonths, dateBegin, dateEnd) {
 
     const resultsForPeriod = calculatedMonths.map((t) => {
         return {
-            tarif: calculator.calculateTarifForPeriod(t.allMonths, dateBegin, dateEnd),
+            tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
             title: t.title,
             lastUpdate: t.lastUpdate,
             subscription_url: t.subscription_url
