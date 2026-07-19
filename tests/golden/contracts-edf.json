@@ -1543,15 +1543,15 @@
         "puissance": 3,
         "abonnement": 12.03,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1561,15 +1561,15 @@
         "puissance": 6,
         "abonnement": 15.65,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1579,15 +1579,15 @@
         "puissance": 9,
         "abonnement": 19.56,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1597,15 +1597,15 @@
         "puissance": 12,
         "abonnement": 23.32,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1615,15 +1615,15 @@
         "puissance": 15,
         "abonnement": 26.84,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1633,15 +1633,15 @@
         "puissance": 18,
         "abonnement": 30.49,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1651,15 +1651,15 @@
         "puissance": 24,
         "abonnement": 38.24,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1669,15 +1669,15 @@
         "puissance": 30,
         "abonnement": 45.37,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -1687,15 +1687,15 @@
         "puissance": 36,
         "abonnement": 52.54,
         "hiver": {
-          "prixKwhHC": 20.62,
-          "prixKwhHP": 26.27
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
         },
         "hiverSC": {
           "prixKwhHC": 19.28
         },
         "ete": {
-          "prixKwhHC": 13.04,
-          "prixKwhHP": 15.22
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
         },
         "eteSC": {
           "prixKwhHC": 9.87
@@ -2352,96 +2352,96 @@
         "puissance": 6,
         "abonnement": 15.05,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 9,
         "abonnement": 18.91,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 12,
         "abonnement": 22.65,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 15,
         "abonnement": 26.17,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 18,
         "abonnement": 29.81,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 24,
         "abonnement": 37.52,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 30,
         "abonnement": 44.65,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       },
       {
         "puissance": 36,
         "abonnement": 51.82,
         "bleu": {
-          "prixKwhHC": 15.19,
-          "prixKwhHP": 20.91
+          "prixKwhHP": 20.91,
+          "prixKwhHC": 15.19
         },
         "sobriete": {
-          "prixKwhHC": 20.91,
-          "prixKwhHP": 72.53
+          "prixKwhHP": 72.53,
+          "prixKwhHC": 20.91
         }
       }
     ],

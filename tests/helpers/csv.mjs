@@ -1,4 +1,5 @@
-// Lecture et parsing du CSV réel d'échantillon (export EDF "puissances atteintes").
+// Lecture et parsing du CSV d'échantillon (format export EDF "puissances
+// atteintes", structure réelle mais valeurs de consommation anonymisées).
 // Le fichier est encodé en Latin-1/Windows-1252 : ne jamais le lire en utf8.
 import fs from 'node:fs';
 import { edfParser } from '../../scripts/parsers/edfParser.js';

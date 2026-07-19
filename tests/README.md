@@ -6,7 +6,9 @@ Suite de tests de non-régression des tarifs et du calcul, sans aucune dépendan
 
 - **Node.js ≥ 22.7** (runner `node:test` natif + détection automatique des modules ES).
 - Le CSV d'échantillon `Sample/mes-puissances-atteintes-30min-000000000000-00000.csv`
-  (export EDF réel, encodé Latin-1, pas de 30 min, 727 jours de 2024/02/01 à 2026/01/30).
+  (structure d'un export EDF réel — encodage Latin-1, pas de 30 min, 727 jours de
+  2024/02/01 à 2026/01/30, jours incomplets compris — avec des valeurs de
+  consommation synthétiques anonymisées).
 
 ## Lancer les tests
 
