@@ -1,6 +1,7 @@
 [
   {
     "name": "Alpiq - Base",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-24",
     "isCommunity": true,
     "subscription_url": "https://particuliers.alpiq.fr/electricite/nos-tarifs",
@@ -10,72 +11,72 @@
         "puissance": 3,
         "abonnement": 11.73,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.47,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 9,
         "abonnement": 19.39,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 12,
         "abonnement": 23.32,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 15,
         "abonnement": 27.06,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.76,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 24,
         "abonnement": 38.79,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 30,
         "abonnement": 46.44,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.29,
         "bleu": {
-          "prixKwhHC": 17.9292,
-          "prixKwhHP": 17.9292
+          "prixKwhHP": 17.9292,
+          "prixKwhHC": 17.9292
         }
       }
     ],
@@ -86,6 +87,7 @@
   },
   {
     "name": "Alpiq - Heures Creuses",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-24",
     "isCommunity": true,
     "subscription_url": "https://particuliers.alpiq.fr/electricite/nos-tarifs",
@@ -2059,7 +2061,9 @@
   },
   {
     "name": "Mint Energie - Classic & Green",
+    "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
     "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf",
     "prices": [
@@ -2067,72 +2071,63 @@
         "puissance": 3,
         "abonnement": 13.52,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.98,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 9,
         "abonnement": 17.25,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 12,
         "abonnement": 22.11,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 15,
         "abonnement": 25.78,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 18,
         "abonnement": 29.44,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 24,
         "abonnement": 37.97,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 30,
         "abonnement": 45.9,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       },
       {
         "puissance": 36,
         "abonnement": 53.23,
         "bleu": {
-          "prixKwhHC": 19.52,
-          "prixKwhHP": 19.52
+          "prixKwhHC": 19.52
         }
       }
     ],
@@ -2154,7 +2149,9 @@
   },
   {
     "name": "Mint Energie - Classic & Green HC",
+    "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
     "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf",
     "prices": [
@@ -2162,64 +2159,64 @@
         "puissance": 6,
         "abonnement": 16.25,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 9,
         "abonnement": 17.64,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 12,
         "abonnement": 22.64,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 15,
         "abonnement": 26.44,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.24,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 24,
         "abonnement": 39.03,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 30,
         "abonnement": 47.23,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.82,
         "bleu": {
-          "prixKwhHC": 16.35,
-          "prixKwhHP": 20.81
+          "prixKwhHP": 20.81,
+          "prixKwhHC": 16.35
         }
       }
     ],
@@ -2251,7 +2248,9 @@
   },
   {
     "name": "Mint Energie - Online & Green",
+    "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
     "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
     "prices": [
@@ -2259,72 +2258,63 @@
         "puissance": 3,
         "abonnement": 11.73,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.47,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 9,
         "abonnement": 19.39,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 12,
         "abonnement": 23.32,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 15,
         "abonnement": 27.06,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.76,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 24,
         "abonnement": 38.79,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 30,
         "abonnement": 46.44,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.29,
         "bleu": {
-          "prixKwhHC": 17.77,
-          "prixKwhHP": 17.77
+          "prixKwhHC": 17.77
         }
       }
     ],
@@ -2346,7 +2336,9 @@
   },
   {
     "name": "Mint Energie - Online & Green HC",
+    "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
     "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
     "prices": [
@@ -2354,64 +2346,64 @@
         "puissance": 6,
         "abonnement": 16.01,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 9,
         "abonnement": 20.21,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 12,
         "abonnement": 24.28,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 15,
         "abonnement": 28.15,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 18,
         "abonnement": 32.13,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 24,
         "abonnement": 40.53,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 30,
         "abonnement": 48.34,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       },
       {
         "puissance": 36,
         "abonnement": 56.2,
         "bleu": {
-          "prixKwhHC": 14.95,
-          "prixKwhHP": 18.91
+          "prixKwhHP": 18.91,
+          "prixKwhHC": 14.95
         }
       }
     ],
@@ -2445,6 +2437,7 @@
     "name": "Octopus - Base",
     "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.octopusenergy.fr/offre-electricite-tarifs",
     "price_url": "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
     "prices": [
@@ -2452,72 +2445,63 @@
         "puissance": 3,
         "abonnement": 11.73,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.47,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 9,
         "abonnement": 19.39,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 12,
         "abonnement": 23.32,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 15,
         "abonnement": 27.06,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.76,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 24,
         "abonnement": 38.79,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 30,
         "abonnement": 46.44,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       },
       {
         "puissance": 36,
         "abonnement": 55.05,
         "bleu": {
-          "prixKwhHC": 18.56,
-          "prixKwhHP": 18.56
+          "prixKwhHC": 18.56
         }
       }
     ],
@@ -2541,6 +2525,7 @@
     "name": "Octopus - Heures Creuses",
     "offer_type": "Marché",
     "lastUpdate": "2025-08-01",
+    "isCommunity": true,
     "subscription_url": "https://www.octopusenergy.fr/offre-electricite-tarifs",
     "price_url": "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
     "prices": [
@@ -2548,64 +2533,64 @@
         "puissance": 6,
         "abonnement": 15.74,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 9,
         "abonnement": 20.21,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 12,
         "abonnement": 24.28,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 15,
         "abonnement": 28.15,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 18,
         "abonnement": 32.13,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 24,
         "abonnement": 40.53,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 30,
         "abonnement": 48.34,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.61,
         "bleu": {
-          "prixKwhHC": 15.59,
-          "prixKwhHP": 19.77
+          "prixKwhHP": 19.77,
+          "prixKwhHC": 15.59
         }
       }
     ],
