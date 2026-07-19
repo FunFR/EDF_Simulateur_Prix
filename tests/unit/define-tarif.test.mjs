@@ -270,6 +270,66 @@ test('season + weekendType : saison × week-end sur la même date décalée (typ
     assert.strictEqual(abo.getDayType({ date: '2024/07/13' }, at(24)), 'eteWeekend', '24h : pas de report, dimanche');
 });
 
+test('season + calendarOverride : jours de calendrier prioritaires sur la saison (type OctoTempo)', () => {
+    const sandbox = freshSandbox();
+    sandbox.defineCalendar('tempo-test', {
+        rouge: { numberOfDays: 22, monthBegin: 11, monthEnd: 3, days: ['2024/12/09', '2024/07/15'] }
+    });
+    const abo = sandbox.defineTarif(validDef({
+        dayTypes: {
+            rouge: { HP: 64.69, HC: 15.75 },
+            hiver: { HP: 18.71, HC: 15.75 },
+            ete: { HP: 15.75, HC: 13.25 }
+        },
+        dayRule: {
+            type: 'season',
+            seasons: { hiver: { months: [11, 12, 1, 2, 3] }, ete: { months: [4, 5, 6, 7, 8, 9, 10] } },
+            previousDayBefore: 6,
+            calendarOverride: { calendar: 'tempo-test', types: ['rouge'] }
+        },
+        hcRanges: {
+            byDayType: {
+                rouge: [{ from: '00:00', to: '07:00' }],
+                hiver: [{ from: '00:00', to: '07:00' }],
+                ete: [{ from: '00:00', to: '07:00' }]
+            }
+        }
+    }));
+
+    const at = (hour, minute = 0) => ({ hour, minute });
+    assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(12)), 'rouge', 'jour rouge prioritaire sur la saison');
+    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(12)), 'rouge', 'jour rouge aussi en été');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/10' }, at(3)), 'rouge', 'avant 6h : la veille est rouge');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/10' }, at(6)), 'hiver', 'à 6h : retour à la saison');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(3)), 'hiver', 'avant 6h un jour rouge : la veille est ordinaire');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(24)), 'rouge', '24h : pas de report');
+});
+
+test('validation : calendarOverride', () => {
+    const defWith = overrides => validDef({
+        dayTypes: { rouge: { HP: 2, HC: 1 }, hiver: { HP: 2, HC: 1 } },
+        dayRule: {
+            type: 'season',
+            seasons: { hiver: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] } },
+            calendarOverride: { calendar: 'tempo-test', types: ['rouge'] },
+            ...overrides
+        },
+        hcRanges: { byDayType: { rouge: [], hiver: [] } }
+    });
+    const withCalendar = () => {
+        const sandbox = freshSandbox();
+        sandbox.defineCalendar('tempo-test', { rouge: { days: ['2024/12/09'] } });
+        return sandbox;
+    };
+
+    expectError(defWith({ calendarOverride: { calendar: 'nexiste-pas', types: ['rouge'] } }), 'calendrier inconnu', withCalendar());
+    expectError(defWith({ calendarOverride: { calendar: 'tempo-test', types: ['blanc'] } }), 'absent du calendrier', withCalendar());
+    expectError(defWith({ calendarOverride: { calendar: 'tempo-test', types: [] } }), 'calendarOverride', withCalendar());
+    expectError(defWith({
+        hourSubTypes: { hiver: [{ fromHour: 2, toHour: 6, dayType: 'rouge' }] }
+    }), 'non supporté en même temps que hourSubTypes', withCalendar());
+});
+
 test('validation : hourSubTypes sur constant et weekendType sur season', () => {
     expectError(validDef({
         dayTypes: { base: { HP: 20, HC: 10 }, hsc: { price: 8 } },

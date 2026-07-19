@@ -168,6 +168,23 @@ hcRanges: {
 
 `weekendType` et `hourSubTypes` ne peuvent pas être combinés sur la même règle.
 
+### Tarif saison + jours calendrier (type OctoTempo)
+
+Des jours issus d'un calendrier partagé peuvent surcharger la saison (le report
+de veille `previousDayBefore` s'applique aussi à ces jours) :
+
+```js
+dayRule: {
+    type: "season",
+    seasons: { hiver: { months: [11, 12, 1, 2, 3] }, ete: { months: [4, 5, 6, 7, 8, 9, 10] } },
+    previousDayBefore: 6,
+    calendarOverride: { calendar: "tempo-edf", types: ["rouge"] }
+},
+hcRanges: { byDayType: { rouge: [/* plages */], hiver: [/* ... */], ete: [/* ... */] } }
+```
+
+`calendarOverride` ne peut être combiné ni avec `weekendType` ni avec `hourSubTypes`.
+
 ### Tarif au prix spot
 
 Pas encore supporté (`dayRule.type: "spot"` est réservé et rejeté par la validation).

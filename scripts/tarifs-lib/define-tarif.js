@@ -310,6 +310,31 @@
                         }
                     }
                 }
+                if (rule.calendarOverride !== undefined) {
+                    if (hasWeekendType) {
+                        errors.push("dayRule.calendarOverride : non supporté en même temps que weekendType (précédence non définie)");
+                    }
+                    if (rule.hourSubTypes !== undefined) {
+                        errors.push("dayRule.calendarOverride : non supporté en même temps que hourSubTypes (précédence non définie)");
+                    }
+                    if (!isPlainObject(rule.calendarOverride) || typeof rule.calendarOverride.calendar !== "string" ||
+                        !Array.isArray(rule.calendarOverride.types) || rule.calendarOverride.types.length === 0) {
+                        errors.push('dayRule.calendarOverride : objet { calendar: "tempo-edf", types: ["rouge"] } attendu');
+                        break;
+                    }
+                    const calendar = window.TarifCalendars[rule.calendarOverride.calendar];
+                    if (!calendar) {
+                        errors.push(`dayRule.calendarOverride.calendar : calendrier inconnu "${rule.calendarOverride.calendar}" (le script du calendrier doit être chargé avant le tarif dans index.html)`);
+                        break;
+                    }
+                    for (const type of rule.calendarOverride.types) {
+                        if (!(type in calendar)) {
+                            errors.push(`dayRule.calendarOverride.types : type "${type}" absent du calendrier "${rule.calendarOverride.calendar}"`);
+                        } else {
+                            requireType("dayRule.calendarOverride.types", type);
+                        }
+                    }
+                }
                 break;
             }
         }
@@ -570,6 +595,14 @@
             }
             const weekendDays = rule.weekendDays || [];
             const hourSubTypes = rule.hourSubTypes || {};
+            // Jours de calendrier prioritaires sur la saison (ex. jours rouges
+            // Tempo par-dessus hiver/été pour OctoTempo).
+            const calendarOverrides = rule.calendarOverride
+                ? rule.calendarOverride.types.map(type => ({
+                    type: type,
+                    days: window.TarifCalendars[rule.calendarOverride.calendar][type].days
+                }))
+                : [];
             return {
                 specialDays: [],
                 hasSpecialDaysCustom: false,
@@ -579,6 +612,13 @@
                         let dateObj = new Date(day.date + " 12:00:00");
                         dateObj.setDate(dateObj.getDate() - 1);
                         checkDate = dateObj.toISOString().split("T")[0].replace(/-/g, "/");
+                    }
+                    // La date décalée sert aussi aux jours de calendrier (une nuit
+                    // de jour rouge avant Nh reste rouge).
+                    for (const override of calendarOverrides) {
+                        if (override.days.includes(checkDate)) {
+                            return override.type;
+                        }
                     }
                     const month = Number(checkDate.split("/")[1]);
                     const season = monthToSeason[month];
