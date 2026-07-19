@@ -499,6 +499,7 @@
     "name": "Alterna - Heures Super Creuses",
     "offer_type": "Marché",
     "lastUpdate": "2026-05-07",
+    "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
     "prices": [
@@ -508,20 +509,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -530,20 +531,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -552,20 +553,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -574,20 +575,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -596,20 +597,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -618,20 +619,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -640,20 +641,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       },
       {
@@ -662,20 +663,20 @@
         "hpEte": {
           "prixKwhHC": 17.8
         },
+        "hscEte": {
+          "prixKwhHC": 13.13
+        },
         "hcEte": {
           "prixKwhHC": 16.24
-        },
-        "hscEte": {
-          "prixKwhHP": 13.13
         },
         "hpHiver": {
           "prixKwhHC": 20.91
         },
-        "hcHiver": {
-          "prixKwhHC": 18.27
-        },
         "hscHiver": {
           "prixKwhHC": 16.24
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
         }
       }
     ],

@@ -1,60 +1,56 @@
-abonnements.push({
+// Offre « véhicule électrique » : heures pleines 7-11h et 18-23h toute
+// l'année ; le reste dépend de la saison — en été (avril-octobre) les heures
+// super creuses sont en pleine journée (11-18h, production solaire) et la
+// nuit est en creuses ; en hiver (novembre-mars) c'est l'inverse, les super
+// creuses sont la nuit (23h-7h) et 11-18h sont des creuses normales. Tout est
+// facturé au prix du type de jour (pas de distinction HP/HC dans les plages).
+// Note : la version d'origine (origin/main) déclarait hscEte avec un
+// prixKwhHP jamais consulté, ce qui excluait silencieusement les heures
+// 11h-18h d'été du total (prix NaN). Corrigé ici : hscEte est facturé au
+// prix publié 13,13 c/kWh.
+defineTarif({
     name: "Alterna - Heures Super Creuses",
     offer_type: "Marché",
     lastUpdate: "2026-05-07",
+    isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
-    prices: [
-        { puissance: 6, abonnement: 16.65 },
-        { puissance: 9, abonnement: 20.83 },
-        { puissance: 12, abonnement: 25.01 },
-        { puissance: 15, abonnement: 29.19 },
-        { puissance: 18, abonnement: 33.37 },
-        { puissance: 24, abonnement: 41.74 },
-        { puissance: 30, abonnement: 50.10 },
-        { puissance: 36, abonnement: 58.46 }
-    ].map(item => ({
-        ...item,
-        hpEte: { prixKwhHC: 17.80 },
-        hcEte: { prixKwhHC: 16.24 },
-        hscEte: { prixKwhHP: 13.13 },
-        hpHiver: { prixKwhHC: 20.91 },
-        hcHiver: { prixKwhHC: 18.27 },
-        hscHiver: { prixKwhHC: 16.24 }
-    })),
-    hc: [{
-        start: {hour:0, minute:0},
-        end: {hour:24, minute:0}
-    }],
-    hasHCCustom: false,
-    hasSpecialDaysCustom: false,
-    specialDays: [],
-    getDayType: function (day, { hour }) {
-        const isoDate = new Date(day.date);
-        const month = isoDate.getMonth();
-        if (month >= 3 && month < 10) {
-            // Ete
-            if ((hour >= 7 && hour < 11) || (hour >= 18 && hour < 23)) {
-                return "hpEte";
-            }
-            else if (hour >= 11 && hour < 18) {
-                return "hscEte";
-            }
-            else {
-                return "hcEte";
-            }
-        }
-        else {
-            // Hiver
-            if ((hour >= 7 && hour < 11) || (hour >= 18 && hour < 23)) {
-                return "hpHiver";
-            }
-            else if (hour >= 11 && hour < 18) {
-                return "hcHiver";
-            }
-            else {
-                return "hscHiver";
-            }
+    subscriptions: {
+        6: 16.65,
+        9: 20.83,
+        12: 25.01,
+        15: 29.19,
+        18: 33.37,
+        24: 41.74,
+        30: 50.10,
+        36: 58.46
+    },
+    dayTypes: {
+        hpEte: { price: 17.80 },
+        hscEte: { price: 13.13 },
+        hcEte: { price: 16.24 },
+        hpHiver: { price: 20.91 },
+        hscHiver: { price: 16.24 },
+        hcHiver: { price: 18.27 }
+    },
+    dayRule: {
+        type: "season",
+        // Le type par défaut de chaque saison couvre la nuit (23h-7h).
+        seasons: {
+            hcEte: { months: [4, 5, 6, 7, 8, 9, 10] },
+            hscHiver: { months: [11, 12, 1, 2, 3] }
+        },
+        hourSubTypes: {
+            hcEte: [
+                { fromHour: 7, toHour: 11, dayType: "hpEte" },
+                { fromHour: 11, toHour: 18, dayType: "hscEte" },
+                { fromHour: 18, toHour: 23, dayType: "hpEte" }
+            ],
+            hscHiver: [
+                { fromHour: 7, toHour: 11, dayType: "hpHiver" },
+                { fromHour: 11, toHour: 18, dayType: "hcHiver" },
+                { fromHour: 18, toHour: 23, dayType: "hpHiver" }
+            ]
         }
     }
 });
