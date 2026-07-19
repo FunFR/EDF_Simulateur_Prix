@@ -507,180 +507,180 @@
         "puissance": 3,
         "abonnement": 10.02,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.86,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 9,
         "abonnement": 21.22,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 12,
         "abonnement": 26.81,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 15,
         "abonnement": 32.3,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 18,
         "abonnement": 37.87,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 24,
         "abonnement": 48.74,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 30,
         "abonnement": 59.82,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       },
       {
         "puissance": 36,
         "abonnement": 70.89,
         "hiver": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "hiverWeekend": {
-          "prixKwhHC": 22.9,
-          "prixKwhHP": 31.04
+          "prixKwhHP": 31.04,
+          "prixKwhHC": 22.9
         },
         "ete": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         },
         "eteWeekend": {
-          "prixKwhHC": 13.715,
-          "prixKwhHP": 19.367
+          "prixKwhHP": 19.367,
+          "prixKwhHC": 13.715
         }
       }
     ],
@@ -751,7 +751,9 @@
   },
   {
     "name": "Engie - Happy Heures Vertes - 13h/15h - 1 an",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-27",
+    "isCommunity": true,
     "subscription_url": "https://particuliers.engie.fr/electricite.html",
     "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
     "prices": [
@@ -870,7 +872,9 @@
   },
   {
     "name": "Engie - Happy Heures Vertes - 14h/16h - 1 an",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-27",
+    "isCommunity": true,
     "subscription_url": "https://particuliers.engie.fr/electricite.html",
     "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
     "prices": [
@@ -989,7 +993,9 @@
   },
   {
     "name": "Engie - Happy Heures Vertes - 15h/17h - 1 an",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-27",
+    "isCommunity": true,
     "subscription_url": "https://particuliers.engie.fr/electricite.html",
     "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
     "prices": [
@@ -2583,7 +2589,9 @@
   },
   {
     "name": "TotalEnergie - Charge'Heures",
+    "offer_type": "Marché",
     "lastUpdate": "2025-10-01",
+    "isCommunity": true,
     "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures",
     "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf",
     "prices": [
