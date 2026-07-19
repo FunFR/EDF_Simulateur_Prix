@@ -13,3 +13,8 @@ export function defaultSettings(kva) {
         includeCommunity: false
     };
 }
+
+// Mêmes réglages avec les tarifs communautaires (non-EDF) inclus.
+export function communitySettings(kva) {
+    return { ...defaultSettings(kva), includeCommunity: true };
+}

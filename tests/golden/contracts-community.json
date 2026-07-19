@@ -1,0 +1,3843 @@
+[
+  {
+    "name": "Alpiq - Base",
+    "lastUpdate": "2025-10-24",
+    "isCommunity": true,
+    "subscription_url": "https://particuliers.alpiq.fr/electricite/nos-tarifs",
+    "price_url": "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.76,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.79,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.44,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.29,
+        "bleu": {
+          "prixKwhHC": 17.9292,
+          "prixKwhHP": 17.9292
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Alpiq - Heures Creuses",
+    "lastUpdate": "2025-10-24",
+    "isCommunity": true,
+    "subscription_url": "https://particuliers.alpiq.fr/electricite/nos-tarifs",
+    "price_url": "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.74,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.81,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.49,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.34,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.47,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.02,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.61,
+        "bleu": {
+          "prixKwhHP": 19.0848,
+          "prixKwhHC": 15.078
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Alterna - Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-12-18",
+    "subscription_url": "https://www.alterna-energie.fr",
+    "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.74,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.28,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.13,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.2,
+        "bleu": {
+          "prixKwhHC": 14.57,
+          "prixKwhHP": 18.4
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Alterna - Heures Creuses Locale",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-12-18",
+    "subscription_url": "https://www.alterna-energie.fr",
+    "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.74,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.28,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.13,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.2,
+        "bleu": {
+          "prixKwhHC": 14.82,
+          "prixKwhHP": 18.74
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Alterna - Base France",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-12-18",
+    "subscription_url": "https://www.alterna-energie.fr",
+    "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.76,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.79,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.44,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.29,
+        "bleu": {
+          "prixKwhHC": 17.29,
+          "prixKwhHP": 17.29
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Alterna - Base Locale",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-12-18",
+    "subscription_url": "https://www.alterna-energie.fr",
+    "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.76,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.79,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.44,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.29,
+        "bleu": {
+          "prixKwhHC": 17.61,
+          "prixKwhHP": 17.61
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Enercoop - Offre Flexibilité 2 Saisons",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-26",
+    "isCommunity": false,
+    "subscription_url": "https://www.faq.enercoop.fr/hc/fr",
+    "price_url": "https://www.faq.enercoop.fr/hc/fr/article_attachments/34072541524114",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 10.02,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 21.22,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 26.81,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 32.3,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 37.87,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 48.74,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 59.82,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 70.89,
+        "hiver": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "hiverWeekend": {
+          "prixKwhHC": 22.9,
+          "prixKwhHP": 31.04
+        },
+        "ete": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        },
+        "eteWeekend": {
+          "prixKwhHC": 13.715,
+          "prixKwhHP": 19.367
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [],
+    "hcByDayType": {
+      "hiver": [
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 13,
+            "minute": 0
+          },
+          "end": {
+            "hour": 16,
+            "minute": 0
+          }
+        }
+      ],
+      "ete": [
+        {
+          "start": {
+            "hour": 11,
+            "minute": 0
+          },
+          "end": {
+            "hour": 17,
+            "minute": 0
+          }
+        }
+      ],
+      "hiverWeekend": [
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        }
+      ],
+      "eteWeekend": [
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Engie - Happy Heures Vertes - 13h/15h - 1 an",
+    "lastUpdate": "2025-10-27",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.00583333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.210833333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.284166666666668,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15416666666667,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.130833333333335,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.340833333333336,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.19916666666666,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Happy Heures Vertes - 14h/16h - 1 an",
+    "lastUpdate": "2025-10-27",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.00583333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.210833333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.284166666666668,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15416666666667,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.130833333333335,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.340833333333336,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.19916666666666,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Happy Heures Vertes - 15h/17h - 1 an",
+    "lastUpdate": "2025-10-27",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-happy_heures-vertes-1-an.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.00583333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.210833333333333,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.284166666666668,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15416666666667,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.130833333333335,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.340833333333336,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.19916666666666,
+        "bleu": {
+          "prixKwhHP": 24.48,
+          "prixKwhHC": 19.078
+        },
+        "happy": {
+          "prixKwhHP": 3.598,
+          "prixKwhHC": 3.598
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Elec Référence 3 ans",
+    "lastUpdate": "2026-02-04",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference-3-ans.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.270833333333334,
+        "bleu": {
+          "prixKwhHC": 20.729,
+          "prixKwhHP": 20.729
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 16.135833333333334,
+        "bleu": {
+          "prixKwhHC": 20.729,
+          "prixKwhHP": 20.729
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.143333333333334,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.09166666666667,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.811666666666667,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.6525,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.78916666666667,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.3025,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.862500000000004,
+        "bleu": {
+          "prixKwhHC": 20.768,
+          "prixKwhHP": 20.768
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Elec Référence 3 ans HC",
+    "lastUpdate": "2026-02-04",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference-3-ans.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 17.366666666666667,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 22.135,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 26.747500000000002,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 31.132500000000004,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 35.63666666666666,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 45.100833333333334,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 53.942499999999995,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 62.83083333333334,
+        "bleu": {
+          "prixKwhHC": 17.268,
+          "prixKwhHP": 20.639000000000003
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Elec Tranquillité 1 an",
+    "lastUpdate": "2024-11-01",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 9.7475,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 12.799166666666666,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 16.07166666666667,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 19.408333333333335,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 22.52333333333333,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 25.616666666666664,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 32.458333333333336,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 38.3075,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 45.18083333333333,
+        "bleu": {
+          "prixKwhHC": 26.119,
+          "prixKwhHP": 26.119
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Engie - Elec Tranquillité 1 an HC",
+    "lastUpdate": "2024-11-01",
+    "subscription_url": "https://particuliers.engie.fr/electricite.html",
+    "price_url": "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 13.474166666666667,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 17.110833333333336,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 20.663333333333334,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 24.058333333333334,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 27.420833333333334,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 34.473333333333336,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 40.913333333333334,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 47.406666666666666,
+        "bleu": {
+          "prixKwhHC": 21.442,
+          "prixKwhHP": 28.033
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Constance",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.83,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 16.57,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.5,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.43,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.16,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.87,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.89,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.55,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.39,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Constance HC",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.85,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 21.32,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 25.39,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 29.26,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 33.24,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 41.64,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 49.45,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 57.31,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Garance",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 13.83,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.57,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 21.5,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 25.42,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 29.16,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.86,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.89,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.54,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.39,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Garance HC",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 17.84,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 22.31,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 26.38,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 30.25,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 34.23,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 42.63,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 50.44,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 58.3,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Prudence",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 10.83,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 14.57,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 18.5,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 22.42,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.16,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 29.86,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 37.89,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.54,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.39,
+        "bleu": {
+          "prixKwhHC": 17.91
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "La Belle Energie - Prudence HC",
+    "lastUpdate": "2025-11-01",
+    "isCommunity": true,
+    "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
+    "price_url": "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 14.84,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.31,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.38,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.25,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.23,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.63,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.44,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.3,
+        "bleu": {
+          "prixKwhHP": 19.07,
+          "prixKwhHC": 15.07
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Mint Energie - Classic & Green",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
+    "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 13.52,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.98,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 17.25,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 22.11,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 25.78,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 29.44,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 37.97,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.9,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.23,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Mint Energie - Classic & Green HC",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
+    "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.25,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 17.64,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 22.64,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.44,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.24,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.03,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.23,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.82,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Mint Energie - Online & Green",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
+    "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.76,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.79,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.44,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.29,
+        "bleu": {
+          "prixKwhHC": 17.77,
+          "prixKwhHP": 17.77
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Mint Energie - Online & Green HC",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
+    "price_url": "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.01,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.28,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.13,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.2,
+        "bleu": {
+          "prixKwhHC": 14.95,
+          "prixKwhHP": 18.91
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Octopus - Base",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.octopusenergy.fr/offre-electricite-tarifs",
+    "price_url": "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.76,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.79,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.44,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.05,
+        "bleu": {
+          "prixKwhHC": 18.56,
+          "prixKwhHP": 18.56
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Octopus - Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2025-08-01",
+    "subscription_url": "https://www.octopusenergy.fr/offre-electricite-tarifs",
+    "price_url": "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.74,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.28,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.15,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.13,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 54.61,
+        "bleu": {
+          "prixKwhHC": 15.59,
+          "prixKwhHP": 19.77
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Charge'Heures",
+    "lastUpdate": "2025-10-01",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.96,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 7,
+        "abonnement": 17.34,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 8,
+        "abonnement": 18.73,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.52,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 10,
+        "abonnement": 21.92,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 11,
+        "abonnement": 23.31,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 25.08,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 13,
+        "abonnement": 26.43,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 14,
+        "abonnement": 27.78,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 29.13,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 16,
+        "abonnement": 30.52,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 17,
+        "abonnement": 31.91,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.77,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 19,
+        "abonnement": 34.2,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 20,
+        "abonnement": 35.63,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 21,
+        "abonnement": 37.06,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 22,
+        "abonnement": 38.49,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 23,
+        "abonnement": 39.92,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 41.32,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 25,
+        "abonnement": 42.61,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 26,
+        "abonnement": 43.89,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 27,
+        "abonnement": 45.18,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 28,
+        "abonnement": 46.47,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 29,
+        "abonnement": 47.75,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 49.06,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 31,
+        "abonnement": 50.38,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 32,
+        "abonnement": 51.7,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 33,
+        "abonnement": 53.03,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 34,
+        "abonnement": 54.35,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 35,
+        "abonnement": 55.67,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.43,
+        "base": {
+          "prixKwhHP": 21.62,
+          "prixKwhHC": 16.51
+        },
+        "hsc": {
+          "prixKwhHC": 12.61
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 23,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 7,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Heures Eco",
+    "lastUpdate": "2025-10-01",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-heures-eco-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.73,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.47,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.29,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.07,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.05,
+        "bleu": {
+          "prixKwhHC": 19.52,
+          "prixKwhHP": 19.52
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - HeuresEco HC",
+    "lastUpdate": "2025-10-01",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-heures-eco-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.74,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.64,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.6,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.13,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.53,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.2,
+        "bleu": {
+          "prixKwhHC": 16.35,
+          "prixKwhHP": 20.81
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Offre standard fixe",
+    "lastUpdate": "2025-08-05",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 13.45,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.74,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 22.34,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 27.01,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 31.35,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 35.45,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 44.95,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 54.44,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 62.75,
+        "bleu": {
+          "prixKwhHC": 18.91,
+          "prixKwhHP": 18.91
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Offre standard fixe HC",
+    "lastUpdate": "2025-08-05",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 18.47,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 23.39,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 28.17,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 32.14,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 37.38,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 47.15,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 56,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 65.08,
+        "bleu": {
+          "prixKwhHC": 15.86,
+          "prixKwhHP": 20.14
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Offre verte fixe",
+    "lastUpdate": "2025-08-05",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 13.45,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.74,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 22.34,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 27.01,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 31.35,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 35.45,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 44.95,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 54.44,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 62.75,
+        "bleu": {
+          "prixKwhHC": 19.15,
+          "prixKwhHP": 19.15
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "TotalEnergie - Offre verte fixe HC",
+    "lastUpdate": "2025-08-05",
+    "subscription_url": "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
+    "price_url": "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 18.47,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 23.39,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 28.17,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 32.14,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 37.38,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 47.15,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 56,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 65.08,
+        "bleu": {
+          "prixKwhHC": 16.06,
+          "prixKwhHP": 20.4
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Gaz de Bordeaux - NovaFixe - base",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-04",
+    "isCommunity": true,
+    "subscription_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
+    "price_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.02,
+        "bleu": {
+          "prixKwhHC": 16.573
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 16.573
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 16.464
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 16.464
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.85,
+        "bleu": {
+          "prixKwhHC": 16.464
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Gaz de Bordeaux - NovaFixe - heures creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-04",
+    "isCommunity": true,
+    "subscription_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
+    "price_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.83,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.84,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.68,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.3,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.03,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.96,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.28,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.63,
+        "bleu": {
+          "prixKwhHP": 17.596,
+          "prixKwhHC": 13.61
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Gaz de Bordeaux - NovaFlex - base",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-01-03",
+    "isCommunity": true,
+    "subscription_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
+    "price_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 11.72,
+        "bleu": {
+          "prixKwhHC": 18.726
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.46,
+        "bleu": {
+          "prixKwhHC": 18.726
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.39,
+        "bleu": {
+          "prixKwhHC": 18.726
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.33,
+        "bleu": {
+          "prixKwhHC": 18.726
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 18.726
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Gaz de Bordeaux - NovaFlex - heures creuses",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-01-03",
+    "isCommunity": true,
+    "subscription_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
+    "price_url": "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.01,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.21,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.28,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 28.16,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 32.14,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 40.52,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 48.34,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 56.2,
+        "bleu": {
+          "prixKwhHP": 19.945,
+          "prixKwhHC": 15.716
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  }
+]
