@@ -1,70 +1,43 @@
-abonnements.push(
-    {
-        name: "Engie - Elec Tranquillité 1 an",
-        lastUpdate: "2024-11-01",
-        subscription_url: "https://particuliers.engie.fr/electricite.html",
-        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
-        prices: [
-            { puissance: 3, abonnement: 116.97 / 12 },
-            { puissance: 6, abonnement: 153.59 / 12 },
-            { puissance: 9, abonnement: 192.86 / 12 },
-            { puissance: 12, abonnement: 232.90 / 12 },
-            { puissance: 15, abonnement: 270.28 / 12 },
-            { puissance: 18, abonnement: 307.40 / 12 },
-            { puissance: 24, abonnement: 389.50 / 12 },
-            { puissance: 30, abonnement: 459.69 / 12 },
-            { puissance: 36, abonnement: 542.17 / 12 }
-        ].map(item => ({
-            ...item,
-            bleu: { prixKwhHC: 26.119,  prixKwhHP: 26.119 }
-        })),
-        hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
-        }],
-        hasHCCustom: false,
-        specialDays: [],
-        getDayType: function (day) {
-            let dayType = "bleu";
-            return dayType;
-        }
-    }
-);
+defineTarif({
+    name: "Engie - Elec Tranquillité 1 an",
+    offer_type: "Marché",
+    lastUpdate: "2024-11-01",
+    isCommunity: true,
+    subscription_url: "https://particuliers.engie.fr/electricite.html",
+    price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
+    subscriptions: {
+        3: 116.97 / 12,
+        6: 153.59 / 12,
+        9: 192.86 / 12,
+        12: 232.90 / 12,
+        15: 270.28 / 12,
+        18: 307.40 / 12,
+        24: 389.50 / 12,
+        30: 459.69 / 12,
+        36: 542.17 / 12
+    },
+    dayTypes: { bleu: { price: 26.119 } },
+    dayRule: { type: "constant", dayType: "bleu" }
+});
 
-abonnements.push(
-    {
-        name: "Engie - Elec Tranquillité 1 an HC",
-        lastUpdate: "2024-11-01",
-        subscription_url: "https://particuliers.engie.fr/electricite.html",
-        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
-        prices: [
-            { puissance: 6, abonnement: 161.69 / 12 },
-            { puissance: 9, abonnement: 205.33 / 12 },
-            { puissance: 12, abonnement: 247.96 / 12 },
-            { puissance: 15, abonnement: 288.70 / 12 },
-            { puissance: 18, abonnement: 329.05 / 12 },
-            { puissance: 24, abonnement: 413.68 / 12 },
-            { puissance: 30, abonnement: 490.96 / 12 },
-            { puissance: 36, abonnement: 568.88 / 12 }
-        ].map(item => ({
-            ...item,
-            bleu: { prixKwhHC: 21.442,  prixKwhHP: 28.033 }
-        })),
-        hc: [{
-            start: {hour:22, minute:0},
-            end: {hour:24, minute:0}
-        },
-        {
-            start: {hour:0, minute:0},
-            end: {hour:6, minute:0}
-        }],
-        hasHCCustom: false,
-        hasSpecialDaysCustom: false,
-        specialDays: [],
-        getDayType: function (day) {
-            let dayType = "bleu";
-            return dayType;
-        }
-    }
-);
-
+defineTarif({
+    name: "Engie - Elec Tranquillité 1 an HC",
+    offer_type: "Marché",
+    lastUpdate: "2024-11-01",
+    isCommunity: true,
+    subscription_url: "https://particuliers.engie.fr/electricite.html",
+    price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
+    subscriptions: {
+        6: 161.69 / 12,
+        9: 205.33 / 12,
+        12: 247.96 / 12,
+        15: 288.70 / 12,
+        18: 329.05 / 12,
+        24: 413.68 / 12,
+        30: 490.96 / 12,
+        36: 568.88 / 12
+    },
+    dayTypes: { bleu: { HP: 28.033, HC: 21.442 } },
+    dayRule: { type: "constant", dayType: "bleu" },
+    hcRanges: [{ from: "22:00", to: "24:00" }, { from: "00:00", to: "06:00" }]
+});
