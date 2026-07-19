@@ -1,38 +1,41 @@
 import { calculator } from './calculator.js';
 import { getAbonnements } from './tarifsRegistry.js';
 
-// Lance la simulation complète : personnalisation des abonnements d'après les
-// réglages, puis calcul mensuel pour chaque abonnement compatible.
+// Lance la simulation complète : pour chaque abonnement compatible, applique
+// les réglages utilisateur sur une vue résolue (le registre n'est jamais muté,
+// une re-simulation part donc toujours de la grille d'origine) puis calcule
+// les agrégats mensuels.
 // settings : { kva, jourZenPlus, hcRawRanges, includeCommunity }
 export function runSimulation(settings, data) {
-    addCustomisationToAbonnements(settings);
-    const calculatedMonths = calculateAllMonths(settings.kva, settings.includeCommunity, data);
+    const calculatedMonths = calculateAllMonths(settings, data);
     const yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
     return { calculatedMonths, yearsAvailable };
 }
 
-function addCustomisationToAbonnements(settings) {
-    getAbonnements().forEach((abo) => {
-        if (abo.hasSpecialDaysCustom) {
-            // Note (comportement historique conservé) : chaque simulation re-pousse
-            // le jour Zen+ dans specialDays sans purger les valeurs précédentes.
-            abo.specialDays.push(settings.jourZenPlus);
-        }
-        if (abo.hasHCCustom) {
-            abo.hc = buildHCRanges(settings.hcRawRanges);
-        }
-    });
+// Copie superficielle suffisante : le calculateur appelle getDayType avec la
+// grille en receveur, et seules les règles weekly/calendar lisent
+// this.specialDays — la copie résolue porte la personnalisation.
+function resolveAbonnement(abo, settings) {
+    const resolved = { ...abo };
+    if (abo.hasSpecialDaysCustom) {
+        resolved.specialDays = [...abo.specialDays, settings.jourZenPlus];
+    }
+    if (abo.hasHCCustom) {
+        resolved.hc = buildHCRanges(settings.hcRawRanges);
+    }
+    return resolved;
 }
 
-function calculateAllMonths(kva, includesCommunityPrices, data) {
-    let filteredAbonnements = getAbonnements().filter(a => a.prices.some(p => p.puissance == kva));
-    if (!includesCommunityPrices) {
+function calculateAllMonths(settings, data) {
+    //On filtre sur les abonnements qui correspondent à la puissance souscrite
+    let filteredAbonnements = getAbonnements().filter(a => a.prices.some(p => p.puissance == settings.kva));
+    if (!settings.includeCommunity) {
         filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
     }
-    //On filtre sur les abonnements qui correspondent à la puissance souscrite
-    return filteredAbonnements.filter(a => a.prices.some(p => p.puissance == kva)).map(abo => {
+    return filteredAbonnements.map(abo => {
+        const resolved = resolveAbonnement(abo, settings);
         return {
-            allMonths: calculator.getTarif(kva, data, abo),
+            allMonths: calculator.getTarif(settings.kva, data, resolved),
             title: abo.name,
             lastUpdate: abo.lastUpdate,
             subscription_url: abo.subscription_url
@@ -42,7 +45,8 @@ function calculateAllMonths(kva, includesCommunityPrices, data) {
 
 // Transforme les plages brutes des inputs time ([["22:00","23:59"], ...])
 // en plages HC arrondies à l'heure, en écartant les plages vides.
-function buildHCRanges(hcRawRanges) {
+// Exportée pour les tests unitaires.
+export function buildHCRanges(hcRawRanges) {
     return hcRawRanges
         .map(([rawStart, rawEnd]) => formatHCRange(rawStart, rawEnd))
         .filter(range => range != null);
