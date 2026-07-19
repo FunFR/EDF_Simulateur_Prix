@@ -1,7 +1,8 @@
-// Charge les scripts classiques de tarifs (scripts/tarifs/**, scripts/tarifs-lib/**)
-// dans un contexte node:vm frais, comme le ferait le navigateur via index.html.
-// Un état frais à chaque appel est indispensable : runSimulation mute les
-// abonnements (remplacement de hc, accumulation de specialDays).
+// Charge les scripts classiques de tarifs (scripts/tarifs/**, scripts/tarifs-lib/**,
+// tous déclaratifs via defineTarif) dans un contexte node:vm frais, comme le
+// ferait le navigateur via index.html. Un état frais à chaque appel est
+// indispensable : runSimulation mute les abonnements (remplacement de hc,
+// accumulation de specialDays).
 import vm from 'node:vm';
 import fs from 'node:fs';
 

@@ -5,10 +5,6 @@ Les tarifs sont définis dans `scripts/tarifs/<fournisseur>/*.js` avec la foncti
 est un objet littéral pur : **aucune fonction à écrire**, la validation signale les
 erreurs en français dans la console du navigateur et fait échouer les tests.
 
-> Certains fichiers utilisent encore l'ancien format (`abonnements.push({...})` avec un
-> `getDayType` écrit à la main). Les deux formats cohabitent ; utilisez `defineTarif`
-> pour tout nouveau tarif.
-
 ## Unités
 
 - **Abonnement** : € par mois, par puissance souscrite en kVA.
