@@ -213,6 +213,9 @@
         switch (rule.type) {
             case "constant":
                 requireType("dayRule.dayType", rule.dayType);
+                if (rule.hourSubTypes !== undefined) {
+                    validateHourSubRuleList("dayRule.hourSubTypes", rule.hourSubTypes, requireType, errors);
+                }
                 if (rule.previousDayBefore !== undefined) {
                     errors.push('dayRule.previousDayBefore : sans effet avec type "constant"');
                 }
@@ -258,6 +261,7 @@
                     break;
                 }
                 const coveredMonths = new Set();
+                let hasWeekendType = false;
                 for (const [season, spec] of Object.entries(rule.seasons)) {
                     requireType(`dayRule.seasons.${season}`, season);
                     if (!isPlainObject(spec) || !Array.isArray(spec.months) || spec.months.length === 0) {
@@ -273,13 +277,28 @@
                             coveredMonths.add(month);
                         }
                     }
+                    if (spec.weekendType !== undefined) {
+                        hasWeekendType = true;
+                        requireType(`dayRule.seasons.${season}.weekendType`, spec.weekendType);
+                    }
                 }
                 for (let month = 1; month <= 12; month++) {
                     if (!coveredMonths.has(month)) {
                         errors.push(`dayRule.seasons : mois ${month} couvert par aucune saison`);
                     }
                 }
-                if (rule.hourSubTypes !== undefined) {
+                if (hasWeekendType) {
+                    if (!Array.isArray(rule.weekendDays) || rule.weekendDays.length === 0 ||
+                        rule.weekendDays.some(d => !Number.isInteger(d) || d < 0 || d > 6)) {
+                        errors.push("dayRule.weekendDays : liste de jours de semaine attendue (0 = dimanche ... 6 = samedi) quand weekendType est utilisé");
+                    }
+                    if (rule.hourSubTypes !== undefined) {
+                        errors.push("dayRule.hourSubTypes : non supporté en même temps que weekendType (précédence non définie)");
+                    }
+                } else if (rule.weekendDays !== undefined) {
+                    errors.push("dayRule.weekendDays : sans effet sans weekendType dans les saisons");
+                }
+                if (rule.hourSubTypes !== undefined && !hasWeekendType) {
                     if (!isPlainObject(rule.hourSubTypes)) {
                         errors.push("dayRule.hourSubTypes : objet { <saison>: [{ fromHour, toHour, dayType }] } attendu");
                     } else {
@@ -287,19 +306,7 @@
                             if (!isPlainObject(rule.seasons) || !(season in rule.seasons)) {
                                 errors.push(`dayRule.hourSubTypes.${season} : saison absente de dayRule.seasons`);
                             }
-                            if (!Array.isArray(subRules)) {
-                                errors.push(`dayRule.hourSubTypes.${season} : liste de règles attendue`);
-                                continue;
-                            }
-                            for (const subRule of subRules) {
-                                if (!isPlainObject(subRule) ||
-                                    !Number.isInteger(subRule.fromHour) || !Number.isInteger(subRule.toHour) ||
-                                    subRule.fromHour < 0 || subRule.toHour > 24 || subRule.fromHour >= subRule.toHour) {
-                                    errors.push(`dayRule.hourSubTypes.${season} : règle invalide ({ fromHour, toHour, dayType } avec fromHour < toHour attendu)`);
-                                    continue;
-                                }
-                                requireType(`dayRule.hourSubTypes.${season}`, subRule.dayType);
-                            }
+                            validateHourSubRuleList(`dayRule.hourSubTypes.${season}`, subRules, requireType, errors);
                         }
                     }
                 }
@@ -314,6 +321,24 @@
                     errors.push(`dayTypes.${type} : type pricé mais jamais utilisé par dayRule`);
                 }
             }
+        }
+    }
+
+    // Sous-règles horaires ({ fromHour, toHour, dayType }) partagées entre les
+    // règles "constant" (liste plate) et "season" (une liste par saison).
+    function validateHourSubRuleList(path, subRules, requireType, errors) {
+        if (!Array.isArray(subRules)) {
+            errors.push(`${path} : liste de règles attendue`);
+            return;
+        }
+        for (const subRule of subRules) {
+            if (!isPlainObject(subRule) ||
+                !Number.isInteger(subRule.fromHour) || !Number.isInteger(subRule.toHour) ||
+                subRule.fromHour < 0 || subRule.toHour > 24 || subRule.fromHour >= subRule.toHour) {
+                errors.push(`${path} : règle invalide ({ fromHour, toHour, dayType } avec fromHour < toHour attendu)`);
+                continue;
+            }
+            requireType(path, subRule.dayType);
         }
     }
 
@@ -459,10 +484,25 @@
     const RULE_BUILDERS = {
         constant: function (rule) {
             const dayType = rule.dayType;
+            const subRules = rule.hourSubTypes;
+            if (!subRules) {
+                return {
+                    specialDays: [],
+                    hasSpecialDaysCustom: false,
+                    getDayType: function () {
+                        return dayType;
+                    }
+                };
+            }
             return {
                 specialDays: [],
                 hasSpecialDaysCustom: false,
-                getDayType: function () {
+                getDayType: function (day, time) {
+                    for (const subRule of subRules) {
+                        if (time.hour >= subRule.fromHour && time.hour < subRule.toHour) {
+                            return subRule.dayType;
+                        }
+                    }
                     return dayType;
                 }
             };
@@ -519,11 +559,16 @@
         season: function (rule) {
             const previousDayBefore = rule.previousDayBefore;
             const monthToSeason = {};
+            const weekendTypeBySeason = {};
             for (const [season, spec] of Object.entries(rule.seasons)) {
                 for (const month of spec.months) {
                     monthToSeason[month] = season;
                 }
+                if (spec.weekendType !== undefined) {
+                    weekendTypeBySeason[season] = spec.weekendType;
+                }
             }
+            const weekendDays = rule.weekendDays || [];
             const hourSubTypes = rule.hourSubTypes || {};
             return {
                 specialDays: [],
@@ -537,6 +582,14 @@
                     }
                     const month = Number(checkDate.split("/")[1]);
                     const season = monthToSeason[month];
+                    // Le week-end est évalué sur la même date décalée que la saison
+                    // (une nuit de dimanche avant Nh compte comme du week-end).
+                    if (weekendTypeBySeason[season] !== undefined) {
+                        const dayOfWeek = new Date(checkDate + " 12:00:00").getDay();
+                        if (weekendDays.includes(dayOfWeek)) {
+                            return weekendTypeBySeason[season];
+                        }
+                    }
                     // Les sous-types horaires (super creuses) utilisent l'heure brute,
                     // sans report de veille — comportement historique.
                     const subRules = hourSubTypes[season];

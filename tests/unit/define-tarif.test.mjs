@@ -211,6 +211,98 @@ test('season : saisons par mois, sous-types horaires, hcRanges byDayType', () =>
     assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(24)), 'hiver', '24h hors plage 22-24 (comportement historique)');
 });
 
+test('constant + hourSubTypes : fenêtre horaire sur jour constant (type Happy / super creuses)', () => {
+    const sandbox = freshSandbox();
+    const abo = sandbox.defineTarif(validDef({
+        dayTypes: { base: { HP: 21.62, HC: 16.51 }, hsc: { price: 12.61 } },
+        dayRule: {
+            type: 'constant',
+            dayType: 'base',
+            hourSubTypes: [{ fromHour: 2, toHour: 6, dayType: 'hsc' }]
+        },
+        hcRanges: [{ from: '23:00', to: '24:00' }, { from: '00:00', to: '07:00' }]
+    }));
+
+    const at = (hour, minute = 0) => ({ hour, minute });
+    const day = { date: '2024/12/15' };
+    assert.strictEqual(abo.getDayType(day, at(1, 30)), 'base');
+    assert.strictEqual(abo.getDayType(day, at(2)), 'hsc', 'borne de début incluse');
+    assert.strictEqual(abo.getDayType(day, at(5, 30)), 'hsc');
+    assert.strictEqual(abo.getDayType(day, at(6)), 'base', 'borne de fin exclue');
+    assert.strictEqual(abo.getDayType(day, at(24)), 'base', 'minuit=24 hors fenêtre');
+    assert.deepStrictEqual(plain(abo).specialDays, []);
+});
+
+test('season + weekendType : saison × week-end sur la même date décalée (type Enercoop)', () => {
+    const sandbox = freshSandbox();
+    const abo = sandbox.defineTarif(validDef({
+        dayTypes: {
+            hiver: { HP: 31.04, HC: 22.90 },
+            hiverWeekend: { HP: 31.04, HC: 22.90 },
+            ete: { HP: 19.367, HC: 13.715 },
+            eteWeekend: { HP: 19.367, HC: 13.715 }
+        },
+        dayRule: {
+            type: 'season',
+            seasons: {
+                hiver: { months: [11, 12, 1, 2, 3], weekendType: 'hiverWeekend' },
+                ete: { months: [4, 5, 6, 7, 8, 9, 10], weekendType: 'eteWeekend' }
+            },
+            weekendDays: [0, 6],
+            previousDayBefore: 6
+        },
+        hcRanges: {
+            byDayType: {
+                hiver: [{ from: '00:00', to: '07:00' }, { from: '13:00', to: '16:00' }],
+                ete: [{ from: '11:00', to: '17:00' }],
+                hiverWeekend: [{ from: '00:00', to: '24:00' }],
+                eteWeekend: [{ from: '00:00', to: '24:00' }]
+            }
+        }
+    }));
+
+    const at = (hour, minute = 0) => ({ hour, minute });
+    assert.strictEqual(abo.getDayType({ date: '2024/12/07' }, at(12)), 'hiverWeekend'); // samedi
+    assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(12)), 'hiver');        // lundi
+    assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(3)), 'hiverWeekend', 'lundi avant 6h : la veille est un dimanche');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/07' }, at(3)), 'hiver', 'samedi avant 6h : la veille est un vendredi');
+    assert.strictEqual(abo.getDayType({ date: '2024/11/01' }, at(3)), 'ete', 'changement de saison : avant 6h, saison de la veille');
+    assert.strictEqual(abo.getDayType({ date: '2024/07/13' }, at(24)), 'eteWeekend', '24h : pas de report, dimanche');
+});
+
+test('validation : hourSubTypes sur constant et weekendType sur season', () => {
+    expectError(validDef({
+        dayTypes: { base: { HP: 20, HC: 10 }, hsc: { price: 8 } },
+        dayRule: { type: 'constant', dayType: 'base', hourSubTypes: [{ fromHour: 6, toHour: 2, dayType: 'hsc' }] }
+    }), 'fromHour < toHour');
+    expectError(validDef({
+        dayRule: { type: 'constant', dayType: 'bleu', hourSubTypes: [{ fromHour: 2, toHour: 6, dayType: 'inconnu' }] }
+    }), 'absent de dayTypes');
+    // weekendDays manquant quand weekendType est utilisé
+    expectError(validDef({
+        dayTypes: { hiver: { HP: 2, HC: 1 }, hiverWE: { HP: 2, HC: 1 } },
+        dayRule: { type: 'season', seasons: { hiver: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], weekendType: 'hiverWE' } } },
+        hcRanges: { byDayType: { hiver: [], hiverWE: [] } }
+    }), 'dayRule.weekendDays');
+    // weekendDays sans weekendType
+    expectError(validDef({
+        dayTypes: { hiver: { HP: 2, HC: 1 } },
+        dayRule: { type: 'season', seasons: { hiver: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] } }, weekendDays: [0, 6] },
+        hcRanges: { byDayType: { hiver: [] } }
+    }), 'sans effet sans weekendType');
+    // hourSubTypes + weekendType interdits ensemble
+    expectError(validDef({
+        dayTypes: { hiver: { HP: 2, HC: 1 }, hiverWE: { HP: 2, HC: 1 }, hiverSC: { price: 1 } },
+        dayRule: {
+            type: 'season',
+            seasons: { hiver: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], weekendType: 'hiverWE' } },
+            weekendDays: [0, 6],
+            hourSubTypes: { hiver: [{ fromHour: 2, toHour: 6, dayType: 'hiverSC' }] }
+        },
+        hcRanges: { byDayType: { hiver: [], hiverWE: [], hiverSC: [] } }
+    }), 'non supporté en même temps que weekendType');
+});
+
 test('validation : métadonnées manquantes ou invalides', () => {
     expectError(validDef({ name: '' }), 'name manquant');
     expectError(validDef({ lastUpdate: '01/02/2026' }), 'lastUpdate');

@@ -71,6 +71,24 @@ defineTarif({
 });
 ```
 
+### Fenêtre horaire à prix réduit (type Happy Hours / heures super creuses)
+
+Un tarif à jour constant peut basculer sur un autre type pendant une plage horaire
+fixe (bornes en heures entières, début inclus, fin exclue) :
+
+```js
+defineTarif({
+    // ...
+    dayTypes: { base: { HP: 21.62, HC: 16.51 }, hsc: { price: 12.61 } },
+    dayRule: {
+        type: "constant",
+        dayType: "base",
+        hourSubTypes: [{ fromHour: 2, toHour: 6, dayType: "hsc" }]
+    },
+    hcRanges: [{ from: "23:00", to: "24:00" }, { from: "00:00", to: "07:00" }]
+});
+```
+
 ### Tarif à calendrier de dates (type Tempo / EJP)
 
 Les listes de dates vivent dans un calendrier partagé (`scripts/tarifs-lib/calendars/`),
@@ -126,6 +144,33 @@ Chaque saison et chaque sous-type doit avoir son entrée dans `dayTypes` et dans
 Un type peut être déclaré `{ price: ... }` au milieu de types `{ HP, HC }` : il n'a
 alors qu'un prix HC (utile pour un sous-type entièrement couvert par ses plages HC,
 comme les heures super creuses de Zen Estival).
+
+### Tarif saison × week-end (type Enercoop Flexibilité)
+
+Chaque saison peut déclarer un type week-end ; le jour de semaine est évalué sur la
+même date décalée que la saison quand `previousDayBefore` est présent (une nuit de
+dimanche avant 6h compte comme du week-end) :
+
+```js
+dayRule: {
+    type: "season",
+    seasons: {
+        hiver: { months: [11, 12, 1, 2, 3], weekendType: "hiverWeekend" },
+        ete:   { months: [4, 5, 6, 7, 8, 9, 10], weekendType: "eteWeekend" }
+    },
+    weekendDays: [0, 6],    // 0 = dimanche ... 6 = samedi
+    previousDayBefore: 6
+},
+hcRanges: {
+    byDayType: {
+        hiver: [/* plages */], ete: [/* ... */],
+        hiverWeekend: [{ from: "00:00", to: "24:00" }],   // tout week-end en HC
+        eteWeekend: [{ from: "00:00", to: "24:00" }]
+    }
+}
+```
+
+`weekendType` et `hourSubTypes` ne peuvent pas être combinés sur la même règle.
 
 ### Tarif au prix spot
 
