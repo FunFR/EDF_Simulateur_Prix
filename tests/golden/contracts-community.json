@@ -496,6 +496,1234 @@
     "specialDays": []
   },
   {
+    "name": "Alterna - Heures Super Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-05-07",
+    "subscription_url": "https://www.alterna-energie.fr",
+    "price_url": "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 16.65,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.83,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 25.01,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 29.19,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 33.37,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 41.74,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 50.1,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 58.46,
+        "hpEte": {
+          "prixKwhHC": 17.8
+        },
+        "hcEte": {
+          "prixKwhHC": 16.24
+        },
+        "hscEte": {
+          "prixKwhHP": 13.13
+        },
+        "hpHiver": {
+          "prixKwhHC": 20.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 18.27
+        },
+        "hscHiver": {
+          "prixKwhHC": 16.24
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Enercoop - Base",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-16",
+    "isCommunity": true,
+    "subscription_url": "https://souscription.enercoop.fr/",
+    "price_url": "https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires",
+    "prices": [
+      {
+        "puissance": 1,
+        "abonnement": 6.16,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 2,
+        "abonnement": 7.85,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 3,
+        "abonnement": 9.54,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 4,
+        "abonnement": 11.37,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 5,
+        "abonnement": 13.09,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 14.82,
+        "bleu": {
+          "prixKwhHC": 25.314
+        }
+      },
+      {
+        "puissance": 7,
+        "abonnement": 16.69,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 8,
+        "abonnement": 18.44,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.19,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 10,
+        "abonnement": 21.94,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 11,
+        "abonnement": 23.68,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 25.43,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 13,
+        "abonnement": 27.06,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 14,
+        "abonnement": 28.8,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 30.54,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 16,
+        "abonnement": 32.28,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 17,
+        "abonnement": 34.02,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 35.76,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 19,
+        "abonnement": 37.49,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 20,
+        "abonnement": 39.23,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 21,
+        "abonnement": 40.97,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 22,
+        "abonnement": 42.71,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 23,
+        "abonnement": 44.45,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 46.23,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 25,
+        "abonnement": 47.97,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 26,
+        "abonnement": 49.72,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 27,
+        "abonnement": 51.46,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 28,
+        "abonnement": 53.2,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 29,
+        "abonnement": 54.94,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 56.68,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 31,
+        "abonnement": 58.42,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 32,
+        "abonnement": 60.16,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 33,
+        "abonnement": 61.9,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 34,
+        "abonnement": 63.64,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 35,
+        "abonnement": 65.38,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 67.12,
+        "bleu": {
+          "prixKwhHC": 25.621
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Enercoop - Flexibilité - heures creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-16",
+    "isCommunity": true,
+    "subscription_url": "https://souscription.enercoop.fr/",
+    "price_url": "https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires",
+    "prices": [
+      {
+        "puissance": 1,
+        "abonnement": 6.6,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 2,
+        "abonnement": 8.75,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 3,
+        "abonnement": 10.89,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 4,
+        "abonnement": 13.4,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 5,
+        "abonnement": 15.64,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.87,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 7,
+        "abonnement": 19.68,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 8,
+        "abonnement": 21.86,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 24.03,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 10,
+        "abonnement": 26.21,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 11,
+        "abonnement": 28.38,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 30.56,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 13,
+        "abonnement": 30.87,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 14,
+        "abonnement": 32.9,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 34.94,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 16,
+        "abonnement": 36.97,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 17,
+        "abonnement": 39,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 41.03,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 19,
+        "abonnement": 43.06,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 20,
+        "abonnement": 45.09,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 21,
+        "abonnement": 47.13,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 22,
+        "abonnement": 49.16,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 23,
+        "abonnement": 51.19,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 52.09,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 25,
+        "abonnement": 54.08,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 26,
+        "abonnement": 56.06,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 27,
+        "abonnement": 58.05,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 28,
+        "abonnement": 60.03,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 29,
+        "abonnement": 62.02,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 64,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 31,
+        "abonnement": 65.98,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 32,
+        "abonnement": 67.97,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 33,
+        "abonnement": 69.95,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 34,
+        "abonnement": 71.94,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 35,
+        "abonnement": 73.92,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 75.91,
+        "bleu": {
+          "prixKwhHP": 27.456,
+          "prixKwhHC": 18.95
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Enercoop - Flexibilité - nuit & week-end",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-16",
+    "isCommunity": true,
+    "subscription_url": "https://souscription.enercoop.fr/",
+    "price_url": "https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires",
+    "prices": [
+      {
+        "puissance": 1,
+        "abonnement": 6.19,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 2,
+        "abonnement": 7.92,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 3,
+        "abonnement": 9.65,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 4,
+        "abonnement": 11.64,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 5,
+        "abonnement": 13.43,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.23,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 7,
+        "abonnement": 17.03,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 8,
+        "abonnement": 18.83,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.63,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 10,
+        "abonnement": 22.42,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 11,
+        "abonnement": 24.22,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 26.02,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 13,
+        "abonnement": 27.75,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 14,
+        "abonnement": 29.54,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 31.33,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 16,
+        "abonnement": 33.12,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 17,
+        "abonnement": 34.91,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 36.7,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 19,
+        "abonnement": 38.49,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 20,
+        "abonnement": 40.28,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 21,
+        "abonnement": 42.08,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 22,
+        "abonnement": 43.87,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 23,
+        "abonnement": 45.66,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 48.24,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 25,
+        "abonnement": 50.06,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 26,
+        "abonnement": 51.89,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 27,
+        "abonnement": 53.71,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 28,
+        "abonnement": 55.54,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 29,
+        "abonnement": 57.36,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 59.19,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 31,
+        "abonnement": 61.01,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 32,
+        "abonnement": 62.83,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 33,
+        "abonnement": 64.66,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 34,
+        "abonnement": 66.48,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 35,
+        "abonnement": 68.31,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 70.13,
+        "bleu": {
+          "prixKwhHP": 29.286,
+          "prixKwhHC": 16.357
+        },
+        "weekend": {
+          "prixKwhHP": 16.357,
+          "prixKwhHC": 16.357
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
     "name": "Enercoop - Offre Flexibilité 2 Saisons",
     "offer_type": "Marché",
     "lastUpdate": "2026-02-26",
@@ -2586,6 +3814,396 @@
     "hasHCCustom": true,
     "hasSpecialDaysCustom": false,
     "specialDays": []
+  },
+  {
+    "name": "Octopus - OctoTempo",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-04-13",
+    "subscription_url": "https://octopusenergy.fr/octotempo",
+    "price_url": "https://a.storyblok.com/f/151412/x/c095a21c44/grille-tarifaire-octotempo.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "rouge": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 64.69
+        },
+        "hiver": {
+          "prixKwhHC": 15.75,
+          "prixKwhHP": 18.71
+        },
+        "ete": {
+          "prixKwhHC": 13.25,
+          "prixKwhHP": 15.75
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      {
+        "name": "rouge",
+        "numberOfDays": 22,
+        "monthBegin": 11,
+        "monthEnd": 3,
+        "lastDays": [
+          "2020/12/02",
+          "2020/12/07",
+          "2020/12/08",
+          "2020/12/09",
+          "2020/12/31",
+          "2021/01/04",
+          "2021/01/05",
+          "2021/01/06",
+          "2020/01/07",
+          "2020/01/20",
+          "2020/01/21",
+          "2020/01/22",
+          "2020/01/23",
+          "2020/01/24",
+          "2020/01/29",
+          "2020/02/05",
+          "2020/02/06",
+          "2020/02/19",
+          "2020/03/02",
+          "2020/03/03",
+          "2020/03/04",
+          "2020/03/05",
+          "2020/03/06",
+          "2020/12/02",
+          "2020/12/07",
+          "2020/12/08",
+          "2020/12/09",
+          "2020/12/31",
+          "2021/01/04",
+          "2021/01/05",
+          "2021/01/06",
+          "2021/01/07",
+          "2021/01/08",
+          "2021/01/11",
+          "2021/01/12",
+          "2021/01/13",
+          "2021/01/15",
+          "2021/01/18",
+          "2021/01/25",
+          "2021/01/26",
+          "2021/01/27",
+          "2021/02/08",
+          "2021/02/09",
+          "2021/02/10",
+          "2021/02/11",
+          "2021/11/29",
+          "2021/12/13",
+          "2021/12/14",
+          "2021/12/15",
+          "2021/12/20",
+          "2021/12/21",
+          "2021/01/22",
+          "2022/12/08",
+          "2022/12/12",
+          "2022/12/13",
+          "2022/12/14",
+          "2022/12/08",
+          "2022/01/06",
+          "2022/01/10",
+          "2022/01/11",
+          "2022/01/12",
+          "2022/01/13",
+          "2022/01/14",
+          "2022/01/17",
+          "2022/01/18",
+          "2022/01/19",
+          "2022/01/20",
+          "2022/01/21",
+          "2022/01/24",
+          "2022/01/25",
+          "2022/01/26",
+          "2022/01/27",
+          "2022/12/08",
+          "2022/12/12",
+          "2022/12/13",
+          "2022/12/14",
+          "2023/01/17",
+          "2023/01/18",
+          "2023/01/19",
+          "2023/01/20",
+          "2023/01/23",
+          "2023/01/24",
+          "2023/01/25",
+          "2023/01/26",
+          "2023/01/27",
+          "2023/01/30",
+          "2023/01/31",
+          "2023/02/06",
+          "2023/02/07",
+          "2023/02/08",
+          "2023/02/09",
+          "2023/02/10",
+          "2023/03/01",
+          "2023/03/02",
+          "2023/11/29",
+          "2023/12/01",
+          "2023/12/06",
+          "2023/12/18",
+          "2024/01/08",
+          "2024/01/09",
+          "2024/01/10",
+          "2024/01/11",
+          "2024/01/12",
+          "2024/01/15",
+          "2024/01/16",
+          "2024/01/18",
+          "2024/01/19",
+          "2024/02/12",
+          "2024/02/27",
+          "2024/02/28",
+          "2024/03/04",
+          "2024/03/05",
+          "2024/03/06",
+          "2024/03/11",
+          "2024/03/12",
+          "2024/03/29",
+          "2024/12/03",
+          "2024/12/10",
+          "2024/12/11",
+          "2024/12/12",
+          "2024/12/13",
+          "2024/12/16",
+          "2024/12/27",
+          "2024/12/30",
+          "2025/01/02",
+          "2025/01/03",
+          "2025/01/10",
+          "2025/01/13",
+          "2025/01/14",
+          "2025/01/15",
+          "2025/01/16",
+          "2025/01/17",
+          "2025/01/20",
+          "2025/01/21",
+          "2025/01/22",
+          "2025/01/30",
+          "2025/01/31",
+          "2025/02/03",
+          "2025/12/29",
+          "2025/12/31",
+          "2026/01/05",
+          "2026/01/06",
+          "2026/01/07",
+          "2026/01/26",
+          "2026/01/28",
+          "2026/01/29"
+        ]
+      }
+    ],
+    "hcByDayType": {
+      "rouge": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "hiver": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "ete": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 11,
+            "minute": 0
+          },
+          "end": {
+            "hour": 17,
+            "minute": 0
+          }
+        }
+      ]
+    }
   },
   {
     "name": "TotalEnergie - Charge'Heures",
