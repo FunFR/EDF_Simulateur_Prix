@@ -1,28 +1,21 @@
-abonnements.push({
+defineTarif({
     name: "Alterna - Heures Creuses Locale",
     offer_type: "Marché",
     lastUpdate: "2025-12-18",
+    isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
-    prices: [
-        { puissance: 6, abonnement: 15.74 },
-        { puissance: 9, abonnement: 20.21 },
-        { puissance: 12, abonnement: 24.28 },
-        { puissance: 15, abonnement: 28.15 },
-        { puissance: 18, abonnement: 32.13 },
-        { puissance: 24, abonnement: 40.53 },
-        { puissance: 30, abonnement: 48.34 },
-        { puissance: 36, abonnement: 56.20 }
-    ].map(item => ({
-        ...item,
-        bleu: { prixKwhHC: 14.82, prixKwhHP: 18.74 }
-    })),
-    hc: [],
-    hasHCCustom: true,
-    hasSpecialDaysCustom: false,
-    specialDays: [],
-    getDayType: function (day) {
-        let dayType = "bleu";
-        return dayType;
-    }
+    subscriptions: {
+        6: 15.74,
+        9: 20.21,
+        12: 24.28,
+        15: 28.15,
+        18: 32.13,
+        24: 40.53,
+        30: 48.34,
+        36: 56.20
+    },
+    dayTypes: { bleu: { HP: 18.74, HC: 14.82 } },
+    dayRule: { type: "constant", dayType: "bleu" },
+    hcRanges: "custom"
 });

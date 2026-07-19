@@ -167,6 +167,7 @@
     "name": "Alterna - Heures Creuses",
     "offer_type": "Marché",
     "lastUpdate": "2025-12-18",
+    "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     "prices": [
@@ -174,64 +175,64 @@
         "puissance": 6,
         "abonnement": 15.74,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 9,
         "abonnement": 20.21,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 12,
         "abonnement": 24.28,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 15,
         "abonnement": 28.15,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 18,
         "abonnement": 32.13,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 24,
         "abonnement": 40.53,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 30,
         "abonnement": 48.34,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       },
       {
         "puissance": 36,
         "abonnement": 56.2,
         "bleu": {
-          "prixKwhHC": 14.57,
-          "prixKwhHP": 18.4
+          "prixKwhHP": 18.4,
+          "prixKwhHC": 14.57
         }
       }
     ],
@@ -244,6 +245,7 @@
     "name": "Alterna - Heures Creuses Locale",
     "offer_type": "Marché",
     "lastUpdate": "2025-12-18",
+    "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
     "prices": [
@@ -251,64 +253,64 @@
         "puissance": 6,
         "abonnement": 15.74,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 9,
         "abonnement": 20.21,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 12,
         "abonnement": 24.28,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 15,
         "abonnement": 28.15,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 18,
         "abonnement": 32.13,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 24,
         "abonnement": 40.53,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 30,
         "abonnement": 48.34,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       },
       {
         "puissance": 36,
         "abonnement": 56.2,
         "bleu": {
-          "prixKwhHC": 14.82,
-          "prixKwhHP": 18.74
+          "prixKwhHP": 18.74,
+          "prixKwhHC": 14.82
         }
       }
     ],
@@ -321,6 +323,7 @@
     "name": "Alterna - Base France",
     "offer_type": "Marché",
     "lastUpdate": "2025-12-18",
+    "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     "prices": [
@@ -328,72 +331,63 @@
         "puissance": 3,
         "abonnement": 11.73,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.47,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 9,
         "abonnement": 19.39,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 12,
         "abonnement": 23.32,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 15,
         "abonnement": 27.06,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.76,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 24,
         "abonnement": 38.79,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 30,
         "abonnement": 46.44,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.29,
         "bleu": {
-          "prixKwhHC": 17.29,
-          "prixKwhHP": 17.29
+          "prixKwhHC": 17.29
         }
       }
     ],
@@ -417,6 +411,7 @@
     "name": "Alterna - Base Locale",
     "offer_type": "Marché",
     "lastUpdate": "2025-12-18",
+    "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
     "prices": [
@@ -424,72 +419,63 @@
         "puissance": 3,
         "abonnement": 11.73,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 6,
         "abonnement": 15.47,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 9,
         "abonnement": 19.39,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 12,
         "abonnement": 23.32,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 15,
         "abonnement": 27.06,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 18,
         "abonnement": 30.76,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 24,
         "abonnement": 38.79,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 30,
         "abonnement": 46.44,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       },
       {
         "puissance": 36,
         "abonnement": 54.29,
         "bleu": {
-          "prixKwhHC": 17.61,
-          "prixKwhHP": 17.61
+          "prixKwhHC": 17.61
         }
       }
     ],
@@ -1506,6 +1492,7 @@
   },
   {
     "name": "La Belle Energie - Constance",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
@@ -1593,6 +1580,7 @@
   },
   {
     "name": "La Belle Energie - Constance HC",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
@@ -1691,6 +1679,7 @@
   },
   {
     "name": "La Belle Energie - Garance",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
@@ -1778,6 +1767,7 @@
   },
   {
     "name": "La Belle Energie - Garance HC",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
@@ -1876,6 +1866,7 @@
   },
   {
     "name": "La Belle Energie - Prudence",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
@@ -1963,6 +1954,7 @@
   },
   {
     "name": "La Belle Energie - Prudence HC",
+    "offer_type": "Marché",
     "lastUpdate": "2025-11-01",
     "isCommunity": true,
     "subscription_url": "https://labellenergie.fr/offre-electricite-verte/",
