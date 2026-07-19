@@ -85,6 +85,19 @@ test('priceOverrides : surcharge par puissance (cas EDF Bleu 3/6 kVA)', () => {
     assert.deepStrictEqual(plain(abo).prices.map(p => p.bleu.prixKwhHC), [19.40, 19.40, 19.27]);
 });
 
+test('mélange { price } et { HP, HC } avec hcRanges : { price } = tarification HC seule', () => {
+    // Cas Zen Estival : les types super creuses n'ont qu'un prix HC.
+    const sandbox = freshSandbox();
+    const abo = sandbox.defineTarif(validDef({
+        dayTypes: { bleu: { HP: 20, HC: 10 }, bleuSC: { price: 8 } },
+        dayRule: { type: 'season', seasons: { bleu: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] } }, hourSubTypes: { bleu: [{ fromHour: 2, toHour: 6, dayType: 'bleuSC' }] } },
+        hcRanges: { byDayType: { bleu: [], bleuSC: [{ from: '02:00', to: '06:00' }] } }
+    }));
+
+    assert.deepStrictEqual(plain(abo).prices[0].bleuSC, { prixKwhHC: 8 });
+    assert.deepStrictEqual(plain(abo).prices[0].bleu, { prixKwhHP: 20, prixKwhHC: 10 });
+});
+
 test('hcRanges "custom" : hasHCCustom true et hc vide (rempli par la simulation)', () => {
     const sandbox = freshSandbox();
     const abo = sandbox.defineTarif(validDef({ hcRanges: 'custom' }));
@@ -209,7 +222,6 @@ test('validation : grilles de prix', () => {
     expectError(validDef({ subscriptions: {} }), 'subscriptions manquant');
     expectError(validDef({ subscriptions: { 6: '15.65' } }), 'subscriptions[6]');
     expectError(validDef({ dayTypes: { bleu: { HP: 20.65 } } }), 'clés attendues');
-    expectError(validDef({ dayTypes: { bleu: { price: 10 }, rouge: { HP: 20, HC: 10 } }, dayRule: { type: 'constant', dayType: 'bleu' } }), 'mélange interdit');
     expectError(validDef({ priceOverrides: { 12: { bleu: { HP: 1, HC: 1 } } } }), 'puissance absente de subscriptions');
 });
 

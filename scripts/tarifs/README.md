@@ -123,6 +123,10 @@ hcRanges: { byDayType: { hiver: [/* plages */], hiverSC: [/* ... */], ete: [], e
 Chaque saison et chaque sous-type doit avoir son entrée dans `dayTypes` et dans
 `hcRanges.byDayType` (liste vide `[]` = aucune heure creuse pour ce type).
 
+Un type peut être déclaré `{ price: ... }` au milieu de types `{ HP, HC }` : il n'a
+alors qu'un prix HC (utile pour un sous-type entièrement couvert par ses plages HC,
+comme les heures super creuses de Zen Estival).
+
 ### Tarif au prix spot
 
 Pas encore supporté (`dayRule.type: "spot"` est réservé et rejeté par la validation).

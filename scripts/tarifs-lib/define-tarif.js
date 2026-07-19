@@ -127,18 +127,8 @@
             errors.push("dayTypes manquant (ex. { bleu: { HP: 16.12, HC: 13.25 } } en centimes/kWh)");
             return null;
         }
-        let singleCount = 0;
         for (const [name, spec] of Object.entries(def.dayTypes)) {
-            if (!validateDayTypeSpec(`dayTypes.${name}`, spec, errors)) {
-                continue;
-            }
-            if ("price" in spec) {
-                singleCount++;
-            }
-        }
-        const total = Object.keys(def.dayTypes).length;
-        if (singleCount > 0 && singleCount < total) {
-            errors.push("dayTypes : mélange interdit de { price } et { HP, HC } — tous les types doivent avoir la même forme");
+            validateDayTypeSpec(`dayTypes.${name}`, spec, errors);
         }
         return Object.keys(def.dayTypes);
     }
