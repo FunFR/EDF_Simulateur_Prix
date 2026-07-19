@@ -1,21 +1,21 @@
 defineTarif({
     name: "Alterna - Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-12-18",
+    lastUpdate: "2026-05-07",
     isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     subscriptions: {
-        6: 15.74,
-        9: 20.21,
-        12: 24.28,
-        15: 28.15,
-        18: 32.13,
-        24: 40.53,
-        30: 48.34,
-        36: 56.20
+        6: 15.05,
+        9: 19.19,
+        12: 23.01,
+        15: 26.63,
+        18: 30.35,
+        24: 38.25,
+        30: 45.55,
+        36: 52.91
     },
-    dayTypes: { bleu: { HP: 18.40, HC: 14.57 } },
+    dayTypes: { bleu: { HP: 18.50, HC: 14.67 } },
     dayRule: { type: "constant", dayType: "bleu" },
     hcRanges: "custom"
 });

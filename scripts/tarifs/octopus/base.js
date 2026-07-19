@@ -1,21 +1,21 @@
 defineTarif({
     name: "Octopus - Base",
     offer_type: "Marché",
-    lastUpdate: "2025-08-01",
+    lastUpdate: "2026-03-19",
     isCommunity: true,
     subscription_url: "https://www.octopusenergy.fr/offre-electricite-tarifs",
-    price_url: "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
+    price_url: "https://a.storyblok.com/f/151412/x/a5a79d71c2/grille-tarifaire-eco_conso_fixe_2_b_mars26.pdf",
     subscriptions: {
-        3: 11.73,
-        6: 15.47,
-        9: 19.39,
+        3: 12.03,
+        6: 15.65,
+        9: 19.56,
         12: 23.32,
-        15: 27.06,
-        18: 30.76,
-        24: 38.79,
-        30: 46.44,
-        36: 55.05
+        15: 26.84,
+        18: 30.49,
+        24: 38.24,
+        30: 45.37,
+        36: 53.06
     },
-    dayTypes: { bleu: { price: 18.56 } },
+    dayTypes: { bleu: { price: 18.95 } },
     dayRule: { type: "constant", dayType: "bleu" }
 });

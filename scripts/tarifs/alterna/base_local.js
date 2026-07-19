@@ -1,21 +1,21 @@
 defineTarif({
     name: "Alterna - Base Locale",
     offer_type: "Marché",
-    lastUpdate: "2025-12-18",
+    lastUpdate: "2026-05-07",
     isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
     subscriptions: {
-        3: 11.73,
-        6: 15.47,
-        9: 19.39,
-        12: 23.32,
-        15: 27.06,
-        18: 30.76,
-        24: 38.79,
-        30: 46.44,
-        36: 54.29
+        3: 11.25,
+        6: 14.78,
+        9: 18.49,
+        12: 22.21,
+        15: 25.74,
+        18: 29.23,
+        24: 36.84,
+        30: 44.07,
+        36: 51.50
     },
-    dayTypes: { bleu: { price: 17.61 } },
+    dayTypes: { bleu: { price: 17.72 } },
     dayRule: { type: "constant", dayType: "bleu" }
 });
