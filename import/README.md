@@ -1,6 +1,11 @@
-# import/ — mise à jour des grilles tarifaires depuis les PDFs fournisseurs
+# import/ — mise à jour des données tarifaires
 
-Outil local (jamais en CI) qui, pour chaque `price_url` des `defineTarif` du repo :
+Outils locaux (jamais en CI) de mise à jour des données du simulateur :
+grilles tarifaires PDF des fournisseurs, calendriers Tempo/EJP et Zenflex,
+prix spot EPEX FR. Point d'entrée recommandé : `node update-all.mjs`
+(voir « Mise à jour globale » ci-dessous), qui orchestre les quatre scripts.
+
+L'outil grilles tarifaires (`update.mjs`), pour chaque `price_url` des `defineTarif` du repo :
 
 1. télécharge la grille (requête conditionnelle + comparaison SHA-256 avec `manifest.json`),
 2. si elle a changé, extrait le texte du PDF (pdfjs-dist) et parse les prix,
@@ -39,6 +44,43 @@ $env:UPDATE_GOLDEN='1'; node --test "tests/**/*.test.mjs"; $env:UPDATE_GOLDEN=$n
 git diff tests/golden               # revue des snapshots de simulation
 ```
 
+## Mise à jour globale (update-all.mjs)
+
+Orchestrateur des quatre scripts (tempo, zenflex, spot, tarifs) : lancement
+en sous-processus **parallèles** (APIs distinctes), sortie de chaque script
+bufferisée et affichée à sa complétion, puis synthèse finale (statut, durée,
+avertissements notables : `INTERVENTION MANUELLE REQUISE`, `PARSER MANQUANT`,
+erreurs réseau/parsing, balise `<script>` à ajouter dans `index.html` à la
+bascule d'année spot) et rappel goldens consolidé. Code de sortie : 0 si tout
+OK, 1 sinon.
+
+```powershell
+node update-all.mjs                    # run complet des 4 scripts
+node update-all.mjs --dry-run          # tout le pipeline sauf l'écriture
+node update-all.mjs --check-only       # tarifs en --check-only, les 3 autres en --dry-run
+node update-all.mjs --only spot,tarifs # limite aux scripts listés (tempo, zenflex, spot, tarifs)
+node update-all.mjs --full             # tempo/zenflex/spot : ré-import complet de l'historique
+node update-all.mjs --force            # tarifs : re-parse même si SHA-256 inchangé
+node update-all.mjs --sequential       # l'un après l'autre (défaut : parallèle)
+node update-all.mjs --goldens          # enchaîne la régénération des goldens si tout est OK
+npm run update-all "--" --dry-run      # équivalent via npm (PowerShell avale un -- nu, d'où les guillemets)
+```
+
+Matrice de forwarding des flags :
+
+| Flag | tempo | zenflex | spot | tarifs (`update.mjs`) |
+|---|---|---|---|---|
+| `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` |
+| `--full` | `--full` | `--full` | `--full` | — |
+| `--force` | — | — | — | `--force` |
+| `--check-only` | `--dry-run` | `--dry-run` | `--dry-run` | `--check-only` |
+
+Les flags de ciblage fin (`--from`/`--to`, `--option TEMPO|EJP`, `--provider`,
+`--tarif`) ne sont pas forwardés : lancer le script individuel dans ce cas.
+La revue humaine reste la même qu'avec les scripts individuels : relire
+`git diff scripts/tarifs scripts/tarifs-lib`, régénérer les goldens
+(automatisable avec `--goldens`), relire `git diff tests/golden`, puis commit.
+
 ## Statuts du rapport
 
 | Statut | Sens |
@@ -64,7 +106,8 @@ Le SHA-256 du manifest n'est mis à jour **que** lorsqu'une grille est réconcil
 ## Architecture
 
 ```
-update.mjs            point d'entrée CLI (voir --help ci-dessus)
+update-all.mjs        orchestrateur : lance les 4 scripts en parallèle et synthétise (voir « Mise à jour globale »)
+update.mjs            grilles tarifaires PDF (voir « Usage » ci-dessus)
 spot-update.mjs       mise à jour des prix spot EPEX FR (voir « Prix spot » ci-dessous)
 tempo-update.mjs      mise à jour des calendriers Tempo/EJP (voir « Calendriers Tempo / EJP » ci-dessous)
 zenflex-update.mjs    mise à jour du calendrier des jours de sobriété Zenflex (voir « Calendrier Zenflex » ci-dessous)

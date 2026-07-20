@@ -3,14 +3,12 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
-## Comment contribuer
-Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
-
 ## Utilisation
 
 ### Accéder à ce comparateur
 Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
-Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_Simulateur_Prix](http://jc144.github.io/EDF_Simulateur_Prix)
+Vous pouvez accéder à l'outil depuis cette url : [https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
+
 **Ou** vous pouvez le télécharger pour une utilisation hors ligne :
 1. Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
 ![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
@@ -56,6 +54,20 @@ HomeAssistant est une plateforme de domotique Open-Source.
 Certains outils permettent un export de la consommation au quart d'heure.
 Vérifiez que votre export s'appelle bien history.csv.
 
+## Comment contribuer
+Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (fork + branche). Avant d'ouvrir la PR, vérifiez que les tests passent : `node --test "tests/**/*.test.mjs"` (Node ≥ 22).
+
+* **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas la balise `<script>` correspondante dans `index.html`.
+* **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis régénérez les snapshots de simulation et relisez le diff (recette « Mettre à jour un prix » du même guide) :
+  ```
+  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"
+  git diff tests/golden
+  ```
+* **Créer un importateur pour un fournisseur non géré** (Engie, Sobry, grilles HTML…) — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
+* **Corriger ou améliorer l'application** (parsers d'export de consommation, interface, calculs) — l'architecture est décrite dans la section [Développement](#développement) ci-dessous.
+* **Signaler un problème ou proposer une offre manquante** — ouvrez une [issue](https://github.com/JC144/EDF_Simulateur_Prix/issues).
+* **Ou tout simplement** [laisser un pourboire qui me permet de financer le domaine et l'abonnement IA](https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU)
+
 ## Développement
 L'application est 100% statique (aucun build, aucune dépendance à installer), en JavaScript vanilla avec des modules ES :
 
@@ -74,16 +86,23 @@ python -m http.server 8000
 
 puis ouvrez [http://localhost:8000](http://localhost:8000).
 
-### Mise à jour des grilles tarifaires
+### Mise à jour des données tarifaires
 
-Le dossier [`import/`](import/README.md) contient un outil local (Node ≥ 22) qui télécharge les grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`), détecte les changements et met à jour automatiquement les prix des fichiers `scripts/tarifs/**`. La revue du `git diff` et la régénération des goldens restent manuelles avant commit — voir [import/README.md](import/README.md).
+Le dossier [`import/`](import/README.md) contient les outils locaux (Node ≥ 22) de mise à jour des données : grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`, prix patchés automatiquement dans `scripts/tarifs/**`), calendriers Tempo/EJP et Zenflex, prix spot EPEX FR. Point d'entrée recommandé :
+
+```
+node import/update-all.mjs
+```
+
+qui lance les quatre scripts en parallèle et affiche une synthèse. La revue du `git diff` et la régénération des goldens restent manuelles avant commit — voir [import/README.md](import/README.md).
 
 ### Prix spot (tarifs Sobry)
 
 Les tarifs indexés sur le marché (Sobry SoCap/SoFlex) s'appuient sur les prix
 spot EPEX FR Day-Ahead depuis 2023, committés dans `scripts/tarifs-lib/spot/`
-(un fichier par année). Mise à jour manuelle : `node import/spot-update.mjs`
-(incrémental, voir [import/README.md](import/README.md)).
+(un fichier par année). Mise à jour : via `node import/update-all.mjs` (ou
+`node import/spot-update.mjs` seul, incrémental — voir
+[import/README.md](import/README.md)).
 
 Données de prix spot : [energy-charts.info](https://energy-charts.info)
 (Fraunhofer ISE), source Bundesnetzagentur | [SMARD.de](https://www.smard.de),
