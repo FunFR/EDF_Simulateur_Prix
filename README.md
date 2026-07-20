@@ -78,6 +78,17 @@ puis ouvrez [http://localhost:8000](http://localhost:8000).
 
 Le dossier [`import/`](import/README.md) contient un outil local (Node ≥ 22) qui télécharge les grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`), détecte les changements et met à jour automatiquement les prix des fichiers `scripts/tarifs/**`. La revue du `git diff` et la régénération des goldens restent manuelles avant commit — voir [import/README.md](import/README.md).
 
+### Prix spot (tarifs Sobry)
+
+Les tarifs indexés sur le marché (Sobry SoCap/SoFlex) s'appuient sur les prix
+spot EPEX FR Day-Ahead depuis 2023, committés dans `scripts/tarifs-lib/spot/`
+(un fichier par année). Mise à jour manuelle : `node import/spot-update.mjs`
+(incrémental, voir [import/README.md](import/README.md)).
+
+Données de prix spot : [energy-charts.info](https://energy-charts.info)
+(Fraunhofer ISE), source Bundesnetzagentur | [SMARD.de](https://www.smard.de),
+licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
 ## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 

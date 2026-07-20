@@ -49,6 +49,7 @@ export function loadDefsFromSource(source, file) {
         console,
         defineTarif: def => defs.push({ file, ...def }),
         defineCalendar: () => {},
+        defineSpotPrices: () => {},
     };
     sandbox.window = sandbox;
     vm.createContext(sandbox);

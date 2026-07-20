@@ -18,12 +18,18 @@ const PROVIDER_BY_HOST = {
     'labellenergie.fr': 'labelleenergie',
 };
 
+// Grilles hébergées sur un host générique (stockage cloud partagé) : mapping
+// par URL exacte, prioritaire sur le mapping par host.
+const PROVIDER_BY_URL = {
+    'https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf': 'sobry',
+};
+
 export function isPdfUrl(url) {
     return new URL(url).pathname.toLowerCase().endsWith('.pdf');
 }
 
 export function providerFor(url) {
-    return PROVIDER_BY_HOST[new URL(url).host] || null;
+    return PROVIDER_BY_URL[url] || PROVIDER_BY_HOST[new URL(url).host] || null;
 }
 
 // -> { provider, parser } | { provider, parser: null } (parser pas encore écrit)

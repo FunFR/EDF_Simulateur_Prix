@@ -594,6 +594,12 @@
                 </p>
 
                 <p class="text-muted small text-center">
+                    Prix spot : <a href="https://energy-charts.info" target="_blank" rel="noopener">energy-charts.info</a>,
+                    données Bundesnetzagentur | SMARD.de, licence
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+                </p>
+
+                <p class="text-muted small text-center">
                     Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café en
                     faisant un don !<br />
                 </p>
@@ -759,6 +765,13 @@
     <script src="./scripts/tarifs-lib/calendars/tempo-edf.js"></script>
     <script src="./scripts/tarifs-lib/calendars/ejp-edf.js"></script>
     <script src="./scripts/tarifs-lib/calendars/zenflex-sobriete.js"></script>
+    <!-- Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
+         CC BY 4.0), générés par import/spot-update.mjs — à charger avant les
+         tarifs spot (Sobry) -->
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2023.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2024.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2025.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2026.js"></script>
 
     <script src="./scripts/tarifs/alpiq/base.js"></script>
 
@@ -803,6 +816,9 @@
     <script src="./scripts/tarifs/octopus/base.js"></script>
     <script src="./scripts/tarifs/octopus/baseHC.js"></script>
     <script src="./scripts/tarifs/octopus/octotempo.js"></script>
+
+    <script src="./scripts/tarifs/sobry/socap.js"></script>
+    <script src="./scripts/tarifs/sobry/soflex.js"></script>
 
     <script src="./scripts/tarifs/total/chargheures.js"></script>
     <script src="./scripts/tarifs/total/heuresEco.js"></script>

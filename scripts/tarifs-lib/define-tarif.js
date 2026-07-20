@@ -10,6 +10,9 @@
     // Calendriers de jours spéciaux partagés entre tarifs (ex. jours Tempo,
     // réutilisables par plusieurs fournisseurs). Voir scripts/tarifs-lib/calendars/.
     window.TarifCalendars = window.TarifCalendars || {};
+    // Séries de prix spot partagées entre tarifs (ex. EPEX FR Day-Ahead).
+    // Voir scripts/tarifs-lib/spot/ (fichiers générés par import/spot-update.mjs).
+    window.SpotPrices = window.SpotPrices || {};
     // Erreurs de définition accumulées (consultables en console et par les tests).
     window.tarifDefinitionErrors = window.tarifDefinitionErrors || [];
 
@@ -46,6 +49,45 @@
         window.TarifCalendars[name] = daysByType;
     };
 
+    // Série de prix spot : une source nommée, alimentée de façon cumulative
+    // (un fichier par année). Chaque jour porte 24 valeurs (pas horaire) ou
+    // 96 (pas quart-horaire) en EUR/MWh — les jours DST sont normalisés à
+    // l'import. Prix négatifs autorisés (réalité du marché spot).
+    window.defineSpotPrices = function (name, daysByDate) {
+        if (typeof name !== "string" || name === "") {
+            fail(["defineSpotPrices : nom de source manquant"]);
+        }
+        const errors = [];
+        if (!isPlainObject(daysByDate) || Object.keys(daysByDate).length === 0) {
+            errors.push('au moins un jour attendu (ex. { "2023/01/01": [24 valeurs EUR/MWh] })');
+        } else {
+            const source = window.SpotPrices[name];
+            for (const [date, values] of Object.entries(daysByDate)) {
+                if (!DATE_FORMAT.test(date)) {
+                    errors.push(`date invalide "${date}" (format attendu "AAAA/MM/JJ")`);
+                    continue;
+                }
+                if (source && source.days[date]) {
+                    errors.push(`jour "${date}" déjà défini pour cette source`);
+                }
+                if (!Array.isArray(values) || (values.length !== 24 && values.length !== 96)) {
+                    errors.push(`jour "${date}" : 24 ou 96 valeurs attendues, reçu ${Array.isArray(values) ? values.length : typeof values}`);
+                    continue;
+                }
+                if (values.some(v => typeof v !== "number" || !isFinite(v))) {
+                    errors.push(`jour "${date}" : valeurs non numériques`);
+                    continue;
+                }
+                Object.freeze(values);
+            }
+        }
+        if (errors.length > 0) {
+            fail(errors.map(e => `defineSpotPrices("${name}") : ${e}`));
+        }
+        const source = window.SpotPrices[name] || (window.SpotPrices[name] = { days: {} });
+        Object.assign(source.days, daysByDate);
+    };
+
     window.defineTarif = function (def) {
         if (!isPlainObject(def)) {
             fail(["defineTarif : un objet de définition est attendu"]);
@@ -55,10 +97,16 @@
 
         validateMetadata(def, errors);
         validateSubscriptions(def, errors);
-        const pricedTypes = validateDayTypes(def, errors);
-        validatePriceOverrides(def, errors);
-        validateDayRule(def, pricedTypes, errors);
-        validateHcRanges(def, pricedTypes, errors);
+        if (isPlainObject(def.dayRule) && def.dayRule.type === "spot") {
+            // Tarif au prix spot : pas de grille par type de jour, la
+            // validation classique (dayTypes/hcRanges) ne s'applique pas.
+            validateSpotDef(def, errors);
+        } else {
+            const pricedTypes = validateDayTypes(def, errors);
+            validatePriceOverrides(def, errors);
+            validateDayRule(def, pricedTypes, errors);
+            validateHcRanges(def, pricedTypes, errors);
+        }
 
         if (errors.length > 0) {
             fail(errors.map(e => `defineTarif("${label}") : ${e}`));
@@ -177,14 +225,60 @@
         }
     }
 
+    // Tarif au prix spot : dayRule = { type: "spot", source } et spotFormula
+    // porte les composantes de la formule (en centimes/kWh hors TVA, sauf tva
+    // qui est un multiplicateur). Prix du kWh par créneau :
+    //   (min(spot + turpe[saison] + accise, cap[saison])
+    //    + conformite + marge + prime) * tva
+    // Saisons TURPE : hiver = novembre à mars, été = avril à octobre.
+    const SPOT_FORMULA_KEYS = ["turpe", "accise", "cap", "conformite", "marge", "prime", "tva"];
+    const SPOT_SEASON_KEYS = ["hiver", "ete"];
+
+    function validateSpotDef(def, errors) {
+        const rule = def.dayRule;
+        const ruleKeys = Object.keys(rule).sort().join(",");
+        if (ruleKeys !== "source,type") {
+            errors.push('dayRule : clés attendues { type: "spot", source }, reçu { ' + Object.keys(rule).join(", ") + " }");
+        } else if (typeof rule.source !== "string" || !window.SpotPrices[rule.source]) {
+            errors.push(`dayRule.source : source de prix spot inconnue "${rule.source}" (le script de données spot doit être chargé avant le tarif dans index.html)`);
+        }
+        for (const forbidden of ["dayTypes", "hcRanges", "priceOverrides"]) {
+            if (def[forbidden] !== undefined) {
+                errors.push(`${forbidden} : à omettre avec dayRule.type "spot" (le prix du kWh vient de spotFormula)`);
+            }
+        }
+        const formula = def.spotFormula;
+        if (!isPlainObject(formula)) {
+            errors.push("spotFormula manquant (composantes de la formule spot en centimes/kWh, voir scripts/tarifs/README.md)");
+            return;
+        }
+        for (const key of Object.keys(formula)) {
+            if (!SPOT_FORMULA_KEYS.includes(key)) {
+                errors.push(`spotFormula.${key} : clé inconnue (clés attendues : ${SPOT_FORMULA_KEYS.join(", ")})`);
+            }
+        }
+        for (const key of ["turpe", "cap"]) {
+            const value = formula[key];
+            if (!isPlainObject(value) || Object.keys(value).sort().join(",") !== "ete,hiver" ||
+                SPOT_SEASON_KEYS.some(s => typeof value[s] !== "number" || !isFinite(value[s]) || value[s] < 0)) {
+                errors.push(`spotFormula.${key} : objet { hiver, ete } attendu (centimes/kWh)`);
+            }
+        }
+        for (const key of ["accise", "conformite", "marge", "prime"]) {
+            const value = formula[key];
+            if (typeof value !== "number" || !isFinite(value) || value < 0) {
+                errors.push(`spotFormula.${key} : nombre positif attendu (centimes/kWh)`);
+            }
+        }
+        if (typeof formula.tva !== "number" || !isFinite(formula.tva) || formula.tva < 1) {
+            errors.push("spotFormula.tva : multiplicateur attendu (ex. 1.20 pour une TVA à 20 %)");
+        }
+    }
+
     function validateDayRule(def, pricedTypes, errors) {
         const rule = def.dayRule;
         if (!isPlainObject(rule) || typeof rule.type !== "string") {
             errors.push('dayRule manquant (ex. { type: "constant", dayType: "bleu" })');
-            return;
-        }
-        if (rule.type === "spot") {
-            errors.push('dayRule.type "spot" : pas encore supporté');
             return;
         }
         if (!(rule.type in RULE_BUILDERS)) {
@@ -431,7 +525,7 @@
     // ------------------------------------------------------------------ //
 
     function buildAbonnement(def) {
-        const rule = RULE_BUILDERS[def.dayRule.type](def.dayRule);
+        const rule = RULE_BUILDERS[def.dayRule.type](def.dayRule, def);
         const hcParts = buildHc(def);
 
         const abonnement = {
@@ -452,6 +546,9 @@
         if (hcParts.hcByDayType) {
             abonnement.hcByDayType = hcParts.hcByDayType;
         }
+        if (rule.spotPricesFor) {
+            abonnement.spotPricesFor = rule.spotPricesFor;
+        }
         return abonnement;
     }
 
@@ -465,6 +562,16 @@
         const dayOf = {};      // type "jour" -> sa clé de jour
         const subTypeDay = {}; // sous-type horaire -> clé du jour porteur
         const dayKeys = [];
+
+        // Prix spot : un seul type moteur "spot", pas de badge de jour, une
+        // seule bande (comme les tarifs Base à prix unique).
+        if (rule.type === "spot") {
+            return {
+                types: { spot: { day: null, bands: { HP: "spot", HC: "spot" } } },
+                dayOrder: [],
+                bandOrder: ["spot"]
+            };
+        }
 
         switch (rule.type) {
             case "constant":
@@ -550,7 +657,9 @@
     function buildPrices(def) {
         return Object.entries(def.subscriptions).map(([kva, abonnement]) => {
             const entry = { puissance: Number(kva), abonnement: abonnement };
-            for (const [type, spec] of Object.entries(def.dayTypes)) {
+            // Tarif spot : pas de grille par type de jour, le prix du kWh est
+            // fourni par créneau via spotPricesFor.
+            for (const [type, spec] of Object.entries(def.dayTypes || {})) {
                 const override = def.priceOverrides && def.priceOverrides[kva] && def.priceOverrides[kva][type];
                 entry[type] = toPrixKwh(override || spec);
             }
@@ -734,6 +843,48 @@
                         }
                     }
                     return season;
+                }
+            };
+        },
+
+        // Tarif au prix spot : le type de jour est constant ("spot"), le prix
+        // du kWh est dérivé de la série de prix par spotPricesFor(date) —
+        // consommée par le calculateur à la place de la grille.
+        spot: function (rule, def) {
+            const source = window.SpotPrices[rule.source];
+            const formula = def.spotFormula;
+            // Saisons TURPE standard : hiver = novembre à mars.
+            const WINTER_MONTHS = [11, 12, 1, 2, 3];
+            // Mémoïsation par date : les données et la formule sont figées,
+            // la copie superficielle de simulation.js partage la closure.
+            const cache = new Map();
+            return {
+                specialDays: [],
+                hasSpecialDaysCustom: false,
+                getDayType: function () {
+                    return "spot";
+                },
+                // -> tableau de prix en centimes TTC/kWh (un par pas spot du
+                // jour : 24 ou 96 valeurs), ou null si la date est absente.
+                spotPricesFor: function (date) {
+                    if (cache.has(date)) {
+                        return cache.get(date);
+                    }
+                    const eurMwh = source.days[date];
+                    let prices = null;
+                    if (eurMwh) {
+                        const month = Number(date.split("/")[1]);
+                        const season = WINTER_MONTHS.includes(month) ? "hiver" : "ete";
+                        const turpe = formula.turpe[season];
+                        const cap = formula.cap[season];
+                        // 1 EUR/MWh = 0,1 centime/kWh ; le plafond s'applique
+                        // par créneau sur (spot + TURPE + accise) seulement.
+                        prices = eurMwh.map(v =>
+                            (Math.min(v / 10 + turpe + formula.accise, cap)
+                                + formula.conformite + formula.marge + formula.prime) * formula.tva);
+                    }
+                    cache.set(date, prices);
+                    return prices;
                 }
             };
         }

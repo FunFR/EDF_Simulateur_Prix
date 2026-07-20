@@ -494,7 +494,6 @@ test('validation : grilles de prix', () => {
 });
 
 test('validation : dayRule', () => {
-    expectError(validDef({ dayRule: { type: 'spot' } }), 'pas encore supporté');
     expectError(validDef({ dayRule: { type: 'inconnu' } }), 'dayRule.type inconnu');
     expectError(validDef({ dayRule: { type: 'constant', dayType: 'rouge' } }), 'absent de dayTypes');
     expectError(validDef({
@@ -509,6 +508,119 @@ test('validation : dayRule', () => {
         dayRule: { type: 'season', seasons: { hiver: { months: [11, 12, 1, 2, 3] }, ete: { months: [4, 5, 6, 7, 8, 9] } } },
         hcRanges: { byDayType: { hiver: [], ete: [] } }
     }), 'mois 10 couvert par aucune saison');
+});
+
+// ------------------------------------------------------------------ //
+//  Tarifs au prix spot                                               //
+// ------------------------------------------------------------------ //
+
+// Formule type Sobry SoCap (centimes/kWh hors TVA, tva = multiplicateur).
+function validSpotDef(overrides = {}) {
+    return validDef({
+        dayTypes: undefined,
+        hcRanges: undefined,
+        dayRule: { type: 'spot', source: 'spot-test' },
+        spotFormula: {
+            turpe: { hiver: 6.32, ete: 1.49 },
+            accise: 3.085,
+            cap: { hiver: 25.00, ete: 14.17 },
+            conformite: 1.00,
+            marge: 0.80,
+            prime: 0.70,
+            tva: 1.20
+        },
+        ...overrides
+    });
+}
+
+function spotSandbox() {
+    const sandbox = freshSandbox();
+    sandbox.defineSpotPrices('spot-test', {
+        // Janvier (hiver) : 100 EUR/MWh constant ; juin (été) : dont un prix
+        // négatif et un pic au-dessus du plafond.
+        '2026/01/15': Array(24).fill(100),
+        '2026/06/15': [-5, 100, 400, ...Array(93).fill(50)]
+    });
+    return sandbox;
+}
+
+test('spot : contrat généré (prices, hc, display, getDayType)', () => {
+    const sandbox = spotSandbox();
+    const abo = sandbox.defineTarif(validSpotDef());
+
+    // Pas de grille par type de jour : abonnement seul.
+    assert.deepStrictEqual(plain(abo).prices, [
+        { puissance: 6, abonnement: 15.65 },
+        { puissance: 9, abonnement: 19.56 }
+    ]);
+    // Prix unique : tout est classé HC via la plage pleine journée.
+    assert.deepStrictEqual(plain(abo).hc, [{ start: { hour: 0, minute: 0 }, end: { hour: 24, minute: 0 } }]);
+    assert.strictEqual(abo.hasHCCustom, false);
+    assert.strictEqual(abo.hasSpecialDaysCustom, false);
+    assert.deepStrictEqual(plain(abo).specialDays, []);
+    assert.strictEqual(abo.getDayType({ date: '2026/01/15' }, { hour: 12, minute: 0 }), 'spot');
+    assert.deepStrictEqual(plain(abo).display, {
+        types: { spot: { day: null, bands: { HP: 'spot', HC: 'spot' } } },
+        dayOrder: [],
+        bandOrder: ['spot']
+    });
+});
+
+test('spot : spotPricesFor applique la formule, le plafond et les saisons', () => {
+    const sandbox = spotSandbox();
+    const abo = sandbox.defineTarif(validSpotDef());
+
+    // Hiver, 100 EUR/MWh : (min(10 + 6.32 + 3.085, 25) + 1 + 0.8 + 0.7) * 1.2
+    const hiver = abo.spotPricesFor('2026/01/15');
+    assert.strictEqual(hiver.length, 24);
+    assert.ok(Math.abs(hiver[0] - 26.286) < 1e-9);
+
+    const ete = abo.spotPricesFor('2026/06/15');
+    assert.strictEqual(ete.length, 96);
+    // Été, -5 EUR/MWh : (-0.5 + 1.49 + 3.085) + 1 + 0.8 + 0.7 puis TVA.
+    assert.ok(Math.abs(ete[0] - (4.075 + 2.5) * 1.2) < 1e-9);
+    // Été, 400 EUR/MWh : plafonné à 14.17.
+    assert.ok(Math.abs(ete[2] - (14.17 + 2.5) * 1.2) < 1e-9);
+    // Été, 100 EUR/MWh : sous le plafond été ? 10 + 1.49 + 3.085 = 14.575 > 14.17 → plafonné.
+    assert.ok(Math.abs(ete[1] - (14.17 + 2.5) * 1.2) < 1e-9);
+
+    // Date sans données : null. Mémoïsation : même référence en relecture.
+    assert.strictEqual(abo.spotPricesFor('2022/01/01'), null);
+    assert.strictEqual(abo.spotPricesFor('2026/01/15'), hiver);
+});
+
+test('spot : validation (source, champs interdits, spotFormula)', () => {
+    expectError(validSpotDef(), 'source de prix spot inconnue'); // sandbox sans defineSpotPrices
+    expectError(validSpotDef({ dayRule: { type: 'spot' } }), 'clés attendues { type: "spot", source }');
+    expectError(validSpotDef({ dayRule: { type: 'spot', source: 'spot-test', default: 'x' } }), 'clés attendues', spotSandbox());
+    expectError(validSpotDef({ dayTypes: { bleu: { price: 10 } } }), 'dayTypes : à omettre', spotSandbox());
+    expectError(validSpotDef({ hcRanges: [{ from: '22:00', to: '24:00' }] }), 'hcRanges : à omettre', spotSandbox());
+    expectError(validSpotDef({ priceOverrides: { 6: { bleu: { price: 1 } } } }), 'priceOverrides : à omettre', spotSandbox());
+    expectError(validSpotDef({ spotFormula: undefined }), 'spotFormula manquant', spotSandbox());
+
+    const formula = overrides => validSpotDef({ spotFormula: { ...validSpotDef().spotFormula, ...overrides } });
+    expectError(formula({ inconnu: 1 }), 'spotFormula.inconnu : clé inconnue', spotSandbox());
+    expectError(formula({ turpe: { hiver: 6.32 } }), 'spotFormula.turpe : objet { hiver, ete }', spotSandbox());
+    expectError(formula({ cap: 25 }), 'spotFormula.cap : objet { hiver, ete }', spotSandbox());
+    expectError(formula({ accise: '3' }), 'spotFormula.accise', spotSandbox());
+    expectError(formula({ marge: -1 }), 'spotFormula.marge', spotSandbox());
+    expectError(formula({ tva: 0.2 }), 'spotFormula.tva : multiplicateur', spotSandbox());
+});
+
+test('validation : defineSpotPrices (dates, longueurs, redéfinition, cumul)', () => {
+    const sandbox = freshSandbox();
+    assert.throws(() => sandbox.defineSpotPrices('bad', { '15/01/2026': Array(24).fill(1) }), /date invalide/);
+    assert.throws(() => sandbox.defineSpotPrices('bad', { '2026/01/15': Array(23).fill(1) }), /24 ou 96 valeurs/);
+    assert.throws(() => sandbox.defineSpotPrices('bad', { '2026/01/15': [...Array(23).fill(1), 'x'] }), /valeurs non numériques/);
+    assert.throws(() => sandbox.defineSpotPrices('bad', {}), /au moins un jour/);
+
+    // Cumul entre fichiers (un par année) sur la même source.
+    sandbox.defineSpotPrices('ok', { '2025/12/31': Array(96).fill(1) });
+    sandbox.defineSpotPrices('ok', { '2026/01/01': Array(96).fill(2) });
+    assert.strictEqual(sandbox.SpotPrices.ok.days['2025/12/31'][0], 1);
+    assert.strictEqual(sandbox.SpotPrices.ok.days['2026/01/01'][0], 2);
+    // Redéfinition d'un jour existant : erreur.
+    assert.throws(() => sandbox.defineSpotPrices('ok', { '2026/01/01': Array(96).fill(3) }), /déjà défini/);
 });
 
 test('validation : plages horaires', () => {

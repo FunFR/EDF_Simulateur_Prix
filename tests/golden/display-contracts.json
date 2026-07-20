@@ -956,6 +956,36 @@
       "HC"
     ]
   },
+  "Sobry - SoCap": {
+    "types": {
+      "spot": {
+        "day": null,
+        "bands": {
+          "HP": "spot",
+          "HC": "spot"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "spot"
+    ]
+  },
+  "Sobry - SoFlex": {
+    "types": {
+      "spot": {
+        "day": null,
+        "bands": {
+          "HP": "spot",
+          "HC": "spot"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "spot"
+    ]
+  },
   "TotalEnergie - Charge'Heures": {
     "types": {
       "base": {

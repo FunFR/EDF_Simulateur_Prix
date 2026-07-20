@@ -65,6 +65,7 @@ Le SHA-256 du manifest n'est mis à jour **que** lorsqu'une grille est réconcil
 
 ```
 update.mjs            point d'entrée CLI (voir --help ci-dessus)
+spot-update.mjs       mise à jour des prix spot EPEX FR (voir « Prix spot » ci-dessous)
 manifest.json         état persistant par URL { sha256, etag, lastChecked, lastApplied } — committé
 lib/
   tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs)
@@ -75,6 +76,7 @@ lib/
   fr-numbers.mjs      nombres français ("19,27", chiffres éclatés "2 1 , 80"), €/kWh -> centimes
   dates.mjs           dates françaises ("1er février 2026", "1 juil. 2026", "12/06/2026", mots éclatés)
   reconcile.mjs       diff parser <-> repo : changements de valeurs vs divergences structurelles
+  spot-data.mjs       logique pure des prix spot : jours locaux Paris, normalisation DST, sérialisation
   patch-tarif.mjs     remplacement ciblé dans les littéraux defineTarif (multi-blocs par fichier)
   revalidate.mjs      rechargement VM avec la vraie lib tarifs avant écriture
   readme.mjs          section « Derniers tarifs » du README racine
@@ -88,6 +90,29 @@ tests/                node --test : fr-numbers, patch-tarif, parsers (hermétiqu
 ```
 
 Contrat parser : les clés de `offers` sont exactement les `name` des `defineTarif` ; prix kWh en **centimes TTC**, abonnements en **€ TTC/mois** ; `priceOverrides` émis quand le PDF différencie certaines puissances (la valeur de référence est celle de la plus grande puissance).
+
+## Prix spot (spot-update.mjs)
+
+Les tarifs spot (Sobry) consomment les prix EPEX FR Day-Ahead committés dans
+`scripts/tarifs-lib/spot/epex-fr-<année>.js`. Mise à jour manuelle depuis
+l'API [energy-charts.info](https://api.energy-charts.info) (données
+Bundesnetzagentur | SMARD.de, CC BY 4.0) :
+
+```powershell
+node spot-update.mjs                # incrémental : reprend après la dernière date connue
+node spot-update.mjs --dry-run      # sans écriture
+node spot-update.mjs --full         # ré-importe tout depuis 2023-01-01
+node spot-update.mjs --from 2026-01-01 --to 2026-01-31   # fenêtre explicite
+```
+
+Particularités : prix en EUR/MWh bruts (le moteur convertit), jours locaux
+Europe/Paris normalisés à 24 valeurs (pas horaire) ou 96 (quart-horaire,
+depuis le 2025-10-01), jours DST comblés/moyennés sur l'heure 02, jours
+incomplets côté API **omis** (le simulateur les marque en erreur pour les
+tarifs spot uniquement — c'est le cas du 2025-09-30, jour de la bascule de
+granularité, publié tout à `null` par SMARD). À la bascule d'année, ajouter
+la balise `<script>` du nouveau fichier dans `index.html` (le script le
+signale). Logique pure testée dans `tests/spot-data.test.mjs`.
 
 ## Quand une grille change de mise en page
 
@@ -105,4 +130,5 @@ npm test
 
 - **Alterna, Gaz de Bordeaux, Enercoop** : `price_url` en HTML, vérification manuelle.
 - **Engie** : les fiches descriptives décomposent les prix en fourniture + acheminement (TURPE CU/CU4/MUDT/MU4) + obligations, en €/an — la reconstruction du prix TTC mensuel est trop hasardeuse pour un parser fiable. Le changement de grille reste détecté par SHA-256 (`PARSER MANQUANT`). Par ailleurs deux des trois `price_url` Engie du repo renvoient 404 (tranquillité, happy-heures-vertes) : à rafraîchir dans les fichiers tarifs.
+- **Sobry** : le PDF de la grille est un export design (texte **vectorisé en tracés**, zéro item texte pour pdfjs) — parser textuel impossible sans OCR. Le changement de grille reste détecté (`PARSER MANQUANT`, mapping par URL exacte dans `registry.mjs`). Mise à jour manuelle depuis le PDF : `subscriptions[kVA] = (Total_CU4_HTVA + 15 % × Acheminement_HTVA) × 1,20` (table « Abonnement mensuel C5 », grille CU4) et `spotFormula` (composantes p. 2-3 et 9, ×100 pour passer en centimes). `reconcile.mjs` sait déjà comparer `spotFormula` si un parser voit le jour.
 - Les nouvelles puissances proposées par un fournisseur (ex. un kVA ajouté au PDF) ne sont pas signalées si le repo ne les modélise pas.

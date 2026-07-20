@@ -33,7 +33,9 @@ function resolveView(resolved, kva) {
         plan: resolved.prices.find(p => p.puissance === kva),
         getDayType: resolved.getDayType.bind(resolved),
         // Priorité aux plages du type de jour, sinon plages communes de la grille.
-        hcRangesFor: dayType => resolved.hcByDayType?.[dayType] ?? resolved.hc
+        hcRangesFor: dayType => resolved.hcByDayType?.[dayType] ?? resolved.hc,
+        // Tarifs spot : prix du kWh par créneau (voir calculator.js).
+        spotPricesFor: resolved.spotPricesFor ?? null
     };
 }
 

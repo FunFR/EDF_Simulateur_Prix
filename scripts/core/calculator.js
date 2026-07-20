@@ -12,9 +12,11 @@
 // - plan : ligne tarifaire de la puissance souscrite
 //   ({ abonnement, <type>: { prixKwhHP?, prixKwhHC } }) ;
 // - getDayType(day, time) : type de jour, réglages utilisateur déjà appliqués ;
-// - hcRangesFor(dayType) : plages d'heures creuses applicables à ce type.
+// - hcRangesFor(dayType) : plages d'heures creuses applicables à ce type ;
+// - spotPricesFor(date) : optionnel (tarifs spot) — prix du kWh par pas spot
+//   du jour en centimes (24 ou 96 valeurs), ou null si date sans données.
 
-export function computeMonths({ plan, getDayType, hcRangesFor }, days) {
+export function computeMonths({ plan, getDayType, hcRangesFor, spotPricesFor }, days) {
     const monthsData = [];
     if (!plan) {
         return monthsData;
@@ -32,7 +34,7 @@ export function computeMonths({ plan, getDayType, hcRangesFor }, days) {
             monthData = startMonth(parseInt(year), month, plan);
             monthsData.push(monthData);
         }
-        monthData.days.push(computeDay(day, monthData.aboPriceByDay, plan, getDayType, hcRangesFor));
+        monthData.days.push(computeDay(day, monthData.aboPriceByDay, plan, getDayType, hcRangesFor, spotPricesFor));
     }
     if (monthData) {
         sumMonthData(monthData);
@@ -65,7 +67,7 @@ function startMonth(year, month, plan) {
     };
 }
 
-function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor) {
+function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor, spotPricesFor) {
     const dayData = {
         date: day.date,
         hours: [],
@@ -84,6 +86,16 @@ function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor) {
         return dayData;
     }
 
+    // Tarif spot sans données pour ce jour (avant 2023, trou, jour trop
+    // récent) : jour en erreur pour ce tarif seulement — les autres tarifs
+    // ont leur propre computeMonths.
+    const slotPrices = spotPricesFor ? spotPricesFor(day.date) : null;
+    if (spotPricesFor && !slotPrices) {
+        dayData.conso = NaN;
+        dayData.price = NaN;
+        return dayData;
+    }
+
     for (const [timeLabel, rawValue] of day.hours) {
         const [hour, minute] = timeLabel.split(":");
         const hourData = {
@@ -96,7 +108,9 @@ function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor) {
 
         const dayType = getDayType(dayData, hourData.time);
         const hc = hcRangesFor(dayType).some(range => isHC(hcHourOf(hourData.time), range));
-        const prixKwh = hc ? plan[dayType].prixKwhHC : plan[dayType].prixKwhHP;
+        const prixKwh = slotPrices
+            ? spotPrixKwh(slotPrices, hourData.time, step)
+            : (hc ? plan[dayType].prixKwhHC : plan[dayType].prixKwhHP);
 
         hourData.type = dayType + (hc ? " HC" : " HP");
         hourData.price = centimesToEuros(whToKwh(hourData.conso) * prixKwh);
@@ -124,6 +138,27 @@ function sumMonthData(monthData) {
         monthData.hasErrors = true;
         monthData.price += diffNumberOfDays * monthData.aboPriceByDay;
     }
+}
+
+// Prix spot du créneau de conso : moyenne des pas spot couverts par
+// l'intervalle du relevé. Un relevé étiqueté T couvre ]T - 60/step ; T] (même
+// convention que le classement HP/HC : minuit = fin de journée, heure 24).
+// Calcul en minutes — ne pas réutiliser hcHourOf, qui ignore les minutes
+// 15/45 des relevés quart-horaires. Les grilles 60/30/15 min s'alignent
+// toutes sur les pas spot de 60 min (24 valeurs) ou 15 min (96 valeurs).
+function spotPrixKwh(slotPrices, time, step) {
+    const mEnd = (time.hour === 24 || (time.hour === 0 && time.minute === 0))
+        ? 1440
+        : time.hour * 60 + time.minute;
+    const mStart = mEnd - 60 / step;
+    const slotMin = 1440 / slotPrices.length;
+    let sum = 0;
+    let count = 0;
+    for (let i = Math.floor(mStart / slotMin); i < Math.ceil(mEnd / slotMin); i++) {
+        sum += slotPrices[i];
+        count++;
+    }
+    return sum / count;
 }
 
 // Heure scalaire pour le classement HP/HC : minuit (00:00 ou 24:00) vaut 24,

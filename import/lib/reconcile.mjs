@@ -62,12 +62,19 @@ export function reconcileOffer(def, offer, lastUpdate) {
         }
     }
 
-    const dtDiff = keysDiff(def.dayTypes, offer.dayTypes);
-    if (dtDiff) {
-        issues.push(`dayTypes : ${describeKeysDiff('types de jour', dtDiff)}`);
-    } else {
-        for (const type of Object.keys(def.dayTypes)) {
-            compareDayTypeSpec(changes, issues, ['dayTypes', type], def.dayTypes[type], offer.dayTypes[type]);
+    // dayTypes est absent des tarifs spot (le kWh vient de spotFormula).
+    if (!!def.dayTypes !== !!offer.dayTypes) {
+        issues.push(def.dayTypes
+            ? 'dayTypes présents dans le repo mais pas dans le PDF'
+            : 'dayTypes présents dans le PDF mais pas dans le repo');
+    } else if (def.dayTypes) {
+        const dtDiff = keysDiff(def.dayTypes, offer.dayTypes);
+        if (dtDiff) {
+            issues.push(`dayTypes : ${describeKeysDiff('types de jour', dtDiff)}`);
+        } else {
+            for (const type of Object.keys(def.dayTypes)) {
+                compareDayTypeSpec(changes, issues, ['dayTypes', type], def.dayTypes[type], offer.dayTypes[type]);
+            }
         }
     }
 
@@ -98,6 +105,42 @@ export function reconcileOffer(def, offer, lastUpdate) {
                 for (const type of Object.keys(defOverrides[kva])) {
                     compareDayTypeSpec(changes, issues,
                         ['priceOverrides', kva, type], defOverrides[kva][type], offerOverrides[kva][type]);
+                }
+            }
+        }
+    }
+
+    // spotFormula (tarifs spot) : composantes scalaires ou saisonnières
+    // { hiver, ete } — deux niveaux au plus, comparaison feuille à feuille.
+    const defFormula = def.spotFormula || null;
+    const offerFormula = offer.spotFormula || null;
+    if (!!defFormula !== !!offerFormula) {
+        issues.push(defFormula
+            ? 'spotFormula présent dans le repo mais pas dans le PDF'
+            : 'spotFormula présent dans le PDF mais pas dans le repo');
+    } else if (defFormula) {
+        const sfDiff = keysDiff(defFormula, offerFormula);
+        if (sfDiff) {
+            issues.push(`spotFormula : ${describeKeysDiff('composantes', sfDiff)}`);
+        } else {
+            for (const key of Object.keys(defFormula)) {
+                const oldValue = defFormula[key];
+                const newValue = offerFormula[key];
+                if (oldValue !== null && typeof oldValue === 'object') {
+                    if (newValue === null || typeof newValue !== 'object') {
+                        issues.push(`spotFormula.${key} : objet attendu des deux côtés`);
+                        continue;
+                    }
+                    const seasonDiff = keysDiff(oldValue, newValue);
+                    if (seasonDiff) {
+                        issues.push(`spotFormula.${key} : ${describeKeysDiff('saisons', seasonDiff)}`);
+                        continue;
+                    }
+                    for (const season of Object.keys(oldValue)) {
+                        compareLeaf(changes, ['spotFormula', key, season], oldValue[season], newValue[season]);
+                    }
+                } else {
+                    compareLeaf(changes, ['spotFormula', key], oldValue, newValue);
                 }
             }
         }

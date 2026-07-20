@@ -3503,6 +3503,128 @@
     }
   },
   {
+    "name": "Sobry - SoCap",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-06-17",
+    "isCommunity": true,
+    "subscription_url": "https://sobry.co/",
+    "price_url": "https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.7488
+      },
+      {
+        "puissance": 6,
+        "abonnement": 21.0402
+      },
+      {
+        "puissance": 9,
+        "abonnement": 27.6276
+      },
+      {
+        "puissance": 12,
+        "abonnement": 33.5892
+      },
+      {
+        "puissance": 15,
+        "abonnement": 39.2046
+      },
+      {
+        "puissance": 18,
+        "abonnement": 44.592
+      },
+      {
+        "puissance": 24,
+        "abonnement": 54.873
+      },
+      {
+        "puissance": 30,
+        "abonnement": 64.7358
+      },
+      {
+        "puissance": 36,
+        "abonnement": 74.3088
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Sobry - SoFlex",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-06-17",
+    "isCommunity": true,
+    "subscription_url": "https://sobry.co/",
+    "price_url": "https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.7488
+      },
+      {
+        "puissance": 6,
+        "abonnement": 21.0402
+      },
+      {
+        "puissance": 9,
+        "abonnement": 27.6276
+      },
+      {
+        "puissance": 12,
+        "abonnement": 33.5892
+      },
+      {
+        "puissance": 15,
+        "abonnement": 39.2046
+      },
+      {
+        "puissance": 18,
+        "abonnement": 44.592
+      },
+      {
+        "puissance": 24,
+        "abonnement": 54.873
+      },
+      {
+        "puissance": 30,
+        "abonnement": 64.7358
+      },
+      {
+        "puissance": 36,
+        "abonnement": 74.3088
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
     "name": "TotalEnergie - Charge'Heures",
     "offer_type": "Marché",
     "lastUpdate": "2026-07-01",

@@ -185,9 +185,35 @@ hcRanges: { byDayType: { rouge: [/* plages */], hiver: [/* ... */], ete: [/* ...
 
 `calendarOverride` ne peut être combiné ni avec `weekendType` ni avec `hourSubTypes`.
 
-### Tarif au prix spot
+### Tarif au prix spot (type Sobry)
 
-Pas encore supporté (`dayRule.type: "spot"` est réservé et rejeté par la validation).
+Le prix du kWh varie à chaque créneau selon une série de prix de marché
+partagée (EPEX FR Day-Ahead), déclarée par `defineSpotPrices` dans
+`scripts/tarifs-lib/spot/` (fichiers annuels générés par
+`import/spot-update.mjs`, valeurs en EUR/MWh, 24 ou 96 par jour). Le tarif
+référence la série et déclare les composantes de sa formule — en
+**centimes/kWh hors TVA**, `tva` étant un multiplicateur :
+
+```js
+dayRule: { type: "spot", source: "epex-fr" },
+spotFormula: {
+    turpe: { hiver: 6.32, ete: 1.49 },   // TURPE variable moyen saisonnier
+    accise: 3.085,
+    cap: { hiver: 25.00, ete: 14.17 },   // plafond sur (spot + turpe + accise)
+    conformite: 1.00,                     // CEE + mécanisme de capacité
+    marge: 0.80,
+    prime: 0.70,                          // prime de couverture (hors plafond)
+    tva: 1.20
+}
+```
+
+Prix d'un créneau : `(min(spot + turpe[saison] + accise, cap[saison]) +
+conformite + marge + prime) × tva`, avec les saisons TURPE codées en dur
+(hiver = novembre à mars). `dayTypes`, `hcRanges` et `priceOverrides` sont
+interdits : la conso est agrégée sous l'unique bande « Prix spot ». Un jour
+sans données spot (avant 2023, trou de l'API) est marqué en erreur pour ce
+tarif seulement. Le fichier de données doit être chargé **avant** le tarif
+dans `index.html`.
 
 ## Déclarer le fichier
 

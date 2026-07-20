@@ -99,6 +99,90 @@ test('hcByDayType sans entrée pour le dayType : retombe sur hc', () => {
     assert.strictEqual(months[0].days[0].consoHP, 0);
 });
 
+// ------------------------------------------------------------------ //
+//  Tarifs spot : prix par créneau via spotPricesFor                  //
+// ------------------------------------------------------------------ //
+
+// Vue spot : grille sans types de jour, prix par pas fournis par date.
+function spotViewOf(pricesByDate, kva = 6) {
+    const grille = makeGrille({
+        prices: [{ puissance: 6, abonnement: 30 }],
+        getDayType: function () { return 'spot'; }
+    });
+    return {
+        ...viewOf(grille, kva),
+        spotPricesFor: date => pricesByDate[date] ?? null
+    };
+}
+
+// Journée à 96 pas de 15 min (relevés 00:15 ... 24:00).
+function makeQuarterDay(date, watts = 1000) {
+    const hours = [];
+    for (let i = 0; i < 96; i++) {
+        const minutes = (i + 1) * 15;
+        const hour = Math.floor(minutes / 60);
+        const minute = String(minutes % 60).padStart(2, '0');
+        hours.push([`${String(hour).padStart(2, '0')}:${minute}:00`, String(watts)]);
+    }
+    return { date, hours };
+}
+
+function priceAt(monthsData, timeLabel) {
+    const hour = monthsData[0].days[0].hours.find(h =>
+        `${String(h.time.hour).padStart(2, '0')}:${String(h.time.minute).padStart(2, '0')}` === timeLabel);
+    assert.ok(hour, `relevé ${timeLabel} introuvable`);
+    return hour.price;
+}
+
+test('spot : conso 30 min × prix horaires (24) — un relevé = son heure, minuit = dernier créneau', () => {
+    // Prix horaire = index de l'heure en centimes : lisible dans les attentes.
+    const slotPrices = Array.from({ length: 24 }, (_, h) => h);
+    const months = computeMonths(spotViewOf({ '2024/03/05': slotPrices }), [makeFullDay('2024/03/05', 1000)]);
+
+    // 1000 W à pas 30 min = 0,5 kWh par relevé.
+    assert.ok(Math.abs(priceAt(months, '00:30') - 0.5 * 0 / 100) < 1e-12); // heure 0
+    assert.ok(Math.abs(priceAt(months, '01:00') - 0.5 * 0 / 100) < 1e-12); // ]00:30;01:00] -> heure 0
+    assert.ok(Math.abs(priceAt(months, '01:30') - 0.5 * 1 / 100) < 1e-12); // heure 1
+    assert.ok(Math.abs(priceAt(months, '12:00') - 0.5 * 11 / 100) < 1e-12); // ]11:30;12:00] -> heure 11
+    assert.ok(Math.abs(priceAt(months, '24:00') - 0.5 * 23 / 100) < 1e-12); // minuit -> heure 23
+    // Classement : tout en HC (plage pleine journée), type "spot HC".
+    assert.strictEqual(typeAt(months, '12:00'), 'spot HC');
+    assert.strictEqual(months[0].days[0].consoHP, 0);
+});
+
+test('spot : conso 30 min × prix quart-horaires (96) — moyenne des deux quarts couverts', () => {
+    const slotPrices = Array.from({ length: 96 }, (_, i) => i);
+    const months = computeMonths(spotViewOf({ '2024/03/05': slotPrices }), [makeFullDay('2024/03/05', 1000)]);
+
+    // Relevé 00:30 couvre ]00:00;00:30] -> quarts 0 et 1, moyenne 0,5.
+    assert.ok(Math.abs(priceAt(months, '00:30') - 0.5 * 0.5 / 100) < 1e-12);
+    // Relevé 24:00 couvre ]23:30;24:00] -> quarts 94 et 95, moyenne 94,5.
+    assert.ok(Math.abs(priceAt(months, '24:00') - 0.5 * 94.5 / 100) < 1e-12);
+});
+
+test('spot : conso 15 min × prix horaires (24) — chaque relevé lit son heure', () => {
+    const slotPrices = Array.from({ length: 24 }, (_, h) => h);
+    const months = computeMonths(spotViewOf({ '2024/03/05': slotPrices }), [makeQuarterDay('2024/03/05', 1000)]);
+
+    // 1000 W à pas 15 min = 0,25 kWh par relevé.
+    assert.ok(Math.abs(priceAt(months, '00:15') - 0.25 * 0 / 100) < 1e-12);
+    assert.ok(Math.abs(priceAt(months, '11:45') - 0.25 * 11 / 100) < 1e-12); // ]11:30;11:45] -> heure 11
+    assert.ok(Math.abs(priceAt(months, '12:00') - 0.25 * 11 / 100) < 1e-12); // ]11:45;12:00] -> heure 11
+    assert.ok(Math.abs(priceAt(months, '12:15') - 0.25 * 12 / 100) < 1e-12);
+    assert.ok(Math.abs(priceAt(months, '24:00') - 0.25 * 23 / 100) < 1e-12);
+});
+
+test('spot : jour sans données -> NaN pour ce tarif seulement', () => {
+    const view = spotViewOf({}); // aucune date connue
+    const months = computeMonths(view, [makeFullDay('2022/03/05', 1000)]);
+    assert.ok(Number.isNaN(months[0].days[0].conso));
+    assert.ok(Number.isNaN(months[0].days[0].price));
+
+    // La même journée sur une vue classique (sans spotPricesFor) se calcule.
+    const classic = computeMonths(viewOf(makeGrille()), [makeFullDay('2022/03/05', 1000)]);
+    assert.ok(!Number.isNaN(classic[0].days[0].price));
+});
+
 test('sumPeriod : filtre par mois et exclut les NaN', () => {
     const monthsData = [
         { firstDayDate: new Date(2024, 0, 1), conso: 100, price: 10 },

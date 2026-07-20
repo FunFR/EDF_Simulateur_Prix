@@ -13,12 +13,13 @@ const BAND_REGISTRY = {
     hc: { label: "Heures creuses", short: "HC", color: "#2a78d6" },
     hsc: { label: "Super creuses", short: "HSC", color: "#1baf7a" },
     happy: { label: "Heures happy", short: "Happy", color: "#4a3aa7" },
+    spot: { label: "Prix spot", short: "Spot", color: "#0e7c86" },
     base: { label: "Prix unique", short: "Base", color: "#898781" }
 };
 
 // Ordre d'affichage des colonnes/légendes : du plus cher au moins cher,
 // puis les bandes spéciales.
-const BAND_DISPLAY_ORDER = ["hp", "hc", "hsc", "happy", "base"];
+const BAND_DISPLAY_ORDER = ["hp", "hc", "hsc", "happy", "spot", "base"];
 
 // Noms de types de jour connus : à prix unique, leur bande se confond avec le
 // jour et s'affiche « Prix unique ».
