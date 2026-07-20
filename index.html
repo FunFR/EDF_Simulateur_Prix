@@ -83,6 +83,63 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "inLanguage": "fr-FR",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Pourquoi le résultat diffère-t-il de ma facture ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les tarifs en vigueur aujourd'hui sont appliqués à votre consommation passée. Si un tarif a changé entre-temps, le montant simulé peut différer de ce que vous avez réellement payé. L'objectif est de comparer les offres entre elles à consommation identique, pas de reconstituer vos factures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment le comparateur trouve-t-il l'offre la moins chère ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le simulateur calcule le coût total de chaque offre sur votre historique de consommation, sans le modifier. Il montre quel abonnement aurait été le moins cher avec vos habitudes actuelles. Vous pourrez peut-être économiser davantage en décalant ensuite certains usages vers les heures creuses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mes données Linky sont-elles envoyées quelque part ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Tout est calculé localement dans votre navigateur : votre fichier de consommation n'est jamais transmis à un serveur. Le site n'utilise ni cookies, ni trackers, ni outil de mesure d'audience. Vous pouvez même exécuter l'outil sur votre machine depuis son code source."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelles données faut-il pour un résultat précis ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il faut un export de consommation Linky au pas de 30 minutes (suivi à la demi-heure activé sur le compteur) et idéalement au moins un an de données, de mars à mars, pour couvrir toutes les saisons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Les résultats sont-ils fiables ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les calculs sont testés régulièrement contre des cas réels, mais de légères différences restent possibles. Les écarts constatés peuvent être signalés via les issues GitHub du projet, où les retours sont traités pour affiner les résultats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'outil est-il gratuit et open source ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Le comparateur est entièrement gratuit, sans inscription, et son code source est en accès libre sur GitHub (https://github.com/JC144/EDF_Simulateur_Prix). Chacun peut vérifier son fonctionnement, l'exécuter en local ou contribuer."
+          }
+        }
+      ]
+    }
+    </script>
 
 </head>
 
@@ -97,61 +154,74 @@
                  Vue 1 : Présentation — intro, notes et bouton Démarrer
                  ================================================================ -->
             <div id="presentationView">
-                <h5 class="text-center mt-4 mb-5">
+                <p class="h5 fw-normal text-center mt-4 mb-4">
                     Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
                     d'électricité,<br /> en se basant sur <strong>l'historique de votre consommation Linky</strong>.
-                </h5>
+                </p>
 
-                <div class="alert alert-success fade show" role="alert">
-                    <div class="text-justify">
-                        <strong class="alert-heading"><i class="fa-solid fa-circle-check toast-icon"></i> Notes:
-                        </strong>
-                        <ul>
-                            <li><strong>Nous appliquons les tarifs en cours sur une consommation passée.</strong> Cela
-                                veut
-                                dire que vous pouvez constater une différence avec ce que vous avez payé si le tarif a
-                                changé entre temps.</li>
-                            <li>L'outil est là pour savoir quel tarif aurait été le moins cher sans changer votre
-                                consommation. Vous pourrez peut-être économiser encore plus en jouant sur les heures
-                                creuses.</li>
-                            <li>Nous faisons des tests réguliers mais nous n'excluons pas de légères différences. Nous
-                                restons assez réactif à <a
-                                    href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos
-                                    retours</a> pour affiner nos résultats.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="d-block text-center m-4">
-                    <button type="button" class="btn btn-success mt-4 mb-4" id="startButton">Démarrer <i
+                <div class="d-block text-center mb-5">
+                    <button type="button" class="btn btn-success btn-lg" id="startButton">Démarrer <i
                             class="fa-solid fa-play ms-2"></i></button>
+                    <p class="small text-muted mt-2 mb-0">
+                        <i class="fa-solid fa-lock me-1"></i>100&nbsp;% local&nbsp;: vos données Linky ne quittent
+                        jamais votre navigateur. Pas de cookies, pas de trackers.
+                    </p>
                 </div>
-                <div class="text-justify alert alert-info fade show" role="alert">
-                    <strong class="alert-heading"><i class="fa-solid fa-circle-info toast-icon"></i> Infos:
-                    </strong><br />
-                    <ul>
-                        <li>Ce projet est en accès libre sur <a
-                                href="https://github.com/JC144/EDF_Simulateur_Prix">Github</a><br />
-                            <small>(si vous voulez savoir comment il fonctionne ou l'exécuter en local.)</small><br />
-                        </li>
-                    </ul>
 
-                    <hr>
+                <section id="fonctionnement" class="mb-5">
+                    <h2>Comment fonctionne le calcul&nbsp;?</h2>
+                    <p class="text-justify">
+                        Le simulateur rejoue votre consommation réelle, demi-heure par demi-heure, sur la grille
+                        tarifaire de chaque offre suivie. L'abonnement annuel est proratisé au jour près sur la
+                        période importée. Pour les offres à prix variables, les vrais calendriers sont appliqués&nbsp;:
+                        couleurs des jours <strong>Tempo</strong>, jours <strong>EJP</strong> et plages
+                        d'<strong>heures creuses</strong> propres à chaque contrat. Les offres indexées sur le marché
+                        utilisent les prix spot réels (EPEX, via energy-charts.info). Les grilles tarifaires sont
+                        versionnées dans le code avec leur date de mise à jour et actualisées régulièrement à partir
+                        des documents officiels des fournisseurs — voir la liste des
+                        <a href="#tarifs-suivis">tarifs actuellement suivis</a>.
+                    </p>
+                </section>
 
-                    <ul>
-                        <li><small><b>Tout est géré en local, aucune donnée n'est transmise sur les réseaux. Pas de
-                                    cookies, pas de trackers. </b></small><br /></li>
-                    </ul>
+                <section id="faq" class="mb-5">
+                    <h2>Questions fréquentes</h2>
 
-                    <hr>
+                    <h3 class="h5 mt-4">Pourquoi le résultat diffère-t-il de ma facture&nbsp;?</h3>
+                    <p class="text-justify">Nous appliquons les tarifs en vigueur aujourd'hui à votre consommation
+                        passée. Si un tarif a changé entre-temps, le montant simulé peut donc différer de ce que vous
+                        avez réellement payé. L'objectif est de comparer les offres entre elles à consommation
+                        identique, pas de reconstituer vos factures.</p>
 
-                    <ul>
-                        <li>Pour un résultat précis, il vous faudra</li>
-                        <ul>
-                            <li>Avoir activé le suivi à la demi-heure sur votre compteur Linky</li>
-                            <li>Avoir au moins un an de données (de Mars à Mars)</li>
-                        </ul>
-                    </ul>
-                </div>
+                    <h3 class="h5 mt-4">Comment le comparateur trouve-t-il l'offre la moins chère&nbsp;?</h3>
+                    <p class="text-justify">Le simulateur calcule le coût total de chaque offre sur votre historique
+                        de consommation, sans le modifier. Il montre quel abonnement aurait été le moins cher avec vos
+                        habitudes actuelles. Vous pourrez peut-être économiser davantage en décalant ensuite certains
+                        usages vers les heures creuses.</p>
+
+                    <h3 class="h5 mt-4">Mes données Linky sont-elles envoyées quelque part&nbsp;?</h3>
+                    <p class="text-justify">Non. Tout est calculé localement dans votre navigateur&nbsp;: votre
+                        fichier de consommation n'est jamais transmis à un serveur. Le site n'utilise ni cookies, ni
+                        trackers, ni outil de mesure d'audience. Vous pouvez même exécuter l'outil sur votre machine
+                        depuis son code source.</p>
+
+                    <h3 class="h5 mt-4">Quelles données faut-il pour un résultat précis&nbsp;?</h3>
+                    <p class="text-justify">Il vous faut un export de consommation Linky au pas de 30 minutes —
+                        pensez à activer le suivi à la demi-heure sur votre compteur si ce n'est pas déjà fait — et
+                        idéalement au moins un an de données (de mars à mars) pour couvrir toutes les saisons.</p>
+
+                    <h3 class="h5 mt-4">Les résultats sont-ils fiables&nbsp;?</h3>
+                    <p class="text-justify">Les calculs sont testés régulièrement contre des cas réels, mais nous
+                        n'excluons pas de légères différences. Si vous constatez un écart, signalez-le via
+                        <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos retours</a> sur
+                        GitHub&nbsp;: nous restons réactifs pour affiner les résultats.</p>
+
+                    <h3 class="h5 mt-4">L'outil est-il gratuit et open source&nbsp;?</h3>
+                    <p class="text-justify">Oui. Le comparateur est entièrement gratuit, sans inscription, et son code
+                        source est en accès libre sur
+                        <a href="https://github.com/JC144/EDF_Simulateur_Prix">GitHub</a>. Vous pouvez vérifier
+                        comment il fonctionne, l'exécuter en local ou contribuer, par exemple en mettant à jour les
+                        grilles tarifaires.</p>
+                </section>
             </div>
             <!-- ================================================================
                  Vue 2 : Import & réglages — puissance, jour Zen+, heures creuses,

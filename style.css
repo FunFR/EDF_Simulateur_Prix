@@ -197,6 +197,10 @@ h6 {
   cursor: pointer;
 }
 
+#startButton {
+  min-height: 44px;
+}
+
 .btn-primary {
   background-color: var(--primary-color);
   color: #fff;
@@ -480,6 +484,11 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  /* Cible tactile minimale (WCAG / audit SEO 2.7) */
+  .btn {
+    min-height: 44px;
+  }
+
   .wizard-stepper-label {
     display: none;
   }
