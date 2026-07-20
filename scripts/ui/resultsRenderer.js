@@ -1,6 +1,7 @@
 import { getMonthName } from '../utils/date.js';
 import { cloneTemplate } from './dom.js';
 import { bandColumns, buildDayModel } from './tariffDisplay.js';
+import { renderDayChart } from './dayChart.js';
 
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
@@ -97,7 +98,10 @@ function renderMonthDetail(m, display) {
 
     //Les jours sont affichés du plus récent au plus ancien
     for (let j = m.days.length - 1; j >= 0; j--) {
-        refs["daily-body"].appendChild(renderDayRow(m.days[j], display, bands));
+        // Zébrage par paire ligne jour + ligne graphe (table-striped ne
+        // convient plus : les lignes de graphe masquées cassent l'alternance).
+        const isAlternate = (m.days.length - 1 - j) % 2 === 1;
+        refs["daily-body"].appendChild(renderDayRow(m.days[j], display, bands, isAlternate));
     }
 
     return fragment;
@@ -118,17 +122,23 @@ function appendColumnHeader(headerRow, label, color, align) {
     headerRow.appendChild(fragment);
 }
 
-function renderDayRow(day, display, bands) {
+function renderDayRow(day, display, bands, isAlternate) {
     const hasError = isNaN(day.conso) || isNaN(day.price);
     if (hasError) {
         const { fragment, refs } = cloneTemplate("tpl-day-row-error");
         refs["date"].textContent = day.date;
         refs["error-cell"].colSpan = bands.length + 2;
+        if (isAlternate) {
+            refs["date"].parentElement.classList.add("day-row-alt");
+        }
         return fragment;
     }
 
     const model = buildDayModel(day, display);
     const { fragment, refs } = cloneTemplate("tpl-day-row");
+    if (isAlternate) {
+        refs["date-cell"].parentElement.classList.add("day-row-alt");
+    }
 
     refs["date"].textContent = day.date;
     refs["date-cell"].setAttribute("data-label", "Jour");
@@ -155,6 +165,23 @@ function renderDayRow(day, display, bands) {
 
     priceCell.textContent = day.price.toFixed(2) + "€";
     priceCell.setAttribute("data-label", "Total");
+
+    // Graphe horaire : ligne masquée, SVG construit à la première ouverture.
+    const chart = cloneTemplate("tpl-day-chart");
+    const chartRow = chart.refs["chart-row"];
+    const chartCell = chart.refs["chart-cell"];
+    chartCell.colSpan = bands.length + 3;
+    if (isAlternate) {
+        chartRow.classList.add("day-row-alt");
+    }
+    refs["chart-toggle"].addEventListener("click", (event) => {
+        if (!chartCell.hasChildNodes()) {
+            chartCell.appendChild(renderDayChart(day, display));
+        }
+        chartRow.toggleAttribute("hidden");
+        event.currentTarget.classList.toggle("day-chart-toggle-open", !chartRow.hasAttribute("hidden"));
+    });
+    fragment.appendChild(chart.fragment);
 
     return fragment;
 }

@@ -106,6 +106,36 @@ h6 {
   border: 1px solid rgba(11, 11, 11, 0.1);
 }
 
+/* Zébrage par paire ligne jour + ligne graphe. */
+.day-row-alt>td {
+  background-color: rgba(52, 152, 219, 0.06);
+}
+
+/* Graphe horaire d'une journée (SVG généré par scripts/ui/dayChart.js). */
+.day-chart-toggle .fa-chevron-right {
+  transition: transform 0.2s ease;
+}
+
+.day-chart-toggle-open .fa-chevron-right {
+  transform: rotate(90deg);
+}
+
+.day-chart-cell {
+  padding: 0.25rem 1rem 0.75rem;
+}
+
+.day-chart svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.day-chart-legend {
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;

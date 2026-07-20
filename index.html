@@ -686,7 +686,7 @@
     <template id="tpl-month-detail">
         <h3 class="main-title d-inline ms-2" data-ref="month-name"></h3>
         <h4 class="sub-title float-end" data-ref="month-summary"></h4>
-        <table class="mt-2 ms-2 table table-striped table-sm align-middle">
+        <table class="mt-2 ms-2 table table-sm align-middle">
             <thead class="align-middle">
                 <tr data-ref="header-row"></tr>
             </thead>
@@ -700,14 +700,23 @@
                 data-ref="label"></span></th>
     </template>
 
-    <!-- Ligne journalière : date + badge de type de jour, conso totale,
-         cellules de bandes insérées dynamiquement, total -->
+    <!-- Ligne journalière : chevron de graphe + date + badge de type de jour,
+         conso totale, cellules de bandes insérées dynamiquement, total -->
     <template id="tpl-day-row">
         <tr>
-            <td class="text-start align-middle" data-ref="date-cell"><span data-ref="date"></span><span
-                    class="badge daytype-badge ms-2" data-ref="day-badge"></span></td>
+            <td class="text-start align-middle" data-ref="date-cell"><button type="button"
+                    class="btn btn-sm btn-link p-0 me-2 day-chart-toggle" title="Détail horaire"
+                    data-ref="chart-toggle"><i class="fa-solid fa-chevron-right"></i></button><span
+                    data-ref="date"></span><span class="badge daytype-badge ms-2" data-ref="day-badge"></span></td>
             <td class="text-center align-middle" data-ref="conso"></td>
             <td class="text-end align-middle" data-ref="price"></td>
+        </tr>
+    </template>
+
+    <!-- Ligne de graphe horaire d'un jour (masquée, rendue à la première ouverture) -->
+    <template id="tpl-day-chart">
+        <tr hidden data-ref="chart-row">
+            <td class="day-chart-cell" data-ref="chart-cell"></td>
         </tr>
     </template>
 
