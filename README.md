@@ -3,6 +3,22 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
+## ☀️ Méga-Update estivale ☀️
+* **Import Enedis simplifié** : récupérez votre consommation directement depuis votre navigateur, sans extension ni service tiers
+* **Questionnaire initial repensé**
+  * Assistant pas-à-pas plus ergonomique
+  * Retour en arrière possible à chaque étape
+  * Champs de saisie plus lisibles
+* **Comparateur de prix**
+  * Répartition de la consommation par type de prix (heures pleines, heures creuses, etc.)
+  * Performances nettement améliorées et consommation mémoire fortement réduite
+  * Indicateur signalant les mois pour lesquels il manque des jours de consommation
+* **Abonnements**
+  * Mise à jour automatique des prix de la plupart des abonnements (depuis les grilles tarifaires officielles)
+  * Récupération automatique des jours Tempo, EJP et ZenFlex
+  * Prise en charge des tarifs spot (notamment les offres Sobry)
+* **À venir** : estimation du potentiel solaire
+
 ## Utilisation
 
 ### Accéder à ce comparateur
@@ -28,13 +44,7 @@ Vous pouvez accéder à l'outil depuis cette url : [https://comparateur-abonneme
 2. Dézippez ce répertoire
 
 ### Depuis le site d'Enedis
-1. Depuis le site d'Enedis: [https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/](https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/)
-2. Cliquez sur "Nouveau Téléchargement" en haut à droite
-3. Sélectionnez "Consommation horaire"
-4. Cliquez sur Date de début et cherchez la date la plus ancienne
-5. Cliquez sur Télécharger mes données
-6. Revenez plus tard sur la page "Mes téléchargements". La génération du fichier n'est pas immédiate
-7. Quand une nouvelle ligne apparaît sur cette page, cliquez sur la flèche pour télécharger
+1. Suivez les instructions directement dans l'outil (en déroulant le menu "Comment récupérer les données de mon fournisseur ?")
 
 ### Depuis le site de TotalEnergies
 1. Depuis le site de TotalEnergies [https://www.totalenergies.fr/clients/ma-conso](https://www.totalenergies.fr/clients/ma-conso)
