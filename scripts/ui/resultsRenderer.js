@@ -1,7 +1,8 @@
 import { getMonthName } from '../utils/date.js';
 import { cloneTemplate } from './dom.js';
-import { bandColumns, buildDayModel } from './tariffDisplay.js';
+import { bandColumns, buildDayModel, buildPeriodShare } from './tariffDisplay.js';
 import { renderDayChart } from './dayChart.js';
+import { renderBandShareBar } from './bandShareBar.js';
 
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
@@ -51,6 +52,14 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
     else {
         refs["link-br"].remove();
         refs["provider-link"].remove();
+    }
+
+    const share = buildPeriodShare(result.tarif.months, result.display);
+    if (share) {
+        refs["band-share"].appendChild(renderBandShareBar(share));
+    }
+    else {
+        refs["band-share"].remove();
     }
 
     insertTextBeforeSup(refs["monthly-price"], (result.tarif.price / monthCount).toFixed(2));

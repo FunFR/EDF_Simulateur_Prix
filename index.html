@@ -128,8 +128,8 @@
                                 <select class="form-select form-control" aria-label=".form-select"
                                     id="puissanceSouscrite">
                                     <option value="3">3 kVA</option>
-                                    <option value="6" selected>6 kVA</option>
-                                    <option value="9">9 kVA</option>
+                                    <option value="6">6 kVA</option>
+                                    <option value="9" selected>9 kVA</option>
                                     <option value="12">12 kVA</option>
                                     <option value="15">15 kVA</option>
                                     <option value="18">18 kVA</option>
@@ -646,6 +646,7 @@
                     <a class="ms-2 providerLink" target="_blank" rel="noopener" data-ref="provider-link">Site du
                         fournisseur</a>
                 </div>
+                <div class="fw-normal ms-2" data-ref="band-share"></div>
             </th>
             <td class="text-center align-middle">
                 <div class="container justify-content-center">
@@ -680,6 +681,15 @@
                 class="fa-solid fa-circle-plus"></i><sup> €/mois</sup></span>
         <div class="h5 row">
             <span class="badge fw-bold text-muted" data-ref="diff-total"><br /></span>
+        </div>
+    </template>
+
+    <!-- Mini barre 100 % empilée de répartition de la conso par tranche,
+         sous le nom du tarif (SVG construit par scripts/ui/bandShareBar.js) -->
+    <template id="tpl-band-share">
+        <div class="band-share">
+            <div data-ref="bar"></div>
+            <div class="band-share-legend small text-muted" data-ref="legend"></div>
         </div>
     </template>
 
