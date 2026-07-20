@@ -1,37 +1,15 @@
 // Calendrier des jours Tempo (EDF), partagé entre les tarifs qui suivent le
 // calendrier Tempo officiel (EDF - Tempo aujourd'hui, réutilisable par d'autres
-// fournisseurs). Pour ajouter un jour rouge ou blanc annoncé : ajouter la date
-// au format "AAAA/MM/JJ" dans la liste correspondante, ce fichier est le seul
-// à modifier. Les jours absents des listes sont bleus.
+// fournisseurs). Les jours absents des listes sont bleus.
+// Mis à jour par import/tempo-update.mjs depuis l'API officielle EDF ; un ajout
+// manuel (date "AAAA/MM/JJ") reste possible, il sera préservé ou corrigé au
+// prochain run du script.
 defineCalendar("tempo-edf", {
     rouge: {
         numberOfDays: 22,
         monthBegin: 11,
         monthEnd: 3,
         days: [
-            "2020/12/02",
-            "2020/12/07",
-            "2020/12/08",
-            "2020/12/09",
-            "2020/12/31",
-            "2021/01/04",
-            "2021/01/05",
-            "2021/01/06",
-            "2020/01/07",
-            "2020/01/20",
-            "2020/01/21",
-            "2020/01/22",
-            "2020/01/23",
-            "2020/01/24",
-            "2020/01/29",
-            "2020/02/05",
-            "2020/02/06",
-            "2020/02/19",
-            "2020/03/02",
-            "2020/03/03",
-            "2020/03/04",
-            "2020/03/05",
-            "2020/03/06",
             "2020/12/02",
             "2020/12/07",
             "2020/12/08",
@@ -60,12 +38,7 @@ defineCalendar("tempo-edf", {
             "2021/12/15",
             "2021/12/20",
             "2021/12/21",
-            "2021/01/22",
-            "2022/12/08",
-            "2022/12/12",
-            "2022/12/13",
-            "2022/12/14",
-            "2022/12/08",
+            "2021/12/22",
             "2022/01/06",
             "2022/01/10",
             "2022/01/11",
@@ -168,7 +141,7 @@ defineCalendar("tempo-edf", {
             "2026/03/26",
             "2026/03/27",
             "2026/03/30",
-            "2026/03/31"
+            "2026/03/31",
         ]
     },
     blanc: {
@@ -342,6 +315,12 @@ defineCalendar("tempo-edf", {
             "2024/03/13",
             "2024/03/26",
             "2024/04/10",
+            "2024/04/18",
+            "2024/04/22",
+            "2024/04/23",
+            "2024/04/24",
+            "2024/04/25",
+            "2024/04/26",
             "2024/11/14",
             "2024/11/15",
             "2024/11/20",
@@ -422,7 +401,12 @@ defineCalendar("tempo-edf", {
             "2026/03/10",
             "2026/03/14",
             "2026/04/01",
-            "2026/04/02"
+            "2026/04/02",
+            "2026/05/18",
+            "2026/05/26",
+            "2026/05/27",
+            "2026/05/28",
+            "2026/05/29",
         ]
     }
 });

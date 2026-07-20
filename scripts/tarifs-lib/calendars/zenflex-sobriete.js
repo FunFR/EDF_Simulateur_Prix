@@ -1,14 +1,14 @@
 // Calendrier des jours de sobriété de l'option Zen Week-End Flex (EDF).
-// Pour ajouter un jour de sobriété annoncé : ajouter la date "AAAA/MM/JJ" ici,
-// ce fichier est le seul à modifier.
+// Les jours absents de la liste sont des jours normaux.
+// Mis à jour par import/zenflex-update.mjs depuis l'API OPM d'EDF, dont
+// l'historique commence à la saison 2023-2024 : les jours antérieurs au
+// 2023-09-01 (saisie manuelle d'origine) sont préservés tels quels.
 defineCalendar("zenflex-sobriete", {
     sobriete: {
         numberOfDays: 20,
         monthBegin: 10,
         monthEnd: 4,
         days: [
-            "2021/01/05",
-            "2021/01/06",
             "2020/01/07",
             "2020/01/20",
             "2020/01/21",
@@ -27,6 +27,7 @@ defineCalendar("zenflex-sobriete", {
             "2020/12/02",
             "2020/12/07",
             "2020/12/08",
+            "2021/01/05",
             "2021/01/06",
             "2021/01/07",
             "2021/01/08",
@@ -121,7 +122,13 @@ defineCalendar("zenflex-sobriete", {
             "2026/01/09",
             "2026/01/26",
             "2026/01/28",
-            "2026/01/29"
+            "2026/01/29",
+            "2026/02/17",
+            "2026/02/18",
+            "2026/03/16",
+            "2026/03/17",
+            "2026/03/25",
+            "2026/03/26",
         ]
     }
 });

@@ -66,6 +66,8 @@ Le SHA-256 du manifest n'est mis à jour **que** lorsqu'une grille est réconcil
 ```
 update.mjs            point d'entrée CLI (voir --help ci-dessus)
 spot-update.mjs       mise à jour des prix spot EPEX FR (voir « Prix spot » ci-dessous)
+tempo-update.mjs      mise à jour des calendriers Tempo/EJP (voir « Calendriers Tempo / EJP » ci-dessous)
+zenflex-update.mjs    mise à jour du calendrier des jours de sobriété Zenflex (voir « Calendrier Zenflex » ci-dessous)
 manifest.json         état persistant par URL { sha256, etag, lastChecked, lastApplied } — committé
 lib/
   tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs)
@@ -77,6 +79,8 @@ lib/
   dates.mjs           dates françaises ("1er février 2026", "1 juil. 2026", "12/06/2026", mots éclatés)
   reconcile.mjs       diff parser <-> repo : changements de valeurs vs divergences structurelles
   spot-data.mjs       logique pure des prix spot : jours locaux Paris, normalisation DST, sérialisation
+  tempo-data.mjs      logique pure des calendriers Tempo/EJP : mapping statuts API, fusion, sérialisation
+  zenflex-data.mjs    logique pure du calendrier Zenflex : config + parsing de l'API OPM (le reste vient de tempo-data.mjs)
   patch-tarif.mjs     remplacement ciblé dans les littéraux defineTarif (multi-blocs par fichier)
   revalidate.mjs      rechargement VM avec la vraie lib tarifs avant écriture
   readme.mjs          section « Derniers tarifs » du README racine
@@ -113,6 +117,64 @@ tarifs spot uniquement — c'est le cas du 2025-09-30, jour de la bascule de
 granularité, publié tout à `null` par SMARD). À la bascule d'année, ajouter
 la balise `<script>` du nouveau fichier dans `index.html` (le script le
 signale). Logique pure testée dans `tests/spot-data.test.mjs`.
+
+## Calendriers Tempo / EJP (tempo-update.mjs)
+
+Les jours rouges/blancs Tempo (`scripts/tarifs-lib/calendars/tempo-edf.js`) et
+les jours de pointe EJP (`ejp-edf.js`) sont mis à jour depuis l'API officielle
+EDF `api-commerce.edf.fr` (celle du site particulier.edf.fr) :
+
+```powershell
+node tempo-update.mjs                # incrémental : reprend après la dernière date spéciale connue
+node tempo-update.mjs --dry-run      # sans écriture (rapport +ajoutés/-retirés)
+node tempo-update.mjs --full         # ré-importe tout l'historique depuis 2020-11-01
+node tempo-update.mjs --option TEMPO # un seul calendrier (TEMPO ou EJP)
+node tempo-update.mjs --from 2026-01-01 --to 2026-01-31   # fenêtre explicite
+```
+
+Particularités : l'API exige deux en-têtes (`application-origine-controlee:
+site_RC`, `situation-usage: Jours Effacement`), sinon 400 ; plage limitée à
+un an par requête (le script tranche par année) ; les statuts par défaut
+(`TEMPO_BLEU`, `NON_EJP`, `HORS_PERIODE_EJP`) et `NON_DEFINI` (jours futurs
+pas encore annoncés — la couleur du lendemain tombe vers 11h) ne sont pas
+stockés : les calendriers ne listent que les jours spéciaux. Tout statut
+inconnu fait échouer le run. Le fichier est re-sérialisé entièrement
+(revalidation VM avant écriture, comme le reste du dossier). Après mise à
+jour : relire `git diff scripts/tarifs-lib/calendars` puis régénérer les
+goldens (`UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"`). Le premier
+import (2026-07) a été fait en `--full` : il a purgé les erreurs des listes
+historiques saisies à la main (16 dates Tempo mistypées « 2020 », doublons,
+saison EJP 2025-2026 manquante). Logique pure testée dans
+`tests/tempo-data.test.mjs`.
+
+## Calendrier Zenflex (zenflex-update.mjs)
+
+Les jours de sobriété Zen Week-End Flex
+(`scripts/tarifs-lib/calendars/zenflex-sobriete.js`) sont mis à jour depuis
+l'API OPM d'EDF `particulier.edf.fr/services/rest/opm/getOPMStatut` (aucun
+en-tête particulier requis) :
+
+```powershell
+node zenflex-update.mjs              # incrémental : reprend après la dernière date connue
+node zenflex-update.mjs --dry-run    # sans écriture (rapport +ajoutés/-retirés)
+node zenflex-update.mjs --full       # ré-importe tout l'historique API depuis 2023-09-01
+node zenflex-update.mjs --from 2026-01-01 --to 2026-01-31   # fenêtre explicite
+```
+
+Particularités : l'API se requête **une date à la fois**
+(`?dateRelevant=AAAA-MM-JJ`) et répond `{ couleurJourJ, couleurJourJ1 }`
+(statut du jour demandé et du lendemain — le script ne requête donc qu'une
+date sur deux). Seul `ZENF_PM` (sobriété) est stocké ; `RAS`, `NON_DETERMINE`
+(futur / hors saison), `ZENF_BONIF` (jours bonifiés d'hiver) et `ZENF_BONUS`
+(jours bonus d'été) sont ignorés — ces deux derniers ne sont pas pricés par
+le tarif du repo —, tout autre statut fait échouer le run.
+**L'historique API commence à la saison 2023-2024** (les jours de sobriété
+connus de 2020-2022 répondent `RAS`) : contrairement à Tempo/EJP, `--full` ne
+remplace que la fenêtre re-fetchée et préserve toujours les jours antérieurs
+au 2023-09-01 (saisie manuelle d'origine, y compris ses dates douteuses
+« 2020/01/xx », invérifiables via l'API). Même workflow qu'au-dessus après un
+run : `git diff scripts/tarifs-lib/calendars` puis goldens. Logique pure
+testée dans `tests/zenflex-data.test.mjs`.
 
 ## Quand une grille change de mise en page
 
