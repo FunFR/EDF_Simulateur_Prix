@@ -254,14 +254,13 @@
                                 Vos données Linky
                             </h4>
 
-                            <div class="mt-3 mb-3 form-group maxinput" x-data="{ fileName: '' }">
-                                <div class="input-group">
-                                    <span class="input-group-text px-3 text-muted"><i
-                                            class="fa-solid fa-file-csv"></i></span>
-                                    <input type="file" id="csvFile" accept=".csv"
-                                        class="form-control form-control-lg" />
-                                </div>
-                            </div>
+                            <label class="upload-dropzone mt-3 mb-3" for="csvFile" id="csvDropzone">
+                                <i class="fa-solid fa-file-arrow-up upload-dropzone-icon"></i>
+                                <span class="upload-dropzone-title">Choisissez votre fichier CSV</span>
+                                <span class="upload-dropzone-hint">ou glissez-déposez-le ici</span>
+                                <span class="upload-dropzone-file d-none" id="csvFileName"></span>
+                                <input type="file" id="csvFile" accept=".csv" class="upload-dropzone-input" />
+                            </label>
 
                             <div>
                                 <p class="text-muted">
@@ -458,24 +457,21 @@
                                         impérativement sur le site du fournisseur avant de prendre une
                                         décision.</strong></p>
                             </div>
-                            <div class="form-check">
+                            <label class="choice-card" for="communityRadioIsNotCommunity">
                                 <input class="form-check-input" type="radio" name="communityPricesRadio"
-                                    value="isNotCommunity" id="communityRadioIsNotCommunity">
-                                <label class="form-check-label" for="communityRadioIsNotCommunity">
+                                    value="isNotCommunity" id="communityRadioIsNotCommunity" checked>
+                                <span>
                                     Je souhaite uniquement les tarifs suivis par le développeur.
-                                </label>
-                            </div>
-                            <div class="form-check">
+                                </span>
+                            </label>
+                            <label class="choice-card" for="communityRadioIsCommunity">
                                 <input class="form-check-input" type="radio" name="communityPricesRadio"
                                     value="isCommunity" id="communityRadioIsCommunity">
-                                <label class="form-check-label" for="communityRadioIsCommunity">
+                                <span>
                                     Je veux comparer avec les tarifs communautaires, je comprends que je devrais
                                     vérifier sur leur site s'ils sont à jour.
-                                </label>
-                            </div>
-                            <div class="d-none alert alert-danger" role="alert" id="community-alert">
-                                Vous devez choisir le type de tarif que vous souhaitez visualiser.
-                            </div>
+                                </span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -770,10 +766,8 @@
     <script src="./scripts/tarifs/enercoop/flexibiliteHC.js"></script>
     <script src="./scripts/tarifs/enercoop/flexibiliteHCWE.js"></script>
     <script src="./scripts/tarifs/enercoop/flexibiliteSaison.js"></script>  
-
-    <script src="./scripts/tarifs/engie/electHappyHeuresVertes1an.js"></script>    
-    <script src="./scripts/tarifs/engie/electReference3ans.js"></script>
-    <script src="./scripts/tarifs/engie/electTranquilite1an.js"></script>    
+   
+    <script src="./scripts/tarifs/engie/electReference3ans.js"></script> 
 
     <script src="./scripts/tarifs/labelleenergie/constance.js"></script>
     <script src="./scripts/tarifs/labelleenergie/constanceHC.js"></script>

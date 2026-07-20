@@ -705,78 +705,6 @@
       "HC"
     ]
   },
-  "Engie - Happy Heures Vertes - 13h/15h - 1 an": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      },
-      "happy": {
-        "day": null,
-        "bands": {
-          "HP": "happy",
-          "HC": "happy"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC",
-      "happy"
-    ]
-  },
-  "Engie - Happy Heures Vertes - 14h/16h - 1 an": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      },
-      "happy": {
-        "day": null,
-        "bands": {
-          "HP": "happy",
-          "HC": "happy"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC",
-      "happy"
-    ]
-  },
-  "Engie - Happy Heures Vertes - 15h/17h - 1 an": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      },
-      "happy": {
-        "day": null,
-        "bands": {
-          "HP": "happy",
-          "HC": "happy"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC",
-      "happy"
-    ]
-  },
   "Engie - Elec Référence 3 ans": {
     "types": {
       "bleu": {
@@ -793,37 +721,6 @@
     ]
   },
   "Engie - Elec Référence 3 ans HC": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC"
-    ]
-  },
-  "Engie - Elec Tranquillité 1 an": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "bleu",
-          "HC": "bleu"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "bleu"
-    ]
-  },
-  "Engie - Elec Tranquillité 1 an HC": {
     "types": {
       "bleu": {
         "day": null,

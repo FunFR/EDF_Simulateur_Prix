@@ -1,25 +1,25 @@
 defineTarif({
     name: "La Belle Energie - Garance",
     offer_type: "Marché",
-    lastUpdate: "2026-05-07",
+    lastUpdate: "2026-07-01",
     isCommunity: true,
     subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
     price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
     subscriptions: {
-        3: 14.13,
-        6: 17.75,
-        9: 21.66,
-        12: 25.42,
-        15: 28.94,
-        18: 32.59,
-        24: 40.34,
-        30: 47.47,
-        36: 54.64
+        3: 16.13,
+        6: 19.76,
+        9: 23.67,
+        12: 27.42,
+        15: 30.95,
+        18: 34.6,
+        24: 42.35,
+        30: 49.47,
+        36: 56.65
     },
-    dayTypes: { bleu: { price: 17.08 } },
+    dayTypes: { bleu: { price: 17.26 } },
     priceOverrides: {
-        3: { bleu: { price: 17.20 } },
-        6: { bleu: { price: 17.20 } }
+        3: { bleu: { price: 17.38 } },
+        6: { bleu: { price: 17.38 } }
     },
     dayRule: { type: "constant", dayType: "bleu" }
 });

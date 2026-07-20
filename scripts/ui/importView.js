@@ -25,14 +25,6 @@ export function initImportView({ onStart, onSimulate }) {
     // L'étape Linky exige un import CSV valide avant de continuer.
     wizard.setStepValid(3, false);
 
-    const communityRadios = document.querySelectorAll('input[name="communityPricesRadio"]');
-    const communityAlert = document.getElementById("community-alert");
-    communityRadios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            communityAlert.classList.add("d-none");
-        });
-    });
-
     ["bleuHC-start-endDay1", "bleuHC-end-endDay1",
         "bleuHC-start-beginDay2", "bleuHC-end-beginDay2",
         "bleuHC-start-middleDay2", "bleuHC-end-middleDay2"]
@@ -41,17 +33,32 @@ export function initImportView({ onStart, onSimulate }) {
     csvFile.addEventListener("change", onFileImported);
     importError.style.display = "none";
 
+    // Dropzone : le drag & drop alimente #csvFile puis rejoue le pipeline
+    // d'import via l'événement change.
+    const dropzone = document.getElementById("csvDropzone");
+    const csvFileName = document.getElementById("csvFileName");
+    ["dragover", "dragenter"].forEach(type => dropzone.addEventListener(type, function (e) {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+    }));
+    ["dragleave", "dragend"].forEach(type => dropzone.addEventListener(type, function () {
+        dropzone.classList.remove("dragover");
+    }));
+    dropzone.addEventListener("drop", function (e) {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+        if (e.dataTransfer.files.length > 0) {
+            csvFile.files = e.dataTransfer.files;
+            csvFile.dispatchEvent(new Event("change"));
+        }
+    });
+
     document.getElementById("startButton").onclick = function () {
         wizard.goTo(1);
         onStart();
     };
     simulateButton.onclick = function () {
-        const includeCommunity = getSelectedTypeOfPrice();
-        if (includeCommunity === null) {
-            communityAlert.classList.remove("d-none");
-            return;
-        }
-        onSimulate(buildSettings(includeCommunity), data);
+        onSimulate(buildSettings(getSelectedTypeOfPrice()), data);
     };
 
     function buildSettings(includeCommunity) {
@@ -71,11 +78,13 @@ export function initImportView({ onStart, onSimulate }) {
     }
 
     function getSelectedTypeOfPrice() {
-        const selectedRadio = document.querySelector('input[name="communityPricesRadio"]:checked');
-        if (selectedRadio) {
-            return selectedRadio.value == 'isCommunity';
-        }
-        return null;
+        return document.querySelector('input[name="communityPricesRadio"]:checked').value == 'isCommunity';
+    }
+
+    function setDropzoneFile(name) {
+        dropzone.classList.toggle("has-file", name !== null);
+        csvFileName.classList.toggle("d-none", name === null);
+        csvFileName.textContent = name === null ? "" : name;
     }
 
     function bleuHCRangeChanged(e) {
@@ -120,10 +129,12 @@ export function initImportView({ onStart, onSimulate }) {
                 let rawCSV = parser.parseCSV(text);
                 data = parser.loadData(rawCSV);
                 wizard.setStepValid(3, true);
+                setDropzoneFile(csvFile.files[0].name);
             }
             catch (e) {
                 importError.style.display = "block";
                 wizard.setStepValid(3, false);
+                setDropzoneFile(null);
             }
         };
         reader.readAsText(input);

@@ -285,6 +285,102 @@ h6 {
   gap: 1rem;
 }
 
+/* Zone de dépôt du CSV (étape 3) : l'input #csvFile reste dans le DOM
+   (le harnais de test y injecte un fichier via DataTransfer) mais est
+   masqué visuellement — pas de display:none pour garder le focus clavier. */
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed var(--primary-color);
+  border-radius: 8px;
+  background-color: rgba(52, 152, 219, 0.05);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  background-color: rgba(52, 152, 219, 0.15);
+}
+
+.upload-dropzone:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.upload-dropzone-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.upload-dropzone-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.upload-dropzone-hint {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.upload-dropzone-file {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.upload-dropzone-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.upload-dropzone.has-file {
+  border-color: var(--secondary-color);
+  background-color: rgba(46, 204, 113, 0.08);
+}
+
+.upload-dropzone.has-file .upload-dropzone-icon,
+.upload-dropzone.has-file .upload-dropzone-file {
+  color: #27ae60;
+}
+
+/* Cartes de choix des tarifs communautaires (étape 4). */
+.choice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.choice-card:hover {
+  border-color: var(--primary-color);
+}
+
+.choice-card:has(:checked) {
+  border-color: var(--primary-color);
+  background-color: rgba(52, 152, 219, 0.08);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.choice-card .form-check-input {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
 @media (min-width: 992px) {
   .col-lg-8 {
     width: 100%;

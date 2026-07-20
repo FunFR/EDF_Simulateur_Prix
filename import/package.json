@@ -1,0 +1,17 @@
+{
+  "name": "edf-simulateur-prix-import",
+  "private": true,
+  "type": "module",
+  "description": "Outil local de mise à jour des grilles tarifaires depuis les PDFs fournisseurs",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "check": "node update.mjs --check-only",
+    "update": "node update.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "5.4.54"
+  }
+}

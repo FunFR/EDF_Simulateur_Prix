@@ -3,51 +3,26 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
-## Derniers tarifs: 
-* Enercoop : 18 avril 2026
-* EDF : 2026-02-01
-* Alpiq : 2025-10-27
-* Alterna : 2025-12-18
-* Mint Energie : 2025-10-27
-* Engie : 2025-10-27
-* TotalEnergie : 2025-10-27
-* Octopus : 2025-10-27
-* La belle énergie : 2025-12-01
-* ~~Ekwateur : 30 janvier 2024~~
-* ~~ES : 01 Février 2024~~
-* ~~Ilek : 01 Février 2024~~
-* ~~OHM Energie : 01 Février 2024~~
-* ~~Switch : 01 Février 2024~~ [Voir ici](https://www.jechange.fr/energie/chez-switch/)
-
-## Remerciements
-Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
-
-### Contributeurs
-* [Dawey](https://github.com/Daweyy)
-* [DuchkPy](https://github.com/DuchkPy)
-* [Zarwinch](https://github.com/zarwinch)
-* [Benoit Deldicque](https://github.com/bddq)
-* [Tom Niget](https://github.com/zdimension)
-* [Benoit Goimier](https://github.com/BenoitGoimier)
-* [J0hnMatrix](https://github.com/J0hnMatrix)
-* [fdonv](https://github.com/fdonv)
-* [chatainsim](https://github.com/chatainsim)
-* [csailly](https://github.com/csailly)
-* [nviallatte](https://github.com/nviallatte)
-* [Jonathan Sarrazi](https://github.com/jo-sarrazin)
-* [Szepeviktor](https://github.com/szepeviktor)
-* [Jason Marechal](https://github.com/JasonMarechal)
-* [Lucas Duval](https://github.com/LucasDuval)
-* [Pierre Pinon](https://github.com/pierrepinon)
-* [Abauzac](https://github.com/abauzac)
-* [Ponsifiax](https://github.com/ponsifiax)
-* [10tribu](https://github.com/10tribu)
-* [libussa](libussa)
-
 ## Comment contribuer
 Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
 
 ## Utilisation
+
+### Accéder à ce comparateur
+Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
+Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_Simulateur_Prix](http://jc144.github.io/EDF_Simulateur_Prix)
+**Ou** vous pouvez le télécharger pour une utilisation hors ligne :
+1. Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
+![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
+2. Dézippez-le
+3. Lancez un petit serveur web local dans le répertoire dézippé (l'application utilise des modules JavaScript, que les navigateurs refusent de charger en ouvrant directement le fichier). Par exemple, si Python est installé : `python -m http.server 8000`
+4. Ouvrez [http://localhost:8000](http://localhost:8000) dans votre navigateur. Vos données restent sur votre machine.
+
+### Utiliser ce comparateur
+1. Cliquez sur parcourir et sélectionnez votre fichier
+  * Pour EDF : "mes-puissances-atteintes-30min-XXXXX-YYYYY.csv" **(Ne modifiez pas le nom du fichier!)**
+  * Pour Ennedis : "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" **(Ne modifiez pas le nom du fichier!)**
+2. A partir de là, vous pouvez choisir les différentes tarifications que vous voulez expérimenter !
 
 ### Depuis le site d'EDF
 1. Récupérez sur le site d'EDF votre consommation [https://suiviconso.edf.fr/comprendre](https://suiviconso.edf.fr/comprendre)
@@ -81,22 +56,6 @@ HomeAssistant est une plateforme de domotique Open-Source.
 Certains outils permettent un export de la consommation au quart d'heure.
 Vérifiez que votre export s'appelle bien history.csv.
 
-### Accéder à ce comparateur
-Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
-Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_Simulateur_Prix](http://jc144.github.io/EDF_Simulateur_Prix)
-**Ou** vous pouvez le télécharger pour une utilisation hors ligne :
-1. Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
-![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
-2. Dézippez-le
-3. Lancez un petit serveur web local dans le répertoire dézippé (l'application utilise des modules JavaScript, que les navigateurs refusent de charger en ouvrant directement le fichier). Par exemple, si Python est installé : `python -m http.server 8000`
-4. Ouvrez [http://localhost:8000](http://localhost:8000) dans votre navigateur. Vos données restent sur votre machine.
-
-### Utiliser ce comparateur
-1. Cliquez sur parcourir et sélectionnez votre fichier
-  * Pour EDF : "mes-puissances-atteintes-30min-XXXXX-YYYYY.csv" **(Ne modifiez pas le nom du fichier!)**
-  * Pour Ennedis : "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" **(Ne modifiez pas le nom du fichier!)**
-2. A partir de là, vous pouvez choisir les différentes tarifications que vous voulez expérimenter !
-
 ## Développement
 L'application est 100% statique (aucun build, aucune dépendance à installer), en JavaScript vanilla avec des modules ES :
 
@@ -114,6 +73,35 @@ python -m http.server 8000
 ```
 
 puis ouvrez [http://localhost:8000](http://localhost:8000).
+
+### Mise à jour des grilles tarifaires
+
+Le dossier [`import/`](import/README.md) contient un outil local (Node ≥ 22) qui télécharge les grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`), détecte les changements et met à jour automatiquement les prix des fichiers `scripts/tarifs/**`. La revue du `git diff` et la régénération des goldens restent manuelles avant commit — voir [import/README.md](import/README.md).
+
+## Remerciements
+Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
+
+### Contributeurs
+* [Dawey](https://github.com/Daweyy)
+* [DuchkPy](https://github.com/DuchkPy)
+* [Zarwinch](https://github.com/zarwinch)
+* [Benoit Deldicque](https://github.com/bddq)
+* [Tom Niget](https://github.com/zdimension)
+* [Benoit Goimier](https://github.com/BenoitGoimier)
+* [J0hnMatrix](https://github.com/J0hnMatrix)
+* [fdonv](https://github.com/fdonv)
+* [chatainsim](https://github.com/chatainsim)
+* [csailly](https://github.com/csailly)
+* [nviallatte](https://github.com/nviallatte)
+* [Jonathan Sarrazi](https://github.com/jo-sarrazin)
+* [Szepeviktor](https://github.com/szepeviktor)
+* [Jason Marechal](https://github.com/JasonMarechal)
+* [Lucas Duval](https://github.com/LucasDuval)
+* [Pierre Pinon](https://github.com/pierrepinon)
+* [Abauzac](https://github.com/abauzac)
+* [Ponsifiax](https://github.com/ponsifiax)
+* [10tribu](https://github.com/10tribu)
+* [libussa](libussa)
 
 ## A propos de l'auteur
 [Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/)

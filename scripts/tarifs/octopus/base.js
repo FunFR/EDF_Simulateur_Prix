@@ -17,5 +17,7 @@ defineTarif({
         36: 53.06
     },
     dayTypes: { bleu: { price: 18.95 } },
+    // 3 et 6 kVA ont un prix du kWh plus élevé (la grille majore les puissances 1 à 6)
+    priceOverrides: { 3: { bleu: { price: 19.09 } }, 6: { bleu: { price: 19.09 } } },
     dayRule: { type: "constant", dayType: "bleu" }
 });
