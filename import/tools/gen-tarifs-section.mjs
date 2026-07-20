@@ -36,6 +36,8 @@ const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
 const BEGIN = '<!-- TARIFS-LIST:BEGIN -->';
 const END = '<!-- TARIFS-LIST:END -->';
 const INDENT = '                    '; // profondeur des enfants de <section>
+// Profondeur des enfants de .accordion-body (5 niveaux sous <section>).
+const BODY_INDENT = INDENT + '                    ';
 
 function escapeHtml(s) {
     return String(s)
@@ -76,15 +78,16 @@ function renderOffer(def, provider) {
     const link = def.subscription_url
         ? ` — <a href="${escapeHtml(def.subscription_url)}" target="_blank" rel="noopener">page de l’offre</a>`
         : '';
-    return `${INDENT}    <li><strong>${label}</strong> ${badge} — ${grille}${link}</li>`;
+    return `${BODY_INDENT}    <li><strong>${label}</strong> ${badge} — ${grille}${link}</li>`;
 }
 
+// h4 : les groupes descendent d'un niveau sous le h3 d'en-tête de l'accordéon.
 function renderGroup(title, defs) {
-    const lines = [`${INDENT}<h3 class="h5 mt-4">${escapeHtml(title)}</h3>`, `${INDENT}<ul>`];
+    const lines = [`${BODY_INDENT}<h4 class="h6 mt-4">${escapeHtml(title)}</h4>`, `${BODY_INDENT}<ul>`];
     for (const def of [...defs].sort((a, b) => a.name.localeCompare(b.name, 'fr'))) {
         lines.push(renderOffer(def, title));
     }
-    lines.push(`${INDENT}</ul>`);
+    lines.push(`${BODY_INDENT}</ul>`);
     return lines;
 }
 
@@ -108,19 +111,40 @@ function generate() {
     lines.push(`${INDENT}<p class="text-justify">${defs.length} offres de ${nbProviders} fournisseurs`
         + ` sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir`
         + ` des documents officiels des fournisseurs (dernière mise à jour d’une grille : ${formatDate(lastUpdate)}).</p>`);
+    // Détail replié derrière un accordéon Bootstrap unique (icône + stylée par
+    // .tarifs-plus-toggle dans style.css) ; le bundle Bootstrap est déjà chargé.
+    lines.push(`${INDENT}<div class="help-accordion">`);
+    lines.push(`${INDENT}    <div class="accordion accordion-flush" id="tarifsAccordion">`);
+    lines.push(`${INDENT}        <div class="accordion-item">`);
+    lines.push(`${INDENT}            <h3 class="accordion-header" id="tarifsAccordionHeader">`);
+    lines.push(`${INDENT}                <button class="accordion-button collapsed tarifs-plus-toggle" type="button"`);
+    lines.push(`${INDENT}                    data-bs-toggle="collapse" data-bs-target="#tarifsDetail"`);
+    lines.push(`${INDENT}                    aria-expanded="false" aria-controls="tarifsDetail">`);
+    lines.push(`${INDENT}                    Voir le détail des offres suivies`);
+    lines.push(`${INDENT}                    <i class="fa-solid fa-plus ms-auto" aria-hidden="true"></i>`);
+    lines.push(`${INDENT}                </button>`);
+    lines.push(`${INDENT}            </h3>`);
+    lines.push(`${INDENT}            <div id="tarifsDetail" class="accordion-collapse collapse"`);
+    lines.push(`${INDENT}                aria-labelledby="tarifsAccordionHeader" data-bs-parent="#tarifsAccordion">`);
+    lines.push(`${INDENT}                <div class="accordion-body">`);
     for (const provider of providers) {
         lines.push(...renderGroup(provider, byProvider.get(provider)));
     }
     if (community.length) {
-        lines.push(`${INDENT}<h3 class="h5 mt-4">Tarifs communautaires</h3>`);
-        lines.push(`${INDENT}<p class="text-justify">Ces tarifs sont maintenus par la communauté et peuvent ne pas`
+        lines.push(`${BODY_INDENT}<h4 class="h6 mt-4">Tarifs communautaires</h4>`);
+        lines.push(`${BODY_INDENT}<p class="text-justify">Ces tarifs sont maintenus par la communauté et peuvent ne pas`
             + ` être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>`);
-        lines.push(`${INDENT}<ul>`);
+        lines.push(`${BODY_INDENT}<ul>`);
         for (const def of [...community].sort((a, b) => a.name.localeCompare(b.name, 'fr'))) {
             lines.push(renderOffer(def, null));
         }
-        lines.push(`${INDENT}</ul>`);
+        lines.push(`${BODY_INDENT}</ul>`);
     }
+    lines.push(`${INDENT}                </div>`);
+    lines.push(`${INDENT}            </div>`);
+    lines.push(`${INDENT}        </div>`);
+    lines.push(`${INDENT}    </div>`);
+    lines.push(`${INDENT}</div>`);
     return lines.join('\n');
 }
 

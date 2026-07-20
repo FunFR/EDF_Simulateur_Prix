@@ -161,15 +161,15 @@
                  Vue 1 : Présentation — intro, notes et bouton Démarrer
                  ================================================================ -->
             <div id="presentationView">
-                <p class="h5 fw-normal text-center mt-4 mb-4">
-                    Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
-                    d'électricité,<br /> en se basant sur <strong>l'historique de votre consommation Linky</strong>.
-                </p>
-
-                <div class="d-block text-center mb-5">
+                <div class="cta-card text-center mt-4 mb-5">
+                    <p class="h5 fw-normal mb-4">
+                        Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
+                        d'électricité,<br /> en se basant sur <strong>l'historique de votre consommation
+                            Linky</strong>.
+                    </p>
                     <button type="button" class="btn btn-success btn-lg" id="startButton">Démarrer <i
                             class="fa-solid fa-play ms-2"></i></button>
-                    <p class="small text-muted mt-2 mb-0">
+                    <p class="small text-muted mt-4 mb-0">
                         <i class="fa-solid fa-lock me-1"></i>100&nbsp;% local&nbsp;: vos données Linky ne quittent
                         jamais votre navigateur. Pas de cookies, pas de trackers.
                     </p>
@@ -177,20 +177,28 @@
 
                 <section id="fonctionnement" class="mb-5">
                     <h2>Comment fonctionne le calcul&nbsp;?</h2>
-                    <p class="text-justify">
+                    <p>
                         Le simulateur rejoue votre consommation réelle, demi-heure par demi-heure, sur la grille
-                        tarifaire de chaque offre suivie. L'abonnement annuel est proratisé au jour près sur la
-                        période importée. Pour les offres à prix variables, les vrais calendriers sont appliqués&nbsp;:
-                        couleurs des jours <strong>Tempo</strong>, jours <strong>EJP</strong> et plages
-                        d'<strong>heures creuses</strong> propres à chaque contrat. Les offres indexées sur le marché
-                        utilisent les prix spot réels (EPEX, via energy-charts.info). Les grilles tarifaires sont
-                        versionnées dans le code avec leur date de mise à jour et actualisées régulièrement à partir
-                        des documents officiels des fournisseurs — voir la liste des
-                        <a href="#tarifs-suivis">tarifs actuellement suivis</a>.
+                        tarifaire de chaque offre suivie&nbsp;:
+                    </p>
+                    <ul>
+                        <li class="mb-2">L'abonnement annuel est <strong>proratisé au jour près</strong> sur la
+                            période importée.</li>
+                        <li class="mb-2">Pour les offres à prix variables, les vrais calendriers sont
+                            appliqués&nbsp;: couleurs des jours <strong>Tempo</strong>, jours <strong>EJP</strong> et
+                            plages d'<strong>heures creuses</strong> propres à chaque contrat.</li>
+                        <li class="mb-2">Les offres indexées sur le marché utilisent les <strong>prix spot
+                                réels</strong> (EPEX, via energy-charts.info).</li>
+                        <li class="mb-2">Les grilles tarifaires sont versionnées dans le code avec leur date de mise
+                            à jour et actualisées régulièrement à partir des documents officiels des fournisseurs.</li>
+                    </ul>
+                    <p>
+                        Voir la liste des <a href="#tarifs-suivis">tarifs actuellement suivis</a>.
                     </p>
                 </section>
 
                 <section id="faq" class="mb-5">
+                    <div class="section-card">
                     <h2>Questions fréquentes</h2>
 
                     <h3 class="h5 mt-4">Pourquoi le résultat diffère-t-il de ma facture&nbsp;?</h3>
@@ -206,9 +214,13 @@
                         usages vers les heures creuses.</p>
 
                     <h3 class="h5 mt-4">Mes données Linky sont-elles envoyées quelque part&nbsp;?</h3>
-                    <p class="text-justify">Non. Tout est calculé localement dans votre navigateur&nbsp;: votre
-                        fichier de consommation n'est jamais transmis à un serveur. Le site n'utilise ni cookies, ni
-                        trackers, ni outil de mesure d'audience. Vous pouvez même exécuter l'outil sur votre machine
+                    <p class="text-justify"><strong>Non.</strong> Tout est calculé localement dans votre navigateur&nbsp;: votre
+                        fichier de consommation n'est jamais transmis à un serveur.
+                        <br/>
+                        <strong>Le site n'utilise ni cookies, ni
+                        trackers, ni outil de mesure d'audience.</strong>
+                        <br/>
+                        Vous pouvez même exécuter l'outil sur votre machine
                         depuis son code source.</p>
 
                     <h3 class="h5 mt-4">Quelles données faut-il pour un résultat précis&nbsp;?</h3>
@@ -223,103 +235,109 @@
                         GitHub&nbsp;: nous restons réactifs pour affiner les résultats.</p>
 
                     <h3 class="h5 mt-4">L'outil est-il gratuit et open source&nbsp;?</h3>
-                    <p class="text-justify">Oui. Le comparateur est entièrement gratuit, sans inscription, et son code
+                    <p class="text-justify"><strong>Oui.</strong> Le comparateur est entièrement gratuit, sans inscription, et son code
                         source est en accès libre sur
-                        <a href="https://github.com/JC144/EDF_Simulateur_Prix">GitHub</a>. Vous pouvez vérifier
+                        <a href="https://github.com/JC144/EDF_Simulateur_Prix">GitHub</a>.
+                        <br/>
+                        Vous pouvez vérifier
                         comment il fonctionne, l'exécuter en local ou contribuer, par exemple en mettant à jour les
                         grilles tarifaires.</p>
+                    </div>
                 </section>
 
                 <section id="tarifs-suivis" class="mb-5">
                     <h2>Tarifs actuellement suivis</h2>
                     <!-- TARIFS-LIST:BEGIN -->
                     <p class="text-justify">60 offres de 11 fournisseurs sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir des documents officiels des fournisseurs (dernière mise à jour d’une grille : 2 juillet 2026).</p>
-                    <h3 class="h5 mt-4">EDF</h3>
-                    <ul>
-                        <li><strong>Bleu</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Bleu Heures Creuses</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>EJP</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026</li>
-                        <li><strong>Tempo</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Auto</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-auto.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Régional</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Régional Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Week-End</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Vert Electrique Week-End Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Estival</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 31 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-estival.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juin 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Fixe Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juin 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Online</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Online Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Week-End</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Week-End HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Week-End Option Flex</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Week-End Plus</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Zen Week-End Plus HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                    </ul>
-                    <h3 class="h5 mt-4">Enercoop</h3>
-                    <ul>
-                        <li><strong>Offre Flexibilité 2 Saisons</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 26 février 2026 — <a href="https://www.faq.enercoop.fr/hc/fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                    </ul>
-                    <h3 class="h5 mt-4">Tarifs communautaires</h3>
-                    <p class="text-justify">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
-                    <ul>
-                        <li><strong>Alpiq - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 12 juin 2026 — <a href="https://particuliers.alpiq.fr/electricite/nos-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alpiq - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 12 juin 2026 — <a href="https://particuliers.alpiq.fr/electricite/nos-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alterna - Base France</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alterna - Base Locale</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alterna - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alterna - Heures Creuses Locale</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Alterna - Heures Super Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Enercoop - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Enercoop - Flexibilité - heures creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Enercoop - Flexibilité - nuit &amp; week-end</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Engie - Elec Référence 3 ans</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://particuliers.engie.fr/electricite.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Engie - Elec Référence 3 ans HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://particuliers.engie.fr/electricite.html" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Gaz de Bordeaux - NovaFixe - base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Gaz de Bordeaux - NovaFixe - heures creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Gaz de Bordeaux - NovaFlex - base</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 3 janvier 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Gaz de Bordeaux - NovaFlex - heures creuses</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 3 janvier 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Constance</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Constance HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Garance</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Garance HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Prudence</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>La Belle Energie - Prudence HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Mint Energie - Classic &amp; Green</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Mint Energie - Classic &amp; Green HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Mint Energie - Online &amp; Green</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Mint Energie - Online &amp; Green HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Octopus - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 19 mars 2026 — <a href="https://www.octopusenergy.fr/offre-electricite-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Octopus - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 19 mars 2026 — <a href="https://www.octopusenergy.fr/offre-electricite-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Octopus - OctoTempo</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 13 avril 2026 — <a href="https://octopusenergy.fr/octotempo" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Sobry - SoCap</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 17 juin 2026 — <a href="https://sobry.co/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>Sobry - SoFlex</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 17 juin 2026 — <a href="https://sobry.co/" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Charge'Heures</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Heures Eco</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - HeuresEco HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Offre standard fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 2 juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Offre standard fixe HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 2 juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Offre verte fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 30 avril 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                        <li><strong>TotalEnergie - Offre verte fixe HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 30 avril 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
-                    </ul>
+                    <div class="help-accordion">
+                        <div class="accordion accordion-flush" id="tarifsAccordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="tarifsAccordionHeader">
+                                    <button class="accordion-button collapsed tarifs-plus-toggle" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#tarifsDetail"
+                                        aria-expanded="false" aria-controls="tarifsDetail">
+                                        Voir le détail des offres suivies
+                                        <i class="fa-solid fa-plus ms-auto" aria-hidden="true"></i>
+                                    </button>
+                                </h3>
+                                <div id="tarifsDetail" class="accordion-collapse collapse"
+                                    aria-labelledby="tarifsAccordionHeader" data-bs-parent="#tarifsAccordion">
+                                    <div class="accordion-body">
+                                        <h4 class="h6 mt-4">EDF</h4>
+                                        <ul>
+                                            <li><strong>Bleu</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Bleu Heures Creuses</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>EJP</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026</li>
+                                            <li><strong>Tempo</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Auto</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-auto.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Régional</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Régional Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Week-End</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Vert Electrique Week-End Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Estival</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 31 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-estival.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juin 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Fixe Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juin 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Online</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Online Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Week-End</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Week-End HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Week-End Option Flex</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Week-End Plus</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Zen Week-End Plus HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 mars 2026 — <a href="https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                        </ul>
+                                        <h4 class="h6 mt-4">Tarifs communautaires</h4>
+                                        <p class="text-justify">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
+                                        <ul>
+                                            <li><strong>Enercoop - Offre Flexibilité 2 Saisons</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 26 février 2026 — <a href="https://www.faq.enercoop.fr/hc/fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alpiq - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 12 juin 2026 — <a href="https://particuliers.alpiq.fr/electricite/nos-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alpiq - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 12 juin 2026 — <a href="https://particuliers.alpiq.fr/electricite/nos-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alterna - Base France</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alterna - Base Locale</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alterna - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alterna - Heures Creuses Locale</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Alterna - Heures Super Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 7 mai 2026 — <a href="https://www.alterna-energie.fr" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Enercoop - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Enercoop - Flexibilité - heures creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Enercoop - Flexibilité - nuit &amp; week-end</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 16 février 2026 — <a href="https://souscription.enercoop.fr/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Engie - Elec Référence 3 ans</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://particuliers.engie.fr/electricite.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Engie - Elec Référence 3 ans HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://particuliers.engie.fr/electricite.html" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Gaz de Bordeaux - NovaFixe - base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Gaz de Bordeaux - NovaFixe - heures creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 4 février 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Gaz de Bordeaux - NovaFlex - base</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 3 janvier 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Gaz de Bordeaux - NovaFlex - heures creuses</strong> <span class="badge text-bg-primary">Tarif réglementé</span> — grille du 3 janvier 2026 — <a href="https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Constance</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Constance HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Garance</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Garance HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Prudence</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>La Belle Energie - Prudence HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://labellenergie.fr/offre-electricite-verte/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Mint Energie - Classic &amp; Green</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Mint Energie - Classic &amp; Green HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Mint Energie - Online &amp; Green</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Mint Energie - Online &amp; Green HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er février 2026 — <a href="https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Octopus - Base</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 19 mars 2026 — <a href="https://www.octopusenergy.fr/offre-electricite-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Octopus - Heures Creuses</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 19 mars 2026 — <a href="https://www.octopusenergy.fr/offre-electricite-tarifs" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Octopus - OctoTempo</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 13 avril 2026 — <a href="https://octopusenergy.fr/octotempo" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Sobry - SoCap</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 17 juin 2026 — <a href="https://sobry.co/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>Sobry - SoFlex</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 17 juin 2026 — <a href="https://sobry.co/" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Charge'Heures</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Heures Eco</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - HeuresEco HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 1er juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Offre standard fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 2 juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Offre standard fixe HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 2 juillet 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Offre verte fixe</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 30 avril 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                            <li><strong>TotalEnergie - Offre verte fixe HC</strong> <span class="badge text-bg-secondary">Offre de marché</span> — grille du 30 avril 2026 — <a href="https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite" target="_blank" rel="noopener">page de l’offre</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- TARIFS-LIST:END -->
                 </section>
 
-                <section id="a-propos" class="mb-5">
-                    <h2>À propos de ce comparateur</h2>
-                    <p class="text-justify">
-                        Ce comparateur est un outil open source né d'une idée simple&nbsp;: utiliser l'historique
-                        réel de consommation Linky plutôt que des profils types pour comparer les abonnements
-                        d'électricité. Il est conçu et maintenu par
-                        <a href="https://www.linkedin.com/in/jvasselon/" rel="noopener">Jean-Christophe Vasselon</a>,
-                        avec les contributions de la communauté sur
-                        <a href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener">GitHub</a>.
-                        Vos données sont traitées en local dans votre navigateur&nbsp;: aucune donnée n'est envoyée
-                        vers un serveur, et le site ne se rémunère auprès d'aucun fournisseur.
-                    </p>
-                </section>
             </div>
             <!-- ================================================================
                  Vue 2 : Import & réglages — puissance, jour Zen+, heures creuses,
@@ -860,10 +878,36 @@
     <footer class="bg-dark-subtle p-4 fs-6">
         <div class="container">
             <div class="text-center">
-                <p class="text-muted small text-center">Ce site a été conçu par <a
-                        href="https://twitter.com/jcvasselon/">Jean-Christophe VASSELON</a>.<br />
+                <h2 class="h5" id="a-propos">À propos de ce comparateur</h2>
+                <p class="text-muted small text-center">
+                    Ce comparateur est un outil open source basé sur votre historique
+                    réel de consommation Linky plutôt que des profils types pour comparer les abonnements
+                    d'électricité. En quelques clics, vous obtenez le prix que vous auriez réellement payé avec les tarifs actuels.
+                    <br/>
+                    Vos données sont traitées en local dans votre navigateur&nbsp;: aucune donnée
+                    n'est envoyée vers un serveur, vous pouvez même l'exécuter sans internet.
+                    <br/>
+                    Le site n'est rémunéré ni par les fournisseurs, ni par la publicité, <a href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">vos dons</a> me permettent de le maintenir et de financer son développement (nom de domaine, licenses).
+                </p>
+
+                <p class="text-muted small text-center">Ce site a été conçu et est maintenu par <a
+                        href="https://www.linkedin.com/in/jvasselon/" rel="noopener">Jean-Christophe VASSELON</a>.<br />
                     D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
-                        href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>
+                        href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>            
+
+                <p class="text-muted small text-center">
+                    Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café en
+                    faisant un don !<br />
+                </p>
+                <a class="text-center" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU"><button
+                        class="btn btn-primary">Faire un don</button></a>
+
+                <p class="text-muted small text-center mt-4 mb-4">
+                    <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a> ·
+                    <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues" rel="noopener">Contact (issues
+                        GitHub)</a> ·
+                    <a href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener">Code source sur GitHub</a>
+                </p>
 
                 <p class="text-muted small text-center">
                     Merci à <a href="https://github.com/Daweyy">Dawey</a>,
@@ -897,20 +941,6 @@
                     Prix spot : <a href="https://energy-charts.info" target="_blank" rel="noopener">energy-charts.info</a>,
                     données Bundesnetzagentur | SMARD.de, licence
                     <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
-                </p>
-
-                <p class="text-muted small text-center">
-                    Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café en
-                    faisant un don !<br />
-                </p>
-                <a class="text-center" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU"><button
-                        class="btn btn-primary">Faire un don</button></a>
-
-                <p class="text-muted small text-center mt-4 mb-0">
-                    <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a> ·
-                    <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues" rel="noopener">Contact (issues
-                        GitHub)</a> ·
-                    <a href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener">Code source sur GitHub</a>
                 </p>
             </div>
         </div>

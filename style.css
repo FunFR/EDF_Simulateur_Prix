@@ -441,6 +441,43 @@ h6 {
   font-size: 1.15rem;
 }
 
+/* Page d'accueil : cartes qui séparent visuellement le bloc CTA et la FAQ
+   des sections de texte, pour aérer la vue de présentation. */
+.cta-card,
+.section-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.cta-card {
+  border-top: 3px solid var(--primary-color);
+}
+
+/* Séparateur léger entre les questions de la FAQ. */
+.section-card h3:not(:first-of-type) {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+}
+
+/* Accordéon « Tarifs actuellement suivis » : le chevron Bootstrap est remplacé
+   par une icône + (générée par import/tools/gen-tarifs-section.mjs) qui pivote
+   en croix à l'ouverture ; aria-expanded est maintenu par Bootstrap. */
+.tarifs-plus-toggle::after {
+  display: none;
+}
+
+.tarifs-plus-toggle .fa-plus {
+  color: var(--primary-color);
+  font-size: 1.15rem;
+  transition: transform 0.2s ease;
+}
+
+.tarifs-plus-toggle[aria-expanded="true"] .fa-plus {
+  transform: rotate(45deg);
+}
+
 /* Cartes de choix des tarifs communautaires (étape 4). */
 .choice-card {
   display: flex;
