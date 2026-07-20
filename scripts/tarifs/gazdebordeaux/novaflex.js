@@ -6,13 +6,13 @@ defineTarif({
     subscription_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
     price_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
     subscriptions: {
-        3: 11.72,
-        6: 15.46,
-        9: 19.39,
-        12: 23.33,
-        15: 27.06
+        3: 12.02,
+        6: 15.65,
+        9: 19.56,
+        12: 23.32,
+        15: 26.85
     },
-    dayTypes: { bleu: { price: 18.726 } },
+    dayTypes: { bleu: { price: 18.613 } },
     dayRule: { type: "constant", dayType: "bleu" }
 });
 
@@ -24,16 +24,16 @@ defineTarif({
     subscription_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
     price_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-verte-prix-indexe",
     subscriptions: {
-        6: 16.01,
-        9: 20.21,
-        12: 24.28,
-        15: 28.16,
-        18: 32.14,
-        24: 40.52,
-        30: 48.34,
-        36: 56.20
+        6: 15.65,
+        9: 19.56,
+        12: 23.32,
+        15: 26.85,
+        18: 30.49,
+        24: 38.24,
+        30: 45.38,
+        36: 52.54
     },
-    dayTypes: { bleu: { HP: 19.945, HC: 15.716 } },
+    dayTypes: { bleu: { HP: 19.799, HC: 15.182 } },
     dayRule: { type: "constant", dayType: "bleu" },
     hcRanges: "custom"
 });

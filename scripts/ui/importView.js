@@ -1,5 +1,6 @@
 import { selectParser } from '../parsers/index.js';
 import { createWizard } from './wizard.js';
+import { initEnedisSnippetBox } from './enedisSnippetBox.js';
 
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
@@ -20,10 +21,25 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
         stepper: document.getElementById("wizardStepper"),
         nextButton: document.getElementById("wizardNextButton"),
         finalActionButton: simulateButton,
-        onNext: onStepForward
+        onNext: (step) => {
+            closeHelperAccordion();
+            onStepForward(step);
+        }
     });
+
+    // Les étapes sont superposées (grid + visibility) : l'accordéon d'aide de
+    // l'étape 3 laissé ouvert gonflerait la hauteur des écrans suivants.
+    function closeHelperAccordion() {
+        const collapse = bootstrap.Collapse.getInstance(document.getElementById("accordionHelperContainer"));
+        if (collapse) {
+            collapse.hide();
+        }
+    }
     // L'étape Linky exige un import CSV valide avant de continuer.
     wizard.setStepValid(3, false);
+
+    // Onglet « Depuis Enedis (automatique) » : script d'export à copier.
+    initEnedisSnippetBox();
 
     ["bleuHC-start-endDay1", "bleuHC-end-endDay1",
         "bleuHC-start-beginDay2", "bleuHC-end-beginDay2",

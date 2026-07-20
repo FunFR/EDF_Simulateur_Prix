@@ -409,6 +409,34 @@ h6 {
   color: #27ae60;
 }
 
+/* Boîte d'aide « Comment récupérer les données » (étape 3) :
+   accordéon mis en avant pour les utilisateurs qui ne savent pas où trouver leur CSV. */
+.help-accordion {
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden; /* arrondir aussi le bouton interne */
+}
+
+.help-accordion .accordion-button {
+  background-color: rgba(52, 152, 219, 0.08);
+  font-weight: 600;
+  color: #1d6fa5; /* bleu foncé lisible sur le fond clair */
+}
+
+.help-accordion .accordion-button:not(.collapsed) {
+  background-color: rgba(52, 152, 219, 0.15);
+  box-shadow: none;
+}
+
+.help-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); /* même focus que la dropzone */
+}
+
+.help-accordion .accordion-button .fa-circle-question {
+  color: var(--primary-color);
+  font-size: 1.15rem;
+}
+
 /* Cartes de choix des tarifs communautaires (étape 4). */
 .choice-card {
   display: flex;

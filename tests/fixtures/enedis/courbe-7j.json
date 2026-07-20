@@ -1,0 +1,20 @@
+{
+  "_comment": "Fixture PROVISOIRE (forme plausible de l'API privée Enedis, COURBE 30 min) — à remplacer par une réponse réelle anonymisée lors de la capture, voir le plan.",
+  "cons": {
+    "unite": "W",
+    "donnees": [
+      {
+        "prm": "00000000000000",
+        "grandeurPhysique": "PA",
+        "points": [
+          { "horodate": "2026-07-13T23:00:00+02:00", "valeur": 420 },
+          { "horodate": "2026-07-13T23:30:00+02:00", "valeur": 380 },
+          { "horodate": "2026-07-14T00:00:00+02:00", "valeur": 350 },
+          { "horodate": "2026-07-14T00:30:00+02:00", "valeur": 300 },
+          { "horodate": "2026-07-14T01:00:00+02:00", "valeur": 280 },
+          { "horodate": "2026-07-14T01:30:00+02:00", "valeur": 5210 }
+        ]
+      }
+    ]
+  }
+}
