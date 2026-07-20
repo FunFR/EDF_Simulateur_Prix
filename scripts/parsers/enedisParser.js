@@ -1,4 +1,4 @@
-var enedisParser = {
+export const enedisParser = {
     parseCSV: function (csv) {
         const result = [];
 

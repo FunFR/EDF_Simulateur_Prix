@@ -1,73 +1,53 @@
-{
-    const prixAbonnements = {
-        // puissance: abonnement TTC
-        6: 15.96,
-        7: 17.34,
-        8: 18.73,
-        9: 20.52,
-        10: 21.92,
-        11: 23.31,
-        12: 25.08,
-        13: 26.43,
-        14: 27.78,
-        15: 29.13,
-        16: 30.52,
-        17: 31.91,
-        18: 32.77,
-        19: 34.20,
-        20: 35.63,
-        21: 37.06,
-        22: 38.49,
-        23: 39.92,
-        24: 41.32,
-        25: 42.61,
-        26: 43.89,
-        27: 45.18,
-        28: 46.47,
-        29: 47.75,
-        30: 49.06,
-        31: 50.38,
-        32: 51.70,
-        33: 53.03,
-        34: 54.35,
-        35: 55.67,
-        36: 55.43,
-    }
-
-    abonnements.push(
-        {
-            name: "TotalEnergie - Charge'Heures",
-            lastUpdate: "2025-10-01",
-            subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures",
-            price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf",
-            prices: Object.keys(prixAbonnements).map((puissance) => ({
-                puissance,
-                abonnement: prixAbonnements[puissance],
-                base: {
-                    prixKwhHP: 21.62,
-                    prixKwhHC: 16.51,
-                },
-                hsc: {
-                    prixKwhHC: 12.61,
-                }
-            })),
-            hc: [{
-                start: { hour: 23, minute: 0 },
-                end: { hour: 24, minute: 0 }
-            },
-            {
-                start: { hour: 0, minute: 0 },
-                end: { hour: 7, minute: 0 }
-            }],
-            hasHCCustom: false,
-            hasSpecialDaysCustom: false,
-            specialDays: [],
-            getDayType: function (day, { hour }) {
-                if (hour >= 2 && hour < 6) {
-                    return "hsc";
-                }
-                return "base";
-            }
-        }
-    );
-}
+defineTarif({
+    name: "TotalEnergie - Charge'Heures",
+    offer_type: "Marché",
+    lastUpdate: "2026-07-01",
+    isCommunity: true,
+    subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures",
+    price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf",
+    subscriptions: {
+        6: 15.65,
+        7: 16.96,
+        8: 18.26,
+        9: 19.83,
+        10: 21.12,
+        11: 22.41,
+        12: 23.93,
+        13: 25.15,
+        14: 26.37,
+        15: 27.61,
+        16: 28.88,
+        17: 30.15,
+        18: 31.03,
+        19: 32.36,
+        20: 33.68,
+        21: 35,
+        22: 36.32,
+        23: 37.64,
+        24: 38.97,
+        25: 40.18,
+        26: 41.39,
+        27: 42.61,
+        28: 43.82,
+        29: 45.03,
+        30: 46.27,
+        31: 47.5,
+        32: 48.72,
+        33: 49.95,
+        34: 51.18,
+        35: 52.4,
+        36: 52.54
+    },
+    // Les heures super creuses (2h-6h) n'ont qu'un prix : elles sont
+    // entièrement couvertes par les plages HC ci-dessous.
+    dayTypes: {
+        base: { HP: 23.05, HC: 15.79 },
+        hsc: { price: 13.37 }
+    },
+    dayRule: {
+        type: "constant",
+        dayType: "base",
+        hourSubTypes: [{ fromHour: 2, toHour: 6, dayType: "hsc" }]
+    },
+    hcRanges: [{ from: "23:00", to: "24:00" }, { from: "00:00", to: "07:00" }]
+});

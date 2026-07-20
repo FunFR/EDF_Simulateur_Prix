@@ -1,34 +1,23 @@
-abonnements.push(
-    {
-        name: "TotalEnergie - Offre verte fixe",
-        lastUpdate: "2025-08-05",
-        subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
-        price_url: "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
-        prices: [
-            { puissance: 3, abonnement: 13.45 },
-            { puissance: 6, abonnement: 17.74 },
-            { puissance: 9, abonnement: 22.34 },
-            { puissance: 12, abonnement: 27.01 },
-            { puissance: 15, abonnement: 31.35 },
-            { puissance: 18, abonnement: 35.45 },
-            { puissance: 24, abonnement: 44.95 },
-            { puissance: 30, abonnement: 54.44 },
-            { puissance: 36, abonnement: 62.75 }
-        ].map(item => ({
-            ...item,
-            bleu: { prixKwhHC: 19.15,  prixKwhHP: 19.15 }
-        })),
-        hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
-        }],
-        hasHCCustom: false,
-        hasSpecialDaysCustom: false,
-        specialDays: [],
-        getDayType: function (day) {
-            let dayType = "bleu";
-            return dayType;
-        }
-    }
-);
-
+defineTarif({
+    name: "TotalEnergie - Offre verte fixe",
+    offer_type: "Marché",
+    lastUpdate: "2026-04-30",
+    isCommunity: true,
+    subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
+    price_url: "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
+    subscriptions: {
+        3: 12.03,
+        6: 15.65,
+        9: 19.56,
+        12: 23.32,
+        15: 26.84,
+        18: 30.49,
+        24: 38.24,
+        30: 45.37,
+        36: 52.54
+    },
+    dayTypes: { bleu: { price: 19.89 } },
+    // 3 et 6 kVA ont un prix du kWh plus élevé
+    priceOverrides: { 3: { bleu: { price: 20.03 } }, 6: { bleu: { price: 20.03 } } },
+    dayRule: { type: "constant", dayType: "bleu" }
+});

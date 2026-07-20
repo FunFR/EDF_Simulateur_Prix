@@ -1,0 +1,2865 @@
+[
+  {
+    "name": "EDF - Bleu",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-02-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "bleu": {
+          "prixKwhHC": 19.4
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 19.4
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 19.27
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Bleu Heures Creuses",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-02-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.79
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Tempo",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-02-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.59,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.38,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.07,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.47,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.04,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 44.73,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.42,
+        "bleu": {
+          "prixKwhHP": 16.12,
+          "prixKwhHC": 13.25
+        },
+        "blanc": {
+          "prixKwhHP": 18.71,
+          "prixKwhHC": 14.99
+        },
+        "rouge": {
+          "prixKwhHP": 70.6,
+          "prixKwhHC": 15.75
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 22,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 6,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      {
+        "name": "rouge",
+        "numberOfDays": 22,
+        "monthBegin": 11,
+        "monthEnd": 3,
+        "lastDays": [
+          "2020/12/02",
+          "2020/12/07",
+          "2020/12/08",
+          "2020/12/09",
+          "2020/12/31",
+          "2021/01/04",
+          "2021/01/05",
+          "2021/01/06",
+          "2021/01/07",
+          "2021/01/08",
+          "2021/01/11",
+          "2021/01/12",
+          "2021/01/13",
+          "2021/01/15",
+          "2021/01/18",
+          "2021/01/25",
+          "2021/01/26",
+          "2021/01/27",
+          "2021/02/08",
+          "2021/02/09",
+          "2021/02/10",
+          "2021/02/11",
+          "2021/11/29",
+          "2021/12/13",
+          "2021/12/14",
+          "2021/12/15",
+          "2021/12/20",
+          "2021/12/21",
+          "2021/12/22",
+          "2022/01/06",
+          "2022/01/10",
+          "2022/01/11",
+          "2022/01/12",
+          "2022/01/13",
+          "2022/01/14",
+          "2022/01/17",
+          "2022/01/18",
+          "2022/01/19",
+          "2022/01/20",
+          "2022/01/21",
+          "2022/01/24",
+          "2022/01/25",
+          "2022/01/26",
+          "2022/01/27",
+          "2022/12/08",
+          "2022/12/12",
+          "2022/12/13",
+          "2022/12/14",
+          "2023/01/17",
+          "2023/01/18",
+          "2023/01/19",
+          "2023/01/20",
+          "2023/01/23",
+          "2023/01/24",
+          "2023/01/25",
+          "2023/01/26",
+          "2023/01/27",
+          "2023/01/30",
+          "2023/01/31",
+          "2023/02/06",
+          "2023/02/07",
+          "2023/02/08",
+          "2023/02/09",
+          "2023/02/10",
+          "2023/03/01",
+          "2023/03/02",
+          "2023/11/29",
+          "2023/12/01",
+          "2023/12/06",
+          "2023/12/18",
+          "2024/01/08",
+          "2024/01/09",
+          "2024/01/10",
+          "2024/01/11",
+          "2024/01/12",
+          "2024/01/15",
+          "2024/01/16",
+          "2024/01/18",
+          "2024/01/19",
+          "2024/02/12",
+          "2024/02/27",
+          "2024/02/28",
+          "2024/03/04",
+          "2024/03/05",
+          "2024/03/06",
+          "2024/03/11",
+          "2024/03/12",
+          "2024/03/29",
+          "2024/12/03",
+          "2024/12/10",
+          "2024/12/11",
+          "2024/12/12",
+          "2024/12/13",
+          "2024/12/16",
+          "2024/12/27",
+          "2024/12/30",
+          "2025/01/02",
+          "2025/01/03",
+          "2025/01/10",
+          "2025/01/13",
+          "2025/01/14",
+          "2025/01/15",
+          "2025/01/16",
+          "2025/01/17",
+          "2025/01/20",
+          "2025/01/21",
+          "2025/01/22",
+          "2025/01/30",
+          "2025/01/31",
+          "2025/02/03",
+          "2025/12/29",
+          "2025/12/31",
+          "2026/01/05",
+          "2026/01/06",
+          "2026/01/07",
+          "2026/01/26",
+          "2026/01/28",
+          "2026/01/29",
+          "2026/02/17",
+          "2026/03/13",
+          "2026/03/16",
+          "2026/03/17",
+          "2026/03/18",
+          "2026/03/19",
+          "2026/03/20",
+          "2026/03/23",
+          "2026/03/24",
+          "2026/03/25",
+          "2026/03/26",
+          "2026/03/27",
+          "2026/03/30",
+          "2026/03/31"
+        ]
+      },
+      {
+        "name": "blanc",
+        "numberOfDays": 43,
+        "monthBegin": 10,
+        "monthEnd": 6,
+        "lastDays": [
+          "2020/11/23",
+          "2020/11/24",
+          "2020/11/25",
+          "2020/11/26",
+          "2020/11/30",
+          "2020/12/01",
+          "2020/12/03",
+          "2020/12/04",
+          "2020/12/05",
+          "2020/12/10",
+          "2020/12/11",
+          "2020/12/15",
+          "2020/12/17",
+          "2020/12/28",
+          "2020/12/29",
+          "2020/12/30",
+          "2021/01/01",
+          "2021/01/02",
+          "2021/01/09",
+          "2021/01/14",
+          "2021/01/16",
+          "2021/01/19",
+          "2021/01/22",
+          "2021/01/23",
+          "2021/02/01",
+          "2021/02/04",
+          "2021/02/05",
+          "2021/02/12",
+          "2021/02/13",
+          "2021/02/15",
+          "2021/02/16",
+          "2021/03/04",
+          "2021/03/08",
+          "2021/03/09",
+          "2021/03/15",
+          "2021/03/16",
+          "2021/03/17",
+          "2021/03/18",
+          "2021/03/19",
+          "2021/03/22",
+          "2021/03/23",
+          "2021/03/24",
+          "2021/04/06",
+          "2021/11/23",
+          "2021/11/24",
+          "2021/11/25",
+          "2021/11/26",
+          "2021/11/30",
+          "2021/12/01",
+          "2021/12/02",
+          "2021/12/03",
+          "2021/12/06",
+          "2021/12/07",
+          "2021/12/08",
+          "2021/12/09",
+          "2021/12/11",
+          "2021/12/16",
+          "2021/12/17",
+          "2022/01/05",
+          "2022/01/07",
+          "2022/01/15",
+          "2022/01/22",
+          "2022/01/28",
+          "2022/01/31",
+          "2022/02/02",
+          "2022/02/03",
+          "2022/02/07",
+          "2022/02/08",
+          "2022/02/09",
+          "2022/02/10",
+          "2022/02/11",
+          "2022/02/23",
+          "2022/02/25",
+          "2022/02/28",
+          "2022/03/01",
+          "2022/03/02",
+          "2022/03/03",
+          "2022/03/07",
+          "2022/03/08",
+          "2022/04/04",
+          "2022/04/05",
+          "2022/04/06",
+          "2022/04/14",
+          "2022/05/24",
+          "2022/05/30",
+          "2022/05/31",
+          "2022/11/29",
+          "2022/11/30",
+          "2022/12/01",
+          "2022/12/02",
+          "2022/12/05",
+          "2022/12/06",
+          "2022/12/07",
+          "2022/12/09",
+          "2022/12/10",
+          "2022/12/15",
+          "2022/12/16",
+          "2022/12/17",
+          "2023/01/16",
+          "2023/01/21",
+          "2023/01/28",
+          "2023/02/01",
+          "2023/02/02",
+          "2023/02/03",
+          "2023/02/04",
+          "2023/02/11",
+          "2023/02/13",
+          "2023/02/14",
+          "2023/02/15",
+          "2023/02/16",
+          "2023/02/22",
+          "2023/02/23",
+          "2023/02/24",
+          "2023/02/27",
+          "2023/02/28",
+          "2023/03/03",
+          "2023/03/06",
+          "2023/03/07",
+          "2023/04/04",
+          "2023/04/05",
+          "2023/04/06",
+          "2023/04/07",
+          "2023/04/13",
+          "2023/04/25",
+          "2023/04/26",
+          "2023/06/07",
+          "2023/06/08",
+          "2023/06/09",
+          "2023/06/12",
+          "2023/11/22",
+          "2023/11/27",
+          "2023/11/28",
+          "2023/11/30",
+          "2023/12/02",
+          "2023/12/05",
+          "2023/12/07",
+          "2023/12/08",
+          "2023/12/14",
+          "2023/12/15",
+          "2023/12/16",
+          "2023/12/19",
+          "2024/01/04",
+          "2024/01/05",
+          "2024/01/06",
+          "2024/01/13",
+          "2024/01/17",
+          "2024/01/20",
+          "2024/01/26",
+          "2024/01/29",
+          "2024/01/30",
+          "2024/01/31",
+          "2024/02/01",
+          "2024/02/02",
+          "2024/02/05",
+          "2024/02/13",
+          "2024/02/19",
+          "2024/02/20",
+          "2024/02/23",
+          "2024/02/24",
+          "2024/02/26",
+          "2024/02/29",
+          "2024/03/07",
+          "2024/03/08",
+          "2024/03/13",
+          "2024/03/26",
+          "2024/04/10",
+          "2024/04/18",
+          "2024/04/22",
+          "2024/04/23",
+          "2024/04/24",
+          "2024/04/25",
+          "2024/04/26",
+          "2024/11/14",
+          "2024/11/15",
+          "2024/11/20",
+          "2024/11/21",
+          "2024/11/22",
+          "2024/11/28",
+          "2024/12/04",
+          "2024/12/09",
+          "2024/12/14",
+          "2024/12/17",
+          "2024/12/20",
+          "2024/12/23",
+          "2024/12/24",
+          "2024/12/26",
+          "2024/12/28",
+          "2024/12/31",
+          "2025/01/04",
+          "2025/01/07",
+          "2025/01/08",
+          "2025/01/09",
+          "2025/01/11",
+          "2025/01/18",
+          "2025/01/23",
+          "2025/01/29",
+          "2025/02/01",
+          "2025/02/04",
+          "2025/02/05",
+          "2025/02/06",
+          "2025/02/07",
+          "2025/02/08",
+          "2025/02/10",
+          "2025/02/11",
+          "2025/02/12",
+          "2025/02/13",
+          "2025/02/14",
+          "2025/02/17",
+          "2025/02/18",
+          "2025/02/19",
+          "2025/02/28",
+          "2025/03/03",
+          "2025/03/04",
+          "2025/03/12",
+          "2025/03/13",
+          "2025/11/20",
+          "2025/11/21",
+          "2025/11/26",
+          "2025/11/27",
+          "2025/12/02",
+          "2025/12/03",
+          "2025/12/12",
+          "2025/12/16",
+          "2025/12/17",
+          "2025/12/19",
+          "2025/12/22",
+          "2025/12/26",
+          "2025/12/27",
+          "2025/12/30",
+          "2026/01/01",
+          "2026/01/02",
+          "2026/01/03",
+          "2026/01/08",
+          "2026/01/10",
+          "2026/01/14",
+          "2026/01/16",
+          "2026/01/19",
+          "2026/01/20",
+          "2026/01/22",
+          "2026/01/27",
+          "2026/01/31",
+          "2026/02/02",
+          "2026/02/03",
+          "2026/02/09",
+          "2026/02/13",
+          "2026/02/18",
+          "2026/02/19",
+          "2026/03/03",
+          "2026/03/09",
+          "2026/03/10",
+          "2026/03/14",
+          "2026/04/01",
+          "2026/04/02",
+          "2026/05/18",
+          "2026/05/26",
+          "2026/05/27",
+          "2026/05/28",
+          "2026/05/29"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "EDF - EJP",
+    "offer_type": "TRV",
+    "lastUpdate": "2026-02-01",
+    "isCommunity": false,
+    "subscription_url": "",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
+    "prices": [
+      {
+        "puissance": 9,
+        "abonnement": 19.2,
+        "bleu": {
+          "prixKwhHP": 17.81,
+          "prixKwhHC": 17.81
+        },
+        "rouge": {
+          "prixKwhHP": 34.4,
+          "prixKwhHC": 17.81
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 22.71,
+        "bleu": {
+          "prixKwhHP": 17.81,
+          "prixKwhHC": 17.81
+        },
+        "rouge": {
+          "prixKwhHP": 34.4,
+          "prixKwhHC": 17.81
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.27,
+        "bleu": {
+          "prixKwhHP": 17.81,
+          "prixKwhHC": 17.81
+        },
+        "rouge": {
+          "prixKwhHP": 34.4,
+          "prixKwhHC": 17.81
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 29.74,
+        "bleu": {
+          "prixKwhHP": 17.81,
+          "prixKwhHC": 17.81
+        },
+        "rouge": {
+          "prixKwhHP": 34.4,
+          "prixKwhHC": 17.81
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 51.31,
+        "bleu": {
+          "prixKwhHP": 17.81,
+          "prixKwhHC": 17.81
+        },
+        "rouge": {
+          "prixKwhHP": 34.4,
+          "prixKwhHC": 17.81
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 1,
+          "minute": 0
+        },
+        "end": {
+          "hour": 7,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      {
+        "name": "rouge",
+        "numberOfDays": 22,
+        "monthBegin": 11,
+        "monthEnd": 3,
+        "lastDays": [
+          "2020/11/30",
+          "2020/12/01",
+          "2020/12/02",
+          "2020/12/03",
+          "2020/12/04",
+          "2020/12/07",
+          "2020/12/08",
+          "2020/12/09",
+          "2020/12/10",
+          "2020/12/18",
+          "2021/01/04",
+          "2021/01/05",
+          "2021/01/06",
+          "2021/01/07",
+          "2021/01/08",
+          "2021/01/11",
+          "2021/01/26",
+          "2021/02/11",
+          "2021/02/12",
+          "2021/03/17",
+          "2021/03/18",
+          "2021/03/23",
+          "2021/11/29",
+          "2022/01/12",
+          "2022/01/13",
+          "2022/01/14",
+          "2022/01/17",
+          "2022/01/18",
+          "2022/01/19",
+          "2022/01/25",
+          "2022/01/26",
+          "2022/01/27",
+          "2022/02/28",
+          "2022/03/01",
+          "2022/03/02",
+          "2022/03/03",
+          "2022/03/07",
+          "2022/03/08",
+          "2022/03/15",
+          "2022/03/22",
+          "2022/03/23",
+          "2022/03/29",
+          "2022/03/30",
+          "2022/03/31",
+          "2022/12/08",
+          "2022/12/12",
+          "2022/12/13",
+          "2022/12/14",
+          "2023/01/19",
+          "2023/01/20",
+          "2023/01/23",
+          "2023/01/24",
+          "2023/01/25",
+          "2023/01/27",
+          "2023/02/07",
+          "2023/02/09",
+          "2023/02/10",
+          "2023/02/28",
+          "2023/03/01",
+          "2023/03/02",
+          "2023/03/03",
+          "2023/03/06",
+          "2023/03/07",
+          "2023/03/08",
+          "2023/03/09",
+          "2023/03/15",
+          "2023/11/29",
+          "2023/11/30",
+          "2023/12/01",
+          "2023/12/06",
+          "2023/12/18",
+          "2023/12/20",
+          "2024/01/08",
+          "2024/01/09",
+          "2024/01/10",
+          "2024/01/11",
+          "2024/01/12",
+          "2024/01/15",
+          "2024/01/16",
+          "2024/01/19",
+          "2024/02/26",
+          "2024/02/27",
+          "2024/02/28",
+          "2024/03/04",
+          "2024/03/05",
+          "2024/03/06",
+          "2024/03/07",
+          "2024/03/11",
+          "2024/11/13",
+          "2024/11/14",
+          "2024/12/03",
+          "2024/12/04",
+          "2024/12/09",
+          "2024/12/10",
+          "2024/12/11",
+          "2024/12/12",
+          "2024/12/13",
+          "2025/01/13",
+          "2025/01/14",
+          "2025/01/15",
+          "2025/01/16",
+          "2025/01/17",
+          "2025/01/20",
+          "2025/01/21",
+          "2025/01/22",
+          "2025/02/03",
+          "2025/02/04",
+          "2025/02/07",
+          "2025/02/12",
+          "2025/03/14",
+          "2025/11/20",
+          "2025/11/21",
+          "2025/11/26",
+          "2025/12/16",
+          "2025/12/17",
+          "2025/12/18",
+          "2025/12/19",
+          "2026/01/05",
+          "2026/01/06",
+          "2026/01/07",
+          "2026/01/08",
+          "2026/01/09",
+          "2026/02/09",
+          "2026/02/17",
+          "2026/03/03",
+          "2026/03/04",
+          "2026/03/05",
+          "2026/03/06",
+          "2026/03/09",
+          "2026/03/10",
+          "2026/03/14",
+          "2026/03/16"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "EDF - Vert Electrique",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 19.51
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 19.37
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Vert Electrique Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 20.74,
+          "prixKwhHC": 15.88
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Vert Electrique Auto",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-auto.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-auto.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 22.77,
+          "prixKwhHC": 13.24
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Vert Electrique Régional",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 19.57
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 19.77
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Vert Electrique Régional Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 21.4,
+          "prixKwhHC": 15.31
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Vert Electrique Week-End",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 21.1
+        },
+        "weekend": {
+          "prixKwhHC": 15.88
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
+    "name": "EDF - Vert Electrique Week-End Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 21.88,
+          "prixKwhHC": 16.43
+        },
+        "weekend": {
+          "prixKwhHP": 16.43,
+          "prixKwhHC": 16.43
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
+    "name": "EDF - Zen Estival",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-31",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-estival.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-estival.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "hiver": {
+          "prixKwhHP": 26.27,
+          "prixKwhHC": 20.62
+        },
+        "hiverSC": {
+          "prixKwhHC": 19.28
+        },
+        "ete": {
+          "prixKwhHP": 15.22,
+          "prixKwhHC": 13.04
+        },
+        "eteSC": {
+          "prixKwhHC": 9.87
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [],
+    "hcByDayType": {
+      "hiver": [
+        {
+          "start": {
+            "hour": 11,
+            "minute": 0
+          },
+          "end": {
+            "hour": 18,
+            "minute": 0
+          }
+        }
+      ],
+      "hiverSC": [
+        {
+          "start": {
+            "hour": 22,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "ete": [
+        {
+          "start": {
+            "hour": 22,
+            "minute": 0
+          },
+          "end": {
+            "hour": 0,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "eteSC": [
+        {
+          "start": {
+            "hour": 11,
+            "minute": 0
+          },
+          "end": {
+            "hour": 18,
+            "minute": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "EDF - Zen Fixe",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-06-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "bleu": {
+          "prixKwhHC": 18.5
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 18.5
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 18.38
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Zen Fixe Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-06-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 19.69,
+          "prixKwhHC": 15.1
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Zen Online",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-02-01",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "bleu": {
+          "prixKwhHC": 18.67
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 18.67
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 18.53
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Zen Online Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 19.85,
+          "prixKwhHC": 15.22
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Zen Week-End",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.03,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 21.8
+        },
+        "weekend": {
+          "prixKwhHC": 16.37
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
+    "name": "EDF - Zen Week-End HC",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 22.63,
+          "prixKwhHC": 16.95
+        },
+        "weekend": {
+          "prixKwhHP": 16.95,
+          "prixKwhHC": 16.95
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
+    "name": "EDF - Zen Week-End Option Flex",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 20.65,
+          "prixKwhHC": 15.85
+        },
+        "sobriete": {
+          "prixKwhHP": 71.48,
+          "prixKwhHC": 20.65
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 8,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 13,
+          "minute": 0
+        },
+        "end": {
+          "hour": 18,
+          "minute": 0
+        }
+      },
+      {
+        "start": {
+          "hour": 20,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [
+      {
+        "name": "sobriete",
+        "numberOfDays": 20,
+        "monthBegin": 10,
+        "monthEnd": 4,
+        "lastDays": [
+          "2020/01/07",
+          "2020/01/20",
+          "2020/01/21",
+          "2020/01/22",
+          "2020/01/23",
+          "2020/01/24",
+          "2020/01/29",
+          "2020/02/05",
+          "2020/02/06",
+          "2020/02/19",
+          "2020/03/02",
+          "2020/03/03",
+          "2020/03/04",
+          "2020/03/05",
+          "2020/03/06",
+          "2020/12/02",
+          "2020/12/07",
+          "2020/12/08",
+          "2021/01/05",
+          "2021/01/06",
+          "2021/01/07",
+          "2021/01/08",
+          "2021/01/11",
+          "2021/01/12",
+          "2021/01/13",
+          "2021/01/15",
+          "2021/01/18",
+          "2021/01/25",
+          "2021/01/26",
+          "2021/01/27",
+          "2021/02/08",
+          "2021/02/09",
+          "2021/02/10",
+          "2021/02/11",
+          "2021/11/29",
+          "2021/12/13",
+          "2021/12/14",
+          "2021/12/15",
+          "2021/12/20",
+          "2022/01/06",
+          "2022/01/07",
+          "2022/01/08",
+          "2022/01/09",
+          "2022/01/10",
+          "2022/01/11",
+          "2022/01/12",
+          "2022/01/13",
+          "2022/01/14",
+          "2022/01/17",
+          "2022/01/18",
+          "2022/01/19",
+          "2022/01/20",
+          "2022/01/21",
+          "2022/01/24",
+          "2022/01/25",
+          "2022/12/08",
+          "2022/12/12",
+          "2022/12/13",
+          "2022/12/14",
+          "2023/11/29",
+          "2023/12/06",
+          "2023/12/15",
+          "2023/12/18",
+          "2023/12/20",
+          "2023/12/21",
+          "2023/12/22",
+          "2024/01/08",
+          "2024/01/09",
+          "2024/01/10",
+          "2024/01/11",
+          "2024/01/12",
+          "2024/01/15",
+          "2024/01/16",
+          "2024/01/19",
+          "2024/03/04",
+          "2024/03/06",
+          "2024/03/07",
+          "2024/12/03",
+          "2024/12/09",
+          "2024/12/10",
+          "2024/12/11",
+          "2024/12/12",
+          "2024/12/13",
+          "2024/12/16",
+          "2024/12/17",
+          "2024/12/20",
+          "2025/01/02",
+          "2025/01/03",
+          "2025/01/10",
+          "2025/01/13",
+          "2025/01/14",
+          "2025/01/15",
+          "2025/01/16",
+          "2025/01/17",
+          "2025/01/20",
+          "2025/01/21",
+          "2025/01/22",
+          "2025/02/04",
+          "2025/02/07",
+          "2025/03/14",
+          "2025/12/16",
+          "2025/12/17",
+          "2025/12/18",
+          "2025/12/19",
+          "2025/12/29",
+          "2025/12/31",
+          "2026/01/05",
+          "2026/01/06",
+          "2026/01/07",
+          "2026/01/08",
+          "2026/01/09",
+          "2026/01/26",
+          "2026/01/28",
+          "2026/01/29",
+          "2026/02/17",
+          "2026/02/18",
+          "2026/03/16",
+          "2026/03/17",
+          "2026/03/25",
+          "2026/03/26"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "EDF - Zen Week-End Plus",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHC": 22.48
+        },
+        "weekend": {
+          "prixKwhHC": 16.85
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": true,
+    "specialDays": [
+      0,
+      6
+    ]
+  },
+  {
+    "name": "EDF - Zen Week-End Plus HC",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-03-16",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.65,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.56,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.32,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 26.84,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 30.49,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 38.24,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 45.37,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 52.54,
+        "bleu": {
+          "prixKwhHP": 23.05,
+          "prixKwhHC": 17.24
+        },
+        "weekend": {
+          "prixKwhHP": 17.24,
+          "prixKwhHC": 17.24
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": true,
+    "specialDays": [
+      0,
+      6
+    ]
+  }
+]

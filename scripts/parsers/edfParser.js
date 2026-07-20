@@ -1,4 +1,4 @@
-var edfParser = {
+export const edfParser = {
     parseCSV: function (csv) {
         const result = [];
 

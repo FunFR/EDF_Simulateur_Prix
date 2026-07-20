@@ -42,18 +42,19 @@ h6 {
   font-weight: 600;
 }
 
-.main-title {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 2rem;
+/* En-tête d'un bloc mensuel dans l'accordéon de détail : couleurs foncées
+   pour rester lisibles (contraste >= 4.5:1) sur le fond .tarif-detail-row. */
+.month-title {
+  font-size: 1.5rem;
+  color: #1d5d8d;
+  margin-bottom: 0.5rem;
 }
 
-.sub-title {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
+.month-summary {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .table {
@@ -87,6 +88,101 @@ h6 {
 
 .table tbody tr:hover {
   background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Bouton chevron qui déplie l'accordéon de détail d'un tarif (la ligne
+   elle-même n'est pas cliquable) ; aria-expanded est maintenu par Bootstrap. */
+.tarif-toggle .fa-chevron-right {
+  transition: transform 0.2s ease;
+}
+
+.tarif-toggle[aria-expanded="true"] .fa-chevron-right {
+  transform: rotate(90deg);
+}
+
+/* Ligne accordéon de détail : fond bleu très clair (au lieu du gris
+   table-secondary) pour le contraste avec les titres mensuels. */
+.tarif-detail-row {
+  --bs-table-bg: #f4f8fb;
+}
+
+/* Détail des résultats : pastilles de bandes horaires et badges de type de jour.
+   Les couleurs (palette validée) sont posées inline par le renderer depuis
+   scripts/ui/tariffDisplay.js — le libellé accompagne toujours la couleur. */
+.band-dot {
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  margin-right: 0.35em;
+  vertical-align: baseline;
+}
+
+.daytype-badge {
+  font-weight: 600;
+  border: 1px solid rgba(11, 11, 11, 0.1);
+}
+
+/* Zébrage par paire ligne jour + ligne graphe. */
+.day-row-alt>td {
+  background-color: rgba(52, 152, 219, 0.06);
+}
+
+/* Graphe horaire d'une journée (SVG généré par scripts/ui/dayChart.js). */
+.day-chart-toggle .fa-chevron-right {
+  transition: transform 0.2s ease;
+}
+
+.day-chart-toggle-open .fa-chevron-right {
+  transform: rotate(90deg);
+}
+
+.day-chart-cell {
+  padding: 0.25rem 1rem 0.75rem;
+}
+
+.day-chart svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.day-chart-legend {
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+/* Mini barre de répartition de la conso par tranche, sous le nom du tarif
+   (SVG généré par scripts/ui/bandShareBar.js). */
+.band-share {
+  max-width: 280px;
+  margin-top: 0.35rem;
+}
+
+.band-share svg {
+  display: block;
+  width: 100%;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.band-share-legend {
+  margin-top: 0.15rem;
+  line-height: 1.6;
+  font-size: 0.72rem;
+}
+
+/* Une ligne par paire de tranches : insécable, la table élargit la colonne
+   au besoin (layout auto) au lieu de casser la paire. */
+.band-share-legend>div {
+  white-space: nowrap;
+}
+
+/* Liseré des pastilles : les couleurs très claires (jour Blanc) resteraient
+   invisibles sur fond blanc. */
+.band-share-legend .band-dot {
+  box-shadow: inset 0 0 0 1px rgba(11, 11, 11, 0.15);
 }
 
 .btn {
@@ -175,6 +271,202 @@ h6 {
   border-color: #f5c6cb;
 }
 
+/* Les étapes s'empilent dans la même cellule de grille : le conteneur garde la
+   hauteur de l'étape la plus haute, donc la carte et le bouton Suivant/Simuler
+   ne bougent pas entre les étapes. visibility (et non display) conserve cette
+   hauteur tout en sortant les étapes inactives du focus et de l'accessibilité. */
+.wizard-steps {
+  display: grid;
+}
+
+.wizard-step {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+
+.wizard-step.active {
+  visibility: visible;
+}
+
+.wizard-stepper {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.wizard-stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.55;
+  font-size: 0.9rem;
+}
+
+.wizard-stepper-index {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active .wizard-stepper-index {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+.wizard-stepper-item.done {
+  opacity: 0.8;
+}
+
+.wizard-stepper-item.done .wizard-stepper-index {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Zone de dépôt du CSV (étape 3) : l'input #csvFile reste dans le DOM
+   (le harnais de test y injecte un fichier via DataTransfer) mais est
+   masqué visuellement — pas de display:none pour garder le focus clavier. */
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed var(--primary-color);
+  border-radius: 8px;
+  background-color: rgba(52, 152, 219, 0.05);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  background-color: rgba(52, 152, 219, 0.15);
+}
+
+.upload-dropzone:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.upload-dropzone-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.upload-dropzone-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.upload-dropzone-hint {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.upload-dropzone-file {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.upload-dropzone-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.upload-dropzone.has-file {
+  border-color: var(--secondary-color);
+  background-color: rgba(46, 204, 113, 0.08);
+}
+
+.upload-dropzone.has-file .upload-dropzone-icon,
+.upload-dropzone.has-file .upload-dropzone-file {
+  color: #27ae60;
+}
+
+/* Boîte d'aide « Comment récupérer les données » (étape 3) :
+   accordéon mis en avant pour les utilisateurs qui ne savent pas où trouver leur CSV. */
+.help-accordion {
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden; /* arrondir aussi le bouton interne */
+}
+
+.help-accordion .accordion-button {
+  background-color: rgba(52, 152, 219, 0.08);
+  font-weight: 600;
+  color: #1d6fa5; /* bleu foncé lisible sur le fond clair */
+}
+
+.help-accordion .accordion-button:not(.collapsed) {
+  background-color: rgba(52, 152, 219, 0.15);
+  box-shadow: none;
+}
+
+.help-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); /* même focus que la dropzone */
+}
+
+.help-accordion .accordion-button .fa-circle-question {
+  color: var(--primary-color);
+  font-size: 1.15rem;
+}
+
+/* Cartes de choix des tarifs communautaires (étape 4). */
+.choice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.choice-card:hover {
+  border-color: var(--primary-color);
+}
+
+.choice-card:has(:checked) {
+  border-color: var(--primary-color);
+  background-color: rgba(52, 152, 219, 0.08);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.choice-card .form-check-input {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
 @media (min-width: 992px) {
   .col-lg-8 {
     width: 100%;
@@ -188,6 +480,24 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .wizard-stepper-label {
+    display: none;
+  }
+
+  /* Sur petit écran, une carte haute et vide serait pénalisante : retour à la
+     hauteur auto, seule l'étape active occupe la place. */
+  .wizard-steps {
+    display: block;
+  }
+
+  .wizard-step {
+    display: none;
+  }
+
+  .wizard-step.active {
+    display: block;
+  }
+
   .container {
     padding: 1rem;
   }
@@ -227,5 +537,11 @@ h6 {
     white-space: nowrap;
     text-align: left;
     font-weight: bold;
+  }
+
+  /* Les utilitaires Bootstrap (.text-center/.text-start, !important) écrasent
+     l'alignement du mode carte : on le rétablit pour les cellules étiquetées. */
+  .table td[data-label] {
+    text-align: right !important;
   }
 }

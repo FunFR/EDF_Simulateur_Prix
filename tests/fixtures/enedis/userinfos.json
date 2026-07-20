@@ -1,0 +1,12 @@
+{
+  "_comment": "Fixture PROVISOIRE (forme plausible de l'API privée Enedis) — à remplacer par une réponse réelle anonymisée lors de la capture, voir le plan.",
+  "espace": "PARTICULIER",
+  "identity": {
+    "firstName": "Prenom",
+    "lastName": "Nom"
+  },
+  "userInfos": {
+    "cnAlex": "AAA0000000000",
+    "email": "anonyme@example.org"
+  }
+}

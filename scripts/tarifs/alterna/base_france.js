@@ -1,35 +1,21 @@
-abonnements.push(
-    {
-        name: "Alterna - Base France",
-        offer_type: "Marché",
-        lastUpdate: "2025-12-18",
-        subscription_url: "https://www.alterna-energie.fr",
-        price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
-        prices: [
-            { puissance: 3, abonnement: 11.73 },
-            { puissance: 6, abonnement: 15.47 },
-            { puissance: 9, abonnement: 19.39 },
-            { puissance: 12, abonnement: 23.32 },
-            { puissance: 15, abonnement: 27.06 },
-            { puissance: 18, abonnement: 30.76 },
-            { puissance: 24, abonnement: 38.79 },
-            { puissance: 30, abonnement: 46.44 },
-            { puissance: 36, abonnement: 54.29 }
-        ].map(item => ({
-            ...item,
-            bleu: { prixKwhHC: 17.29,  prixKwhHP: 17.29 }
-        })),
-        hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
-        }],
-        hasHCCustom: false,
-        hasSpecialDaysCustom: false,
-        specialDays: [],
-        getDayType: function (day) {
-            let dayType = "bleu";
-            return dayType;
-        }
-    }
-);
-
+defineTarif({
+    name: "Alterna - Base France",
+    offer_type: "Marché",
+    lastUpdate: "2026-05-07",
+    isCommunity: true,
+    subscription_url: "https://www.alterna-energie.fr",
+    price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
+    subscriptions: {
+        3: 11.25,
+        6: 14.78,
+        9: 18.49,
+        12: 22.21,
+        15: 25.74,
+        18: 29.23,
+        24: 36.84,
+        30: 44.07,
+        36: 51.50
+    },
+    dayTypes: { bleu: { price: 17.40 } },
+    dayRule: { type: "constant", dayType: "bleu" }
+});

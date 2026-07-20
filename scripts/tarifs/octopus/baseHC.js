@@ -1,28 +1,21 @@
-abonnements.push({
+defineTarif({
     name: "Octopus - Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-08-01",
+    lastUpdate: "2026-03-19",
+    isCommunity: true,
     subscription_url: "https://www.octopusenergy.fr/offre-electricite-tarifs",
-    price_url: "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
-    prices: [
-            { puissance: 6, abonnement: 15.74 },
-            { puissance: 9, abonnement: 20.21 },
-            { puissance: 12, abonnement: 24.28 },
-            { puissance: 15, abonnement: 28.15 },
-            { puissance: 18, abonnement: 32.13 },
-            { puissance: 24, abonnement: 40.53 },
-            { puissance: 30, abonnement: 48.34 },
-            { puissance: 36, abonnement: 54.61 }
-    ].map(item => ({
-        ...item,
-        bleu: { prixKwhHC: 15.59,  prixKwhHP: 19.77 }
-    })),
-    hc: [],
-    hasHCCustom: true,
-    hasSpecialDaysCustom: false,
-    specialDays: [],
-    getDayType: function (day) {
-        let dayType = "bleu";
-        return dayType;
-    }
+    price_url: "https://a.storyblok.com/f/151412/x/a5a79d71c2/grille-tarifaire-eco_conso_fixe_2_b_mars26.pdf",
+    subscriptions: {
+        6: 15.65,
+        9: 19.83,
+        12: 23.68,
+        15: 27.30,
+        18: 31.03,
+        24: 38.97,
+        30: 46.27,
+        36: 52.54
+    },
+    dayTypes: { bleu: { HP: 20.31, HC: 15.55 } },
+    dayRule: { type: "constant", dayType: "bleu" },
+    hcRanges: "custom"
 });

@@ -15,6 +15,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
 </head>
 
@@ -25,6 +26,9 @@
         </header>
 
         <main>
+            <!-- ================================================================
+                 Vue 1 : Présentation — intro, notes et bouton Démarrer
+                 ================================================================ -->
             <div id="presentationView">
                 <h5 class="text-center mt-4 mb-5">
                     Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
@@ -47,8 +51,6 @@
                                 restons assez réactif à <a
                                     href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos
                                     retours</a> pour affiner nos résultats.</li>
-                            <li>En l'absence d'historique, une partie des jours sobriétés du tarif ZenFlex est basée sur
-                                les jours rouges du tarif Tempo</li>
                         </ul>
                     </div>
                 </div>
@@ -84,14 +86,37 @@
                     </ul>
                 </div>
             </div>
+            <!-- ================================================================
+                 Vue 2 : Import & réglages — puissance, jour Zen+, heures creuses,
+                 tarifs communautaires, import CSV et tutoriels fournisseurs
+                 ================================================================ -->
             <div id="importView">
                 <div class="card maxcard">
                     <div class="card-body d-flex flex-column p-0">
                         <div>
                             <h2 class="text-center">Vos réglages</h2>
+                            <ol id="wizardStepper" class="wizard-stepper">
+                                <li class="wizard-stepper-item" data-step="1"><span
+                                        class="wizard-stepper-index">1</span><span
+                                        class="wizard-stepper-label">Puissance</span></li>
+                                <li class="wizard-stepper-item" data-step="2"><span
+                                        class="wizard-stepper-index">2</span><span
+                                        class="wizard-stepper-label">Heures creuses</span></li>
+                                <li class="wizard-stepper-item" data-step="3"><span
+                                        class="wizard-stepper-index">3</span><span
+                                        class="wizard-stepper-label">Données Linky</span></li>
+                                <li class="wizard-stepper-item" data-step="4"><span
+                                        class="wizard-stepper-index">4</span><span
+                                        class="wizard-stepper-label">Tarifs</span></li>
+                            </ol>
                             <hr />
                         </div>
-                        <div class="container-sm">
+                        <!-- Les étapes partagent la même cellule de grille (.wizard-steps) :
+                             la carte garde la hauteur de l'étape la plus haute et le bouton
+                             Suivant/Simuler ne bouge pas d'une étape à l'autre. -->
+                        <div id="wizardSteps" class="wizard-steps">
+                        <!-- Étape 1 : puissance souscrite -->
+                        <div class="wizard-step container-sm" id="wizardStep1">
                             <h4 class="mt-3">Puissance souscrite</h4>
                             <p>Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le
                                 site
@@ -101,8 +126,8 @@
                                 <select class="form-select form-control" aria-label=".form-select"
                                     id="puissanceSouscrite">
                                     <option value="3">3 kVA</option>
-                                    <option value="6" selected>6 kVA</option>
-                                    <option value="9">9 kVA</option>
+                                    <option value="6">6 kVA</option>
+                                    <option value="9" selected>9 kVA</option>
                                     <option value="12">12 kVA</option>
                                     <option value="15">15 kVA</option>
                                     <option value="18">18 kVA</option>
@@ -112,8 +137,8 @@
                                 </select>
                             </div>
                         </div>
-                        <hr />
-                        <div class="container-sm">
+                        <!-- Étape 2 : jour avantageux des forfaits Zen Plus + heures creuses -->
+                        <div class="wizard-step container-sm" id="wizardStep2">
                             <h4 class="mt-3">Choix du jour Zen Plus</h4>
                             <p>Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br />
                                 Choisissez celui qui vous convient pour la simulation.</p>
@@ -125,12 +150,11 @@
                                 </select>
                             </div>
 
-                        </div>
-                        <hr />
-                        <div class="container-sm">
+                            <hr />
+                            <!-- Plages d'heures creuses du tarif Bleu HC -->
                             <h4 class="mt-3">Choix des Heures Creuses pour le tarif
                                 Bleu HC </h4>
-                            <p>Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
+                            <p>Sur certains forfaits, notamment EDF Bleu, les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
                                 vôtres ou différents cas.
                                 <br /><br />
                                 <strong>ATTENTION :</strong> Pour le moment, les minutes ne sont pas prises en compte et
@@ -227,55 +251,25 @@
                                 </div>
                             </div>
                         </div>
-                        <hr />
-                        <div class="container-sm">
-                            <h4 class="d-block mt-3">
-                                Tarifs communautaires
-                            </h4>
-                            <p>Les tarifs communautaires correspondent aux tarifs qui ne nous parviennent pas
-                                directement et qui sont maintenus par la communauté.
-                                <br /><br />
-                                Cela veut dire <strong>qu'ils peuvent ne pas être à jour et qu'il est fortement
-                                    conseillé de les vérifier sur le site du fournisseur.</strong>
-                            </p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="communityPricesRadio"
-                                    value="isNotCommunity" id="communityRadioIsNotCommunity">
-                                <label class="form-check-label" for="communityRadioIsNotCommunity">
-                                    Je souhaite uniquement les tarifs suivis par le développeur.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="communityPricesRadio"
-                                    value="isCommunity" id="communityRadioIsCommunity">
-                                <label class="form-check-label" for="communityRadioIsCommunity">
-                                    Je veux comparer avec les tarifs communautaires, je comprends que je devrais
-                                    vérifier sur leur site s'ils sont à jour.
-                                </label>
-                            </div>
-                            <div class="d-none alert alert-danger" role="alert" id="community-alert">
-                                Vous devez choisir le type de tarif que vous souhaitez visualiser.
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="container-sm">
+                        <!-- Étape 3 : import du fichier CSV + tutoriels d'export par fournisseur -->
+                        <div class="wizard-step container-sm" id="wizardStep3">
                             <h4 class="d-block mt-3">
                                 Vos données Linky
                             </h4>
 
-                            <div class="mt-3 mb-3 form-group maxinput" x-data="{ fileName: '' }">
-                                <div class="input-group">
-                                    <span class="input-group-text px-3 text-muted"><i
-                                            class="fa-solid fa-file-csv"></i></span>
-                                    <input type="file" id="csvFile" accept=".csv"
-                                        class="form-control form-control-lg" />
-                                </div>
-                            </div>
+                            <label class="upload-dropzone mt-3 mb-3" for="csvFile" id="csvDropzone">
+                                <i class="fa-solid fa-file-arrow-up upload-dropzone-icon"></i>
+                                <span class="upload-dropzone-title">Choisissez votre fichier CSV</span>
+                                <span class="upload-dropzone-hint">ou glissez-déposez-le ici</span>
+                                <span class="upload-dropzone-file d-none" id="csvFileName"></span>
+                                <input type="file" id="csvFile" accept=".csv" class="upload-dropzone-input" />
+                            </label>
 
                             <div>
                                 <p class="text-muted">
                                     EDF : mes-puissances-atteintes-30min-XXXX.csv<br />
-                                    Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv<br />
+                                    Enedis (avant 2025) : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv<br />
+                                    Enedis (tel qu'expliqué ci-dessous) : conso-courbe-30min_PRM_DATEDEBUT-DATEFIN.csv<br />
                                     TotalEnergies : 0123456789-NOM-PRENOM.csv (si vous avez des espaces ou tirets
                                     dans votre nom, retirez les)<br />
                                     Strasbourg Electricité : export_courbe_charges.csv<br />
@@ -283,14 +277,15 @@
                                 </p>
                             </div>
 
-                            <div class="text-bg-light mb-3">
+                            <div class="help-accordion mb-3">
                                 <div class="accordion accordion-flush" id="accordionHelper">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-accordionHelper">
-                                            <button class="accordion-button bg-onfo collapsed" type="button"
+                                            <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#accordionHelperContainer"
-                                                aria-expanded="true" aria-controls="accordionHelperContainer">
-                                                Comment récupérer les données sur le site de votre fournisseur
+                                                aria-expanded="false" aria-controls="accordionHelperContainer">
+                                                <i class="fa-solid fa-circle-question me-2"></i>
+                                                Comment récupérer les données sur le site de votre fournisseur ?
                                             </button>
                                         </h2>
                                         <div id="accordionHelperContainer" class="accordion-collapse collapse"
@@ -301,26 +296,31 @@
                                                         role="tablist">
                                                         <li class="nav-item" role="presentation">
                                                             <a class="nav-link active" aria-current="page" href="#edf"
-                                                                aria-selected="true" role="tab">Depuis
+                                                                data-bs-toggle="pill" aria-selected="true"
+                                                                role="tab">Depuis
                                                                 EDF</a>
+                                                        </li>                                                        
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link" href="#enedis-auto"
+                                                                data-bs-toggle="pill" aria-selected="false" role="tab"
+                                                                tabindex="-1">Depuis Enedis</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#enedis" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Enedis</a>
+                                                            <a class="nav-link" href="#total" data-bs-toggle="pill"
+                                                                aria-selected="false" role="tab" tabindex="-1">Depuis
+                                                                TotalEnergies</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#total" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis TotalEnergies</a>
-                                                        </li>
-                                                        <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#ser" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Strasbourg
+                                                            <a class="nav-link" href="#ser" data-bs-toggle="pill"
+                                                                aria-selected="false" role="tab" tabindex="-1">Depuis
+                                                                Strasbourg
                                                                 Electricité
                                                                 Réseaux</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" href="#homeassistant" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Home Assistant</a>
+                                                            <a class="nav-link" href="#homeassistant"
+                                                                data-bs-toggle="pill" aria-selected="false" role="tab"
+                                                                tabindex="-1">Depuis Home Assistant</a>
                                                         </li>
                                                     </ul>
 
@@ -377,6 +377,67 @@
                                                                 style="width: 100%; height: auto;"
                                                                 alt="2ème étape pour télécharger les données sur le site Enedis">
 
+                                                        </div>
+
+                                                        <!-- Export automatique : script à coller dans la console de
+                                                             l'espace client Enedis (voir scripts/enedis-export/). -->
+                                                        <div class="tab-pane fade" id="enedis-auto" role="tabpanel">
+                                                            <p>
+                                                                Ce script récupère automatiquement toute votre courbe de
+                                                                charge à la demi-heure (jusqu'à ~2 ans) depuis votre
+                                                                espace client Enedis. Il s'exécute dans <b>votre</b>
+                                                                navigateur et ne communique qu'avec enedis.fr : aucune
+                                                                donnée n'est envoyée ailleurs.
+                                                            </p>
+                                                            <ol>
+                                                                <li>Connectez-vous à <a
+                                                                        href="https://mon-compte-particulier.enedis.fr/"
+                                                                        target="_blank" rel="noopener">votre espace
+                                                                        particulier Enedis</a> (et vérifiez que la
+                                                                    « Collecte de la consommation horaire » est activée
+                                                                    dans « Gérer l'accès à mes données »). En cas de
+                                                                    doute sur votre connexion, <a
+                                                                        href="https://alex.microapplications.enedis.fr/mon-compte/api/private/v2/userinfos?espace=PARTICULIER"
+                                                                        target="_blank" rel="noopener">ce lien</a> doit
+                                                                    afficher du texte brut (JSON) et non une erreur.
+                                                                </li>
+                                                                <li>Facultatif : saisissez ci-dessous votre numéro de
+                                                                    PRM / PDL (14 chiffres, sur votre facture ou votre
+                                                                    compteur Linky) — sinon le script vous le demandera.
+                                                                </li>
+                                                                <li>Copiez le script avec le bouton ci-dessous.</li>
+                                                                <li>Sur l'onglet de <b>votre espace client</b>
+                                                                    (mon-compte-particulier.enedis.fr, n'importe quelle
+                                                                    page), ouvrez la console du navigateur : touche
+                                                                    <kbd>F12</kbd> puis onglet « Console ».</li>
+                                                                <li>Sous Chrome/Edge, si le collage est bloqué, tapez
+                                                                    <code>allow pasting</code> puis <kbd>Entrée</kbd>.
+                                                                </li>
+                                                                <li>Collez le script, appuyez sur <kbd>Entrée</kbd> et
+                                                                    laissez tourner : une barre de progression s'affiche
+                                                                    en bas à droite (comptez ~2 minutes pour 2 ans de
+                                                                    données).</li>
+                                                                <li>Glissez le fichier
+                                                                    <span
+                                                                        class="font-weight-bold">"conso-courbe-30min_… .csv"</span>
+                                                                    téléchargé dans la zone d'import ci-dessus.</li>
+                                                            </ol>
+                                                            <div class="mb-3">
+                                                                <label for="enedisSnippetPrm" class="form-label">Numéro
+                                                                    de PRM / PDL (facultatif)</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="enedisSnippetPrm" inputmode="numeric"
+                                                                    maxlength="14" placeholder="14 chiffres"
+                                                                    autocomplete="off" />
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <textarea class="form-control font-monospace"
+                                                                    id="enedisSnippetCode" rows="6" readonly
+                                                                    spellcheck="false"></textarea>
+                                                            </div>
+                                                            <button type="button" class="btn btn-primary"
+                                                                id="enedisSnippetCopy">Copier le script</button>
+                                                            <span class="ms-2" id="enedisSnippetStatus"></span>
                                                         </div>
 
                                                         <div class="tab-pane fade" id="total" role="tabpanel">
@@ -445,22 +506,57 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="importError" class="alert alert-danger" role="alert">
+                                Les données importées ne sont pas valides.
+                            </div>
+                        </div>
+                        <!-- Étape 4 : inclusion des tarifs maintenus par la communauté -->
+                        <div class="wizard-step container-sm" id="wizardStep4">
+                            <h4 class="d-block mt-3">
+                                Tarifs communautaires
+                            </h4>
+                            <div class="alert alert-warning" role="alert">
+                                <h5 class="alert-heading"><i class="fa-solid fa-triangle-exclamation me-2"></i>Vérifiez
+                                    ces tarifs avant de les utiliser</h5>
+                                <p class="mb-0">Les tarifs communautaires ne nous parviennent pas directement et sont
+                                    maintenus par la communauté.<br/><strong>Ils peuvent ne pas être à jour : vérifiez-les
+                                        impérativement sur le site du fournisseur avant de prendre une
+                                        décision.</strong></p>
+                            </div>
+                            <label class="choice-card" for="communityRadioIsNotCommunity">
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isNotCommunity" id="communityRadioIsNotCommunity" checked>
+                                <span>
+                                    Je souhaite uniquement les tarifs suivis par le développeur.
+                                </span>
+                            </label>
+                            <label class="choice-card" for="communityRadioIsCommunity">
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isCommunity" id="communityRadioIsCommunity">
+                                <span>
+                                    Je veux comparer avec les tarifs communautaires, je comprends que je devrais
+                                    vérifier sur leur site s'ils sont à jour.
+                                </span>
+                            </label>
+                        </div>
+                        </div>
+                        <div id="wizardNav" class="wizard-nav my-4">
+                            <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<i
+                                    class="fa-solid fa-arrow-right ms-2"></i></button>
+                            <button type="button" class="btn btn-success d-none" id="simulateButton">Simuler les
+                                différents
+                                tarifs <i class="fa-solid fa-play ms-2"></i></button>
                         </div>
                     </div>
-                    <div id="importError" class="alert alert-danger" role="alert">
-                        Les données importées ne sont pas valides.
-                    </div>
-                </div>
-
-                <div class="d-block text-center m-4">
-                    <button type="button" class="btn btn-success mt-4 mb-4" id="simulateButton">Simuler les
-                        différents
-                        tarifs <i class="fa-solid fa-play ms-2"></i></button>
                 </div>
             </div>
 
 
 
+            <!-- ================================================================
+                 Vue 3 : Résultats — sélecteurs de période et conteneur rempli
+                 par scripts/ui/resultsRenderer.js à partir des templates
+                 ================================================================ -->
             <div id="pricesResultView" class="card maxcard">
                 <div class="card-body">
                     <div class="alert alert-warning fade show" role="alert">
@@ -475,14 +571,11 @@
                                 main de
                                 l'opérateur) et les offres TRV (règlementées) qui doivent être étudiées au cas par
                                 cas
-                                suite au classement des résultats obtenus ci-dessous.</li>
-                            <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les
-                                jours
-                                rouges du tarif Tempo sur les années avant 2023.</li>
-                            <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les
+                                suite au classement des résultats obtenus ci-dessous.</li>                            
+                            <li>Nous faisons de notre mieux pour garder les tarifs à jour, <strong>mais pensez à les
                                 vérifier
                                 avec vos
-                                fournisseurs avant de souscrire un contrat.</li>
+                                fournisseurs avant de souscrire un contrat.</strong></li>
                         </ul>
                     </div>
                     <div class="mt-4 mb-4">
@@ -515,7 +608,6 @@
                         </div>
                     </div>
 
-                    <div id="pricesTitleRow" class="row"></div>
                     <div id="pricesResultRow" class="m-0 row"></div>
                 </div>
             </div>
@@ -560,6 +652,12 @@
                 </p>
 
                 <p class="text-muted small text-center">
+                    Prix spot : <a href="https://energy-charts.info" target="_blank" rel="noopener">energy-charts.info</a>,
+                    données Bundesnetzagentur | SMARD.de, licence
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+                </p>
+
+                <p class="text-muted small text-center">
                     Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café en
                     faisant un don !<br />
                 </p>
@@ -569,18 +667,180 @@
         </div>
     </footer>
 
-    <script src="./scripts/calculator.js"></script>
+    <!-- ================================================================
+         Templates de l'écran de résultats (inertes, clonés et hydratés par
+         scripts/ui/resultsRenderer.js ; les ancres data-ref sont retirées
+         du DOM à l'hydratation).
+         ================================================================ -->
 
+    <!-- Bandeau de consommation totale + squelette de la table de comparaison -->
+    <template id="tpl-result-summary">
+        <div class="mb-4 p-0">
+            <div class="position-relative py-2 px-4 text-center border border-info rounded-pill">
+                <h5 class="mt-1 mb-1" data-ref="conso-title"></h5>
+            </div>
+            <div class="mt-2 table-responsive">
+                <table
+                    class="resultable table mt-3 align-middle table-striped-columns table-hover table-borderless table-sm">
+                    <thead>
+                        <tr>
+                            <th class="align-middle" style="padding-left: 20px;">Abonnement électrique</th>
+                            <th class="text-center">Estimation de coût</th>
+                            <th class="text-center">Diff. avec le plus avantageux</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider" data-ref="results-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </template>
 
-    <!-- Tarifs -->
+    <!-- Paire de lignes par tarif : ligne résumé (bouton chevron pour déplier)
+         + ligne accordéon de détail -->
+    <template id="tpl-tarif-row">
+        <tr>
+            <th class="align-middle">
+                <button type="button" class="btn btn-link p-0 ms-3 tarif-toggle" title="Détail mois par mois"
+                    data-bs-toggle="collapse" aria-expanded="false" data-ref="toggle"><i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <span class="ms-2" data-ref="title"></span>
+                <div class="fw-normal">
+                    <span class="ms-2" data-ref="last-update"></span>
+                    <br data-ref="link-br" />
+                    <a class="ms-2 providerLink" target="_blank" rel="noopener" data-ref="provider-link">Site du
+                        fournisseur</a>
+                </div>
+                <div class="fw-normal ms-2" data-ref="band-share"></div>
+            </th>
+            <td class="text-center align-middle">
+                <div class="container justify-content-center">
+                    <div class="h4 row">
+                        <span class="badge fw-bold text-bg-info" data-ref="monthly-price"><sup> €/mois</sup></span>
+                    </div>
+                    <div class="h5 row">
+                        <span class="badge fw-bold text-muted" data-ref="total-price"><br /></span>
+                    </div>
+                </div>
+            </td>
+            <td class="text-center align-middle">
+                <div class="container justify-content-center" data-ref="diff-container">
+                    <div class="h4 row fw-bold" data-ref="diff-main"></div>
+                </div>
+            </td>
+        </tr>
+        <tr class="collapse tarif-detail-row" data-ref="accordion-row">
+            <td colspan="3" data-ref="accordion-cell"></td>
+        </tr>
+    </template>
+
+    <!-- Badge du tarif le plus avantageux (1er du classement) -->
+    <template id="tpl-diff-best">
+        <span class="badge p-1 text-dark"><i class="fa-solid fa-medal fa-lg"></i> Tarif le plus
+            avantageux<br /><small>(selon vos données)</small></span>
+    </template>
+
+    <!-- Badges de surcoût par rapport au plus avantageux -->
+    <template id="tpl-diff-worse">
+        <span class="badge fw-bold text-bg-warning text-white" data-ref="diff-badge"><i
+                class="fa-solid fa-circle-plus"></i><sup> €/mois</sup></span>
+        <div class="h5 row">
+            <span class="badge fw-bold text-muted" data-ref="diff-total"><br /></span>
+        </div>
+    </template>
+
+    <!-- Mini barre 100 % empilée de répartition de la conso par tranche,
+         sous le nom du tarif (SVG construit par scripts/ui/bandShareBar.js) -->
+    <template id="tpl-band-share">
+        <div class="band-share">
+            <div data-ref="bar"></div>
+            <div class="band-share-legend small text-muted" data-ref="legend"></div>
+        </div>
+    </template>
+
+    <!-- Bloc mensuel de l'accordéon : titres + table journalière.
+         Les colonnes sont dynamiques : Jour | Conso totale | une colonne par
+         bande horaire du tarif (HP, HC, super creuses...) | Total. -->
+    <template id="tpl-month-detail">
+        <h3 class="month-title d-inline ms-2" data-ref="month-name"></h3>
+        <i class="fa-solid fa-triangle-exclamation text-warning ms-2" data-ref="month-warning" hidden></i>
+        <h4 class="month-summary float-end"><span data-ref="summary-conso"></span> / <span class="fw-bold"
+                data-ref="summary-price"></span></h4>
+        <table class="mt-2 ms-2 table table-sm align-middle">
+            <thead class="align-middle">
+                <tr data-ref="header-row"></tr>
+            </thead>
+            <tbody data-ref="daily-body"></tbody>
+        </table>
+    </template>
+
+    <!-- En-tête de colonne de la table journalière (pastille optionnelle) -->
+    <template id="tpl-day-col-header">
+        <th class="text-center text-nowrap" data-ref="header"><span class="band-dot" data-ref="dot"></span><span
+                data-ref="label"></span></th>
+    </template>
+
+    <!-- Ligne journalière : chevron de graphe + date + badge de type de jour,
+         conso totale, cellules de bandes insérées dynamiquement, total -->
+    <template id="tpl-day-row">
+        <tr>
+            <td class="text-start align-middle" data-ref="date-cell"><button type="button"
+                    class="btn btn-sm btn-link p-0 me-2 day-chart-toggle" title="Détail horaire"
+                    data-ref="chart-toggle"><i class="fa-solid fa-chevron-right"></i></button><span
+                    data-ref="date"></span><span class="badge daytype-badge ms-2" data-ref="day-badge"></span></td>
+            <td class="text-center align-middle" data-ref="conso"></td>
+            <td class="text-end align-middle" data-ref="price"></td>
+        </tr>
+    </template>
+
+    <!-- Ligne de graphe horaire d'un jour (masquée, rendue à la première ouverture) -->
+    <template id="tpl-day-chart">
+        <tr hidden data-ref="chart-row">
+            <td class="day-chart-cell" data-ref="chart-cell"></td>
+        </tr>
+    </template>
+
+    <!-- Cellule de bande horaire (conso et coût empilés) -->
+    <template id="tpl-day-band-cell">
+        <td class="text-center align-middle" data-ref="band-cell">
+            <div data-ref="band-conso"></div>
+            <div class="small text-muted" data-ref="band-price"></div>
+        </td>
+    </template>
+
+    <!-- Ligne journalière en erreur (journée incomplète, colspan dynamique) -->
+    <template id="tpl-day-row-error">
+        <tr>
+            <td class="text-start" data-ref="date"></td>
+            <td class="text-center align-middle fw-bold" data-ref="error-cell">Erreur lors du calcul de la journée</td>
+        </tr>
+    </template>
+
+    <!-- Tarifs (scripts classiques : chaque fichier pousse dans le registre global) -->
+    <script src="./scripts/tarifs-registry.js"></script>
+    <!-- Bibliothèque de définition déclarative des tarifs (defineTarif, defineCalendar)
+         et calendriers de jours spéciaux partagés — voir scripts/tarifs/README.md -->
+    <script src="./scripts/tarifs-lib/define-tarif.js"></script>
+    <script src="./scripts/tarifs-lib/calendars/tempo-edf.js"></script>
+    <script src="./scripts/tarifs-lib/calendars/ejp-edf.js"></script>
+    <script src="./scripts/tarifs-lib/calendars/zenflex-sobriete.js"></script>
+    <!-- Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
+         CC BY 4.0), générés par import/spot-update.mjs — à charger avant les
+         tarifs spot (Sobry) -->
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2023.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2024.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2025.js"></script>
+    <script src="./scripts/tarifs-lib/spot/epex-fr-2026.js"></script>
+
     <script src="./scripts/tarifs/alpiq/base.js"></script>
 
     <script src="./scripts/tarifs/alterna/baseHC_france.js"></script>
     <script src="./scripts/tarifs/alterna/baseHC_local.js"></script>
     <script src="./scripts/tarifs/alterna/base_france.js"></script>
     <script src="./scripts/tarifs/alterna/base_local.js"></script>
+    <script src="./scripts/tarifs/alterna/vert_HSC.js"></script>
 
     <script src="./scripts/tarifs/edf/bleu.js"></script>
+    <script src="./scripts/tarifs/edf/tempo.js"></script>
     <script src="./scripts/tarifs/edf/ejp.js"></script>
     <script src="./scripts/tarifs/edf/vert.js"></script>
     <script src="./scripts/tarifs/edf/vertAuto.js"></script>
@@ -592,11 +852,12 @@
     <script src="./scripts/tarifs/edf/zenWeekEnd.js"></script>
     <script src="./scripts/tarifs/edf/zenWeekEndPlus.js"></script>
 
+    <script src="./scripts/tarifs/enercoop/base.js"></script>
+    <script src="./scripts/tarifs/enercoop/flexibiliteHC.js"></script>
+    <script src="./scripts/tarifs/enercoop/flexibiliteHCWE.js"></script>
     <script src="./scripts/tarifs/enercoop/flexibiliteSaison.js"></script>  
-
-    <script src="./scripts/tarifs/engie/electHappyHeuresVertes1an.js"></script>    
-    <script src="./scripts/tarifs/engie/electReference3ans.js"></script>
-    <script src="./scripts/tarifs/engie/electTranquilite1an.js"></script>    
+   
+    <script src="./scripts/tarifs/engie/electReference3ans.js"></script> 
 
     <script src="./scripts/tarifs/labelleenergie/constance.js"></script>
     <script src="./scripts/tarifs/labelleenergie/constanceHC.js"></script>
@@ -612,6 +873,10 @@
     
     <script src="./scripts/tarifs/octopus/base.js"></script>
     <script src="./scripts/tarifs/octopus/baseHC.js"></script>
+    <script src="./scripts/tarifs/octopus/octotempo.js"></script>
+
+    <script src="./scripts/tarifs/sobry/socap.js"></script>
+    <script src="./scripts/tarifs/sobry/soflex.js"></script>
 
     <script src="./scripts/tarifs/total/chargheures.js"></script>
     <script src="./scripts/tarifs/total/heuresEco.js"></script>
@@ -624,52 +889,13 @@
     <script src="./scripts/tarifs/gazdebordeaux/novafixe.js"></script>
     <script src="./scripts/tarifs/gazdebordeaux/novaflex.js"></script>
 
-    <!-- Parsers -->
-    <script src="./scripts/parsers/edfParser.js"></script>
-    <script src="./scripts/parsers/enedisParser.js"></script>
-    <script src="./scripts/parsers/enedisBokupParser.js"></script>
-    <script src="./scripts/parsers/totalParser.js"></script>
-    <script src="./scripts/parsers/serParser.js"></script>
-    <script src="./scripts/parsers/homeAssistantParser.js"></script>
-
-    <!-- Website -->
-    <script src="./scripts/viewManager.js"></script>
-    <script src="./scripts/main.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 
-    <script>
-        $(document).ready(function () {
-            // Initialize the Bootstrap tab component
-            $('#exportTabs a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show');
-            });
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-        });
-        // au changement de mois/année de debut ou de fin activation du bouton refresh
-        document.getElementById("monthBeginSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("yearBeginSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("monthEndSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-        document.getElementById("yearEndSelector").onchange = function (e) {
-            document.getElementById("refreshButton").disabled = false;
-        };
-    </script>
+    <!-- Application (module ES, différé : s'exécute après les scripts classiques
+         ci-dessus et le parsing du DOM ; window.abonnements est alors peuplé) -->
+    <script type="module" src="./scripts/app.js"></script>
 </body>
 
 </html>
