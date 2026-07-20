@@ -1,5 +1,6 @@
 import { getMonthName } from '../utils/date.js';
 import { cloneTemplate } from './dom.js';
+import { bandColumns, buildDayModel } from './tariffDisplay.js';
 
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
@@ -13,7 +14,8 @@ export function render(container, calculatedMonths, dateBegin, dateEnd, sumPerio
             tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
             title: t.title,
             lastUpdate: t.lastUpdate,
-            subscription_url: t.subscription_url
+            subscription_url: t.subscription_url,
+            display: t.display
         }
     });
 
@@ -66,41 +68,93 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
         refs["diff-container"].appendChild(diff.fragment);
     }
 
-    result.tarif.months.forEach((m) => {
-        refs["accordion-cell"].appendChild(renderMonthDetail(m));
-    });
+    // Détail mensuel construit à la première ouverture de l'accordéon :
+    // rendre d'avance ~700 jours par tarif pèserait inutilement.
+    refs["accordion-row"].addEventListener("show.bs.collapse", () => {
+        result.tarif.months.forEach((m) => {
+            refs["accordion-cell"].appendChild(renderMonthDetail(m, result.display));
+        });
+    }, { once: true });
 
     return fragment;
 }
 
-function renderMonthDetail(m) {
+function renderMonthDetail(m, display) {
     const { fragment, refs } = cloneTemplate("tpl-month-detail");
     refs["month-name"].textContent = getMonthName(parseInt(m.month));
     refs["month-summary"].textContent = (m.conso / 1000).toFixed(2) + "kWh / " + m.price.toFixed(2) + "€";
 
-    refs["daily-header"].appendChild(cloneTemplate("tpl-day-header").fragment);
+    // Un tarif à bande unique (prix unique) n'affiche pas de colonnes de bande.
+    const columns = bandColumns(display);
+    const bands = columns.length > 1 ? columns : [];
+
+    appendColumnHeader(refs["header-row"], "Jour", null, "text-start");
+    appendColumnHeader(refs["header-row"], "Conso totale", null);
+    for (const band of bands) {
+        appendColumnHeader(refs["header-row"], band.label, band.color);
+    }
+    appendColumnHeader(refs["header-row"], "Total (€)", null, "text-end");
 
     //Les jours sont affichés du plus récent au plus ancien
     for (let j = m.days.length - 1; j >= 0; j--) {
-        refs["daily-table"].appendChild(renderDayRow(m.days[j]));
+        refs["daily-body"].appendChild(renderDayRow(m.days[j], display, bands));
     }
 
     return fragment;
 }
 
-function renderDayRow(day) {
+function appendColumnHeader(headerRow, label, color, align) {
+    const { fragment, refs } = cloneTemplate("tpl-day-col-header");
+    refs["label"].textContent = label;
+    if (color) {
+        refs["dot"].style.backgroundColor = color;
+    } else {
+        refs["dot"].remove();
+    }
+    if (align) {
+        refs["header"].classList.remove("text-center");
+        refs["header"].classList.add(align);
+    }
+    headerRow.appendChild(fragment);
+}
+
+function renderDayRow(day, display, bands) {
     const hasError = isNaN(day.conso) || isNaN(day.price);
-    const { fragment, refs } = cloneTemplate(hasError ? "tpl-day-row-error" : "tpl-day-row");
+    if (hasError) {
+        const { fragment, refs } = cloneTemplate("tpl-day-row-error");
+        refs["date"].textContent = day.date;
+        refs["error-cell"].colSpan = bands.length + 2;
+        return fragment;
+    }
+
+    const model = buildDayModel(day, display);
+    const { fragment, refs } = cloneTemplate("tpl-day-row");
 
     refs["date"].textContent = day.date;
-    if (!hasError) {
-        refs["conso"].textContent = (day.conso / 1000).toFixed(2) + "kWh";
-        refs["conso-hc"].textContent = (day.consoHC / 1000).toFixed(2) + "kWh";
-        refs["price-hc"].textContent = day.priceHC.toFixed(2) + "€";
-        refs["conso-hp"].textContent = (day.consoHP / 1000).toFixed(2) + "kWh";
-        refs["price-hp"].textContent = day.priceHP.toFixed(2) + "€";
-        refs["price"].textContent = day.price.toFixed(2) + "€";
+    refs["date-cell"].setAttribute("data-label", "Jour");
+    if (model.badge) {
+        refs["day-badge"].textContent = model.badge.label;
+        refs["day-badge"].style.backgroundColor = model.badge.color;
+        refs["day-badge"].style.color = model.badge.ink;
+    } else {
+        refs["day-badge"].remove();
     }
+
+    refs["conso"].textContent = (day.conso / 1000).toFixed(2) + "kWh";
+    refs["conso"].setAttribute("data-label", "Conso totale");
+
+    const priceCell = refs["price"];
+    for (const band of bands) {
+        const cell = cloneTemplate("tpl-day-band-cell");
+        const sums = model.byBand[band.id] || { conso: 0, price: 0 };
+        cell.refs["band-conso"].textContent = (sums.conso / 1000).toFixed(2) + "kWh";
+        cell.refs["band-price"].textContent = sums.price.toFixed(2) + "€";
+        cell.refs["band-cell"].setAttribute("data-label", band.label);
+        priceCell.parentNode.insertBefore(cell.fragment, priceCell);
+    }
+
+    priceCell.textContent = day.price.toFixed(2) + "€";
+    priceCell.setAttribute("data-label", "Total");
 
     return fragment;
 }

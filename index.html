@@ -681,46 +681,49 @@
     </template>
 
     <!-- Bloc mensuel de l'accordéon : titres + table journalière.
-         Les lignes jour sont ajoutées directement à <table> (sans tbody) et les
-         en-têtes directement dans <thead> (sans tr) : comportement historique
-         conservé, le rendu CSS actuel dépend de cette structure plate. -->
+         Les colonnes sont dynamiques : Jour | Conso totale | une colonne par
+         bande horaire du tarif (HP, HC, super creuses...) | Total. -->
     <template id="tpl-month-detail">
         <h3 class="main-title d-inline ms-2" data-ref="month-name"></h3>
         <h4 class="sub-title float-end" data-ref="month-summary"></h4>
-        <table class="mt-2 ms-2 table table-striped table-sm align-middle" data-ref="daily-table">
-            <thead class="align-middle" data-ref="daily-header"></thead>
+        <table class="mt-2 ms-2 table table-striped table-sm align-middle">
+            <thead class="align-middle">
+                <tr data-ref="header-row"></tr>
+            </thead>
+            <tbody data-ref="daily-body"></tbody>
         </table>
     </template>
 
-    <!-- En-têtes de la table journalière (th nus, clonés dans le thead ci-dessus) -->
-    <template id="tpl-day-header">
-        <th class="text-start">Jour</th>
-        <th class="text-center">Conso totale</th>
-        <th class="text-center">Conso HC</th>
-        <th class="text-center">Esti. HC (€)</th>
-        <th class="text-center">Conso HP</th>
-        <th class="text-center">Esti. HP (€)</th>
-        <th class="text-end">Total (€)</th>
+    <!-- En-tête de colonne de la table journalière (pastille optionnelle) -->
+    <template id="tpl-day-col-header">
+        <th class="text-center text-nowrap" data-ref="header"><span class="band-dot" data-ref="dot"></span><span
+                data-ref="label"></span></th>
     </template>
 
-    <!-- Ligne journalière -->
+    <!-- Ligne journalière : date + badge de type de jour, conso totale,
+         cellules de bandes insérées dynamiquement, total -->
     <template id="tpl-day-row">
         <tr>
-            <td class="text-start" data-ref="date"></td>
+            <td class="text-start align-middle" data-ref="date-cell"><span data-ref="date"></span><span
+                    class="badge daytype-badge ms-2" data-ref="day-badge"></span></td>
             <td class="text-center align-middle" data-ref="conso"></td>
-            <td class="text-center align-middle" data-ref="conso-hc"></td>
-            <td class="text-center align-middle" data-ref="price-hc"></td>
-            <td class="text-center align-middle" data-ref="conso-hp"></td>
-            <td class="text-center align-middle" data-ref="price-hp"></td>
             <td class="text-end align-middle" data-ref="price"></td>
         </tr>
     </template>
 
-    <!-- Ligne journalière en erreur (journée incomplète) -->
+    <!-- Cellule de bande horaire (conso et coût empilés) -->
+    <template id="tpl-day-band-cell">
+        <td class="text-center align-middle" data-ref="band-cell">
+            <div data-ref="band-conso"></div>
+            <div class="small text-muted" data-ref="band-price"></div>
+        </td>
+    </template>
+
+    <!-- Ligne journalière en erreur (journée incomplète, colspan dynamique) -->
     <template id="tpl-day-row-error">
         <tr>
             <td class="text-start" data-ref="date"></td>
-            <td class="text-center align-middle fw-bold" colspan="7">Erreur lors du calcul de la journée</td>
+            <td class="text-center align-middle fw-bold" data-ref="error-cell">Erreur lors du calcul de la journée</td>
         </tr>
     </template>
 

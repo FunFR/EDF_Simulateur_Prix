@@ -89,6 +89,23 @@ h6 {
   background-color: rgba(52, 152, 219, 0.1);
 }
 
+/* Détail des résultats : pastilles de bandes horaires et badges de type de jour.
+   Les couleurs (palette validée) sont posées inline par le renderer depuis
+   scripts/ui/tariffDisplay.js — le libellé accompagne toujours la couleur. */
+.band-dot {
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  margin-right: 0.35em;
+  vertical-align: baseline;
+}
+
+.daytype-badge {
+  font-weight: 600;
+  border: 1px solid rgba(11, 11, 11, 0.1);
+}
+
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -294,5 +311,11 @@ h6 {
     white-space: nowrap;
     text-align: left;
     font-weight: bold;
+  }
+
+  /* Les utilitaires Bootstrap (.text-center/.text-start, !important) écrasent
+     l'alignement du mode carte : on le rétablit pour les cellules étiquetées. */
+  .table td[data-label] {
+    text-align: right !important;
   }
 }
