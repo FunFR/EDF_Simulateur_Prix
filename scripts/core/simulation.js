@@ -52,7 +52,12 @@ function calculateAllMonths(settings, data) {
             allMonths: computeMonths(resolveView(resolved, kva), data),
             title: abo.name,
             lastUpdate: abo.lastUpdate,
-            subscription_url: abo.subscription_url
+            subscription_url: abo.subscription_url,
+            offer_type: abo.offer_type,
+            price_url: abo.price_url,
+            // Table de présentation dérivée par defineTarif (types de jour,
+            // bandes horaires) : consommée par le renderer via tariffDisplay.
+            display: abo.display
         }
     });
 }

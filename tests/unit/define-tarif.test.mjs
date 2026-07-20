@@ -363,6 +363,122 @@ test('validation : hourSubTypes sur constant et weekendType sur season', () => {
     }), 'non supporté en même temps que weekendType');
 });
 
+test('display : table de présentation dérivée de chaque règle', () => {
+    const sandbox = freshSandbox();
+
+    // constant { HP, HC } : pas de badge, bandes HP/HC
+    const constant = sandbox.defineTarif(validDef({ name: 'TEST - constant' }));
+    assert.deepStrictEqual(plain(constant.display), {
+        types: { bleu: { day: null, bands: { HP: 'HP', HC: 'HC' } } },
+        dayOrder: [],
+        bandOrder: ['HP', 'HC']
+    });
+
+    // constant { price } : bande unique nommée comme le type
+    const single = sandbox.defineTarif(validDef({
+        name: 'TEST - prix unique',
+        dayTypes: { bleu: { price: 19.27 } },
+        hcRanges: undefined
+    }));
+    assert.deepStrictEqual(plain(single.display), {
+        types: { bleu: { day: null, bands: { HP: 'bleu', HC: 'bleu' } } },
+        dayOrder: [],
+        bandOrder: ['bleu']
+    });
+
+    // constant + hourSubTypes (type Charge'Heures) : la fenêtre est une bande
+    const subTypes = sandbox.defineTarif(validDef({
+        name: 'TEST - hsc',
+        dayTypes: { base: { HP: 21.62, HC: 16.51 }, hsc: { price: 12.61 } },
+        dayRule: { type: 'constant', dayType: 'base', hourSubTypes: [{ fromHour: 2, toHour: 6, dayType: 'hsc' }] },
+        hcRanges: [{ from: '00:00', to: '07:00' }]
+    }));
+    assert.deepStrictEqual(plain(subTypes.display), {
+        types: {
+            base: { day: null, bands: { HP: 'HP', HC: 'HC' } },
+            hsc: { day: null, bands: { HP: 'hsc', HC: 'hsc' } }
+        },
+        dayOrder: [],
+        bandOrder: ['HP', 'HC', 'hsc']
+    });
+
+    // weekly : deux jours distincts
+    const weekly = sandbox.defineTarif(validDef({
+        name: 'TEST - weekly',
+        dayTypes: { bleu: { price: 20.38 }, weekend: { price: 15.38 } },
+        dayRule: { type: 'weekly', default: 'bleu', days: { weekend: [0, 6] } },
+        hcRanges: undefined
+    }));
+    assert.deepStrictEqual(plain(weekly.display), {
+        types: {
+            bleu: { day: 'bleu', bands: { HP: 'bleu', HC: 'bleu' } },
+            weekend: { day: 'weekend', bands: { HP: 'weekend', HC: 'weekend' } }
+        },
+        dayOrder: ['bleu', 'weekend'],
+        bandOrder: ['bleu', 'weekend']
+    });
+
+    // calendar : le défaut et les types du calendrier sont des jours
+    sandbox.defineCalendar('display-cal', { rouge: { days: ['2026/01/07'] } });
+    const calendar = sandbox.defineTarif(validDef({
+        name: 'TEST - calendar',
+        dayTypes: { bleu: { HP: 16, HC: 13 }, rouge: { HP: 70, HC: 15 } },
+        dayRule: { type: 'calendar', default: 'bleu', calendar: 'display-cal' }
+    }));
+    assert.deepStrictEqual(plain(calendar.display), {
+        types: {
+            bleu: { day: 'bleu', bands: { HP: 'HP', HC: 'HC' } },
+            rouge: { day: 'rouge', bands: { HP: 'HP', HC: 'HC' } }
+        },
+        dayOrder: ['bleu', 'rouge'],
+        bandOrder: ['HP', 'HC']
+    });
+
+    // season + hourSubTypes (type vert_HSC) : saisons = jours, fenêtres = bandes
+    const season = sandbox.defineTarif(validDef({
+        name: 'TEST - season',
+        dayTypes: {
+            hpEte: { price: 17.80 },
+            hcEte: { price: 16.24 },
+            hpHiver: { price: 20.91 },
+            hscHiver: { price: 16.24 }
+        },
+        dayRule: {
+            type: 'season',
+            seasons: { hcEte: { months: [4, 5, 6, 7, 8, 9, 10] }, hscHiver: { months: [11, 12, 1, 2, 3] } },
+            hourSubTypes: {
+                hcEte: [{ fromHour: 7, toHour: 23, dayType: 'hpEte' }],
+                hscHiver: [{ fromHour: 7, toHour: 23, dayType: 'hpHiver' }]
+            }
+        },
+        hcRanges: undefined
+    }));
+    assert.deepStrictEqual(plain(season.display), {
+        types: {
+            hpEte: { day: 'hcEte', bands: { HP: 'hpEte', HC: 'hpEte' } },
+            hcEte: { day: 'hcEte', bands: { HP: 'hcEte', HC: 'hcEte' } },
+            hpHiver: { day: 'hscHiver', bands: { HP: 'hpHiver', HC: 'hpHiver' } },
+            hscHiver: { day: 'hscHiver', bands: { HP: 'hscHiver', HC: 'hscHiver' } }
+        },
+        dayOrder: ['hcEte', 'hscHiver'],
+        bandOrder: ['hpEte', 'hcEte', 'hpHiver', 'hscHiver']
+    });
+
+    // season + calendarOverride (type OctoTempo) : le jour calendrier s'ajoute
+    const octo = sandbox.defineTarif(validDef({
+        name: 'TEST - override',
+        dayTypes: { rouge: { HP: 64, HC: 15 }, hiver: { HP: 18, HC: 15 }, ete: { HP: 15, HC: 13 } },
+        dayRule: {
+            type: 'season',
+            seasons: { hiver: { months: [11, 12, 1, 2, 3] }, ete: { months: [4, 5, 6, 7, 8, 9, 10] } },
+            calendarOverride: { calendar: 'display-cal', types: ['rouge'] }
+        },
+        hcRanges: { byDayType: { rouge: [], hiver: [], ete: [] } }
+    }));
+    assert.deepStrictEqual(plain(octo.display).dayOrder, ['hiver', 'ete', 'rouge']);
+    assert.deepStrictEqual(plain(octo.display).types.rouge, { day: 'rouge', bands: { HP: 'HP', HC: 'HC' } });
+});
+
 test('validation : métadonnées manquantes ou invalides', () => {
     expectError(validDef({ name: '' }), 'name manquant');
     expectError(validDef({ lastUpdate: '01/02/2026' }), 'lastUpdate');

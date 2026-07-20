@@ -446,12 +446,105 @@
             hasHCCustom: hcParts.hasHCCustom,
             hasSpecialDaysCustom: rule.hasSpecialDaysCustom,
             specialDays: rule.specialDays,
+            display: buildDisplay(def),
             getDayType: rule.getDayType
         };
         if (hcParts.hcByDayType) {
             abonnement.hcByDayType = hcParts.hcByDayType;
         }
         return abonnement;
+    }
+
+    // Table de présentation dérivée mécaniquement de la définition : pour
+    // chaque type moteur, la clé de JOUR (badge affiché, null si le tarif n'a
+    // qu'un jour possible) et la clé de BANDE horaire par classement HP/HC.
+    // Les clés restent brutes (ex. "hscHiver") : libellés et couleurs sont
+    // résolus côté UI (scripts/ui/tariffDisplay.js).
+    function buildDisplay(def) {
+        const rule = def.dayRule;
+        const dayOf = {};      // type "jour" -> sa clé de jour
+        const subTypeDay = {}; // sous-type horaire -> clé du jour porteur
+        const dayKeys = [];
+
+        switch (rule.type) {
+            case "constant":
+                dayOf[rule.dayType] = null;
+                for (const sub of rule.hourSubTypes || []) {
+                    subTypeDay[sub.dayType] = null;
+                }
+                break;
+
+            case "weekly": {
+                dayOf[rule.default] = rule.default;
+                dayKeys.push(rule.default);
+                const special = Object.keys(rule.days)[0];
+                dayOf[special] = special;
+                dayKeys.push(special);
+                break;
+            }
+
+            case "calendar":
+                dayOf[rule.default] = rule.default;
+                dayKeys.push(rule.default);
+                for (const type of Object.keys(window.TarifCalendars[rule.calendar])) {
+                    dayOf[type] = type;
+                    dayKeys.push(type);
+                }
+                break;
+
+            case "season":
+                for (const [season, spec] of Object.entries(rule.seasons)) {
+                    dayOf[season] = season;
+                    dayKeys.push(season);
+                    if (spec.weekendType !== undefined) {
+                        dayOf[spec.weekendType] = spec.weekendType;
+                        dayKeys.push(spec.weekendType);
+                    }
+                }
+                for (const [season, subRules] of Object.entries(rule.hourSubTypes || {})) {
+                    for (const sub of subRules) {
+                        subTypeDay[sub.dayType] = season;
+                    }
+                }
+                if (rule.calendarOverride) {
+                    for (const type of rule.calendarOverride.types) {
+                        dayOf[type] = type;
+                        dayKeys.push(type);
+                    }
+                }
+                break;
+        }
+
+        const types = {};
+        const bandOrder = [];
+        const addBand = key => {
+            if (!bandOrder.includes(key)) {
+                bandOrder.push(key);
+            }
+        };
+        for (const [name, spec] of Object.entries(def.dayTypes)) {
+            const isSubType = name in subTypeDay;
+            const day = isSubType ? subTypeDay[name] : (name in dayOf ? dayOf[name] : null);
+            let bands;
+            if (!isSubType && "HP" in spec) {
+                bands = { HP: "HP", HC: "HC" };
+                addBand("HP");
+                addBand("HC");
+            } else {
+                // Prix unique ou fenêtre horaire : une seule bande, nommée
+                // comme le type (la distinction HP/HC n'a pas de sens affiché).
+                bands = { HP: name, HC: name };
+                addBand(name);
+            }
+            types[name] = { day: day, bands: bands };
+        }
+
+        const distinctDays = [...new Set(dayKeys)];
+        return {
+            types: types,
+            dayOrder: distinctDays.length > 1 ? distinctDays : [],
+            bandOrder: bandOrder
+        };
     }
 
     function buildPrices(def) {

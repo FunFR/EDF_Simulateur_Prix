@@ -94,6 +94,21 @@ test('filtre communautaire : sans opt-in, seuls les abonnements dont le nom cont
         ['EDF - Bleu Stub', 'Autre - Fournisseur']);
 });
 
+test('propagation : display, offer_type et price_url descendent jusqu\'aux résultats', () => {
+    const display = { types: { bleu: { day: null, bands: { HP: 'HP', HC: 'HC' } } }, dayOrder: [], bandOrder: ['HP', 'HC'] };
+    installStubRegistry([makeGrille({
+        name: 'EDF - Stub',
+        offer_type: 'TRV',
+        price_url: 'https://example.org/grille.pdf',
+        display
+    })]);
+
+    const { calculatedMonths } = runSimulation(defaultSettings(6), DATA);
+    assert.strictEqual(calculatedMonths[0].offer_type, 'TRV');
+    assert.strictEqual(calculatedMonths[0].price_url, 'https://example.org/grille.pdf');
+    assert.deepStrictEqual(calculatedMonths[0].display, display);
+});
+
 test('kva en string (flux réel UI) : mêmes résultats qu\'en number', () => {
     installStubRegistry([makeGrille({ name: 'EDF - Stub' })]);
 

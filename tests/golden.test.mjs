@@ -151,3 +151,11 @@ test('golden contrats EDF : champs statiques de chaque abonnement (grilles, plag
 test('golden contrats community : champs statiques de chaque abonnement non-EDF', () => {
     checkGolden('contracts-community', loadAbonnements().filter(abo => !isEDF(abo)).map(contractSnapshot));
 });
+
+test('golden display : table de présentation dérivée de chaque tarif', () => {
+    const snapshot = {};
+    for (const abo of loadAbonnements()) {
+        snapshot[abo.name] = abo.display;
+    }
+    checkGolden('display-contracts', snapshot);
+});

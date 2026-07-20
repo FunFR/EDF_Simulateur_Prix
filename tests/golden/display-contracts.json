@@ -1,0 +1,1241 @@
+{
+  "Alpiq - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alpiq - Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alterna - Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alterna - Heures Creuses Locale": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alterna - Base France": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Alterna - Base Locale": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Alterna - Heures Super Creuses": {
+    "types": {
+      "hpEte": {
+        "day": "hcEte",
+        "bands": {
+          "HP": "hpEte",
+          "HC": "hpEte"
+        }
+      },
+      "hscEte": {
+        "day": "hcEte",
+        "bands": {
+          "HP": "hscEte",
+          "HC": "hscEte"
+        }
+      },
+      "hcEte": {
+        "day": "hcEte",
+        "bands": {
+          "HP": "hcEte",
+          "HC": "hcEte"
+        }
+      },
+      "hpHiver": {
+        "day": "hscHiver",
+        "bands": {
+          "HP": "hpHiver",
+          "HC": "hpHiver"
+        }
+      },
+      "hscHiver": {
+        "day": "hscHiver",
+        "bands": {
+          "HP": "hscHiver",
+          "HC": "hscHiver"
+        }
+      },
+      "hcHiver": {
+        "day": "hscHiver",
+        "bands": {
+          "HP": "hcHiver",
+          "HC": "hcHiver"
+        }
+      }
+    },
+    "dayOrder": [
+      "hcEte",
+      "hscHiver"
+    ],
+    "bandOrder": [
+      "hpEte",
+      "hscEte",
+      "hcEte",
+      "hpHiver",
+      "hscHiver",
+      "hcHiver"
+    ]
+  },
+  "EDF - Bleu": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Bleu Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Tempo": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "blanc": {
+        "day": "blanc",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "rouge": {
+        "day": "rouge",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - EJP": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "rouge": {
+        "day": "rouge",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "rouge"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Vert Electrique": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Vert Electrique Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Vert Electrique Auto": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Vert Electrique Régional": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Vert Electrique Régional Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Vert Electrique Week-End": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "weekend",
+          "HC": "weekend"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "bleu",
+      "weekend"
+    ]
+  },
+  "EDF - Vert Electrique Week-End Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Estival": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiverSC": {
+        "day": "hiver",
+        "bands": {
+          "HP": "hiverSC",
+          "HC": "hiverSC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "eteSC": {
+        "day": "ete",
+        "bands": {
+          "HP": "eteSC",
+          "HC": "eteSC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "hiverSC",
+      "eteSC"
+    ]
+  },
+  "EDF - Zen Fixe": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Zen Fixe Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Online": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Zen Online Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Week-End": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "weekend",
+          "HC": "weekend"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "bleu",
+      "weekend"
+    ]
+  },
+  "EDF - Zen Week-End HC": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Week-End Option Flex": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "sobriete": {
+        "day": "sobriete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "sobriete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Week-End Plus": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "weekend",
+          "HC": "weekend"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "bleu",
+      "weekend"
+    ]
+  },
+  "EDF - Zen Week-End Plus HC": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Enercoop - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Enercoop - Flexibilité - heures creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Enercoop - Flexibilité - nuit & week-end": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Enercoop - Offre Flexibilité 2 Saisons": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiverWeekend": {
+        "day": "hiverWeekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "eteWeekend": {
+        "day": "eteWeekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "hiverWeekend",
+      "ete",
+      "eteWeekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Engie - Happy Heures Vertes - 13h/15h - 1 an": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "happy": {
+        "day": null,
+        "bands": {
+          "HP": "happy",
+          "HC": "happy"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "happy"
+    ]
+  },
+  "Engie - Happy Heures Vertes - 14h/16h - 1 an": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "happy": {
+        "day": null,
+        "bands": {
+          "HP": "happy",
+          "HC": "happy"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "happy"
+    ]
+  },
+  "Engie - Happy Heures Vertes - 15h/17h - 1 an": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "happy": {
+        "day": null,
+        "bands": {
+          "HP": "happy",
+          "HC": "happy"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "happy"
+    ]
+  },
+  "Engie - Elec Référence 3 ans": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Engie - Elec Référence 3 ans HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Engie - Elec Tranquillité 1 an": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Engie - Elec Tranquillité 1 an HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Constance": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Constance HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Garance": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Garance HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Prudence": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Prudence HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Mint Energie - Classic & Green": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Mint Energie - Classic & Green HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Mint Energie - Online & Green": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Mint Energie - Online & Green HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Octopus - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Octopus - Heures Creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Octopus - OctoTempo": {
+    "types": {
+      "rouge": {
+        "day": "rouge",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete",
+      "rouge"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Charge'Heures": {
+    "types": {
+      "base": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hsc": {
+        "day": null,
+        "bands": {
+          "HP": "hsc",
+          "HC": "hsc"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "hsc"
+    ]
+  },
+  "TotalEnergie - Heures Eco": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "TotalEnergie - HeuresEco HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Offre standard fixe": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "TotalEnergie - Offre standard fixe HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Offre verte fixe": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "TotalEnergie - Offre verte fixe HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Gaz de Bordeaux - NovaFixe - base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Gaz de Bordeaux - NovaFixe - heures creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Gaz de Bordeaux - NovaFlex - base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Gaz de Bordeaux - NovaFlex - heures creuses": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  }
+}
