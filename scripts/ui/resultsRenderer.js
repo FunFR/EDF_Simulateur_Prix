@@ -39,15 +39,14 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
     const { fragment, refs } = cloneTemplate("tpl-tarif-row");
     const monthCount = result.tarif.months.length;
 
-    refs["main-row"].setAttribute("data-bs-target", "#" + accordionRowId);
-    refs["name-cell"].setAttribute("data-bs-target", "#" + accordionRowId);
+    refs["toggle"].setAttribute("data-bs-target", "#" + accordionRowId);
+    refs["toggle"].setAttribute("aria-controls", accordionRowId);
     refs["accordion-row"].id = accordionRowId;
 
     refs["title"].textContent = result.title;
     refs["last-update"].textContent = `Dernière mise à jour : ${result.lastUpdate}`;
     if (result.subscription_url) {
         refs["provider-link"].href = result.subscription_url;
-        refs["provider-link"].addEventListener("click", openProviderLink);
     }
     else {
         refs["link-br"].remove();
@@ -83,7 +82,20 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
 function renderMonthDetail(m, display) {
     const { fragment, refs } = cloneTemplate("tpl-month-detail");
     refs["month-name"].textContent = getMonthName(parseInt(m.month));
-    refs["month-summary"].textContent = (m.conso / 1000).toFixed(2) + "kWh / " + m.price.toFixed(2) + "€";
+    refs["summary-conso"].textContent = (m.conso / 1000).toFixed(2) + "kWh";
+    refs["summary-price"].textContent = m.price.toFixed(2) + "€";
+
+    const errorDays = m.days.filter(d => isNaN(d.conso) || isNaN(d.price)).length;
+    const missingDays = m.numberOfDaysInMonth - m.days.length;
+    if (errorDays > 0 || missingDays > 0) {
+        const parts = [];
+        if (errorDays > 0) parts.push(errorDays + " jour" + (errorDays > 1 ? "s" : "") + " en erreur");
+        if (missingDays > 0) parts.push(missingDays + " jour" + (missingDays > 1 ? "s" : "") + " manquant" + (missingDays > 1 ? "s" : ""));
+        refs["month-warning"].hidden = false;
+        refs["month-warning"].title = parts.join(", ");
+    } else {
+        refs["month-warning"].remove();
+    }
 
     // Un tarif à bande unique (prix unique) n'affiche pas de colonnes de bande.
     const columns = bandColumns(display);
@@ -184,18 +196,6 @@ function renderDayRow(day, display, bands, isAlternate) {
     fragment.appendChild(chart.fragment);
 
     return fragment;
-}
-
-// Ouvre le site du fournisseur sans déclencher l'accordéon Bootstrap parent.
-// https://github.com/thednp/bootstrap.native/issues/398#issuecomment-737493055
-function openProviderLink(event) {
-    if (event.shiftKey) {
-        window.open(event.currentTarget.href);
-    } else {
-        window.open(event.currentTarget.href, '_blank');
-    }
-    event.stopImmediatePropagation();
-    event.preventDefault();
 }
 
 // Les badges mélangent texte dynamique et balises (<sup>, <br/>) : ces helpers

@@ -1,7 +1,10 @@
 // Wizard générique : navigation séquentielle entre des étapes affichées/masquées
 // par la classe .active. Aucune connaissance métier : la validité de chaque
-// étape est fournie par l'appelant via setStepValid.
-export function createWizard({ steps, stepper, prevButton, nextButton, finalActionButton }) {
+// étape est fournie par l'appelant via setStepValid. Pas de bouton Précédent :
+// le retour se fait par l'historique navigateur, onNext signale les avancées
+// utilisateur pour que l'appelant pousse une entrée d'historique (goTo, appelé
+// depuis un popstate, ne doit rien pousser).
+export function createWizard({ steps, stepper, nextButton, finalActionButton, onNext }) {
     let current = 1;
     const validity = new Map();
     const stepperItems = stepper ? Array.from(stepper.querySelectorAll("[data-step]")) : [];
@@ -11,7 +14,6 @@ export function createWizard({ steps, stepper, prevButton, nextButton, finalActi
     }
 
     function updateButtons() {
-        prevButton.disabled = current === 1;
         nextButton.classList.toggle("d-none", current === steps.length);
         nextButton.disabled = !isValid(current);
         finalActionButton.classList.toggle("d-none", current !== steps.length);
@@ -39,8 +41,12 @@ export function createWizard({ steps, stepper, prevButton, nextButton, finalActi
         }
     }
 
-    prevButton.addEventListener("click", () => goTo(current - 1));
-    nextButton.addEventListener("click", () => goTo(current + 1));
+    nextButton.addEventListener("click", () => {
+        goTo(current + 1);
+        if (onNext) {
+            onNext(current);
+        }
+    });
     goTo(1);
 
     return { goTo, setStepValid, get current() { return current; } };

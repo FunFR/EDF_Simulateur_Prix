@@ -4,7 +4,7 @@ import { createWizard } from './wizard.js';
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
 // jusqu'au lancement de la simulation.
-export function initImportView({ onStart, onSimulate }) {
+export function initImportView({ onStart, onStepForward, onSimulate }) {
     let data = [];
 
     const csvFile = document.getElementById("csvFile");
@@ -18,9 +18,9 @@ export function initImportView({ onStart, onSimulate }) {
     const wizard = createWizard({
         steps: [1, 2, 3, 4].map(n => document.getElementById("wizardStep" + n)),
         stepper: document.getElementById("wizardStepper"),
-        prevButton: document.getElementById("wizardPrevButton"),
         nextButton: document.getElementById("wizardNextButton"),
-        finalActionButton: simulateButton
+        finalActionButton: simulateButton,
+        onNext: onStepForward
     });
     // L'étape Linky exige un import CSV valide avant de continuer.
     wizard.setStepValid(3, false);
@@ -139,4 +139,8 @@ export function initImportView({ onStart, onSimulate }) {
         };
         reader.readAsText(input);
     }
+
+    // Application d'une étape depuis l'historique navigateur (popstate) :
+    // navigation directe, sans pousser de nouvelle entrée.
+    return { goToStep: (n) => wizard.goTo(n) };
 }

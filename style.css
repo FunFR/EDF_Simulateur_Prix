@@ -42,18 +42,19 @@ h6 {
   font-weight: 600;
 }
 
-.main-title {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 2rem;
+/* En-tête d'un bloc mensuel dans l'accordéon de détail : couleurs foncées
+   pour rester lisibles (contraste >= 4.5:1) sur le fond .tarif-detail-row. */
+.month-title {
+  font-size: 1.5rem;
+  color: #1d5d8d;
+  margin-bottom: 0.5rem;
 }
 
-.sub-title {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
+.month-summary {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .table {
@@ -87,6 +88,22 @@ h6 {
 
 .table tbody tr:hover {
   background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Bouton chevron qui déplie l'accordéon de détail d'un tarif (la ligne
+   elle-même n'est pas cliquable) ; aria-expanded est maintenu par Bootstrap. */
+.tarif-toggle .fa-chevron-right {
+  transition: transform 0.2s ease;
+}
+
+.tarif-toggle[aria-expanded="true"] .fa-chevron-right {
+  transform: rotate(90deg);
+}
+
+/* Ligne accordéon de détail : fond bleu très clair (au lieu du gris
+   table-secondary) pour le contraste avec les titres mensuels. */
+.tarif-detail-row {
+  --bs-table-bg: #f4f8fb;
 }
 
 /* Détail des résultats : pastilles de bandes horaires et badges de type de jour.
@@ -222,12 +239,21 @@ h6 {
   border-color: #f5c6cb;
 }
 
+/* Les étapes s'empilent dans la même cellule de grille : le conteneur garde la
+   hauteur de l'étape la plus haute, donc la carte et le bouton Suivant/Simuler
+   ne bougent pas entre les étapes. visibility (et non display) conserve cette
+   hauteur tout en sortant les étapes inactives du focus et de l'accessibilité. */
+.wizard-steps {
+  display: grid;
+}
+
 .wizard-step {
-  display: none;
+  grid-area: 1 / 1;
+  visibility: hidden;
 }
 
 .wizard-step.active {
-  display: block;
+  visibility: visible;
 }
 
 .wizard-stepper {
@@ -280,7 +306,7 @@ h6 {
 
 .wizard-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
@@ -396,6 +422,20 @@ h6 {
 @media (max-width: 768px) {
   .wizard-stepper-label {
     display: none;
+  }
+
+  /* Sur petit écran, une carte haute et vide serait pénalisante : retour à la
+     hauteur auto, seule l'étape active occupe la place. */
+  .wizard-steps {
+    display: block;
+  }
+
+  .wizard-step {
+    display: none;
+  }
+
+  .wizard-step.active {
+    display: block;
   }
 
   .container {

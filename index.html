@@ -15,6 +15,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
 </head>
 
@@ -112,6 +113,10 @@
                             </ol>
                             <hr />
                         </div>
+                        <!-- Les étapes partagent la même cellule de grille (.wizard-steps) :
+                             la carte garde la hauteur de l'étape la plus haute et le bouton
+                             Suivant/Simuler ne bouge pas d'une étape à l'autre. -->
+                        <div id="wizardSteps" class="wizard-steps">
                         <!-- Étape 1 : puissance souscrite -->
                         <div class="wizard-step container-sm" id="wizardStep1">
                             <h4 class="mt-3">Puissance souscrite</h4>
@@ -473,17 +478,15 @@
                                 </span>
                             </label>
                         </div>
+                        </div>
+                        <div id="wizardNav" class="wizard-nav my-4">
+                            <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<i
+                                    class="fa-solid fa-arrow-right ms-2"></i></button>
+                            <button type="button" class="btn btn-success d-none" id="simulateButton">Simuler les
+                                différents
+                                tarifs <i class="fa-solid fa-play ms-2"></i></button>
+                        </div>
                     </div>
-                </div>
-
-                <div id="wizardNav" class="wizard-nav m-4">
-                    <button type="button" class="btn btn-outline-secondary" id="wizardPrevButton" disabled><i
-                            class="fa-solid fa-arrow-left me-2"></i>Précédent</button>
-                    <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<i
-                            class="fa-solid fa-arrow-right ms-2"></i></button>
-                    <button type="button" class="btn btn-success d-none" id="simulateButton">Simuler les
-                        différents
-                        tarifs <i class="fa-solid fa-play ms-2"></i></button>
                 </div>
             </div>
 
@@ -628,16 +631,20 @@
         </div>
     </template>
 
-    <!-- Paire de lignes par tarif : ligne cliquable + ligne accordéon de détail -->
+    <!-- Paire de lignes par tarif : ligne résumé (bouton chevron pour déplier)
+         + ligne accordéon de détail -->
     <template id="tpl-tarif-row">
-        <tr data-bs-toggle="collapse" aria-expanded="false" data-ref="main-row">
-            <th class="align-middle" data-bs-toggle="collapse" data-ref="name-cell">
-                <i class="fa-solid fa-square-caret-right ms-3"></i>
+        <tr>
+            <th class="align-middle">
+                <button type="button" class="btn btn-link p-0 ms-3 tarif-toggle" title="Détail mois par mois"
+                    data-bs-toggle="collapse" aria-expanded="false" data-ref="toggle"><i
+                        class="fa-solid fa-chevron-right"></i></button>
                 <span class="ms-2" data-ref="title"></span>
                 <div class="fw-normal">
                     <span class="ms-2" data-ref="last-update"></span>
                     <br data-ref="link-br" />
-                    <a class="ms-2 providerLink" data-ref="provider-link">Site du fournisseur</a>
+                    <a class="ms-2 providerLink" target="_blank" rel="noopener" data-ref="provider-link">Site du
+                        fournisseur</a>
                 </div>
             </th>
             <td class="text-center align-middle">
@@ -656,7 +663,7 @@
                 </div>
             </td>
         </tr>
-        <tr class="collapse table-secondary" data-ref="accordion-row">
+        <tr class="collapse tarif-detail-row" data-ref="accordion-row">
             <td colspan="3" data-ref="accordion-cell"></td>
         </tr>
     </template>
@@ -680,8 +687,10 @@
          Les colonnes sont dynamiques : Jour | Conso totale | une colonne par
          bande horaire du tarif (HP, HC, super creuses...) | Total. -->
     <template id="tpl-month-detail">
-        <h3 class="main-title d-inline ms-2" data-ref="month-name"></h3>
-        <h4 class="sub-title float-end" data-ref="month-summary"></h4>
+        <h3 class="month-title d-inline ms-2" data-ref="month-name"></h3>
+        <i class="fa-solid fa-triangle-exclamation text-warning ms-2" data-ref="month-warning" hidden></i>
+        <h4 class="month-summary float-end"><span data-ref="summary-conso"></span> / <span class="fw-bold"
+                data-ref="summary-price"></span></h4>
         <table class="mt-2 ms-2 table table-sm align-middle">
             <thead class="align-middle">
                 <tr data-ref="header-row"></tr>
