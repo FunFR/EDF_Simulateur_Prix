@@ -205,10 +205,14 @@ test('season : saisons par mois, sous-types horaires, hcRanges byDayType', () =>
     assert.strictEqual(abo.getDayType({ date: '2024/10/31' }, at(9)), 'ete');
     assert.strictEqual(abo.getDayType({ date: '2024/11/01' }, at(9)), 'hiver');
     assert.strictEqual(abo.getDayType({ date: '2024/11/01' }, at(3)), 'ete', 'avant 6h : saison de la veille (mais heure brute pour les sous-types)');
-    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(11)), 'eteSC');
-    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(18)), 'ete');
-    assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(22)), 'hiverSC');
-    assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(24)), 'hiver', '24h hors plage 22-24 (comportement historique)');
+    // La fenêtre { fromHour, toHour } couvre les relevés ]fromHour ; toHour]
+    // (le relevé étiqueté T couvre ]T-pas ; T], comme le classement HP/HC).
+    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(11)), 'ete', 'relevé 11:00 avant la fenêtre 11-18');
+    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(11, 30)), 'eteSC');
+    assert.strictEqual(abo.getDayType({ date: '2024/07/15' }, at(18)), 'eteSC', 'relevé 18:00 dans la fenêtre 11-18');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(22)), 'hiver', 'relevé 22:00 avant la fenêtre 22-24');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(22, 30)), 'hiverSC');
+    assert.strictEqual(abo.getDayType({ date: '2024/12/15' }, at(24)), 'hiverSC', 'minuit=24, dans la fenêtre 22-24');
 });
 
 test('constant + hourSubTypes : fenêtre horaire sur jour constant (type Happy / super creuses)', () => {
@@ -226,9 +230,11 @@ test('constant + hourSubTypes : fenêtre horaire sur jour constant (type Happy /
     const at = (hour, minute = 0) => ({ hour, minute });
     const day = { date: '2024/12/15' };
     assert.strictEqual(abo.getDayType(day, at(1, 30)), 'base');
-    assert.strictEqual(abo.getDayType(day, at(2)), 'hsc', 'borne de début incluse');
+    assert.strictEqual(abo.getDayType(day, at(2)), 'base', 'relevé 2:00 avant la fenêtre 2-6');
+    assert.strictEqual(abo.getDayType(day, at(2, 30)), 'hsc');
     assert.strictEqual(abo.getDayType(day, at(5, 30)), 'hsc');
-    assert.strictEqual(abo.getDayType(day, at(6)), 'base', 'borne de fin exclue');
+    assert.strictEqual(abo.getDayType(day, at(6)), 'hsc', 'relevé 6:00 dans la fenêtre 2-6');
+    assert.strictEqual(abo.getDayType(day, at(6, 30)), 'base');
     assert.strictEqual(abo.getDayType(day, at(24)), 'base', 'minuit=24 hors fenêtre');
     assert.deepStrictEqual(plain(abo).specialDays, []);
 });

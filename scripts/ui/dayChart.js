@@ -85,7 +85,9 @@ function renderSvg(bars) {
         const title = document.createElementNS(SVG_NS, "title");
         title.textContent = bar.error
             ? bar.label + " — relevé en erreur"
-            : bar.label + " — " + Math.round(bar.conso) + " Wh — " + bar.price.toFixed(2) + " € — " + bar.band.label;
+            : bar.label + " — " + Math.round(bar.conso) + " Wh"
+                + (bar.price === null ? "" : " — " + bar.price.toFixed(2) + " €")
+                + " — " + bar.band.label;
         rect.appendChild(title);
         svg.appendChild(rect);
     });

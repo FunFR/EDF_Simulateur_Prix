@@ -80,17 +80,22 @@ test('Zen Estival : règle 6h sur la saison, sous-types super creuses selon l\'h
     // avant 6h le 1er novembre : la veille est en octobre -> été (heure 3 hors 11h-18h -> pas SC)
     assert.strictEqual(estival.getDayType({ date: '2024/11/01' }, at(3)), 'ete');
 
-    // super creuses été : 11h <= h < 18h
+    // Super creuses été 11h-18h : le relevé étiqueté T couvre ]T-pas ; T],
+    // la fenêtre couvre donc les relevés ]11h ; 18h] (même convention que HP/HC).
     assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(10)), 'ete');
-    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(11)), 'eteSC');
+    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(11)), 'ete', 'le relevé 11:00 couvre 10:30-11:00, avant la fenêtre SC');
+    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(11, 30)), 'eteSC');
     assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(17)), 'eteSC');
-    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(18)), 'ete');
+    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(18)), 'eteSC', 'le relevé 18:00 couvre 17:30-18:00, dans la fenêtre SC');
+    assert.strictEqual(estival.getDayType({ date: '2024/07/15' }, at(18, 30)), 'ete');
 
     // super creuses hiver : 22h-24h et 0h-7h
     assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(21)), 'hiver');
-    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(22)), 'hiverSC');
+    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(22)), 'hiver', 'le relevé 22:00 couvre 21:30-22:00, avant la fenêtre SC');
+    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(22, 30)), 'hiverSC');
     assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(2)), 'hiverSC');
     assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(6, 30)), 'hiverSC');
-    // 24:00 n'est ni < 24 ni < 7 : reste hiver (bizarrerie historique figée)
-    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(24)), 'hiver');
+    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(7)), 'hiverSC', 'le relevé 7:00 couvre 6:30-7:00, dans la fenêtre SC');
+    // minuit : heure 24 (relevé 23:30-24:00 rattaché à la veille), dans la fenêtre 22h-24h
+    assert.strictEqual(estival.getDayType({ date: '2024/12/15' }, at(24)), 'hiverSC');
 });

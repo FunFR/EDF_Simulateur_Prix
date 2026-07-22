@@ -70,7 +70,10 @@ defineTarif({
 ### Fenêtre horaire à prix réduit (type Happy Hours / heures super creuses)
 
 Un tarif à jour constant peut basculer sur un autre type pendant une plage horaire
-fixe (bornes en heures entières, début inclus, fin exclue) :
+fixe (bornes en heures entières). Comme pour le classement HP/HC, le relevé
+étiqueté T couvre `]T - pas ; T]` : la fenêtre s'applique donc aux relevés
+`]fromHour ; toHour]` (le relevé de `fromHour` pile appartient à la plage
+précédente, celui de `toHour` pile à la fenêtre) :
 
 ```js
 defineTarif({

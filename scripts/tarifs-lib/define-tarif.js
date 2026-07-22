@@ -705,6 +705,23 @@
         };
     }
 
+    // Heure scalaire d'un relevé pour les sous-règles horaires : même
+    // convention que le classement HP/HC du calculateur (le relevé étiqueté T
+    // couvre ]T - pas ; T]) — minuit vaut 24, les demi-heures comptent 0,5.
+    // Une fenêtre { fromHour, toHour } couvre donc les relevés ]fromHour ; toHour].
+    function subTypeHourOf(time) {
+        const hour = time.hour === 24 ? 0 : time.hour;
+        if (hour === 0 && time.minute === 0) {
+            return 24;
+        }
+        return hour + (time.minute === 30 ? 0.5 : 0);
+    }
+
+    function inSubRule(time, subRule) {
+        const hour = subTypeHourOf(time);
+        return hour > subRule.fromHour && hour <= subRule.toHour;
+    }
+
     // Chaque builder retourne { specialDays, hasSpecialDaysCustom, getDayType }.
     // Les getDayType générés reproduisent exactement la sémantique des anciens
     // fichiers de tarifs (y compris la règle "avant Nh = couleur de la veille").
@@ -726,7 +743,7 @@
                 hasSpecialDaysCustom: false,
                 getDayType: function (day, time) {
                     for (const subRule of subRules) {
-                        if (time.hour >= subRule.fromHour && time.hour < subRule.toHour) {
+                        if (inSubRule(time, subRule)) {
                             return subRule.dayType;
                         }
                     }
@@ -832,12 +849,12 @@
                             return weekendTypeBySeason[season];
                         }
                     }
-                    // Les sous-types horaires (super creuses) utilisent l'heure brute,
-                    // sans report de veille — comportement historique.
+                    // Les sous-types horaires (super creuses) utilisent l'heure du
+                    // jour même, sans report de veille — comportement historique.
                     const subRules = hourSubTypes[season];
                     if (subRules) {
                         for (const subRule of subRules) {
-                            if (time.hour >= subRule.fromHour && time.hour < subRule.toHour) {
+                            if (inSubRule(time, subRule)) {
                                 return subRule.dayType;
                             }
                         }

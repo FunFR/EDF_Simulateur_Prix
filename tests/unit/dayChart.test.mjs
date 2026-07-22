@@ -40,3 +40,14 @@ test('buildBars : relevé en erreur marqué, conso et prix null', () => {
     assert.strictEqual(bars[0].conso, null);
     assert.strictEqual(bars[0].price, null);
 });
+
+test('buildBars : conso valide mais prix NaN (grille incomplète) -> prix null, pas une erreur', () => {
+    const bars = buildBars({
+        date: '2024/12/09',
+        hours: [{ time: { hour: 22, minute: 0 }, conso: 800, price: NaN, type: 'bleu HP' }]
+    }, TEMPO_DISPLAY);
+
+    assert.strictEqual(bars[0].error, false);
+    assert.strictEqual(bars[0].conso, 800);
+    assert.strictEqual(bars[0].price, null);
+});
