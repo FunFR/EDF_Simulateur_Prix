@@ -154,7 +154,10 @@
     <nav class="site-nav">
         <div class="shell site-nav-inner">
             <a href="./" class="site-nav-brand">
-                <img src="img/logo.png" width="32" height="32" alt="logo">
+                <picture>
+                    <source srcset="img/logo.webp" type="image/webp">
+                    <img src="img/logo.png" width="32" height="32" alt="logo">
+                </picture>
                 <span>Comparateur d'abonnements d'électricité</span>
             </a>
             <div class="site-nav-links">
@@ -921,44 +924,23 @@
                                                                 </li>
                                                             </ol>
                                                             <p></p>
-                                                            <img class="mt-4 mb-4" src="./img/EDF1.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="1ère étape pour télécharger les données sur le site EDF">
-                                                            <img class="mt-4 mb-4" src="./img/EDF21.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="2ème étape pour télécharger les données sur le site EDF">
-                                                        </div>
-
-                                                        <div class="tab-pane fade" id="enedis" role="tabpanel">
-                                                            <h5>Exporter sa consommation depuis Enedis</h5>
-                                                            <ol>
-                                                                <li>Rendez-vous sur <a
-                                                                        href="https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/">le
-                                                                        site
-                                                                        d'Enedis</a> votre consommation. <br>
-                                                                </li>
-                                                                <li>Cliquez sur "Nouveau Téléchargement"</li>
-                                                                <li>Cliquez sur date de début et naviguez
-                                                                    antérieurement
-                                                                    jusqu'à la
-                                                                    plus vieille date
-                                                                    disponible</li>
-                                                                <li>Cliquez sur "Télécharger mes données"</li>
-                                                                <li>Utilisez le fichier <span
-                                                                        class="font-weight-bold">"Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv"</span>
-                                                                </li>
-                                                            </ol>
-                                                            <img class="mt-4 mb-4" src="./img/Enedis1.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="1ère étape pour télécharger les données sur le site Enedis">
-                                                            <img class="mt-4 mb-4" src="./img/Enedis2.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="2ème étape pour télécharger les données sur le site Enedis">
-                                                            <img class="mt-4 mb-4" src="./img/Enedis3.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="2ème étape pour télécharger les données sur le site Enedis">
-
-                                                        </div>
+                                                            <picture>
+                                                                <source srcset="./img/EDF1.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/EDF1.png"
+                                                                    width="578" height="381"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Widget « Ma consommation d'électricité » de l'espace client EDF, bouton « Plus de détails » entouré en rouge">
+                                                            </picture>
+                                                            <picture>
+                                                                <source srcset="./img/EDF21.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/EDF21.png"
+                                                                    width="1170" height="1079"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Page de suivi de consommation EDF : bouton « Télécharger mes données » entouré en rouge sous le graphique mensuel">
+                                                            </picture>
+                                                        </div>                                                        
 
                                                         <!-- Export automatique : script à coller dans la console de
                                                              l'espace client Enedis (voir scripts/enedis-export/). -->
@@ -1041,15 +1023,30 @@
                                                                         class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
                                                                 </li>
                                                             </ol>
-                                                            <img class="mt-4 mb-4" src="./img/TOTAL2.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="1ère étape pour télécharger les données sur le site TotalEnergies">
-                                                            <img class="mt-4 mb-4" src="./img/TOTAL3.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="2ème étape pour télécharger les données sur le site TotalEnergies">
-                                                            <img class="mt-4 mb-4" src="./img/TOTAL4.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="2ème étape pour télécharger les données sur le site TotalEnergies">
+                                                            <picture>
+                                                                <source srcset="./img/TOTAL2.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/TOTAL2.png"
+                                                                    width="467" height="81"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Sélecteur d'énergie de l'espace client TotalEnergies, onglet « Électricité » entouré en rouge">
+                                                            </picture>
+                                                            <picture>
+                                                                <source srcset="./img/TOTAL3.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/TOTAL3.png"
+                                                                    width="415" height="101"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Granularité d'affichage TotalEnergies, onglet « Heure » entouré en rouge">
+                                                            </picture>
+                                                            <picture>
+                                                                <source srcset="./img/TOTAL4.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/TOTAL4.png"
+                                                                    width="1059" height="711"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Page « Ma conso » de TotalEnergies : bouton de téléchargement des données entouré en rouge au-dessus de la courbe">
+                                                            </picture>
 
                                                         </div>
 
@@ -1070,9 +1067,14 @@
                                                                         class="font-weight-bold">"export_courbe_charges.csv"</span>
                                                                 </li>
                                                             </ol>
-                                                            <img class="mt-4 mb-4" src="./img/StrasbourgER.png"
-                                                                style="width: 100%; height: auto;"
-                                                                alt="1ère étape pour télécharger les données sur le site de Strasbourg Electricité">
+                                                            <picture>
+                                                                <source srcset="./img/StrasbourgER.webp" type="image/webp">
+                                                                <img class="mt-4 mb-4" src="./img/StrasbourgER.png"
+                                                                    width="2050" height="974"
+                                                                    loading="lazy" decoding="async"
+                                                                    style="width: 100%; height: auto;"
+                                                                    alt="Espace client Strasbourg Électricité Réseaux : étapes numérotées — onglet « Courbe de charge », période personnalisée, bouton « exporter les données »">
+                                                            </picture>
                                                         </div>
 
                                                         <div class="tab-pane fade" id="homeassistant" role="tabpanel">
