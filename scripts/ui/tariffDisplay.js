@@ -192,8 +192,9 @@ function largestRemainderPercents(values) {
     return floors;
 }
 
-// Répartition de la consommation d'une période par tranche horaire — et par
-// jour×tranche (« Bleu HC », « Rouge HP ») pour les tarifs à jours colorés.
+// Répartition de la consommation (et du coût variable) d'une période par
+// tranche horaire — et par jour×tranche (« Bleu HC », « Rouge HP ») pour les
+// tarifs à jours colorés.
 // Le type de jour est porté par chaque relevé (une journée Tempo mélange la
 // nuit bleue reportée et le jour rouge), d'où l'itération sur les hours.
 // null si la répartition n'est pas informative : tarif mono-tranche (Base)
@@ -216,14 +217,18 @@ export function buildPeriodShare(months, display) {
                 const dayKey = (useDays && type) ? type.day : null;
                 const band = hourBand(hour.type, display);
                 const key = (dayKey || "") + "|" + band.id;
+                // price = part variable seule : l'abonnement est ajouté au
+                // niveau jour par le calculateur, pas dans hour.price.
+                const price = isNaN(hour.price) ? 0 : hour.price;
                 const entry = sums.get(key);
                 if (entry) {
                     entry.conso += hour.conso;
+                    entry.price += price;
                 } else {
                     // Jour à prix unique (EJP...) : la bande porte le nom du
                     // type, le libellé du jour suffit.
                     const singleBand = type && type.bands.HP === type.bands.HC;
-                    sums.set(key, { dayKey: dayKey, band: band, singleBand: singleBand, conso: hour.conso });
+                    sums.set(key, { dayKey: dayKey, band: band, singleBand: singleBand, conso: hour.conso, price: price });
                 }
             }
         }
@@ -253,6 +258,8 @@ export function buildPeriodShare(months, display) {
 
     const total = entries.reduce((sum, e) => sum + e.conso, 0);
     const percents = largestRemainderPercents(entries.map(e => e.conso));
+    const totalPrice = entries.reduce((sum, e) => sum + e.price, 0);
+    const pricePercents = totalPrice > 0 ? largestRemainderPercents(entries.map(e => e.price)) : null;
 
     const segments = entries.map((entry, index) => {
         const badge = dayBadge(entry.dayKey);
@@ -276,9 +283,11 @@ export function buildPeriodShare(months, display) {
             longLabel: longLabel,
             color: color,
             conso: entry.conso,
-            pct: percents[index]
+            pct: percents[index],
+            price: entry.price,
+            pricePct: pricePercents ? pricePercents[index] : null
         };
     });
 
-    return { total: total, segments: segments };
+    return { total: total, totalPrice: totalPrice, segments: segments };
 }

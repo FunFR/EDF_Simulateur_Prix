@@ -108,7 +108,7 @@ test('buildDayModel : jour en erreur (aucun relevé) et tarif sans badge', () =>
 
 // --- buildPeriodShare : répartition de la conso d'une période par tranche ---
 
-const hourAt = (hour, conso, type) => ({ time: { hour: hour, minute: 0 }, conso: conso, price: 0, type: type });
+const hourAt = (hour, conso, type, price = 0) => ({ time: { hour: hour, minute: 0 }, conso: conso, price: price, type: type });
 const monthOf = (...days) => ({ days: days.map(hours => ({ hours: hours })) });
 
 const HPHC_DISPLAY = {
@@ -237,6 +237,60 @@ test('buildPeriodShare : fenêtre horaire nommée sous un jour, et jour clair as
     assert.strictEqual(blancHP.color, dayBadge('blanc').color);
     assert.ok(parseInt(blancHC.color.slice(1), 16) < parseInt(blancHP.color.slice(1), 16),
         'Blanc HC plus sombre que Blanc HP');
+});
+
+test('buildPeriodShare : répartition € indépendante de la répartition kWh', () => {
+    // Conso 50/50 mais coût 90/10 : les deux jeux de pourcentages divergent.
+    // Prix exacts en binaire (multiples de 0.25) pour des égalités strictes.
+    const share = buildPeriodShare([
+        monthOf([hourAt(12, 4000, 'base HP', 2.25), hourAt(2, 4000, 'base HC', 0.25)]),
+        monthOf([hourAt(13, 1000, 'base HP', 2.25), hourAt(3, 1000, 'base HC', 0.25)])
+    ], HPHC_DISPLAY);
+    assert.strictEqual(share.total, 10000);
+    assert.strictEqual(share.totalPrice, 5, 'coûts cumulés sur tous les mois');
+    assert.deepStrictEqual(share.segments.map(s => s.pct), [50, 50]);
+    assert.deepStrictEqual(share.segments.map(s => s.price), [4.5, 0.5]);
+    assert.deepStrictEqual(share.segments.map(s => s.pricePct), [90, 10]);
+});
+
+test('buildPeriodShare : pourcentages € au plus fort reste, somme 100', () => {
+    const threeBands = {
+        types: {
+            n: { day: null, bands: { HP: 'HP', HC: 'HC' } },
+            s: { day: null, bands: { HP: 'hsc', HC: 'hsc' } }
+        },
+        dayOrder: [],
+        bandOrder: ['HP', 'HC', 'hsc']
+    };
+    const equal = buildPeriodShare([monthOf([
+        hourAt(12, 3000, 'n HP', 0.20), hourAt(2, 2000, 'n HC', 0.20), hourAt(4, 1000, 's HC', 0.20)
+    ])], threeBands);
+    assert.deepStrictEqual(equal.segments.map(s => s.pricePct), [34, 33, 33]);
+
+    // Coût minuscule (0,3 %) : pricePct 0 (affiché « < 1 % ») mais price conservé.
+    const tiny = buildPeriodShare([monthOf([
+        hourAt(12, 5000, 'base HP', 9.97), hourAt(2, 5000, 'base HC', 0.03)
+    ])], HPHC_DISPLAY);
+    assert.deepStrictEqual(tiny.segments.map(s => s.pct), [50, 50]);
+    assert.deepStrictEqual(tiny.segments.map(s => s.pricePct), [100, 0]);
+    assert.strictEqual(tiny.segments[1].price, 0.03);
+});
+
+test('buildPeriodShare : sans coût (total nul) pricePct null, price NaN ignoré', () => {
+    // Fixtures sans prix (price 0 partout) : pas de répartition € possible.
+    const noPrice = buildPeriodShare([monthOf([
+        hourAt(12, 6000, 'base HP'), hourAt(2, 4000, 'base HC')
+    ])], HPHC_DISPLAY);
+    assert.strictEqual(noPrice.totalPrice, 0);
+    assert.deepStrictEqual(noPrice.segments.map(s => s.pricePct), [null, null]);
+
+    // price NaN sur un relevé à conso valide : conso comptée, coût ignoré.
+    const partial = buildPeriodShare([monthOf([
+        hourAt(12, 6000, 'base HP', NaN), hourAt(2, 4000, 'base HC', 0.50)
+    ])], HPHC_DISPLAY);
+    assert.strictEqual(partial.total, 10000);
+    assert.strictEqual(partial.totalPrice, 0.5);
+    assert.deepStrictEqual(partial.segments.map(s => s.pricePct), [0, 100]);
 });
 
 test('buildPeriodShare : NaN ignorés, jour à prix unique libellé par le jour', () => {

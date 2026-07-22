@@ -10,7 +10,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
   * Retour en arrière possible à chaque étape
   * Champs de saisie plus lisibles
 * **Comparateur de prix**
-  * Répartition de la consommation par type de prix (heures pleines, heures creuses, etc.)
+  * Répartition de la consommation par type de prix (heures pleines, heures creuses, etc.) **en kWh** ou **en euros**
   * Performances nettement améliorées et consommation mémoire fortement réduite
   * Indicateur signalant les mois pour lesquels il manque des jours de consommation
 * **Abonnements**

@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert';
 import { buildShareGeometry } from '../../scripts/ui/bandShareBar.js';
 
-const segment = (conso, pct) => ({ key: 'k', label: 'L', longLabel: 'LL', color: '#000000', conso: conso, pct: pct });
+const segment = (conso, pct, price = 0, pricePct = null) =>
+    ({ key: 'k', label: 'L', longLabel: 'LL', color: '#000000', conso: conso, pct: pct, price: price, pricePct: pricePct });
 
 test('buildShareGeometry : largeurs proportionnelles aux conso, x cumulés', () => {
     const share = { total: 1000, segments: [segment(600, 60), segment(400, 40)] };
@@ -25,4 +26,28 @@ test('buildShareGeometry : largeur minimale pour un segment minuscule', () => {
 
     assert.strictEqual(geo[1].w, 1, 'segment de 0,05 % visible malgré tout');
     assert.ok(geo[0].w > 470);
+});
+
+test('buildShareGeometry : mode price dimensionné sur les coûts', () => {
+    // Conso 60/40 mais coûts 10/90 : les largeurs suivent le mode demandé.
+    const share = {
+        total: 1000, totalPrice: 1,
+        segments: [segment(600, 60, 0.1, 10), segment(400, 40, 0.9, 90)]
+    };
+
+    const geoPrice = buildShareGeometry(share, 100, 'price');
+    assert.strictEqual(geoPrice[0].w, 10 - 1.5);
+    assert.strictEqual(geoPrice[1].x, 10);
+    assert.strictEqual(geoPrice[1].w, 90);
+    assert.strictEqual(geoPrice[1].x + geoPrice[1].w, 100, 'la barre remplit toute la largeur');
+
+    const geoDefault = buildShareGeometry(share, 100);
+    assert.strictEqual(geoDefault[0].w, 60 - 1.5, 'sans mode : conso, comportement inchangé');
+
+    // Coût minuscule : même largeur minimale qu'en mode conso.
+    const tiny = {
+        total: 1000, totalPrice: 10,
+        segments: [segment(500, 50, 9.995, 100), segment(500, 50, 0.005, 0)]
+    };
+    assert.strictEqual(buildShareGeometry(tiny, 480, 'price')[1].w, 1);
 });

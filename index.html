@@ -1362,10 +1362,20 @@
     </template>
 
     <!-- Mini barre 100 % empilée de répartition de la conso par tranche,
-         sous le nom du tarif (SVG construit par scripts/ui/bandShareBar.js) -->
+         sous le nom du tarif (SVG construit par scripts/ui/bandShareBar.js).
+         Le bouton kWh/€ bascule toutes les barres vers la répartition du
+         coût variable (hors abonnement). -->
     <template id="tpl-band-share">
-        <div class="band-share">
-            <div data-ref="bar"></div>
+        <div class="band-share" data-ref="root">
+            <div class="band-share-bar-row">
+                <div class="band-share-bar" data-ref="bar"></div>
+                <button type="button" class="btn btn-sm btn-link p-0 band-share-toggle"
+                    data-ref="mode-toggle" title="Basculer la répartition kWh / € (hors abonnement)"
+                    aria-pressed="false">
+                    <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+                    <span data-ref="unit-kwh">kWh</span><span aria-hidden="true">·</span><span data-ref="unit-eur">€</span>
+                </button>
+            </div>
             <div class="band-share-legend small text-muted" data-ref="legend"></div>
         </div>
     </template>
