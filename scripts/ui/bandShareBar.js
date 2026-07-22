@@ -11,7 +11,7 @@ const HEIGHT = 12;
 const GAP = 1.5;
 
 // Liseré fin pour garder lisibles les segments pâles (jour Blanc).
-const EDGE_COLOR = "#c3c2b7";
+const EDGE_COLOR = "#C3C9D4";
 
 // Géométrie des segments (fonction pure, testée sous node) : largeurs
 // proportionnelles aux conso brutes — pas aux pourcentages arrondis — avec un

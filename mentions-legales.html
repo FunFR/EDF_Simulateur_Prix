@@ -18,18 +18,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 
 <body>
-    <div class="col-lg-8 mx-auto p-4 py-md-5 flex-grow-1">
-        <header class="d-flex flex-column align-items-center pb-3 mb-3">
-            <h1 class="display-5"><a href="./">Comparateur d'abonnements d'électricité</a></h1>
-        </header>
+    <nav class="site-nav">
+        <div class="shell site-nav-inner">
+            <a href="./" class="site-nav-brand">
+                <img src="img/logo.png" width="32" height="32" alt="logo">
+                <span>Comparateur d'abonnements d'électricité</span>
+            </a>
+            <div class="site-nav-links">
+                <a href="./" class="site-nav-cta">&larr; Retour au comparateur</a>
+            </div>
+        </div>
+    </nav>
 
-        <main>
+    <main class="shell legal-shell">
+        <h1 class="visually-hidden">Comparateur d'abonnements d'électricité — mentions légales</h1>
             <h2>Mentions légales et politique de confidentialité</h2>
 
             <section class="mt-4">
@@ -85,8 +93,88 @@
             </section>
 
             <p class="mt-5"><a href="./">&larr; Retour au comparateur</a></p>
-        </main>
-    </div>
+    </main>
+
+    <!-- Copie du footer sombre « À propos » de l'accueil (site statique sans includes). -->
+    <footer id="a-propos" class="band-dark">
+        <div class="shell">
+            <div class="about-grid">
+                <div>
+                    <div class="kicker kicker-accent">À propos</div>
+                    <h2>À propos de ce comparateur</h2>
+                    <p>
+                        Ce comparateur est un outil open source basé sur votre historique
+                        réel de consommation Linky plutôt que des profils types pour comparer les abonnements
+                        d'électricité. En quelques clics, vous obtenez le prix que vous auriez réellement payé avec les
+                        tarifs actuels.
+                        <br/>
+                        Vos données sont traitées en local dans votre navigateur&nbsp;: aucune donnée
+                        n'est envoyée vers un serveur, vous pouvez même l'exécuter sans internet.
+                        <br/>
+                        Le site n'est rémunéré ni par les fournisseurs, ni par la publicité, <a
+                            href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">vos dons</a> me
+                        permettent de le maintenir et de financer son développement (nom de domaine, licenses).
+                    </p>
+                    <p>Ce site a été conçu et est maintenu par <a
+                            href="https://www.linkedin.com/in/jvasselon/" rel="noopener">Jean-Christophe
+                            VASSELON</a>.<br />
+                        D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
+                            href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>
+                </div>
+                <div class="donate-card">
+                    <div class="donate-emoji" aria-hidden="true">☕</div>
+                    <p>Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café
+                        en faisant un don&nbsp;!</p>
+                    <a class="btn-donate" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">Faire
+                        un don</a>
+                </div>
+            </div>
+            <div class="about-foot">
+                <p class="about-thanks">
+                    Merci à <a href="https://github.com/Daweyy">Dawey</a>,
+                    <a href="https://github.com/DuchkPy">DuchkPy</a>,
+                    <a href="https://github.com/zarwinch">Zarwinch</a>,
+                    <a href="https://github.com/bddq">Benoit Deldicque</a>,
+                    <a href="https://github.com/zdimension">Tom Niget</a>,
+                    <a href="https://github.com/BenoitGoimier">Benoit Goimier</a>,
+                    <a href="https://github.com/J0hnMatrix">J0hnMatrix</a>,
+                    <a href="https://github.com/fdonv">fdonv</a>,
+                    <a href="https://github.com/chatainsim">chatainsim</a>,
+                    <a href="https://github.com/csailly">csailly</a>,
+                    <a href="https://github.com/nviallatte">nviallatte</a>,
+                    <a href="https://github.com/jo-sarrazin">Jonathan Sarrazin</a>,
+                    <a href="https://github.com/szepeviktor">Szepeviktor</a>,
+                    <a href="https://github.com/JasonMarechal">Jason Marechal</a>,
+                    <a href="https://github.com/LucasDuval">Lucas Duval</a>,
+                    <a href="https://github.com/pierrepinon">Pierre Pinon</a>,
+                    <a href="https://github.com/abauzac">Abauzac</a>,
+                    <a href="https://github.com/ponsifiax">Ponsifiax</a>
+                    <a href="https://github.com/10tribu">10tribu</a> et
+                    <a href="https://github.com/libussa">libussa</a> pour leurs contributions.
+                </p>
+                <p class="about-thanks">
+                    Merci à tous les anonymes pour leurs gentils mots, leurs retours et leurs marques d'appréciation
+                    qui ont fait grossir ce projet&nbsp;!
+                </p>
+                <div class="about-links-row">
+                    <div>
+                        <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a> ·
+                        <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues" rel="noopener">Contact (issues
+                            GitHub)</a> ·
+                        <a href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener">Code source sur
+                            GitHub</a>
+                    </div>
+                    <p>
+                        Prix spot : <a href="https://energy-charts.info" target="_blank"
+                            rel="noopener">energy-charts.info</a>,
+                        données Bundesnetzagentur | SMARD.de, licence
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY
+                            4.0</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

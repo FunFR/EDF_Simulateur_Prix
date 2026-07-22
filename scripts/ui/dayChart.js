@@ -14,8 +14,8 @@ const ERROR_HEIGHT = 24;
 
 // Encre discrète du graphe (mêmes tons que la palette validée).
 const MUTED_INK = "#898781";
-const BASELINE_COLOR = "#c3c2b7";
-const ERROR_FILL = "#e1e0d9";
+const BASELINE_COLOR = "#C3C9D4";
+const ERROR_FILL = "#E2E6EC";
 
 // Modèle des barres (fonction pure, testée sous node) : une entrée par relevé.
 export function buildBars(day, display) {

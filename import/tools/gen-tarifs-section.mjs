@@ -35,9 +35,10 @@ const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
 
 const BEGIN = '<!-- TARIFS-LIST:BEGIN -->';
 const END = '<!-- TARIFS-LIST:END -->';
-const INDENT = '                    '; // profondeur des enfants de <section>
-// Profondeur des enfants de .accordion-body (5 niveaux sous <section>).
-const BODY_INDENT = INDENT + '                    ';
+const INDENT = '                    '; // profondeur des enfants de <section> > .shell
+const GROUP = INDENT + '        '; // <div class="tarifs-group"> (sous .tarifs-groups)
+const GROUP_BODY = GROUP + '    '; // h3, note, .tarifs-grid
+const OFFER = GROUP_BODY + '    '; // <div class="tarifs-offer">
 
 function escapeHtml(s) {
     return String(s)
@@ -69,25 +70,37 @@ function offerLabel(def, provider) {
     return def.name.startsWith(prefix) ? def.name.slice(prefix.length) : def.name;
 }
 
+// Carte d'offre : nom en gras, type + date de grille en méta grise, lien à droite.
 function renderOffer(def, provider) {
     const label = escapeHtml(offerLabel(def, provider));
-    const badge = def.offer_type === 'TRV'
-        ? '<span class="badge text-bg-primary">Tarif réglementé</span>'
-        : '<span class="badge text-bg-secondary">Offre de marché</span>';
+    const type = def.offer_type === 'TRV' ? 'Tarif réglementé' : 'Offre de marché';
     const grille = `grille du ${formatDate(def.lastUpdate)}`;
-    const link = def.subscription_url
-        ? ` — <a href="${escapeHtml(def.subscription_url)}" target="_blank" rel="noopener">page de l’offre</a>`
-        : '';
-    return `${BODY_INDENT}    <li><strong>${label}</strong> ${badge} — ${grille}${link}</li>`;
+    const lines = [
+        `${OFFER}<div class="tarifs-offer">`,
+        `${OFFER}    <span class="tarifs-offer-name"><strong>${label}</strong>`,
+        `${OFFER}        <span class="tarifs-offer-meta">${type} — ${grille}</span></span>`,
+    ];
+    if (def.subscription_url) {
+        lines.push(`${OFFER}    <a href="${escapeHtml(def.subscription_url)}" target="_blank" rel="noopener">page de l’offre</a>`);
+    }
+    lines.push(`${OFFER}</div>`);
+    return lines;
 }
 
-// h4 : les groupes descendent d'un niveau sous le h3 d'en-tête de l'accordéon.
-function renderGroup(title, defs) {
-    const lines = [`${BODY_INDENT}<h4 class="h6 mt-4">${escapeHtml(title)}</h4>`, `${BODY_INDENT}<ul>`];
+// Groupe (un fournisseur officiel ou le bloc communautaire) : h3 sous le h2 de
+// la section, encart d'avertissement optionnel, puis grille de cartes.
+function renderGroup(title, defs, provider, note) {
+    const lines = [
+        `${GROUP}<div class="tarifs-group">`,
+        `${GROUP_BODY}<h3>${escapeHtml(title)}</h3>`,
+    ];
+    if (note) lines.push(`${GROUP_BODY}<p class="tarifs-note">${note}</p>`);
+    lines.push(`${GROUP_BODY}<div class="tarifs-grid">`);
     for (const def of [...defs].sort((a, b) => a.name.localeCompare(b.name, 'fr'))) {
-        lines.push(renderOffer(def, title));
+        lines.push(...renderOffer(def, provider));
     }
-    lines.push(`${BODY_INDENT}</ul>`);
+    lines.push(`${GROUP_BODY}</div>`);
+    lines.push(`${GROUP}</div>`);
     return lines;
 }
 
@@ -108,41 +121,26 @@ function generate() {
     const lastUpdate = defs.map(d => d.lastUpdate).sort().at(-1);
 
     const lines = [];
-    lines.push(`${INDENT}<p class="text-justify">${defs.length} offres de ${nbProviders} fournisseurs`
+    lines.push(`${INDENT}<p class="tarifs-intro"><strong>${defs.length} offres de ${nbProviders} fournisseurs</strong>`
         + ` sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir`
         + ` des documents officiels des fournisseurs (dernière mise à jour d’une grille : ${formatDate(lastUpdate)}).</p>`);
-    // Détail replié derrière un accordéon Bootstrap unique (icône + stylée par
-    // .tarifs-plus-toggle dans style.css) ; le bundle Bootstrap est déjà chargé.
-    lines.push(`${INDENT}<div class="help-accordion">`);
-    lines.push(`${INDENT}    <div class="accordion accordion-flush" id="tarifsAccordion">`);
-    lines.push(`${INDENT}        <div class="accordion-item">`);
-    lines.push(`${INDENT}            <h3 class="accordion-header" id="tarifsAccordionHeader">`);
-    lines.push(`${INDENT}                <button class="accordion-button collapsed tarifs-plus-toggle" type="button"`);
-    lines.push(`${INDENT}                    data-bs-toggle="collapse" data-bs-target="#tarifsDetail"`);
-    lines.push(`${INDENT}                    aria-expanded="false" aria-controls="tarifsDetail">`);
-    lines.push(`${INDENT}                    Voir le détail des offres suivies`);
-    lines.push(`${INDENT}                    <i class="fa-solid fa-plus ms-auto" aria-hidden="true"></i>`);
-    lines.push(`${INDENT}                </button>`);
-    lines.push(`${INDENT}            </h3>`);
-    lines.push(`${INDENT}            <div id="tarifsDetail" class="accordion-collapse collapse"`);
-    lines.push(`${INDENT}                aria-labelledby="tarifsAccordionHeader" data-bs-parent="#tarifsAccordion">`);
-    lines.push(`${INDENT}                <div class="accordion-body">`);
+    // Détail replié derrière un collapse Bootstrap (bouton et chevron stylés par
+    // .tarifs-toggle dans style.css) ; le bundle Bootstrap est déjà chargé.
+    lines.push(`${INDENT}<button class="tarifs-toggle collapsed" type="button" data-bs-toggle="collapse"`);
+    lines.push(`${INDENT}    data-bs-target="#tarifsDetail" aria-expanded="false" aria-controls="tarifsDetail">`);
+    lines.push(`${INDENT}    <span>Voir le détail des offres suivies</span>`);
+    lines.push(`${INDENT}    <span class="tarifs-toggle-chevron" aria-hidden="true">▼</span>`);
+    lines.push(`${INDENT}</button>`);
+    lines.push(`${INDENT}<div id="tarifsDetail" class="collapse">`);
+    lines.push(`${INDENT}    <div class="tarifs-groups">`);
     for (const provider of providers) {
-        lines.push(...renderGroup(provider, byProvider.get(provider)));
+        lines.push(...renderGroup(provider, byProvider.get(provider), provider, null));
     }
     if (community.length) {
-        lines.push(`${BODY_INDENT}<h4 class="h6 mt-4">Tarifs communautaires</h4>`);
-        lines.push(`${BODY_INDENT}<p class="text-justify">Ces tarifs sont maintenus par la communauté et peuvent ne pas`
-            + ` être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>`);
-        lines.push(`${BODY_INDENT}<ul>`);
-        for (const def of [...community].sort((a, b) => a.name.localeCompare(b.name, 'fr'))) {
-            lines.push(renderOffer(def, null));
-        }
-        lines.push(`${BODY_INDENT}</ul>`);
+        lines.push(...renderGroup('Tarifs communautaires', community, null,
+            'Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour :'
+            + ' vérifiez-les sur le site du fournisseur avant toute décision.'));
     }
-    lines.push(`${INDENT}                </div>`);
-    lines.push(`${INDENT}            </div>`);
-    lines.push(`${INDENT}        </div>`);
     lines.push(`${INDENT}    </div>`);
     lines.push(`${INDENT}</div>`);
     return lines.join('\n');
@@ -162,7 +160,11 @@ function main() {
     const end = html.indexOf(END);
     if (end < start) throw new Error('Marqueur END avant BEGIN dans index.html.');
 
-    const generated = `\n${generate()}\n${INDENT}`;
+    // Respecte les fins de ligne du fichier (CRLF sous Windows) : sinon la
+    // section régénérée en LF diffère dès que l'éditeur renormalise le fichier,
+    // et --check casse sans changement réel.
+    const eol = html.includes('\r\n') ? '\r\n' : '\n';
+    const generated = `\n${generate()}\n${INDENT}`.replaceAll('\n', eol);
     const next = html.slice(0, start) + generated + html.slice(end);
 
     if (next === html) {

@@ -12,5 +12,7 @@ export const viewManager = {
         Object.entries(this.views).forEach(([key, view]) => {
             view.style.display = (key === name) ? "block" : "none";
         });
+        // Le CSS masque les ancres de la nav sticky hors vue présentation.
+        document.body.dataset.view = name;
     }
 };

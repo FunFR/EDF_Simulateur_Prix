@@ -15,13 +15,19 @@ import { loadFixture } from '../lib/pdf-text.mjs';
 
 const provider = process.argv[2];
 const asJson = process.argv.includes('--json');
-if (!provider) {
+
+const IMPORT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const known = fs.readdirSync(path.join(IMPORT_DIR, 'parsers'))
+    .filter(f => f.endsWith('.mjs'))
+    .map(f => path.basename(f, '.mjs'));
+
+if (!provider || !known.includes(provider)) {
     console.error('Usage : node tools/try-parser.mjs <fournisseur> [--json]');
+    console.error(`Fournisseurs disponibles : ${known.join(', ')}`);
     process.exit(2);
 }
 
-const IMPORT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const parser = await import(`../parsers/${provider}.mjs`);
+const parser = await import(new URL(`../parsers/${provider}.mjs`, import.meta.url));
 
 function slugFor(url) {
     return path.basename(new URL(url).pathname, '.pdf')

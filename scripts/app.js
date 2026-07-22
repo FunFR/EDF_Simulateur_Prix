@@ -25,6 +25,12 @@ const importView = initImportView({
     }
 });
 
+// Le bouton Démarrer de la nav sticky relaie le CTA du héro (pas de handler
+// inline : la CSP n'autorise que script-src 'self').
+document.getElementById("navStartButton").addEventListener("click", function () {
+    document.getElementById("startButton").click();
+});
+
 // Le Retour navigateur remplace le bouton Précédent : chaque avancée (Commencer,
 // Suivant, Simuler) pousse une entrée {view, step} et popstate ré-applique l'état.
 // Les vues ne sont jamais détruites : Retour/Avancer conservent réglages et CSV.

@@ -1,35 +1,72 @@
+/* ============================================================
+   1. Thème — variables, surcharges Bootstrap, base
+   ============================================================ */
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --background-color: #f8f9fa;
-  --text-color: #333;
-  --border-color: #e0e0e0;
+  /* Encres */
+  --ink: #14171E;
+  --ink-2: #4B5563;
+  --ink-3: #64707F;
+  --muted: #8A93A2;
+  /* Fonds & bordures */
+  --bg: #F5F7FA;
+  --bg-hero: #EDF1F7;
+  --surface: #FFFFFF;
+  --border: #DCE2EC;
+  --border-soft: #E5EAF2;
+  --border-strong: #B9C4D6;
+  /* Accent bleu */
+  --accent: #0D6EFD;
+  --accent-dark: #0A58CA;
+  --accent-ink: #084298;
+  --accent-pale: #CFE2FF;
+  --accent-paler: #DBE9FF;
+  --accent-palest: #EAF2FF;
+  --accent-border: #B6D4FE;
+  /* Section sombre */
+  --dark-bg: #0F1929;
+  --dark-text: #B9C2CF;
+  --dark-muted: #7C8795;
+  --dark-accent: #6EA8FE;
+  /* Typo & arrondis */
+  --font-display: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius-sm: 7px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+
+  /* Surcharges Bootstrap (style.css est chargé après bootstrap.min.css). */
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--ink);
+  --bs-body-font-family: var(--font-body);
+  --bs-border-color: var(--border);
+  --bs-link-color: var(--ink);
+  --bs-link-color-rgb: 20, 23, 30;
+  --bs-link-hover-color: var(--accent-dark);
+  --bs-link-hover-color-rgb: 10, 88, 202;
+  /* Badge €/mois (text-bg-info) en pilule bleu pâle. */
+  --bs-info-rgb: 207, 226, 255;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--ink);
   line-height: 1.6;
 }
 
-h1 a {
-  text-decoration: none;
-  color: black;
+::selection {
+  background: var(--accent-pale);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 2rem;
+a {
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
 }
 
 h1,
@@ -37,22 +74,941 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.btn {
+  font-family: var(--font-display);
   font-weight: 600;
 }
 
+.btn-primary {
+  --bs-btn-hover-bg: #0B5ED7;
+  --bs-btn-hover-border-color: var(--accent-dark);
+}
+
+/* Les CTA Démarrer / Simuler gardent leur classe historique btn-success,
+   remappée sur l'accent bleu du thème. */
+.btn-success {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: #0B5ED7;
+  --bs-btn-hover-border-color: var(--accent-dark);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--accent-dark);
+  --bs-btn-active-border-color: var(--accent-ink);
+  --bs-btn-active-color: #fff;
+  --bs-btn-disabled-bg: var(--accent);
+  --bs-btn-disabled-border-color: var(--accent);
+  --bs-btn-disabled-color: #fff;
+  font-weight: 700;
+}
+
+/* Conteneur centré commun aux bandes de la landing (et à mentions-legales). */
+.shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-inline: 32px;
+}
+
+/* Les vues de l'app (hors landing full-bleed) restent des blocs centrés. */
+#importView,
+#pricesResultView {
+  width: min(1140px, calc(100% - 40px));
+  margin: 2.5rem auto;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px -24px rgba(15, 25, 41, 0.12);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   2. Nav sticky
+   ============================================================ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(245, 247, 250, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-nav-inner {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.site-nav-logo {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--ink);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14.5px;
+  white-space: nowrap;
+}
+
+.site-nav-links a {
+  text-decoration: none;
+  color: var(--ink-2);
+}
+
+.site-nav-links a:hover {
+  color: var(--accent-dark);
+}
+
+.site-nav-cta {
+  background: var(--ink);
+  color: #fff;
+  border: 0;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.site-nav-cta:hover {
+  background: #2A2E38;
+}
+
+/* Plus spécifique que `.site-nav-links a` pour un CTA porté par un lien
+   (page mentions légales). */
+.site-nav-links a.site-nav-cta,
+.site-nav-links a.site-nav-cta:hover {
+  color: #fff;
+}
+
+/* Les ancres et le CTA de la nav n'ont de sens que sur la landing
+   (data-view est posé sur <body> par scripts/ui/viewManager.js). */
+body[data-view="import"] .site-nav-links,
+body[data-view="prices"] .site-nav-links {
+  display: none;
+}
+
+/* Compense la hauteur de la nav sticky sur les ancres internes. */
+#fonctionnement,
+#faq,
+#tarifs-suivis {
+  scroll-margin-top: 80px;
+}
+
+/* ============================================================
+   3. Landing — bandes, héro, méthode, FAQ, tarifs
+   ============================================================ */
+.band {
+  border-bottom: 1px solid var(--border);
+}
+
+.band-white {
+  background: var(--surface);
+}
+
+.band > .shell {
+  padding-block: 96px;
+}
+
+.band h2 {
+  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+/* --- Héro --- */
+.hero {
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-hero) 100%);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: center;
+  padding-block: 88px 96px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--ink-3);
+}
+
+a.pill {
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+a.pill:hover {
+  color: var(--ink-2);
+  border-color: var(--ink-3);
+}
+
+.pill .fa-github {
+  margin-right: 4px;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+/* Surlignage partiel du mot-clé du h1. */
+.hl {
+  background: linear-gradient(0deg, #BCD7FF 0%, #BCD7FF 38%, transparent 38%);
+}
+
+.hero-lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 36px;
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+#startButton {
+  min-height: 44px;
+  padding: 14px 34px;
+  font-size: 17px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 0 var(--accent-ink), 0 12px 28px -12px rgba(13, 110, 253, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+#startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--accent-ink), 0 18px 34px -12px rgba(13, 110, 253, 0.5);
+}
+
+.hero-privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.hero-privacy .fa-lock {
+  color: var(--accent-dark);
+  margin-top: 3px;
+}
+
+/* Aperçu statique des résultats (valeurs d'exemple, aria-hidden). */
+.hero-preview {
+  position: relative;
+}
+
+.hero-preview::before {
+  content: "";
+  position: absolute;
+  inset: -40px -60px -40px 20px;
+  background: radial-gradient(ellipse at 60% 40%, rgba(13, 110, 253, 0.14), transparent 65%);
+}
+
+.hero-preview-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px -24px rgba(15, 25, 41, 0.25);
+  padding: 28px 28px 24px;
+}
+
+.hero-preview-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.hero-preview-head span:first-child {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.hero-preview-head span:last-child {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.preview-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 64px;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.preview-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview-price {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.preview-track {
+  height: 22px;
+  background: #E9EDF3;
+  border-radius: 5px;
+  overflow: hidden;
+  display: block;
+}
+
+.preview-fill {
+  display: block;
+  height: 100%;
+  background: #C9CCD4;
+  border-radius: 5px;
+}
+
+.preview-row.is-best {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.preview-row.is-best .preview-fill {
+  background: linear-gradient(90deg, #4D94FF, var(--accent));
+}
+
+.hero-preview-foot {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-preview-foot span:first-child {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.pill-gain {
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--accent-paler);
+  color: var(--accent-ink);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* --- Section méthode --- */
+.method-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.method-side h2 {
+  margin: 0 0 18px;
+}
+
+.method-side p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.method-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.method-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px 26px 28px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.method-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 30px -18px rgba(15, 25, 41, 0.25);
+}
+
+.method-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #7FA6D9;
+  margin-bottom: 14px;
+}
+
+.method-card p {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+@media (min-width: 992px) {
+  .method-side {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+/* --- FAQ --- */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px 64px;
+  margin-top: 48px;
+}
+
+.faq-grid h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.faq-grid p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* --- Tarifs suivis (markup généré par import/tools/gen-tarifs-section.mjs) --- */
+.tarifs-intro {
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 32px;
+  max-width: 72ch;
+  text-wrap: pretty;
+}
+
+.tarifs-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 13px 24px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.tarifs-toggle:hover {
+  border-color: var(--ink);
+}
+
+.tarifs-toggle-chevron {
+  font-size: 12px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.tarifs-toggle[aria-expanded="true"] .tarifs-toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.tarifs-groups {
+  margin-top: 40px;
+  display: grid;
+  gap: 40px;
+}
+
+.tarifs-group h3 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.tarifs-note {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--accent-ink);
+  background: var(--accent-palest);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 0 0 16px;
+  max-width: 80ch;
+}
+
+.tarifs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin-top: 14px;
+}
+
+.tarifs-offer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 9px;
+}
+
+.tarifs-offer-name {
+  font-size: 14px;
+  min-width: 0;
+}
+
+.tarifs-offer-meta {
+  color: var(--muted);
+}
+
+.tarifs-offer > a {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   4. Footer sombre « À propos »
+   ============================================================ */
+.band-dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.band-dark > .shell {
+  padding-block: 96px 64px;
+}
+
+.band-dark h2 {
+  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 24px;
+}
+
+.kicker-accent {
+  color: var(--dark-accent);
+}
+
+.band-dark a {
+  color: var(--dark-text);
+  text-decoration-color: var(--dark-accent);
+}
+
+.band-dark a:hover {
+  color: #fff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about-grid p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--dark-text);
+  margin: 0 0 18px;
+  text-wrap: pretty;
+}
+
+.donate-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+}
+
+.donate-emoji {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+a.btn-donate {
+  display: inline-block;
+  background: var(--dark-accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+a.btn-donate:hover {
+  background: #8BB9FE;
+  color: #fff;
+}
+
+.about-foot {
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-thanks {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--dark-muted);
+  margin: 0 0 16px;
+}
+
+.about-thanks a,
+.about-links-row p a {
+  color: #9AA5B4;
+}
+
+.about-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.about-links-row a {
+  font-size: 13.5px;
+}
+
+.about-links-row p {
+  font-size: 12px;
+  color: var(--dark-muted);
+  margin: 0;
+}
+
+/* Page mentions légales : colonne de texte confortable sous la nav. */
+.legal-shell {
+  padding-block: 48px 64px;
+}
+
+.legal-shell p {
+  max-width: 72ch;
+}
+
+/* ============================================================
+   5. Wizard d'import
+   ============================================================ */
+/* Les étapes s'empilent dans la même cellule de grille : le conteneur garde la
+   hauteur de l'étape la plus haute, donc la carte et le bouton Suivant/Simuler
+   ne bougent pas entre les étapes. visibility (et non display) conserve cette
+   hauteur tout en sortant les étapes inactives du focus et de l'accessibilité. */
+.wizard-steps {
+  display: grid;
+}
+
+.wizard-step {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+
+.wizard-step.active {
+  visibility: visible;
+}
+
+.wizard-stepper {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.wizard-stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.55;
+  font-size: 0.9rem;
+}
+
+.wizard-stepper-label {
+  font-family: var(--font-display);
+}
+
+.wizard-stepper-index {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.wizard-stepper-item.active .wizard-stepper-index {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.wizard-stepper-item.done {
+  opacity: 0.8;
+}
+
+.wizard-stepper-item.done .wizard-stepper-index {
+  border-color: var(--accent-dark);
+  color: var(--accent-ink);
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Zone de dépôt du CSV (étape 3) : l'input #csvFile reste dans le DOM
+   (le harnais de test y injecte un fichier via DataTransfer) mais est
+   masqué visuellement — pas de display:none pour garder le focus clavier. */
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background-color: var(--accent-palest);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  background-color: var(--accent-paler);
+  border-color: var(--accent-dark);
+}
+
+.upload-dropzone:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.upload-dropzone-icon {
+  font-size: 2.5rem;
+  color: var(--accent-dark);
+}
+
+.upload-dropzone-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.upload-dropzone-hint {
+  color: var(--ink-3);
+  font-size: 0.9rem;
+}
+
+.upload-dropzone-file {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.upload-dropzone-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Fichier déposé : le signal passe par la bordure pleine et le nom affiché,
+   pas par un fond plus saturé (bleu foncé sur bleu clair jugé agressif). */
+.upload-dropzone.has-file {
+  border-style: solid;
+  border-color: var(--accent-border);
+  background-color: var(--accent-palest);
+}
+
+.upload-dropzone.has-file .upload-dropzone-file {
+  color: var(--accent-dark);
+}
+
+/* Boîte d'aide « Comment récupérer les données » (étape 3) :
+   accordéon mis en avant pour les utilisateurs qui ne savent pas où trouver leur CSV. */
+.help-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden; /* arrondir aussi le bouton interne */
+}
+
+/* Bouton neutre (blanc + encre) : seule l'icône porte le bleu,
+   pour ne pas empiler du bleu sous la dropzone. */
+.help-accordion .accordion-button {
+  background-color: var(--surface);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.help-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--accent-palest);
+  color: var(--accent-ink);
+  box-shadow: none;
+}
+
+.help-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25); /* même focus que la dropzone */
+}
+
+.help-accordion .accordion-button .fa-circle-question {
+  color: var(--accent-dark);
+  font-size: 1.15rem;
+}
+
+/* Cartes de choix des tarifs communautaires (étape 4). */
+.choice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.choice-card:hover {
+  border-color: var(--ink);
+}
+
+.choice-card:has(:checked) {
+  border-color: var(--accent-dark);
+  background-color: var(--accent-palest);
+  box-shadow: 0 0 0 1px var(--accent-dark);
+}
+
+.choice-card .form-check-input {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   6. Résultats
+   ============================================================ */
 /* En-tête d'un bloc mensuel dans l'accordéon de détail : couleurs foncées
    pour rester lisibles (contraste >= 4.5:1) sur le fond .tarif-detail-row. */
 .month-title {
   font-size: 1.5rem;
-  color: #1d5d8d;
+  color: var(--accent-dark);
   margin-bottom: 0.5rem;
 }
 
 .month-summary {
   font-size: 1.1rem;
-  color: var(--text-color);
+  color: var(--ink);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -62,24 +1018,26 @@ h6 {
   border-collapse: separate;
   border-spacing: 0;
   margin-bottom: 2rem;
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
 .table thead th {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--dark-bg);
+  color: #F5F7FA;
+  font-family: var(--font-display);
   font-weight: 600;
   text-align: left;
   padding: 1rem;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: none;
 }
 
 .table tbody td,
 .table tbody th {
   padding: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
 }
 
 .table tbody tr:last-child td {
@@ -87,7 +1045,7 @@ h6 {
 }
 
 .table tbody tr:hover {
-  background-color: rgba(52, 152, 219, 0.1);
+  background-color: rgba(13, 110, 253, 0.06);
 }
 
 /* Bouton chevron qui déplie l'accordéon de détail d'un tarif (la ligne
@@ -103,7 +1061,13 @@ h6 {
 /* Ligne accordéon de détail : fond bleu très clair (au lieu du gris
    table-secondary) pour le contraste avec les titres mensuels. */
 .tarif-detail-row {
-  --bs-table-bg: #f4f8fb;
+  --bs-table-bg: #F4F7FB;
+}
+
+/* Badge €/mois : texte bleu foncé lisible sur la pilule bleu pâle
+   (text-bg-info calcule un texte noir avec !important, on repasse derrière). */
+#pricesResultRow .text-bg-info {
+  color: var(--accent-ink) !important;
 }
 
 /* Détail des résultats : pastilles de bandes horaires et badges de type de jour.
@@ -125,7 +1089,7 @@ h6 {
 
 /* Zébrage par paire ligne jour + ligne graphe. */
 .day-row-alt>td {
-  background-color: rgba(52, 152, 219, 0.06);
+  background-color: rgba(15, 25, 41, 0.035);
 }
 
 /* Graphe horaire d'une journée (SVG généré par scripts/ui/dayChart.js). */
@@ -185,342 +1149,65 @@ h6 {
   box-shadow: inset 0 0 0 1px rgba(11, 11, 11, 0.15);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+.input-group-text {
+  background-color: var(--accent-palest);
+  border-color: var(--border-strong);
+  color: var(--ink-2);
 }
 
-#startButton {
-  min-height: 44px;
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #2980b9;
-}
-
-.btn-secondary {
-  background-color: var(--secondary-color);
-  color: #fff;
-  border: none;
-}
-
-.btn-secondary:hover {
-  background-color: #27ae60;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-color);
-  background-color: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-  border-color: var(--primary-color);
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-}
-
-.alert {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-}
-
-.alert-info {
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
-}
-
-.alert-warning {
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
-}
-
-.alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-}
-
-/* Les étapes s'empilent dans la même cellule de grille : le conteneur garde la
-   hauteur de l'étape la plus haute, donc la carte et le bouton Suivant/Simuler
-   ne bougent pas entre les étapes. visibility (et non display) conserve cette
-   hauteur tout en sortant les étapes inactives du focus et de l'accessibilité. */
-.wizard-steps {
-  display: grid;
-}
-
-.wizard-step {
-  grid-area: 1 / 1;
-  visibility: hidden;
-}
-
-.wizard-step.active {
-  visibility: visible;
-}
-
-.wizard-stepper {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-}
-
-.wizard-stepper-item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  opacity: 0.55;
-  font-size: 0.9rem;
-}
-
-.wizard-stepper-index {
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  border: 2px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-}
-
-.wizard-stepper-item.active {
-  opacity: 1;
-  font-weight: 600;
-}
-
-.wizard-stepper-item.active .wizard-stepper-index {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #fff;
-}
-
-.wizard-stepper-item.done {
-  opacity: 0.8;
-}
-
-.wizard-stepper-item.done .wizard-stepper-index {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
-}
-
-.wizard-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Zone de dépôt du CSV (étape 3) : l'input #csvFile reste dans le DOM
-   (le harnais de test y injecte un fichier via DataTransfer) mais est
-   masqué visuellement — pas de display:none pour garder le focus clavier. */
-.upload-dropzone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  width: 100%;
-  padding: 2.5rem 1.5rem;
-  border: 2px dashed var(--primary-color);
-  border-radius: 8px;
-  background-color: rgba(52, 152, 219, 0.05);
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.upload-dropzone:hover,
-.upload-dropzone.dragover {
-  background-color: rgba(52, 152, 219, 0.15);
-}
-
-.upload-dropzone:focus-within {
-  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-}
-
-.upload-dropzone-icon {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-}
-
-.upload-dropzone-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
-.upload-dropzone-hint {
-  color: #6c757d;
-  font-size: 0.9rem;
-}
-
-.upload-dropzone-file {
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
-
-.upload-dropzone-input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
-
-.upload-dropzone.has-file {
-  border-color: var(--secondary-color);
-  background-color: rgba(46, 204, 113, 0.08);
-}
-
-.upload-dropzone.has-file .upload-dropzone-icon,
-.upload-dropzone.has-file .upload-dropzone-file {
-  color: #27ae60;
-}
-
-/* Boîte d'aide « Comment récupérer les données » (étape 3) :
-   accordéon mis en avant pour les utilisateurs qui ne savent pas où trouver leur CSV. */
-.help-accordion {
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
-  overflow: hidden; /* arrondir aussi le bouton interne */
-}
-
-.help-accordion .accordion-button {
-  background-color: rgba(52, 152, 219, 0.08);
-  font-weight: 600;
-  color: #1d6fa5; /* bleu foncé lisible sur le fond clair */
-}
-
-.help-accordion .accordion-button:not(.collapsed) {
-  background-color: rgba(52, 152, 219, 0.15);
-  box-shadow: none;
-}
-
-.help-accordion .accordion-button:focus {
-  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); /* même focus que la dropzone */
-}
-
-.help-accordion .accordion-button .fa-circle-question {
-  color: var(--primary-color);
-  font-size: 1.15rem;
-}
-
-/* Page d'accueil : cartes qui séparent visuellement le bloc CTA et la FAQ
-   des sections de texte, pour aérer la vue de présentation. */
-.cta-card,
-.section-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-}
-
-.cta-card {
-  border-top: 3px solid var(--primary-color);
-}
-
-/* Séparateur léger entre les questions de la FAQ. */
-.section-card h3:not(:first-of-type) {
-  border-top: 1px solid var(--border-color);
-  padding-top: 1.25rem;
-}
-
-/* Accordéon « Tarifs actuellement suivis » : le chevron Bootstrap est remplacé
-   par une icône + (générée par import/tools/gen-tarifs-section.mjs) qui pivote
-   en croix à l'ouverture ; aria-expanded est maintenu par Bootstrap. */
-.tarifs-plus-toggle::after {
-  display: none;
-}
-
-.tarifs-plus-toggle .fa-plus {
-  color: var(--primary-color);
-  font-size: 1.15rem;
-  transition: transform 0.2s ease;
-}
-
-.tarifs-plus-toggle[aria-expanded="true"] .fa-plus {
-  transform: rotate(45deg);
-}
-
-/* Cartes de choix des tarifs communautaires (étape 4). */
-.choice-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.choice-card:hover {
-  border-color: var(--primary-color);
-}
-
-.choice-card:has(:checked) {
-  border-color: var(--primary-color);
-  background-color: rgba(52, 152, 219, 0.08);
-  box-shadow: 0 0 0 1px var(--primary-color);
-}
-
-.choice-card .form-check-input {
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-}
-
-@media (min-width: 992px) {
-  .col-lg-8 {
-    width: 100%;
+/* ============================================================
+   7. Responsive
+   ============================================================ */
+@media (max-width: 991.98px) {
+  .hero-grid,
+  .method-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-}
 
-@media (min-width: 1200px) {
-  .col-lg-8 {
-    width: 66%;
+  .hero-grid {
+    padding-block: 56px 64px;
+  }
+
+  /* Le halo déborde du conteneur en 1 colonne. */
+  .hero-preview::before {
+    inset: -20px 0;
   }
 }
 
 @media (max-width: 768px) {
+  .faq-grid,
+  .tarifs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sur mobile la nav garde le titre + le CTA (Démarrer ou Retour), sans les ancres. */
+  .site-nav-links a:not(.site-nav-cta) {
+    display: none;
+  }
+
+  .site-nav-brand span:last-child {
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .shell {
+    padding-inline: 20px;
+  }
+
+  .band > .shell,
+  .band-dark > .shell {
+    padding-block: 56px;
+  }
+
+  #importView,
+  #pricesResultView {
+    width: auto;
+    margin: 1rem 12px;
+  }
+
   /* Cible tactile minimale (WCAG / audit SEO 2.7) */
   .btn {
     min-height: 44px;
@@ -542,10 +1229,6 @@ h6 {
 
   .wizard-step.active {
     display: block;
-  }
-
-  .container {
-    padding: 1rem;
   }
 
   .card {
@@ -589,5 +1272,12 @@ h6 {
      l'alignement du mode carte : on le rétablit pour les cellules étiquetées. */
   .table td[data-label] {
     text-align: right !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* L'aperçu décoratif repousserait le CTA sous la ligne de flottaison. */
+  .hero-preview {
+    display: none;
   }
 }
