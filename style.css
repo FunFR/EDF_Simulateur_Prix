@@ -788,21 +788,13 @@ a.btn-donate:hover {
 /* ============================================================
    5. Wizard d'import
    ============================================================ */
-/* Les étapes s'empilent dans la même cellule de grille : le conteneur garde la
-   hauteur de l'étape la plus haute, donc la carte et le bouton Suivant/Simuler
-   ne bougent pas entre les étapes. visibility (et non display) conserve cette
-   hauteur tout en sortant les étapes inactives du focus et de l'accessibilité. */
-.wizard-steps {
-  display: grid;
-}
 
 .wizard-step {
-  grid-area: 1 / 1;
-  visibility: hidden;
+  display: none;
 }
 
 .wizard-step.active {
-  visibility: visible;
+  display: block;
 }
 
 .wizard-stepper {
@@ -1246,20 +1238,6 @@ a.btn-donate:hover {
 
   .wizard-stepper-label {
     display: none;
-  }
-
-  /* Sur petit écran, une carte haute et vide serait pénalisante : retour à la
-     hauteur auto, seule l'étape active occupe la place. */
-  .wizard-steps {
-    display: block;
-  }
-
-  .wizard-step {
-    display: none;
-  }
-
-  .wizard-step.active {
-    display: block;
   }
 
   .card {
