@@ -1,25 +1,25 @@
 defineTarif({
     name: "La Belle Energie - Prudence",
     offer_type: "Marché",
-    lastUpdate: "2026-07-01",
+    lastUpdate: "2026-08-01",
     isCommunity: true,
     subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
     price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
     subscriptions: {
-        3: 11.13,
-        6: 14.75,
-        9: 18.66,
-        12: 22.42,
-        15: 25.94,
-        18: 29.59,
-        24: 37.34,
-        30: 44.47,
-        36: 51.64
+        3: 11.63,
+        6: 15.36,
+        9: 19.38,
+        12: 23.26,
+        15: 26.89,
+        18: 30.64,
+        24: 38.63,
+        30: 45.96,
+        36: 53.37
     },
-    dayTypes: { bleu: { price: 17.26 } },
+    dayTypes: { bleu: { price: 19.53 } },
     priceOverrides: {
-        3: { bleu: { price: 17.38 } },
-        6: { bleu: { price: 17.38 } }
+        3: { bleu: { price: 19.68 } },
+        6: { bleu: { price: 19.68 } }
     },
     dayRule: { type: "constant", dayType: "bleu" }
 });

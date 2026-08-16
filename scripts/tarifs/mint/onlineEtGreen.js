@@ -1,23 +1,23 @@
 defineTarif({
     name: "Mint Energie - Online & Green",
     offer_type: "Marché",
-    lastUpdate: "2026-02-01",
+    lastUpdate: "2026-08-01",
     isCommunity: true,
     subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
     price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
     subscriptions: {
-        3: 12.03,
-        6: 15.65,
-        9: 19.56,
-        12: 23.32,
-        15: 26.85,
-        18: 30.49,
-        24: 38.24,
-        30: 45.37,
-        36: 52.54
+        3: 12.13,
+        6: 15.86,
+        9: 19.88,
+        12: 23.76,
+        15: 27.4,
+        18: 31.14,
+        24: 39.14,
+        30: 46.47,
+        36: 53.88
     },
-    dayTypes: { bleu: { price: 17.55 } },
+    dayTypes: { bleu: { price: 18.07 } },
     // 3 et 6 kVA ont un prix du kWh plus élevé
-    priceOverrides: { 3: { bleu: { price: 17.67 } }, 6: { bleu: { price: 17.67 } } },
+    priceOverrides: { 3: { bleu: { price: 18.21 } }, 6: { bleu: { price: 18.21 } } },
     dayRule: { type: "constant", dayType: "bleu" }
 });

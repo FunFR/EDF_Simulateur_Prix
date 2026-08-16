@@ -4,14 +4,14 @@
 defineTarif({
     name: "EDF - EJP",
     offer_type: "TRV",
-    lastUpdate: "2026-02-01",
+    lastUpdate: "2026-08-01",
     isCommunity: false,
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
-    subscriptions: { 9: 19.20, 12: 22.71, 15: 26.27, 18: 29.74, 36: 51.31 },
+    subscriptions: { 9: 19.52, 12: 23.14, 15: 26.81, 18: 30.37, 36: 52.6 },
     dayTypes: {
-        bleu: { HP: 17.81, HC: 17.81 },
-        rouge: { HP: 34.40, HC: 17.81 }
+        bleu: { HP: 17.89, HC: 17.89 },
+        rouge: { HP: 43.24, HC: 17.89 }
     },
     dayRule: { type: "calendar", default: "bleu", calendar: "ejp-edf" },
     hcRanges: [{ from: "01:00", to: "07:00" }]

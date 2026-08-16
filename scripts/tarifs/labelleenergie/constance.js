@@ -1,25 +1,25 @@
 defineTarif({
     name: "La Belle Energie - Constance",
     offer_type: "Marché",
-    lastUpdate: "2026-07-01",
+    lastUpdate: "2026-08-01",
     isCommunity: true,
     subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
     price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
     subscriptions: {
         3: 14.13,
-        6: 17.75,
-        9: 21.66,
-        12: 25.42,
-        15: 28.94,
-        18: 32.59,
-        24: 40.34,
-        30: 47.47,
-        36: 54.64
+        6: 17.87,
+        9: 21.89,
+        12: 25.77,
+        15: 29.4,
+        18: 33.15,
+        24: 41.14,
+        30: 48.47,
+        36: 55.88
     },
-    dayTypes: { bleu: { price: 17.26 } },
+    dayTypes: { bleu: { price: 19.53 } },
     priceOverrides: {
-        3: { bleu: { price: 17.38 } },
-        6: { bleu: { price: 17.38 } }
+        3: { bleu: { price: 19.68 } },
+        6: { bleu: { price: 19.68 } }
     },
     dayRule: { type: "constant", dayType: "bleu" }
 });

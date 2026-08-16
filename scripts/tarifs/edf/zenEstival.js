@@ -5,16 +5,16 @@
 defineTarif({
     name: "EDF - Zen Estival",
     offer_type: "Marché",
-    lastUpdate: "2026-03-31",
+    lastUpdate: "2026-08-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-estival.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-estival.pdf",
-    subscriptions: { 3: 12.03, 6: 15.65, 9: 19.56, 12: 23.32, 15: 26.84, 18: 30.49, 24: 38.24, 30: 45.37, 36: 52.54 },
+    subscriptions: { 3: 12.06, 6: 15.69, 9: 19.62, 12: 23.39, 15: 26.93, 18: 30.59, 24: 38.37, 30: 45.52, 36: 52.72 },
     dayTypes: {
-        hiver: { HP: 26.27, HC: 20.62 },
-        hiverSC: { price: 19.28 },
-        ete: { HP: 15.22, HC: 13.04 },
-        eteSC: { price: 9.87 }
+        hiver: { HP: 26.25, HC: 20.59 },
+        hiverSC: { price: 19.25 },
+        ete: { HP: 15.19, HC: 13.01 },
+        eteSC: { price: 9.84 }
     },
     dayRule: {
         type: "season",
