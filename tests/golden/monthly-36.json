@@ -584,289 +584,289 @@
       "year": 2026,
       "month": "01",
       "conso": 1559396,
-      "price": 414.250546,
+      "price": 425.96216685,
       "hasErrors": true,
       "nbDays": 30,
       "consoHC": 548544,
-      "priceHC": 79.2461712,
+      "priceHC": 81.17768685,
       "consoHP": 1010852,
-      "priceHP": 282.5843748
+      "priceHP": 291.02448
     },
     {
       "year": 2025,
       "month": "12",
       "conso": 1608788,
-      "price": 344.5909807,
+      "price": 353.76181555,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 564622,
-      "priceHC": 78.5682721,
+      "priceHC": 80.44898315,
       "consoHP": 1044166,
-      "priceHP": 213.6027086
+      "priceHP": 219.5528324
     },
     {
       "year": 2025,
       "month": "11",
       "conso": 1559840,
-      "price": 292.8662608,
+      "price": 300.3050812,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 549592,
-      "priceHC": 74.1018236,
+      "priceHC": 75.8497272,
       "consoHP": 1010248,
-      "priceHP": 166.3444372
+      "priceHP": 170.695354
     },
     {
       "year": 2025,
       "month": "10",
       "conso": 799746,
-      "price": 174.2743493,
+      "price": 178.7025098,
       "hasErrors": true,
       "nbDays": 30,
       "consoHC": 246157,
-      "priceHC": 32.6158025,
+      "priceHC": 33.3788892,
       "consoHP": 553589,
-      "priceHP": 89.2385468
+      "priceHP": 91.5636206
     },
     {
       "year": 2025,
       "month": "09",
       "conso": 799807,
-      "price": 174.27148275,
+      "price": 178.6994127,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 246599.5,
-      "priceHC": 32.67443375,
+      "priceHC": 33.4388922,
       "consoHP": 553207.5,
-      "priceHP": 89.177049
+      "priceHP": 91.5005205
     },
     {
       "year": 2025,
       "month": "08",
       "conso": 827880,
-      "price": 178.4929317,
+      "price": 183.0271198,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 257189,
-      "priceHC": 34.0775425,
+      "priceHC": 34.8748284,
       "consoHP": 570691,
-      "priceHP": 91.9953892
+      "priceHP": 94.3922914
     },
     {
       "year": 2025,
       "month": "07",
       "conso": 828294,
-      "price": 178.5782374,
+      "price": 183.114876,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 256542,
-      "priceHC": 33.991815,
+      "priceHC": 34.7870952,
       "consoHP": 571752,
-      "priceHP": 92.1664224
+      "priceHP": 94.5677808
     },
     {
       "year": 2025,
       "month": "06",
       "conso": 801096,
-      "price": 174.3971158,
+      "price": 178.8273108,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 249462,
-      "priceHC": 33.053715,
+      "priceHC": 33.8270472,
       "consoHP": 551634,
-      "priceHP": 88.9234008
+      "priceHP": 91.2402636
     },
     {
       "year": 2025,
       "month": "05",
       "conso": 828322,
-      "price": 178.575863,
+      "price": 183.1123552,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 256782,
-      "priceHC": 34.023615,
+      "priceHC": 34.8196392,
       "consoHP": 571540,
-      "priceHP": 92.132248
+      "priceHP": 94.532716
     },
     {
       "year": 2025,
       "month": "04",
       "conso": 801142,
-      "price": 174.4002834,
+      "price": 178.8305088,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 249610,
-      "priceHC": 33.073325,
+      "priceHC": 33.847116,
       "consoHP": 551532,
-      "priceHP": 88.9069584
+      "priceHP": 91.2233928
     },
     {
       "year": 2025,
       "month": "03",
       "conso": 1603692.5,
-      "price": 299.8228702,
+      "price": 307.4408927,
       "hasErrors": true,
       "nbDays": 30,
       "consoHC": 560133,
-      "priceHC": 75.7056096,
+      "priceHC": 77.4933318,
       "consoHP": 1043559.5,
-      "priceHP": 171.6972606
+      "priceHP": 176.1875609
     },
     {
       "year": 2025,
       "month": "02",
       "conso": 1454383,
-      "price": 308.98032855,
+      "price": 317.10636195,
       "hasErrors": false,
       "nbDays": 28,
       "consoHC": 513571.5,
-      "priceHC": 73.38621615,
+      "priceHC": 75.16352385,
       "consoHP": 940811.5,
-      "priceHP": 183.1741124
+      "priceHP": 188.1828381
     },
     {
       "year": 2025,
       "month": "01",
       "conso": 1656215,
-      "price": 575.4992991,
+      "price": 592.7888099,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 579563,
-      "priceHC": 85.5379871,
+      "priceHC": 87.6452821,
       "consoHP": 1076652,
-      "priceHP": 437.541312
+      "priceHP": 451.3835278
     },
     {
       "year": 2024,
       "month": "12",
       "conso": 1607614,
-      "price": 456.4750026,
+      "price": 469.6130658,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 566798,
-      "priceHC": 81.7199398,
+      "priceHC": 83.7108222,
       "consoHP": 1040816,
-      "priceHP": 322.3350628
+      "priceHP": 332.1422436
     },
     {
       "year": 2024,
       "month": "11",
       "conso": 1555490,
-      "price": 294.590003,
+      "price": 302.088225,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 546890,
-      "priceHC": 74.353696,
+      "priceHC": 76.114254,
       "consoHP": 1008600,
-      "priceHP": 167.816307
+      "priceHP": 172.213971
     },
     {
       "year": 2024,
       "month": "10",
       "conso": 801811,
-      "price": 174.5427097,
+      "price": 178.9770704,
       "hasErrors": true,
       "nbDays": 30,
       "consoHC": 248405,
-      "priceHC": 32.9136625,
+      "priceHC": 33.683718,
       "consoHP": 553406,
-      "priceHP": 89.2090472
+      "priceHP": 91.5333524
     },
     {
       "year": 2024,
       "month": "09",
       "conso": 799403,
-      "price": 174.22030615,
+      "price": 178.6470739,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 246113.5,
-      "priceHC": 32.61003875,
+      "priceHC": 33.3729906,
       "consoHP": 553289.5,
-      "priceHP": 89.1902674
+      "priceHP": 91.5140833
     },
     {
       "year": 2024,
       "month": "08",
       "conso": 828472,
-      "price": 178.5592029,
+      "price": 183.0947598,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 258205,
-      "priceHC": 34.2121625,
+      "priceHC": 35.012598,
       "consoHP": 570267,
-      "priceHP": 91.9270404
+      "priceHP": 94.3221618
     },
     {
       "year": 2024,
       "month": "07",
       "conso": 825926,
-      "price": 178.2890446,
+      "price": 182.819284,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 253318,
-      "priceHC": 33.564635,
+      "priceHC": 34.3499208,
       "consoHP": 572608,
-      "priceHP": 92.3044096
+      "priceHP": 94.7093632
     },
     {
       "year": 2024,
       "month": "06",
       "conso": 800346,
-      "price": 174.3681706,
+      "price": 178.79874,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 246258,
-      "priceHC": 32.629185,
+      "priceHC": 33.3925848,
       "consoHP": 554088,
-      "priceHP": 89.3189856
+      "priceHP": 91.6461552
     },
     {
       "year": 2024,
       "month": "05",
       "conso": 825106,
-      "price": 178.1340728,
+      "price": 182.6599948,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 254112,
-      "priceHC": 33.66984,
+      "priceHC": 34.4575872,
       "consoHP": 570994,
-      "priceHP": 92.0442328
+      "priceHP": 94.4424076
     },
     {
       "year": 2024,
       "month": "04",
       "conso": 800686,
-      "price": 178.7552591,
+      "price": 183.3246594,
       "hasErrors": false,
       "nbDays": 30,
       "consoHC": 246406,
-      "priceHC": 33.6555155,
+      "priceHC": 34.4540886,
       "consoHP": 554280,
-      "priceHP": 92.6797436
+      "priceHP": 95.1105708
     },
     {
       "year": 2024,
       "month": "03",
       "conso": 1654175,
-      "price": 420.8475046,
+      "price": 432.6768095,
       "hasErrors": false,
       "nbDays": 31,
       "consoHC": 577614,
-      "priceHC": 80.7821691,
+      "priceHC": 82.72342335,
       "consoHP": 1076561,
-      "priceHP": 287.6453355
+      "priceHP": 296.19338615
     },
     {
       "year": 2024,
       "month": "02",
       "conso": 1506524.5,
-      "price": 348.6596414,
+      "price": 358.13248315,
       "hasErrors": false,
       "nbDays": 29,
       "consoHC": 528451,
-      "priceHC": 74.5755868,
+      "priceHC": 76.37296865,
       "consoHP": 978073.5,
-      "priceHP": 221.6640546
+      "priceHP": 227.9995145
     }
   ],
   "EDF - EJP": [

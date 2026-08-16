@@ -3,15 +3,15 @@
 defineTarif({
     name: "EDF - Tempo",
     offer_type: "TRV",
-    lastUpdate: "2026-02-01",
+    lastUpdate: "2026-08-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
-    subscriptions: { 6: 15.59, 9: 19.38, 12: 23.07, 15: 26.47, 18: 30.04, 30: 44.73, 36: 52.42 },
+    subscriptions: { 6: 15.8, 9: 19.7, 12: 23.5, 15: 27.01, 18: 30.69, 30: 45.82, 36: 53.76 },
     dayTypes: {
-        bleu: { HP: 16.12, HC: 13.25 },
-        blanc: { HP: 18.71, HC: 14.99 },
-        rouge: { HP: 70.60, HC: 15.75 }
+        bleu: { HP: 16.54, HC: 13.56 },
+        blanc: { HP: 19.21, HC: 15.36 },
+        rouge: { HP: 72.95, HC: 16.15 }
     },
     dayRule: {
         type: "calendar",

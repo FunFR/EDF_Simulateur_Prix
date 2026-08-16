@@ -168,121 +168,121 @@
   {
     "name": "EDF - Tempo",
     "offer_type": "TRV",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.59,
+        "abonnement": 15.8,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.38,
+        "abonnement": 19.7,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.07,
+        "abonnement": 23.5,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.47,
+        "abonnement": 27.01,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.04,
+        "abonnement": 30.69,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 30,
-        "abonnement": 44.73,
+        "abonnement": 45.82,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.42,
+        "abonnement": 53.76,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       }
     ],
