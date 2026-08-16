@@ -89,7 +89,7 @@ La revue humaine reste la même qu'avec les scripts individuels : relire
 | `MODIFIE` | valeurs mises à jour dans les fichiers tarifs (détail affiché) |
 | `GRILLE CHANGEE, VALEURS IDENTIQUES` | PDF ré-édité sans changement de prix (réconcilié) |
 | `INTERVENTION MANUELLE REQUISE` | divergence **structurelle** : kVA ou type de jour ajouté/supprimé, `priceOverrides` présents d'un seul côté. L'outil ne patche jamais la structure : éditer le fichier tarif à la main, puis relancer |
-| `NON GERE (HTML)` | `price_url` non-PDF (Alterna, Gaz de Bordeaux, Enercoop) : vérification manuelle |
+| `NON GERE (HTML)` | `price_url` non-PDF (Alterna, Enercoop) : vérification manuelle |
 | `PARSER MANQUANT` | PDF téléchargé et changement détecté, mais pas de parser (Engie, voir plus bas) |
 | `VALEUR INTROUVABLE (patch refuse)` | le littéral attendu n'est plus dans le fichier : rien n'est écrit |
 | `ERREUR RESEAU` / `ERREUR PARSING` | à investiguer (URL morte ? mise en page changée ?) |
@@ -233,7 +233,7 @@ npm test
 
 ## Hors périmètre (v1)
 
-- **Alterna, Gaz de Bordeaux, Enercoop** : `price_url` en HTML, vérification manuelle.
+- **Alterna, Enercoop** : `price_url` en HTML, vérification manuelle.
 - **Engie** : les fiches descriptives décomposent les prix en fourniture + acheminement (TURPE CU/CU4/MUDT/MU4) + obligations, en €/an — la reconstruction du prix TTC mensuel est trop hasardeuse pour un parser fiable. Le changement de grille reste détecté par SHA-256 (`PARSER MANQUANT`). Par ailleurs deux des trois `price_url` Engie du repo renvoient 404 (tranquillité, happy-heures-vertes) : à rafraîchir dans les fichiers tarifs.
 - **Sobry** : le PDF de la grille est un export design (texte **vectorisé en tracés**, zéro item texte pour pdfjs) — parser textuel impossible sans OCR. Le changement de grille reste détecté (`PARSER MANQUANT`, mapping par URL exacte dans `registry.mjs`). Mise à jour manuelle depuis le PDF : `subscriptions[kVA] = (Total_CU4_HTVA + 15 % × Acheminement_HTVA) × 1,20` (table « Abonnement mensuel C5 », grille CU4) et `spotFormula` (composantes p. 2-3 et 9, ×100 pour passer en centimes). `reconcile.mjs` sait déjà comparer `spotFormula` si un parser voit le jour.
 - Les nouvelles puissances proposées par un fournisseur (ex. un kVA ajouté au PDF) ne sont pas signalées si le repo ne les modélise pas.

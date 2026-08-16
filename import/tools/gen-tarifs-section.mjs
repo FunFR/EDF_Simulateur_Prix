@@ -22,10 +22,8 @@ const PROVIDERS = {
     edf: 'EDF',
     enercoop: 'Enercoop',
     engie: 'Engie',
-    gazdebordeaux: 'Gaz de Bordeaux',
     labelleenergie: 'La Bellenergie',
     mint: 'Mint Énergie',
-    octopus: 'Octopus Energy',
     sobry: 'Sobry',
     total: 'TotalEnergies',
 };

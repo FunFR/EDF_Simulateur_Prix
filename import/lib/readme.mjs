@@ -8,13 +8,11 @@ const README_LABELS = {
     edf: 'EDF',
     total: 'TotalEnergie',
     mint: 'Mint Energie',
-    octopus: 'Octopus',
     alpiq: 'Alpiq',
     labelleenergie: 'La belle énergie',
     engie: 'Engie',
     alterna: 'Alterna',
     enercoop: 'Enercoop',
-    gazdebordeaux: 'Gaz de Bordeaux',
 };
 
 // datesByProvider : Map<provider, "AAAA-MM-JJ"> (date de grille appliquée).
